@@ -1,0 +1,205 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Installation &mdash; scikit-rf 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/scipy.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="scikit-rf 0.1 documentation" href="../index.html" />
+    <link rel="next" title="Introduction" href="introduction.html" />
+    <link rel="prev" title="skrf’s documentation" href="../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="introduction.html" title="Introduction"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../index.html" title="skrf’s documentation"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">scikit-rf 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="installation">
+<span id="id1"></span><h1><a class="toc-backref" href="#id2">Installation</a><a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#installation" id="id2">Installation</a><ul>
+<li><a class="reference internal" href="#introduction" id="id3">Introduction</a></li>
+<li><a class="reference internal" href="#skrf-installation" id="id4">skrf Installation</a></li>
+<li><a class="reference internal" href="#requirements" id="id5">Requirements</a><ul>
+<li><a class="reference internal" href="#debian-based-linux" id="id6">Debian-Based Linux</a></li>
+<li><a class="reference internal" href="#necessary" id="id7">Necessary</a></li>
+<li><a class="reference internal" href="#optional" id="id8">Optional</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="introduction">
+<h2><a class="toc-backref" href="#id3">Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>The requirements to run skrf are basically a python environment setup to do numerical/scientific computing. If you are new to  <a class="reference external" href="http://www.python.org/">Python</a> development, you may want to install a pre-built scientific python IDE like <a class="reference external" href="http://code.google.com/p/pythonxy/">pythonxy</a>. This will install all requirements, as well as provide a nice environment to get started in. If you dont want use <a class="reference external" href="http://code.google.com/p/pythonxy/">pythonxy</a>, you see <a class="reference internal" href="#requirements">Requirements</a>.</p>
+<p><strong>Note:</strong> If you want to use skrf for instrument control you will need to install pyvisa. You may also be interested in Pythics, which provides a simple way to build interfaces to virtual instruments. Links is provided in <a class="reference internal" href="#requirements">Requirements</a> section.</p>
+</div>
+<div class="section" id="skrf-installation">
+<h2><a class="toc-backref" href="#id4">skrf Installation</a><a class="headerlink" href="#skrf-installation" title="Permalink to this headline">¶</a></h2>
+<p>Once the requirements are installed, there are two choices for installing skrf:</p>
+<ul class="simple">
+<li>windows installer</li>
+<li>python source package</li>
+</ul>
+<p>They can all be found at <a class="reference external" href="http://code.google.com/p/skrf/downloads/list">http://code.google.com/p/skrf/downloads/list</a></p>
+<p>If you dont know how to install a python module and dont care to learn how, you want the windows installer. Otherwise, I recommend the python source package because examples, documentation, and installation instructions are provided with the the python package.</p>
+<p>The current version can be accessed through <a class="reference external" href="http://code.google.com/p/skrf/source/checkout">SVN</a>. This is mainly of interest for developers, and is not stable most of the time.</p>
+</div>
+<div class="section" id="requirements">
+<h2><a class="toc-backref" href="#id5">Requirements</a><a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="debian-based-linux">
+<h3><a class="toc-backref" href="#id6">Debian-Based Linux</a><a class="headerlink" href="#debian-based-linux" title="Permalink to this headline">¶</a></h3>
+<p>For debian-based linux users who dont want to install <a class="reference external" href="http://code.google.com/p/pythonxy/">pythonxy</a>, here is a one-shot line to install all requirements,:</p>
+<div class="highlight-python"><pre>sudo apt-get install python-pyvisa python-numpy python-scipy python-matplotlib ipython python</pre>
+</div>
+</div>
+<div class="section" id="necessary">
+<h3><a class="toc-backref" href="#id7">Necessary</a><a class="headerlink" href="#necessary" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>python (&gt;=2.6) <a class="reference external" href="http://www.python.org/">http://www.python.org/</a></li>
+<li>matplotlib (aka pylab) <a class="reference external" href="http://matplotlib.sourceforge.net/">http://matplotlib.sourceforge.net/</a></li>
+<li>numpy <a class="reference external" href="http://numpy.scipy.org/">http://numpy.scipy.org/</a></li>
+<li>scipy <a class="reference external" href="http://www.scipy.org/">http://www.scipy.org/</a> ( provides tons of good stuff, check it out)</li>
+</ul>
+</div>
+<div class="section" id="optional">
+<h3><a class="toc-backref" href="#id8">Optional</a><a class="headerlink" href="#optional" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>ipython <a class="reference external" href="http://ipython.scipy.org/moin/">http://ipython.scipy.org/moin/</a> - for interactive shell</li>
+<li>pyvisa <a class="reference external" href="http://pyvisa.sourceforge.net/pyvisa/">http://pyvisa.sourceforge.net/pyvisa/</a> - for instrument control</li>
+<li>Pythics <a class="reference external" href="http://code.google.com/p/pythics">http://code.google.com/p/pythics</a> - instrument control and gui creation</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/scikit_logo_small.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Installation</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#skrf-installation">skrf Installation</a></li>
+<li><a class="reference internal" href="#requirements">Requirements</a><ul>
+<li><a class="reference internal" href="#debian-based-linux">Debian-Based Linux</a></li>
+<li><a class="reference internal" href="#necessary">Necessary</a></li>
+<li><a class="reference internal" href="#optional">Optional</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../index.html"
+                        title="previous chapter">skrf&#8217;s documentation</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="introduction.html"
+                        title="next chapter">Introduction</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/tutorials/installation.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<ul class="this-page-menu">
+  <li><a href="/scipy/docs/scipy-docs/tutorials/installation.rst">Edit page</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="introduction.html" title="Introduction"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../index.html" title="skrf’s documentation"
+             >previous</a> |</li>
+        <li><a href="../index.html">scikit-rf 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, alex arsenovic.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

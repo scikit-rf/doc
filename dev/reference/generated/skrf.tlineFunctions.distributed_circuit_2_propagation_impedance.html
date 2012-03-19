@@ -1,0 +1,180 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>skrf.tlineFunctions.distributed_circuit_2_propagation_impedance &mdash; scikit-rf 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/scipy.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="scikit-rf 0.1 documentation" href="../../index.html" />
+    <link rel="up" title="tlineFunctions (skrf.tlineFunctions)" href="../tlineFunctions.html" />
+    <link rel="next" title="skrf.tlineFunctions.propagation_impedance_2_distributed_circuit" href="skrf.tlineFunctions.propagation_impedance_2_distributed_circuit.html" />
+    <link rel="prev" title="skrf.tlineFunctions.load_impedance_2_reflection_coefficient_at_theta" href="skrf.tlineFunctions.load_impedance_2_reflection_coefficient_at_theta.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="skrf.tlineFunctions.propagation_impedance_2_distributed_circuit.html" title="skrf.tlineFunctions.propagation_impedance_2_distributed_circuit"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="skrf.tlineFunctions.load_impedance_2_reflection_coefficient_at_theta.html" title="skrf.tlineFunctions.load_impedance_2_reflection_coefficient_at_theta"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">scikit-rf 0.1 documentation</a> &raquo;</li>
+          <li><a href="../tlineFunctions.html" accesskey="U">tlineFunctions (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.tlineFunctions</span></tt>)</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="skrf-tlinefunctions-distributed-circuit-2-propagation-impedance">
+<h1>skrf.tlineFunctions.distributed_circuit_2_propagation_impedance<a class="headerlink" href="#skrf-tlinefunctions-distributed-circuit-2-propagation-impedance" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="skrf.tlineFunctions.distributed_circuit_2_propagation_impedance">
+<tt class="descclassname">skrf.tlineFunctions.</tt><tt class="descname">distributed_circuit_2_propagation_impedance</tt><big>(</big><em>distributed_admittance</em>, <em>distributed_impedance</em><big>)</big><a class="headerlink" href="#skrf.tlineFunctions.distributed_circuit_2_propagation_impedance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts distrubuted circuit values to wave quantities.</p>
+<p>This converts complex distributed impedance and admittance to
+propagation constant and characteristic impedance. The relation is</p>
+<div class="math">
+<p><img src="../../_images/math/c4216be010a45e2b7bbdd1daf72a85d8daa1ef06.png" alt="Z_0 = \sqrt{ \frac{Z^{'}}{Y^{'}}}
+\quad\quad
+\gamma = \sqrt{ Z^{'}  Y^{'}}"/></p>
+</div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>distributed_admittance</strong> : number, array-like</p>
+<blockquote>
+<div><p>distributed admittance</p>
+</div></blockquote>
+<p><strong>distributed_impedance</strong> :  number, array-like</p>
+<blockquote>
+<div><p>distributed impedance</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>propagation_constant</strong> : number, array-like</p>
+<blockquote>
+<div><p>distributed impedance</p>
+</div></blockquote>
+<p><strong>characteristic_impedance</strong> : number, array-like</p>
+<blockquote class="last">
+<div><p>distributed impedance</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><a class="reference internal" href="skrf.tlineFunctions.propagation_impedance_2_distributed_circuit.html#skrf.tlineFunctions.propagation_impedance_2_distributed_circuit" title="skrf.tlineFunctions.propagation_impedance_2_distributed_circuit"><tt class="xref py py-obj docutils literal"><span class="pre">propagation_impedance_2_distributed_circuit</span></tt></a></dt>
+<dd>opposite conversion</dd>
+</dl>
+</div>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="../../_static/scikit_logo_small.png" alt="Logo"/>
+            </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="skrf.tlineFunctions.load_impedance_2_reflection_coefficient_at_theta.html"
+                        title="previous chapter">skrf.tlineFunctions.load_impedance_2_reflection_coefficient_at_theta</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="skrf.tlineFunctions.propagation_impedance_2_distributed_circuit.html"
+                        title="next chapter">skrf.tlineFunctions.propagation_impedance_2_distributed_circuit</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/reference/generated/skrf.tlineFunctions.distributed_circuit_2_propagation_impedance.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<ul class="this-page-menu">
+  <li><a href="/scipy/docs/reference/skrf.tlineFunctions.distributed_circuit_2_propagation_impedance">Edit page</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="skrf.tlineFunctions.propagation_impedance_2_distributed_circuit.html" title="skrf.tlineFunctions.propagation_impedance_2_distributed_circuit"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="skrf.tlineFunctions.load_impedance_2_reflection_coefficient_at_theta.html" title="skrf.tlineFunctions.load_impedance_2_reflection_coefficient_at_theta"
+             >previous</a> |</li>
+        <li><a href="../../index.html">scikit-rf 0.1 documentation</a> &raquo;</li>
+          <li><a href="../tlineFunctions.html" >tlineFunctions (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.tlineFunctions</span></tt>)</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, alex arsenovic.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

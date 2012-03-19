@@ -1,0 +1,154 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>skrf.calibration.calibrationAlgorithms.unterminate_switch_terms &mdash; scikit-rf 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/scipy.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="scikit-rf 0.1 documentation" href="../../../index.html" />
+    <link rel="up" title="calibrationAlgorithms (skrf.calibration.calibrationAlgorithms)" href="../calibrationAlgorithms.html" />
+    <link rel="next" title="skrf.calibration.calibrationAlgorithms.abc_2_coefs_dict" href="skrf.calibration.calibrationAlgorithms.abc_2_coefs_dict.html" />
+    <link rel="prev" title="skrf.calibration.calibrationAlgorithms.parameterized_self_calibration_nls" href="skrf.calibration.calibrationAlgorithms.parameterized_self_calibration_nls.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../../../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="skrf.calibration.calibrationAlgorithms.abc_2_coefs_dict.html" title="skrf.calibration.calibrationAlgorithms.abc_2_coefs_dict"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="skrf.calibration.calibrationAlgorithms.parameterized_self_calibration_nls.html" title="skrf.calibration.calibrationAlgorithms.parameterized_self_calibration_nls"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../../index.html">scikit-rf 0.1 documentation</a> &raquo;</li>
+          <li><a href="../index.html" >calibration (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.calibration</span></tt>)</a> &raquo;</li>
+          <li><a href="../calibrationAlgorithms.html" accesskey="U">calibrationAlgorithms (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.calibration.calibrationAlgorithms</span></tt>)</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="skrf-calibration-calibrationalgorithms-unterminate-switch-terms">
+<h1>skrf.calibration.calibrationAlgorithms.unterminate_switch_terms<a class="headerlink" href="#skrf-calibration-calibrationalgorithms-unterminate-switch-terms" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="skrf.calibration.calibrationAlgorithms.unterminate_switch_terms">
+<tt class="descclassname">skrf.calibration.calibrationAlgorithms.</tt><tt class="descname">unterminate_switch_terms</tt><big>(</big><em>two_port</em>, <em>gamma_f</em>, <em>gamma_r</em><big>)</big><a class="headerlink" href="#skrf.calibration.calibrationAlgorithms.unterminate_switch_terms" title="Permalink to this definition">¶</a></dt>
+<dd><p>unterminates switch terms from raw measurements.</p>
+<dl class="docutils">
+<dt>takes:</dt>
+<dd>two_port: the raw measurement, a 2-port Network type.
+gamma_f: the measured forward switch term, a 1-port Network type
+gamma_r: the measured reverse switch term, a 1-port Network type</dd>
+<dt>returns:</dt>
+<dd>un-terminated measurement, a 2-port Network type</dd>
+<dt>see:</dt>
+<dd>&#8216;Formulations of the Basic Vector Network Analyzer Error
+Model including Switch Terms&#8217; by Roger B. Marks</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../../index.html">
+              <img class="logo" src="../../../_static/scikit_logo_small.png" alt="Logo"/>
+            </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="skrf.calibration.calibrationAlgorithms.parameterized_self_calibration_nls.html"
+                        title="previous chapter">skrf.calibration.calibrationAlgorithms.parameterized_self_calibration_nls</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="skrf.calibration.calibrationAlgorithms.abc_2_coefs_dict.html"
+                        title="next chapter">skrf.calibration.calibrationAlgorithms.abc_2_coefs_dict</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../../_sources/reference/calibration/generated/skrf.calibration.calibrationAlgorithms.unterminate_switch_terms.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<ul class="this-page-menu">
+  <li><a href="/scipy/docs/reference/calibration/skrf.calibration.calibrationAlgorithms.unterminate_switch_terms">Edit page</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../../../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="skrf.calibration.calibrationAlgorithms.abc_2_coefs_dict.html" title="skrf.calibration.calibrationAlgorithms.abc_2_coefs_dict"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="skrf.calibration.calibrationAlgorithms.parameterized_self_calibration_nls.html" title="skrf.calibration.calibrationAlgorithms.parameterized_self_calibration_nls"
+             >previous</a> |</li>
+        <li><a href="../../../index.html">scikit-rf 0.1 documentation</a> &raquo;</li>
+          <li><a href="../index.html" >calibration (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.calibration</span></tt>)</a> &raquo;</li>
+          <li><a href="../calibrationAlgorithms.html" >calibrationAlgorithms (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.calibration.calibrationAlgorithms</span></tt>)</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, alex arsenovic.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

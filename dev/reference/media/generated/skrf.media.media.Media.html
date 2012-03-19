@@ -1,0 +1,258 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>skrf.media.media.Media &mdash; scikit-rf 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/scipy.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="scikit-rf 0.1 documentation" href="../../../index.html" />
+    <link rel="up" title="media (skrf.media)" href="../index.html" />
+    <link rel="next" title="skrf.media.media.Media.characteristic_impedance" href="skrf.media.media.Media.characteristic_impedance.html" />
+    <link rel="prev" title="skrf.media.freespace.Freespace.white_gaussian_polar" href="skrf.media.freespace.Freespace.white_gaussian_polar.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../../../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="skrf.media.media.Media.characteristic_impedance.html" title="skrf.media.media.Media.characteristic_impedance"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="skrf.media.freespace.Freespace.white_gaussian_polar.html" title="skrf.media.freespace.Freespace.white_gaussian_polar"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../../index.html">scikit-rf 0.1 documentation</a> &raquo;</li>
+          <li><a href="../index.html" accesskey="U">media (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.media</span></tt>)</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="skrf-media-media-media">
+<h1>skrf.media.media.Media<a class="headerlink" href="#skrf-media-media-media" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="skrf.media.media.Media">
+<em class="property">class </em><tt class="descclassname">skrf.media.media.</tt><tt class="descname">Media</tt><big>(</big><em>frequency</em>, <em>propagation_constant</em>, <em>characteristic_impedance</em>, <em>z0=None</em><big>)</big><a class="headerlink" href="#skrf.media.media.Media" title="Permalink to this definition">¶</a></dt>
+<dd><p>The base-class for all transmission line mediums.</p>
+<p>The <a class="reference internal" href="#skrf.media.media.Media" title="skrf.media.media.Media"><tt class="xref py py-class docutils literal"><span class="pre">Media</span></tt></a> object provides generic methods to produce   <a class="reference internal" href="../../generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a>&#8216;s for any transmision line medium, such  as <a class="reference internal" href="skrf.media.media.Media.line.html#skrf.media.media.Media.line" title="skrf.media.media.Media.line"><tt class="xref py py-func docutils literal"><span class="pre">line()</span></tt></a> and <a class="reference internal" href="skrf.media.media.Media.delay_short.html#skrf.media.media.Media.delay_short" title="skrf.media.media.Media.delay_short"><tt class="xref py py-func docutils literal"><span class="pre">delay_short()</span></tt></a>.</p>
+<p>The initializer for this class has flexible argument types. This
+allows for the important attributes of the <a class="reference internal" href="#skrf.media.media.Media" title="skrf.media.media.Media"><tt class="xref py py-class docutils literal"><span class="pre">Media</span></tt></a> object
+to be dynamic. For example, if a Media object&#8217;s propagation constant
+is a function of some attribute of that object, say <cite>conductor_width</cite>,
+then the propagation constant will change when that attribute
+changes. See <a class="reference internal" href="skrf.media.media.Media.__init__.html#skrf.media.media.Media.__init__" title="skrf.media.media.Media.__init__"><tt class="xref py py-func docutils literal"><span class="pre">__init__()</span></tt></a> for details.</p>
+<p>The network creation methods build off of each other. For example,
+the specicial load cases, suc as <a class="reference internal" href="skrf.media.media.Media.short.html#skrf.media.media.Media.short" title="skrf.media.media.Media.short"><tt class="xref py py-func docutils literal"><span class="pre">short()</span></tt></a> and <a class="reference internal" href="skrf.media.media.Media.open.html#skrf.media.media.Media.open" title="skrf.media.media.Media.open"><tt class="xref py py-func docutils literal"><span class="pre">open()</span></tt></a> call
+<a class="reference internal" href="skrf.media.media.Media.load.html#skrf.media.media.Media.load" title="skrf.media.media.Media.load"><tt class="xref py py-func docutils literal"><span class="pre">load()</span></tt></a> with given arguments for Gamma0, and the <a href="#id1"><span class="problematic" id="id2">delay_</span></a> and
+<a href="#id3"><span class="problematic" id="id4">shunt_</span></a> functions call <a class="reference internal" href="skrf.media.media.Media.line.html#skrf.media.media.Media.line" title="skrf.media.media.Media.line"><tt class="xref py py-func docutils literal"><span class="pre">line()</span></tt></a> and <a class="reference internal" href="skrf.media.media.Media.shunt.html#skrf.media.media.Media.shunt" title="skrf.media.media.Media.shunt"><tt class="xref py py-func docutils literal"><span class="pre">shunt()</span></tt></a> respectively.
+This minimizes re-implementation.</p>
+<p>Most methods initialize the <a class="reference internal" href="../../generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> by
+calling <a class="reference internal" href="skrf.media.media.Media.match.html#skrf.media.media.Media.match" title="skrf.media.media.Media.match"><tt class="xref py py-func docutils literal"><span class="pre">match()</span></tt></a> to create a &#8216;blank&#8217;
+<a class="reference internal" href="../../generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a>, and then fill in the s-matrix.</p>
+</dd></dl>
+
+<p class="rubric">Attributes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="skrf.media.media.Media.characteristic_impedance.html#skrf.media.media.Media.characteristic_impedance" title="skrf.media.media.Media.characteristic_impedance"><tt class="xref py py-obj docutils literal"><span class="pre">characteristic_impedance</span></tt></a></td>
+<td>Characterisitc impedance</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.media.media.Media.propagation_constant.html#skrf.media.media.Media.propagation_constant" title="skrf.media.media.Media.propagation_constant"><tt class="xref py py-obj docutils literal"><span class="pre">propagation_constant</span></tt></a></td>
+<td>Propagation constant</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.media.media.Media.z0.html#skrf.media.media.Media.z0" title="skrf.media.media.Media.z0"><tt class="xref py py-obj docutils literal"><span class="pre">z0</span></tt></a></td>
+<td>Port Impedance</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="skrf.media.media.Media.__init__.html#skrf.media.media.Media.__init__" title="skrf.media.media.Media.__init__"><tt class="xref py py-obj docutils literal"><span class="pre">__init__</span></tt></a></td>
+<td>The Media initializer.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.media.media.Media.capacitor.html#skrf.media.media.Media.capacitor" title="skrf.media.media.Media.capacitor"><tt class="xref py py-obj docutils literal"><span class="pre">capacitor</span></tt></a></td>
+<td>Capacitor</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.media.media.Media.delay_load.html#skrf.media.media.Media.delay_load" title="skrf.media.media.Media.delay_load"><tt class="xref py py-obj docutils literal"><span class="pre">delay_load</span></tt></a></td>
+<td>Delayed load</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.media.media.Media.delay_open.html#skrf.media.media.Media.delay_open" title="skrf.media.media.Media.delay_open"><tt class="xref py py-obj docutils literal"><span class="pre">delay_open</span></tt></a></td>
+<td>Delayed open transmission line</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.media.media.Media.delay_short.html#skrf.media.media.Media.delay_short" title="skrf.media.media.Media.delay_short"><tt class="xref py py-obj docutils literal"><span class="pre">delay_short</span></tt></a></td>
+<td>Delayed Short</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.media.media.Media.electrical_length.html#skrf.media.media.Media.electrical_length" title="skrf.media.media.Media.electrical_length"><tt class="xref py py-obj docutils literal"><span class="pre">electrical_length</span></tt></a></td>
+<td>calculates the electrical length for a given distance, at</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.media.media.Media.guess_length_of_delay_short.html#skrf.media.media.Media.guess_length_of_delay_short" title="skrf.media.media.Media.guess_length_of_delay_short"><tt class="xref py py-obj docutils literal"><span class="pre">guess_length_of_delay_short</span></tt></a></td>
+<td>Guess physical length of a delay short.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.media.media.Media.impedance_mismatch.html#skrf.media.media.Media.impedance_mismatch" title="skrf.media.media.Media.impedance_mismatch"><tt class="xref py py-obj docutils literal"><span class="pre">impedance_mismatch</span></tt></a></td>
+<td>Two-port network for an impedance miss-match</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.media.media.Media.inductor.html#skrf.media.media.Media.inductor" title="skrf.media.media.Media.inductor"><tt class="xref py py-obj docutils literal"><span class="pre">inductor</span></tt></a></td>
+<td>Inductor</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.media.media.Media.line.html#skrf.media.media.Media.line" title="skrf.media.media.Media.line"><tt class="xref py py-obj docutils literal"><span class="pre">line</span></tt></a></td>
+<td>Matched transmission line of given length</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.media.media.Media.load.html#skrf.media.media.Media.load" title="skrf.media.media.Media.load"><tt class="xref py py-obj docutils literal"><span class="pre">load</span></tt></a></td>
+<td>Load of given reflection coefficient.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.media.media.Media.match.html#skrf.media.media.Media.match" title="skrf.media.media.Media.match"><tt class="xref py py-obj docutils literal"><span class="pre">match</span></tt></a></td>
+<td>Perfect matched load (<img class="math" src="../../../_images/math/36cb4e6b083aa5205c6a7884b05cad4c0de36f08.png" alt="\Gamma_0 = 0"/>).</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.media.media.Media.open.html#skrf.media.media.Media.open" title="skrf.media.media.Media.open"><tt class="xref py py-obj docutils literal"><span class="pre">open</span></tt></a></td>
+<td>Open (<img class="math" src="../../../_images/math/316cfc077c16efc10b7272974fa3551b01ed5556.png" alt="\Gamma_0 = 1"/>)</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.media.media.Media.short.html#skrf.media.media.Media.short" title="skrf.media.media.Media.short"><tt class="xref py py-obj docutils literal"><span class="pre">short</span></tt></a></td>
+<td>Short (<img class="math" src="../../../_images/math/d4118fe2a9c0472bf22e6ba0eded8deba561c8b0.png" alt="\Gamma_0 = -1"/>)</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.media.media.Media.shunt.html#skrf.media.media.Media.shunt" title="skrf.media.media.Media.shunt"><tt class="xref py py-obj docutils literal"><span class="pre">shunt</span></tt></a></td>
+<td>Shunts a <a class="reference internal" href="../../generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.media.media.Media.shunt_capacitor.html#skrf.media.media.Media.shunt_capacitor" title="skrf.media.media.Media.shunt_capacitor"><tt class="xref py py-obj docutils literal"><span class="pre">shunt_capacitor</span></tt></a></td>
+<td>Shunted capacitor</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.media.media.Media.shunt_delay_load.html#skrf.media.media.Media.shunt_delay_load" title="skrf.media.media.Media.shunt_delay_load"><tt class="xref py py-obj docutils literal"><span class="pre">shunt_delay_load</span></tt></a></td>
+<td>Shunted delayed load</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.media.media.Media.shunt_delay_open.html#skrf.media.media.Media.shunt_delay_open" title="skrf.media.media.Media.shunt_delay_open"><tt class="xref py py-obj docutils literal"><span class="pre">shunt_delay_open</span></tt></a></td>
+<td>Shunted delayed open</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.media.media.Media.shunt_delay_short.html#skrf.media.media.Media.shunt_delay_short" title="skrf.media.media.Media.shunt_delay_short"><tt class="xref py py-obj docutils literal"><span class="pre">shunt_delay_short</span></tt></a></td>
+<td>Shunted delayed short</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.media.media.Media.shunt_inductor.html#skrf.media.media.Media.shunt_inductor" title="skrf.media.media.Media.shunt_inductor"><tt class="xref py py-obj docutils literal"><span class="pre">shunt_inductor</span></tt></a></td>
+<td>Shunted inductor</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.media.media.Media.splitter.html#skrf.media.media.Media.splitter" title="skrf.media.media.Media.splitter"><tt class="xref py py-obj docutils literal"><span class="pre">splitter</span></tt></a></td>
+<td>Ideal, lossless n-way splitter.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.media.media.Media.tee.html#skrf.media.media.Media.tee" title="skrf.media.media.Media.tee"><tt class="xref py py-obj docutils literal"><span class="pre">tee</span></tt></a></td>
+<td>Ideal, lossless tee.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.media.media.Media.theta_2_d.html#skrf.media.media.Media.theta_2_d" title="skrf.media.media.Media.theta_2_d"><tt class="xref py py-obj docutils literal"><span class="pre">theta_2_d</span></tt></a></td>
+<td>Converts electrical length to physical distance.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.media.media.Media.thru.html#skrf.media.media.Media.thru" title="skrf.media.media.Media.thru"><tt class="xref py py-obj docutils literal"><span class="pre">thru</span></tt></a></td>
+<td>Matched transmission line of length 0.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.media.media.Media.white_gaussian_polar.html#skrf.media.media.Media.white_gaussian_polar" title="skrf.media.media.Media.white_gaussian_polar"><tt class="xref py py-obj docutils literal"><span class="pre">white_gaussian_polar</span></tt></a></td>
+<td>Complex zero-mean gaussian white-noise network.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../../index.html">
+              <img class="logo" src="../../../_static/scikit_logo_small.png" alt="Logo"/>
+            </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="skrf.media.freespace.Freespace.white_gaussian_polar.html"
+                        title="previous chapter">skrf.media.freespace.Freespace.white_gaussian_polar</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="skrf.media.media.Media.characteristic_impedance.html"
+                        title="next chapter">skrf.media.media.Media.characteristic_impedance</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../../_sources/reference/media/generated/skrf.media.media.Media.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<ul class="this-page-menu">
+  <li><a href="/scipy/docs/reference/media/skrf.media.media.Media">Edit page</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../../../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="skrf.media.media.Media.characteristic_impedance.html" title="skrf.media.media.Media.characteristic_impedance"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="skrf.media.freespace.Freespace.white_gaussian_polar.html" title="skrf.media.freespace.Freespace.white_gaussian_polar"
+             >previous</a> |</li>
+        <li><a href="../../../index.html">scikit-rf 0.1 documentation</a> &raquo;</li>
+          <li><a href="../index.html" >media (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.media</span></tt>)</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, alex arsenovic.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

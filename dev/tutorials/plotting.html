@@ -1,0 +1,284 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Plotting &mdash; scikit-rf 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/scipy.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="scikit-rf 0.1 documentation" href="../index.html" />
+    <link rel="next" title="Calibration" href="calibration.html" />
+    <link rel="prev" title="Introduction" href="introduction.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="calibration.html" title="Calibration"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="introduction.html" title="Introduction"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">scikit-rf 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="plotting">
+<span id="id1"></span><h1><a class="toc-backref" href="#id2">Plotting</a><a class="headerlink" href="#plotting" title="Permalink to this headline">¶</a></h1>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#plotting" id="id2">Plotting</a><ul>
+<li><a class="reference internal" href="#magnitude" id="id3">Magnitude</a></li>
+<li><a class="reference internal" href="#phase" id="id4">Phase</a></li>
+<li><a class="reference internal" href="#smith-chart" id="id5">Smith Chart</a></li>
+<li><a class="reference internal" href="#multiple-s-parameters" id="id6">Multiple S-parameters</a></li>
+<li><a class="reference internal" href="#comparing-with-simulation" id="id7">Comparing with Simulation</a></li>
+<li><a class="reference internal" href="#saving-plots" id="id8">Saving Plots</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>This tutorial illustrates how to create common plots associated with microwave networks. The plotting functions are implemented as methods of the <a class="reference internal" href="../reference/generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> class, which is provided by the <a class="reference internal" href="../reference/network.html#module-skrf.network" title="skrf.network"><tt class="xref py py-mod docutils literal"><span class="pre">skrf.network</span></tt></a> module. Below is a list of the some of the plotting functions of network s-parameters,</p>
+<ul class="simple">
+<li><tt class="xref py py-func docutils literal"><span class="pre">Network.plot_s_re()</span></tt></li>
+<li><tt class="xref py py-func docutils literal"><span class="pre">Network.plot_s_im()</span></tt></li>
+<li><tt class="xref py py-func docutils literal"><span class="pre">Network.plot_s_mag()</span></tt></li>
+<li><tt class="xref py py-func docutils literal"><span class="pre">Network.plot_s_db()</span></tt></li>
+<li><tt class="xref py py-func docutils literal"><span class="pre">Network.plot_s_deg()</span></tt></li>
+<li><tt class="xref py py-func docutils literal"><span class="pre">Network.plot_s_deg_unwrapped()</span></tt></li>
+<li><tt class="xref py py-func docutils literal"><span class="pre">Network.plot_s_rad()</span></tt></li>
+<li><tt class="xref py py-func docutils literal"><span class="pre">Network.plot_s_rad_unwrapped()</span></tt></li>
+<li><a class="reference internal" href="../reference/generated/skrf.network.Network.plot_s_smith.html#skrf.network.Network.plot_s_smith" title="skrf.network.Network.plot_s_smith"><tt class="xref py py-func docutils literal"><span class="pre">Network.plot_s_smith()</span></tt></a></li>
+<li><tt class="xref py py-func docutils literal"><span class="pre">Network.plot_s_complex()</span></tt></li>
+</ul>
+<div class="section" id="magnitude">
+<h2><a class="toc-backref" href="#id3">Magnitude</a><a class="headerlink" href="#magnitude" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">pylab</span>
+<span class="kn">import</span> <span class="nn">skrf</span> <span class="kn">as</span> <span class="nn">rf</span>
+
+<span class="c"># create a Network type from a touchstone file of a horn antenna</span>
+<span class="n">ring_slot</span><span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">Network</span><span class="p">(</span><span class="s">&#39;ring slot array measured.s1p&#39;</span><span class="p">)</span>
+
+<span class="c"># plot magnitude (in db) of S11</span>
+<span class="n">pylab</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">pylab</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;WR-10 Ringslot Array, Mag&#39;</span><span class="p">)</span>
+<span class="n">ring_slot</span><span class="o">.</span><span class="n">plot_s_db</span><span class="p">(</span><span class="n">m</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="c"># m,n are S-Matrix indecies</span>
+<span class="c"># show the plots</span>
+<span class="n">pylab</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="../pyplots/plotting/plot_ringslot_mag.py">Source code</a>, <a class="reference external" href="../pyplots/plotting/plot_ringslot_mag.png">png</a>, <a class="reference external" href="../pyplots/plotting/plot_ringslot_mag.hires.png">hires.png</a>, <a class="reference external" href="../pyplots/plotting/plot_ringslot_mag.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="../_images/plot_ringslot_mag.png" src="../_images/plot_ringslot_mag.png" />
+</div>
+</div>
+<div class="section" id="phase">
+<h2><a class="toc-backref" href="#id4">Phase</a><a class="headerlink" href="#phase" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">pylab</span>
+<span class="kn">import</span> <span class="nn">skrf</span> <span class="kn">as</span> <span class="nn">rf</span>
+
+<span class="n">ring_slot</span><span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">Network</span><span class="p">(</span><span class="s">&#39;ring slot array measured.s1p&#39;</span><span class="p">)</span>
+<span class="n">pylab</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">pylab</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;WR-10 Ringslot Array, Phase&#39;</span><span class="p">)</span>
+<span class="c"># kwargs given to plot commands are passed through to the pylab.plot</span>
+<span class="c"># command</span>
+<span class="n">ring_slot</span><span class="o">.</span><span class="n">plot_s_deg</span><span class="p">(</span><span class="n">m</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="n">markevery</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">pylab</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="../pyplots/plotting/plot_ringslot_phase.py">Source code</a>, <a class="reference external" href="../pyplots/plotting/plot_ringslot_phase.png">png</a>, <a class="reference external" href="../pyplots/plotting/plot_ringslot_phase.hires.png">hires.png</a>, <a class="reference external" href="../pyplots/plotting/plot_ringslot_phase.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="../_images/plot_ringslot_phase.png" src="../_images/plot_ringslot_phase.png" />
+</div>
+</div>
+<div class="section" id="smith-chart">
+<h2><a class="toc-backref" href="#id5">Smith Chart</a><a class="headerlink" href="#smith-chart" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">pylab</span>
+<span class="kn">import</span> <span class="nn">skrf</span> <span class="kn">as</span> <span class="nn">rf</span>
+
+<span class="n">ring_slot</span><span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">Network</span><span class="p">(</span><span class="s">&#39;ring slot array measured.s1p&#39;</span><span class="p">)</span>
+
+<span class="n">pylab</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">pylab</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;WR-10 Ringslot Array, Smith&#39;</span><span class="p">)</span>
+<span class="n">ring_slot</span><span class="o">.</span><span class="n">plot_s_smith</span><span class="p">(</span><span class="n">m</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="c"># m,n are S-Matrix indecies</span>
+<span class="n">pylab</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="../pyplots/plotting/plot_ringslot_smith.py">Source code</a>, <a class="reference external" href="../pyplots/plotting/plot_ringslot_smith.png">png</a>, <a class="reference external" href="../pyplots/plotting/plot_ringslot_smith.hires.png">hires.png</a>, <a class="reference external" href="../pyplots/plotting/plot_ringslot_smith.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="../_images/plot_ringslot_smith.png" src="../_images/plot_ringslot_smith.png" />
+</div>
+<p>The Smith Chart can be also drawn independently of any <a class="reference internal" href="../reference/generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> object through the <a class="reference internal" href="../reference/generated/skrf.plotting.smith.html#skrf.plotting.smith" title="skrf.plotting.smith"><tt class="xref py py-func docutils literal"><span class="pre">smith()</span></tt></a> function. This function also allows admittance contours can also be drawn.</p>
+</div>
+<div class="section" id="multiple-s-parameters">
+<h2><a class="toc-backref" href="#id6">Multiple S-parameters</a><a class="headerlink" href="#multiple-s-parameters" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">pylab</span>
+<span class="kn">import</span> <span class="nn">skrf</span> <span class="kn">as</span> <span class="nn">rf</span>
+
+<span class="c"># from the extension you know this is a 2-port network</span>
+<span class="n">ring_slot</span><span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">Network</span><span class="p">(</span><span class="s">&#39;ring slot array simulation.s2p&#39;</span><span class="p">)</span>
+
+<span class="n">pylab</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">pylab</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;WR-10 Ringslot Array Simulated, Mag&#39;</span><span class="p">)</span>
+<span class="c"># if no indecies are passed to the plot command it will plot all</span>
+<span class="c"># available s-parameters</span>
+<span class="n">ring_slot</span><span class="o">.</span><span class="n">plot_s_db</span><span class="p">()</span>
+<span class="n">pylab</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="../pyplots/plotting/plot_ringslot_simulated_mag.py">Source code</a>, <a class="reference external" href="../pyplots/plotting/plot_ringslot_simulated_mag.png">png</a>, <a class="reference external" href="../pyplots/plotting/plot_ringslot_simulated_mag.hires.png">hires.png</a>, <a class="reference external" href="../pyplots/plotting/plot_ringslot_simulated_mag.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="../_images/plot_ringslot_simulated_mag.png" src="../_images/plot_ringslot_simulated_mag.png" />
+</div>
+</div>
+<div class="section" id="comparing-with-simulation">
+<h2><a class="toc-backref" href="#id7">Comparing with Simulation</a><a class="headerlink" href="#comparing-with-simulation" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">pylab</span>
+<span class="kn">import</span> <span class="nn">skrf</span> <span class="kn">as</span> <span class="nn">rf</span>
+
+<span class="c"># from the extension you know this is a 2-port network</span>
+<span class="n">ring_slot_sim</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">Network</span><span class="p">(</span><span class="s">&#39;ring slot array simulation.s2p&#39;</span><span class="p">)</span>
+<span class="n">ring_slot_meas</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">Network</span><span class="p">(</span><span class="s">&#39;ring slot array measured.s1p&#39;</span><span class="p">)</span>
+
+<span class="n">pylab</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">pylab</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;WR-10 Ringslot Array Simulated vs Measured&#39;</span><span class="p">)</span>
+<span class="c"># if no indecies are passed to the plot command it will plot all</span>
+<span class="c"># available s-parameters</span>
+<span class="n">ring_slot_sim</span><span class="o">.</span><span class="n">plot_s_db</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;Simulated&#39;</span><span class="p">)</span>
+<span class="n">ring_slot_meas</span><span class="o">.</span><span class="n">plot_s_db</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;Measured&#39;</span><span class="p">)</span>
+<span class="n">pylab</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="../pyplots/plotting/plot_ringslot_simulated_vs_measured.py">Source code</a>, <a class="reference external" href="../pyplots/plotting/plot_ringslot_simulated_vs_measured.png">png</a>, <a class="reference external" href="../pyplots/plotting/plot_ringslot_simulated_vs_measured.hires.png">hires.png</a>, <a class="reference external" href="../pyplots/plotting/plot_ringslot_simulated_vs_measured.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="../_images/plot_ringslot_simulated_vs_measured.png" src="../_images/plot_ringslot_simulated_vs_measured.png" />
+</div>
+</div>
+<div class="section" id="saving-plots">
+<h2><a class="toc-backref" href="#id8">Saving Plots</a><a class="headerlink" href="#saving-plots" title="Permalink to this headline">¶</a></h2>
+<p>Plots can be saved in various file formats using the GUI provided by the matplotlib. However, skrf provides a convenience function, called <a class="reference internal" href="../reference/generated/skrf.convenience.save_all_figs.html#skrf.convenience.save_all_figs" title="skrf.convenience.save_all_figs"><tt class="xref py py-func docutils literal"><span class="pre">save_all_figs()</span></tt></a>,  that allows all open figures to be saved to disk in multiple file formats, with filenames pulled from each figure&#8217;s title:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">rf</span><span class="o">.</span><span class="n">save_all_figs</span><span class="p">(</span><span class="s">&#39;.&#39;</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;eps&#39;</span><span class="p">,</span><span class="s">&#39;pdf&#39;</span><span class="p">])</span>
+<span class="go">./WR-10 Ringslot Array Simulated vs Measured.eps</span>
+<span class="go">./WR-10 Ringslot Array Simulated vs Measured.pdf</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/scikit_logo_small.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Plotting</a><ul>
+<li><a class="reference internal" href="#magnitude">Magnitude</a></li>
+<li><a class="reference internal" href="#phase">Phase</a></li>
+<li><a class="reference internal" href="#smith-chart">Smith Chart</a></li>
+<li><a class="reference internal" href="#multiple-s-parameters">Multiple S-parameters</a></li>
+<li><a class="reference internal" href="#comparing-with-simulation">Comparing with Simulation</a></li>
+<li><a class="reference internal" href="#saving-plots">Saving Plots</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="introduction.html"
+                        title="previous chapter">Introduction</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="calibration.html"
+                        title="next chapter">Calibration</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/tutorials/plotting.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<ul class="this-page-menu">
+  <li><a href="/scipy/docs/scipy-docs/tutorials/plotting.rst">Edit page</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="calibration.html" title="Calibration"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="introduction.html" title="Introduction"
+             >previous</a> |</li>
+        <li><a href="../index.html">scikit-rf 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, alex arsenovic.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

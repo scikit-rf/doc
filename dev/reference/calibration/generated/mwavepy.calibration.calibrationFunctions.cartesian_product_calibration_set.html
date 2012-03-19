@@ -1,0 +1,144 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>skrf.calibration.calibrationFunctions.cartesian_product_calibration_set &mdash; scikit-rf 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/scipy.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="scikit-rf 0.1 documentation" href="../../../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../../../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../index.html">scikit-rf 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="skrf-calibration-calibrationfunctions-cartesian-product-calibration-set">
+<h1>skrf.calibration.calibrationFunctions.cartesian_product_calibration_set<a class="headerlink" href="#skrf-calibration-calibrationfunctions-cartesian-product-calibration-set" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="skrf.calibration.calibrationFunctions.cartesian_product_calibration_set">
+<tt class="descclassname">skrf.calibration.calibrationFunctions.</tt><tt class="descname">cartesian_product_calibration_set</tt><big>(</big><em>ideals</em>, <em>measured</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#skrf.calibration.calibrationFunctions.cartesian_product_calibration_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function is used for calculating calibration uncertainty due
+to un-biased, non-systematic errors.</p>
+<p>It creates an ensemble of calibration instances. the set  of
+measurement lists used in the ensemble is the Cartesian Product
+of all instances of each measured standard.</p>
+<p>The idea is that if you have multiple measurements of each standard,
+then the multiple calibrations can be made by generating all possible
+combinations of measurements.  This produces a conceptually simple,
+but computationally expensive way to estimate calibration uncertainty.</p>
+<dl class="docutils">
+<dt>takes:</dt>
+<dd>ideals: list of ideal Networks
+measured: list of measured Networks
+<a href="#id1"><span class="problematic" id="id2">*</span></a>args,**kwargs: passed to Calibration initializer</dd>
+<dt>returns:</dt>
+<dd>cal_ensemble: a list of Calibration instances.</dd>
+</dl>
+<p>you can use the output to estimate uncertainty by calibrating a DUT
+with all calibrations, and then running statistics on the resultant
+set of Networks. for example</p>
+<p>import skrf as rf
+# define you lists of ideals and measured networks
+cal_ensemble =             rf.cartesian_product_calibration_ensemble( ideals, measured)
+dut = rf.Network(&#8216;dut.s1p&#8217;)
+network_ensemble = [cal.apply_cal(dut) for cal in cal_ensemble]
+rf.plot_uncertainty_mag(network_ensemble)
+[network.plot_s_smith() for network in network_ensemble]</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../../index.html">
+              <img class="logo" src="../../../_static/scikit_logo_small.png" alt="Logo"/>
+            </a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../../_sources/reference/calibration/generated/mwavepy.calibration.calibrationFunctions.cartesian_product_calibration_set.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<ul class="this-page-menu">
+  <li><a href="/scipy/docs/reference/calibration/mwavepy.calibration.calibrationFunctions.cartesian_product_calibration_set">Edit page</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../../../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../index.html">scikit-rf 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, alex arsenovic.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

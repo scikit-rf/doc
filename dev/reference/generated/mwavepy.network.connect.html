@@ -1,0 +1,173 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>skrf.network.connect &mdash; scikit-rf 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/scipy.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="scikit-rf 0.1 documentation" href="../../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../index.html">scikit-rf 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="skrf-network-connect">
+<h1>skrf.network.connect<a class="headerlink" href="#skrf-network-connect" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="skrf.network.connect">
+<tt class="descclassname">skrf.network.</tt><tt class="descname">connect</tt><big>(</big><em>ntwkA</em>, <em>k</em>, <em>ntwkB</em>, <em>l</em><big>)</big><a class="headerlink" href="#skrf.network.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>connect two n-port networks together.</p>
+<p>specifically, connect port <cite>k</cite> on <cite>ntwkA</cite> to port <cite>l</cite> on <cite>ntwkB</cite>. The
+resultant network has (ntwkA.nports+ntwkB.nports-2) ports. The port
+index&#8217;s (&#8216;k&#8217;,&#8217;l&#8217;) start from 0. Port impedances <strong>are</strong> taken into
+account.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>ntwkA</strong> : <a class="reference internal" href="skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a></p>
+<blockquote>
+<div><p>network &#8216;A&#8217;</p>
+</div></blockquote>
+<p><strong>k</strong> : int</p>
+<blockquote>
+<div><p>port index on <cite>ntwkA</cite> ( port indecies start from 0 )</p>
+</div></blockquote>
+<p><strong>ntwkB</strong> : <a class="reference internal" href="skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a></p>
+<blockquote>
+<div><p>network &#8216;B&#8217;</p>
+</div></blockquote>
+<p><strong>l</strong> : int</p>
+<blockquote>
+<div><p>port index on <cite>ntwkB</cite></p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>ntwkC</strong> : <a class="reference internal" href="skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a></p>
+<blockquote class="last">
+<div><p>new network of rank (ntwkA.nports+ntwkB.nports -2)-ports</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><a class="reference internal" href="skrf.network.connect_s.html#skrf.network.connect_s" title="skrf.network.connect_s"><tt class="xref py py-obj docutils literal"><span class="pre">connect_s</span></tt></a></dt>
+<dd>actual  S-parameter connection algorithm.</dd>
+<dt><a class="reference internal" href="skrf.network.innerconnect_s.html#skrf.network.innerconnect_s" title="skrf.network.innerconnect_s"><tt class="xref py py-obj docutils literal"><span class="pre">innerconnect_s</span></tt></a></dt>
+<dd>actual S-parameter connection algorithm.</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>the effect of mis-matched port impedances is handled by inserting
+a 2-port &#8216;mismatch&#8217; network between the two connected ports.
+This mismatch Network is calculated with the
+:func:impedance_mismatch function.</p>
+<p class="rubric">Examples</p>
+<p>To implement a <em>cascade</em> of two networks</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">ntwkA</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">Network</span><span class="p">(</span><span class="s">&#39;ntwkA.s2p&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ntwkB</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">Network</span><span class="p">(</span><span class="s">&#39;ntwkB.s2p&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ntwkC</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">ntwkA</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ntwkB</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="../../_static/scikit_logo_small.png" alt="Logo"/>
+            </a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/reference/generated/mwavepy.network.connect.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<ul class="this-page-menu">
+  <li><a href="/scipy/docs/reference/mwavepy.network.connect">Edit page</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../index.html">scikit-rf 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, alex arsenovic.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

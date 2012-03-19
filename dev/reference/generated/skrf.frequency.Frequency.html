@@ -1,0 +1,191 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>skrf.frequency.Frequency &mdash; scikit-rf 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/scipy.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="scikit-rf 0.1 documentation" href="../../index.html" />
+    <link rel="up" title="frequency (skrf.frequency)" href="../frequency.html" />
+    <link rel="next" title="skrf.frequency.Frequency.center" href="skrf.frequency.Frequency.center.html" />
+    <link rel="prev" title="skrf.frequency.Frequency.labelXAxis" href="skrf.frequency.Frequency.labelXAxis.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="skrf.frequency.Frequency.center.html" title="skrf.frequency.Frequency.center"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="skrf.frequency.Frequency.labelXAxis.html" title="skrf.frequency.Frequency.labelXAxis"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">scikit-rf 0.1 documentation</a> &raquo;</li>
+          <li><a href="../frequency.html" accesskey="U">frequency (<tt class="docutils literal docutils literal"><span class="pre">skrf.frequency</span></tt>)</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="skrf-frequency-frequency">
+<h1>skrf.frequency.Frequency<a class="headerlink" href="#skrf-frequency-frequency" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="skrf.frequency.Frequency">
+<em class="property">class </em><tt class="descclassname">skrf.frequency.</tt><tt class="descname">Frequency</tt><big>(</big><em>start</em>, <em>stop</em>, <em>npoints</em>, <em>unit='hz'</em>, <em>sweep_type='lin'</em><big>)</big><a class="headerlink" href="#skrf.frequency.Frequency" title="Permalink to this definition">¶</a></dt>
+<dd><p>A frequency band.</p>
+<p>The frequency object provides a convenient way to work with and
+access a frequency band. It contains  a fruequency vector as well as
+a frequency unit. This allows a frequency vector in a given unit
+to be available (<a class="reference internal" href="skrf.frequency.Frequency.f_scaled.html#skrf.frequency.Frequency.f_scaled" title="skrf.frequency.Frequency.f_scaled"><tt class="xref py py-attr docutils literal"><span class="pre">f_scaled</span></tt></a>), as well as an absolute frquency
+axis in &#8216;Hz&#8217;  (<a class="reference internal" href="skrf.frequency.Frequency.f.html#skrf.frequency.Frequency.f" title="skrf.frequency.Frequency.f"><tt class="xref py py-attr docutils literal"><span class="pre">f</span></tt></a>).</p>
+</dd></dl>
+
+<p class="rubric">Attributes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="skrf.frequency.Frequency.center.html#skrf.frequency.Frequency.center" title="skrf.frequency.Frequency.center"><tt class="xref py py-obj docutils literal"><span class="pre">center</span></tt></a></td>
+<td>Center frequency.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.frequency.Frequency.f.html#skrf.frequency.Frequency.f" title="skrf.frequency.Frequency.f"><tt class="xref py py-obj docutils literal"><span class="pre">f</span></tt></a></td>
+<td>Frequency vector  in Hz</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.frequency.Frequency.f_scaled.html#skrf.frequency.Frequency.f_scaled" title="skrf.frequency.Frequency.f_scaled"><tt class="xref py py-obj docutils literal"><span class="pre">f_scaled</span></tt></a></td>
+<td>Frequency vector in units of <tt class="xref py py-attr docutils literal"><span class="pre">unit</span></tt></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.frequency.Frequency.multiplier.html#skrf.frequency.Frequency.multiplier" title="skrf.frequency.Frequency.multiplier"><tt class="xref py py-obj docutils literal"><span class="pre">multiplier</span></tt></a></td>
+<td>Multiplier for formating axis</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.frequency.Frequency.unit.html#skrf.frequency.Frequency.unit" title="skrf.frequency.Frequency.unit"><tt class="xref py py-obj docutils literal"><span class="pre">unit</span></tt></a></td>
+<td>Unit of this frequency band.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.frequency.Frequency.w.html#skrf.frequency.Frequency.w" title="skrf.frequency.Frequency.w"><tt class="xref py py-obj docutils literal"><span class="pre">w</span></tt></a></td>
+<td>Frequency vector in radians/s</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="skrf.frequency.Frequency.__init__.html#skrf.frequency.Frequency.__init__" title="skrf.frequency.Frequency.__init__"><tt class="xref py py-obj docutils literal"><span class="pre">__init__</span></tt></a></td>
+<td>Frequency initializer.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.frequency.Frequency.from_f.html#skrf.frequency.Frequency.from_f" title="skrf.frequency.Frequency.from_f"><tt class="xref py py-obj docutils literal"><span class="pre">from_f</span></tt></a></td>
+<td>Alternative constructor of a Frequency object from a frequency</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.frequency.Frequency.labelXAxis.html#skrf.frequency.Frequency.labelXAxis" title="skrf.frequency.Frequency.labelXAxis"><tt class="xref py py-obj docutils literal"><span class="pre">labelXAxis</span></tt></a></td>
+<td>Label the x-axis of a plot.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="../../_static/scikit_logo_small.png" alt="Logo"/>
+            </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="skrf.frequency.Frequency.labelXAxis.html"
+                        title="previous chapter">skrf.frequency.Frequency.labelXAxis</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="skrf.frequency.Frequency.center.html"
+                        title="next chapter">skrf.frequency.Frequency.center</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/reference/generated/skrf.frequency.Frequency.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<ul class="this-page-menu">
+  <li><a href="/scipy/docs/reference/skrf.frequency.Frequency">Edit page</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="skrf.frequency.Frequency.center.html" title="skrf.frequency.Frequency.center"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="skrf.frequency.Frequency.labelXAxis.html" title="skrf.frequency.Frequency.labelXAxis"
+             >previous</a> |</li>
+        <li><a href="../../index.html">scikit-rf 0.1 documentation</a> &raquo;</li>
+          <li><a href="../frequency.html" >frequency (<tt class="docutils literal docutils literal"><span class="pre">skrf.frequency</span></tt>)</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, alex arsenovic.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

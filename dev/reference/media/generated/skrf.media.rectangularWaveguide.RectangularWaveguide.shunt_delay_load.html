@@ -1,0 +1,166 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>skrf.media.rectangularWaveguide.RectangularWaveguide.shunt_delay_load &mdash; scikit-rf 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/scipy.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="scikit-rf 0.1 documentation" href="../../../index.html" />
+    <link rel="up" title="skrf.media.rectangularWaveguide.RectangularWaveguide" href="skrf.media.rectangularWaveguide.RectangularWaveguide.html" />
+    <link rel="next" title="skrf.media.rectangularWaveguide.RectangularWaveguide.shunt_delay_open" href="skrf.media.rectangularWaveguide.RectangularWaveguide.shunt_delay_open.html" />
+    <link rel="prev" title="skrf.media.rectangularWaveguide.RectangularWaveguide.shunt_capacitor" href="skrf.media.rectangularWaveguide.RectangularWaveguide.shunt_capacitor.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../../../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="skrf.media.rectangularWaveguide.RectangularWaveguide.shunt_delay_open.html" title="skrf.media.rectangularWaveguide.RectangularWaveguide.shunt_delay_open"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="skrf.media.rectangularWaveguide.RectangularWaveguide.shunt_capacitor.html" title="skrf.media.rectangularWaveguide.RectangularWaveguide.shunt_capacitor"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../../index.html">scikit-rf 0.1 documentation</a> &raquo;</li>
+          <li><a href="../index.html" >media (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.media</span></tt>)</a> &raquo;</li>
+          <li><a href="skrf.media.rectangularWaveguide.RectangularWaveguide.html" accesskey="U">skrf.media.rectangularWaveguide.RectangularWaveguide</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="skrf-media-rectangularwaveguide-rectangularwaveguide-shunt-delay-load">
+<h1>skrf.media.rectangularWaveguide.RectangularWaveguide.shunt_delay_load<a class="headerlink" href="#skrf-media-rectangularwaveguide-rectangularwaveguide-shunt-delay-load" title="Permalink to this headline">¶</a></h1>
+<dl class="method">
+<dt id="skrf.media.rectangularWaveguide.RectangularWaveguide.shunt_delay_load">
+<tt class="descclassname">RectangularWaveguide.</tt><tt class="descname">shunt_delay_load</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#skrf.media.rectangularWaveguide.RectangularWaveguide.shunt_delay_load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shunted delayed load</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>*args,**kwargs</strong> : arguments, keyword arguments</p>
+<blockquote>
+<div><p>passed to func:<cite>delay_load</cite></p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>shunt_delay_load</strong> : <a class="reference internal" href="../../generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> object</p>
+<blockquote class="last">
+<div><p>a shunted delayed load (2-port)</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>This calls:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">shunt</span><span class="p">(</span><span class="n">delay_load</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../../index.html">
+              <img class="logo" src="../../../_static/scikit_logo_small.png" alt="Logo"/>
+            </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="skrf.media.rectangularWaveguide.RectangularWaveguide.shunt_capacitor.html"
+                        title="previous chapter">skrf.media.rectangularWaveguide.RectangularWaveguide.shunt_capacitor</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="skrf.media.rectangularWaveguide.RectangularWaveguide.shunt_delay_open.html"
+                        title="next chapter">skrf.media.rectangularWaveguide.RectangularWaveguide.shunt_delay_open</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../../_sources/reference/media/generated/skrf.media.rectangularWaveguide.RectangularWaveguide.shunt_delay_load.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<ul class="this-page-menu">
+  <li><a href="/scipy/docs/reference/media/skrf.media.rectangularWaveguide.RectangularWaveguide.shunt_delay_load">Edit page</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../../../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="skrf.media.rectangularWaveguide.RectangularWaveguide.shunt_delay_open.html" title="skrf.media.rectangularWaveguide.RectangularWaveguide.shunt_delay_open"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="skrf.media.rectangularWaveguide.RectangularWaveguide.shunt_capacitor.html" title="skrf.media.rectangularWaveguide.RectangularWaveguide.shunt_capacitor"
+             >previous</a> |</li>
+        <li><a href="../../../index.html">scikit-rf 0.1 documentation</a> &raquo;</li>
+          <li><a href="../index.html" >media (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.media</span></tt>)</a> &raquo;</li>
+          <li><a href="skrf.media.rectangularWaveguide.RectangularWaveguide.html" >skrf.media.rectangularWaveguide.RectangularWaveguide</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, alex arsenovic.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

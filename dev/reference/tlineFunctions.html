@@ -1,0 +1,322 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>tlineFunctions (skrf.tlineFunctions) &mdash; scikit-rf 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/scipy.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="scikit-rf 0.1 documentation" href="../index.html" />
+    <link rel="next" title="skrf.tlineFunctions.theta" href="generated/skrf.tlineFunctions.theta.html" />
+    <link rel="prev" title="skrf.mathFunctions.null" href="generated/skrf.mathFunctions.null.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="generated/skrf.tlineFunctions.theta.html" title="skrf.tlineFunctions.theta"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="generated/skrf.mathFunctions.null.html" title="skrf.mathFunctions.null"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">scikit-rf 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <span class="target" id="module-skrf.tlineFunctions"></span><span class="target" id="module-skrf.tlineFunctions"></span><div class="section" id="tlinefunctions-skrf-tlinefunctions">
+<h1>tlineFunctions (<a class="reference internal" href="#module-skrf.tlineFunctions" title="skrf.tlineFunctions"><tt class="xref py py-mod docutils literal"><span class="pre">skrf.tlineFunctions</span></tt></a>)<a class="headerlink" href="#tlinefunctions-skrf-tlinefunctions" title="Permalink to this headline">¶</a></h1>
+<p>This module provides functions related to transmission line theory.</p>
+<div class="section" id="impedance-and-reflection-coefficient">
+<h2>Impedance and Reflection Coefficient<a class="headerlink" href="#impedance-and-reflection-coefficient" title="Permalink to this headline">¶</a></h2>
+<p>These functions relate basic tranmission line quantities such as
+characteristic impedance, input impedance, reflection coefficient, etc.
+Each function has two names. One is a long-winded but readable name and
+the other is a short-hand variable-like names. Below is a table relating
+these two names with each other as well as common mathematical symbols.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="30%" />
+<col width="43%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Symbol</th>
+<th class="head">Variable Name</th>
+<th class="head">Long Name</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><img class="math" src="../_images/math/17ca69f87db551861c1fd1dce4cf6b043f9a0a41.png" alt="Z_l"/></td>
+<td>z_l</td>
+<td>load_impedance</td>
+</tr>
+<tr class="row-odd"><td><img class="math" src="../_images/math/dda7a22b534c721c2cea3ecc774565ce11376288.png" alt="Z_{in}"/></td>
+<td>z_in</td>
+<td>input_impedance</td>
+</tr>
+<tr class="row-even"><td><img class="math" src="../_images/math/837e7cde8b45ee51913292350ad6910a26059295.png" alt="\Gamma_0"/></td>
+<td>Gamma_0</td>
+<td>reflection_coefficient</td>
+</tr>
+<tr class="row-odd"><td><img class="math" src="../_images/math/6520ba9b115c6c35dc75656bf8ab6ccfdb273170.png" alt="\Gamma_{in}"/></td>
+<td>Gamma_in</td>
+<td>reflection_coefficient_at_theta</td>
+</tr>
+<tr class="row-even"><td><img class="math" src="../_images/math/52e8ed7a3ba22130ad3984eb2cd413406475a689.png" alt="\theta"/></td>
+<td>theta</td>
+<td>electrical_length</td>
+</tr>
+</tbody>
+</table>
+<p>There may be a bit of confusion about the difference between the load
+impedance the input impedance. This is because the load impedance <strong>is</strong>
+the input impedance at the load. An illustration may provide some
+useful reference.</p>
+<p>Below is a (bad) illustration of a section of uniform transmission line
+of characteristic impedance <img class="math" src="../_images/math/e013361c0328eb5a5e052b153342f420c592e8b9.png" alt="Z_0"/>, and electrical length
+<img class="math" src="../_images/math/52e8ed7a3ba22130ad3984eb2cd413406475a689.png" alt="\theta"/>. The line is terminated on the right with some
+load impedance, <img class="math" src="../_images/math/17ca69f87db551861c1fd1dce4cf6b043f9a0a41.png" alt="Z_l"/>. The input impedance <img class="math" src="../_images/math/dda7a22b534c721c2cea3ecc774565ce11376288.png" alt="Z_{in}"/> and
+input reflection coefficient <img class="math" src="../_images/math/6520ba9b115c6c35dc75656bf8ab6ccfdb273170.png" alt="\Gamma_{in}"/> are
+looking in towards the load from the distance <img class="math" src="../_images/math/52e8ed7a3ba22130ad3984eb2cd413406475a689.png" alt="\theta"/> from the
+load.</p>
+<div class="math">
+<p><img src="../_images/math/db36d4d78087b14c56cf02a0c9c3ec61730a00de.png" alt="Z_0, \theta
+
+\text{o===============o=}[Z_l]
+
+\to\qquad\qquad\qquad\quad\qquad \qquad \to \qquad \quad
+
+Z_{in},\Gamma_{in}\qquad\qquad\qquad\qquad\quad Z_l,\Gamma_0 \qquad"/></p>
+</div><p>So, to clarify the confusion,</p>
+<div class="math">
+<p><img src="../_images/math/f1402789e411f8a6b0882c80c1627b636344db35.png" alt="Z_{in}= Z_{l},\qquad\qquad
+\Gamma_{in}=\Gamma_l \text{ at }  \theta=0"/></p>
+</div><div class="section" id="short-names">
+<h3>Short names<a class="headerlink" href="#short-names" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/skrf.tlineFunctions.theta.html#skrf.tlineFunctions.theta" title="skrf.tlineFunctions.theta"><tt class="xref py py-obj docutils literal"><span class="pre">theta</span></tt></a>(gamma,&nbsp;f,&nbsp;d[,&nbsp;deg])</td>
+<td>Calculates the electrical length of a section of transmission line.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/skrf.tlineFunctions.zl_2_Gamma0.html#skrf.tlineFunctions.zl_2_Gamma0" title="skrf.tlineFunctions.zl_2_Gamma0"><tt class="xref py py-obj docutils literal"><span class="pre">zl_2_Gamma0</span></tt></a>(z0,&nbsp;zl)</td>
+<td>Returns the reflection coefficient for a given load impedance, and characteristic impedance.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/skrf.tlineFunctions.Gamma0_2_zl.html#skrf.tlineFunctions.Gamma0_2_zl" title="skrf.tlineFunctions.Gamma0_2_zl"><tt class="xref py py-obj docutils literal"><span class="pre">Gamma0_2_zl</span></tt></a>(z0,&nbsp;Gamma)</td>
+<td>calculates the input impedance given a reflection coefficient and</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/skrf.tlineFunctions.zl_2_zin.html#skrf.tlineFunctions.zl_2_zin" title="skrf.tlineFunctions.zl_2_zin"><tt class="xref py py-obj docutils literal"><span class="pre">zl_2_zin</span></tt></a>(z0,&nbsp;zl,&nbsp;theta)</td>
+<td>input impedance of load impedance zl at a given electrical length,</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/skrf.tlineFunctions.zl_2_Gamma_in.html#skrf.tlineFunctions.zl_2_Gamma_in" title="skrf.tlineFunctions.zl_2_Gamma_in"><tt class="xref py py-obj docutils literal"><span class="pre">zl_2_Gamma_in</span></tt></a>(z0,&nbsp;zl,&nbsp;theta)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/skrf.tlineFunctions.Gamma0_2_Gamma_in.html#skrf.tlineFunctions.Gamma0_2_Gamma_in" title="skrf.tlineFunctions.Gamma0_2_Gamma_in"><tt class="xref py py-obj docutils literal"><span class="pre">Gamma0_2_Gamma_in</span></tt></a>(Gamma0,&nbsp;theta)</td>
+<td>reflection coefficient at a given electrical length.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/skrf.tlineFunctions.Gamma0_2_zin.html#skrf.tlineFunctions.Gamma0_2_zin" title="skrf.tlineFunctions.Gamma0_2_zin"><tt class="xref py py-obj docutils literal"><span class="pre">Gamma0_2_zin</span></tt></a>(z0,&nbsp;Gamma0,&nbsp;theta)</td>
+<td>calculates the input impedance at electrical length theta, given a</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="long-names">
+<h3>Long-names<a class="headerlink" href="#long-names" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/skrf.tlineFunctions.distance_2_electrical_length.html#skrf.tlineFunctions.distance_2_electrical_length" title="skrf.tlineFunctions.distance_2_electrical_length"><tt class="xref py py-obj docutils literal"><span class="pre">distance_2_electrical_length</span></tt></a>(gamma,&nbsp;f,&nbsp;d[,&nbsp;deg])</td>
+<td>Calculates the electrical length of a section of transmission line.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/skrf.tlineFunctions.electrical_length_2_distance.html#skrf.tlineFunctions.electrical_length_2_distance" title="skrf.tlineFunctions.electrical_length_2_distance"><tt class="xref py py-obj docutils literal"><span class="pre">electrical_length_2_distance</span></tt></a>(theta,&nbsp;gamma,&nbsp;f0)</td>
+<td>Convert electrical length to a physical distance.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/skrf.tlineFunctions.reflection_coefficient_at_theta.html#skrf.tlineFunctions.reflection_coefficient_at_theta" title="skrf.tlineFunctions.reflection_coefficient_at_theta"><tt class="xref py py-obj docutils literal"><span class="pre">reflection_coefficient_at_theta</span></tt></a>(Gamma0,&nbsp;theta)</td>
+<td>reflection coefficient at a given electrical length.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/skrf.tlineFunctions.reflection_coefficient_2_input_impedance.html#skrf.tlineFunctions.reflection_coefficient_2_input_impedance" title="skrf.tlineFunctions.reflection_coefficient_2_input_impedance"><tt class="xref py py-obj docutils literal"><span class="pre">reflection_coefficient_2_input_impedance</span></tt></a>(z0,&nbsp;...)</td>
+<td>calculates the input impedance given a reflection coefficient and</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/skrf.tlineFunctions.reflection_coefficient_2_input_impedance_at_theta.html#skrf.tlineFunctions.reflection_coefficient_2_input_impedance_at_theta" title="skrf.tlineFunctions.reflection_coefficient_2_input_impedance_at_theta"><tt class="xref py py-obj docutils literal"><span class="pre">reflection_coefficient_2_input_impedance_at_theta</span></tt></a>(z0,&nbsp;...)</td>
+<td>calculates the input impedance at electrical length theta, given a</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/skrf.tlineFunctions.input_impedance_at_theta.html#skrf.tlineFunctions.input_impedance_at_theta" title="skrf.tlineFunctions.input_impedance_at_theta"><tt class="xref py py-obj docutils literal"><span class="pre">input_impedance_at_theta</span></tt></a>(z0,&nbsp;zl,&nbsp;theta)</td>
+<td>input impedance of load impedance zl at a given electrical length,</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/skrf.tlineFunctions.load_impedance_2_reflection_coefficient.html#skrf.tlineFunctions.load_impedance_2_reflection_coefficient" title="skrf.tlineFunctions.load_impedance_2_reflection_coefficient"><tt class="xref py py-obj docutils literal"><span class="pre">load_impedance_2_reflection_coefficient</span></tt></a>(z0,&nbsp;zl)</td>
+<td>Returns the reflection coefficient for a given load impedance, and characteristic impedance.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/skrf.tlineFunctions.load_impedance_2_reflection_coefficient_at_theta.html#skrf.tlineFunctions.load_impedance_2_reflection_coefficient_at_theta" title="skrf.tlineFunctions.load_impedance_2_reflection_coefficient_at_theta"><tt class="xref py py-obj docutils literal"><span class="pre">load_impedance_2_reflection_coefficient_at_theta</span></tt></a>(z0,&nbsp;...)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="distributed-circuit-and-wave-quantities">
+<h2>Distributed Circuit and Wave Quantities<a class="headerlink" href="#distributed-circuit-and-wave-quantities" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/skrf.tlineFunctions.distributed_circuit_2_propagation_impedance.html#skrf.tlineFunctions.distributed_circuit_2_propagation_impedance" title="skrf.tlineFunctions.distributed_circuit_2_propagation_impedance"><tt class="xref py py-obj docutils literal"><span class="pre">distributed_circuit_2_propagation_impedance</span></tt></a>(...)</td>
+<td>Converts distrubuted circuit values to wave quantities.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/skrf.tlineFunctions.propagation_impedance_2_distributed_circuit.html#skrf.tlineFunctions.propagation_impedance_2_distributed_circuit" title="skrf.tlineFunctions.propagation_impedance_2_distributed_circuit"><tt class="xref py py-obj docutils literal"><span class="pre">propagation_impedance_2_distributed_circuit</span></tt></a>(...)</td>
+<td>Converts wave quantities to distrubuted circuit values.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="transmission-line-physics">
+<h2>Transmission Line Physics<a class="headerlink" href="#transmission-line-physics" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/skrf.tlineFunctions.skin_depth.html#skrf.tlineFunctions.skin_depth" title="skrf.tlineFunctions.skin_depth"><tt class="xref py py-obj docutils literal"><span class="pre">skin_depth</span></tt></a>(f,&nbsp;rho,&nbsp;mu_r)</td>
+<td>the skin depth for a material.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/skrf.tlineFunctions.surface_resistivity.html#skrf.tlineFunctions.surface_resistivity" title="skrf.tlineFunctions.surface_resistivity"><tt class="xref py py-obj docutils literal"><span class="pre">surface_resistivity</span></tt></a>(f,&nbsp;rho,&nbsp;mu_r)</td>
+<td>surface resistivity.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/scikit_logo_small.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">tlineFunctions (<tt class="docutils literal"><span class="pre">skrf.tlineFunctions</span></tt>)</a><ul>
+<li><a class="reference internal" href="#impedance-and-reflection-coefficient">Impedance and Reflection Coefficient</a><ul>
+<li><a class="reference internal" href="#short-names">Short names</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#long-names">Long-names</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#distributed-circuit-and-wave-quantities">Distributed Circuit and Wave Quantities</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#transmission-line-physics">Transmission Line Physics</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="generated/skrf.mathFunctions.null.html"
+                        title="previous chapter">skrf.mathFunctions.null</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="generated/skrf.tlineFunctions.theta.html"
+                        title="next chapter">skrf.tlineFunctions.theta</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/reference/tlineFunctions.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<ul class="this-page-menu">
+  <li><a href="/scipy/docs/scipy-docs/reference/tlineFunctions.rst">Edit page</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="generated/skrf.tlineFunctions.theta.html" title="skrf.tlineFunctions.theta"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="generated/skrf.mathFunctions.null.html" title="skrf.mathFunctions.null"
+             >previous</a> |</li>
+        <li><a href="../index.html">scikit-rf 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, alex arsenovic.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

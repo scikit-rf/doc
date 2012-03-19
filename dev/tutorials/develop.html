@@ -1,0 +1,173 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Developing skrf &mdash; scikit-rf 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/scipy.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="scikit-rf 0.1 documentation" href="../index.html" />
+    <link rel="next" title="One-Port Calibration" href="../examples/oneport_calibration.html" />
+    <link rel="prev" title="Uncertainty Estimation" href="uncertainty_estimation.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../examples/oneport_calibration.html" title="One-Port Calibration"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="uncertainty_estimation.html" title="Uncertainty Estimation"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">scikit-rf 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="developing-skrf">
+<span id="develop"></span><h1><a class="toc-backref" href="#id1">Developing skrf</a><a class="headerlink" href="#developing-skrf" title="Permalink to this headline">¶</a></h1>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#developing-skrf" id="id1">Developing skrf</a><ul>
+<li><a class="reference internal" href="#introduction" id="id2">Introduction</a></li>
+<li><a class="reference internal" href="#contributing-code" id="id3">Contributing Code</a></li>
+<li><a class="reference internal" href="#contribute-documentation" id="id4">Contribute Documentation</a></li>
+<li><a class="reference internal" href="#creating-tests" id="id5">Creating Tests</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="introduction">
+<h2><a class="toc-backref" href="#id2">Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Welcome to the skrf&#8217;s developer docs! This page is for those who are interested in participating those who are interested in developing scikit-rf.</p>
+<p>Starting in February, 2012, skrf&#8217;s codebase has been  versioned using <a class="reference external" href="http://git-scm.com/">git</a> , and hosted on github at   <a class="reference external" href="https://github.com/scikit-rf/scikit-rf">https://github.com/scikit-rf/scikit-rf</a>. The easiest way to contribute to any part of scikit-rf is to create an account on github, but if you are not familiar with git, dont hesitate to contact me directly by email at <a class="reference external" href="mailto:arsenovic&#37;&#52;&#48;virginia&#46;edu">arsenovic<span>&#64;</span>virginia<span>&#46;</span>edu</a>.</p>
+</div>
+<div class="section" id="contributing-code">
+<h2><a class="toc-backref" href="#id3">Contributing Code</a><a class="headerlink" href="#contributing-code" title="Permalink to this headline">¶</a></h2>
+<p>skrf uses the <cite>Fork + Pull</cite> collaborative development model.
+Please see github&#8217;s page on this for more information <a class="reference external" href="http://help.github.com/send-pull-requests/">http://help.github.com/send-pull-requests/</a></p>
+</div>
+<div class="section" id="contribute-documentation">
+<h2><a class="toc-backref" href="#id4">Contribute Documentation</a><a class="headerlink" href="#contribute-documentation" title="Permalink to this headline">¶</a></h2>
+<p>skrf&#8217;s documentation is generated using <a class="reference external" href="http://sphinx.pocoo.org/">sphinx</a>. The documentation source code is written using reStructed Text, and can be found in <tt class="docutils literal"><span class="pre">docs/sphinx/source/</span></tt>. The reference documentation for the submodules, classes, and functions are documented following the <a class="reference external" href="https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt">conventions</a> put forth by Numpy/Scipy. Improvements or new documentation is welcomed, and can be submitted using github as well.</p>
+</div>
+<div class="section" id="creating-tests">
+<h2><a class="toc-backref" href="#id5">Creating Tests</a><a class="headerlink" href="#creating-tests" title="Permalink to this headline">¶</a></h2>
+<p>skrf employs the python module <cite>unittest</cite> for testing. The test&#8217;s are located in <tt class="docutils literal"><span class="pre">skrf/testCases/</span></tt>.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/scikit_logo_small.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Developing skrf</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#contributing-code">Contributing Code</a></li>
+<li><a class="reference internal" href="#contribute-documentation">Contribute Documentation</a></li>
+<li><a class="reference internal" href="#creating-tests">Creating Tests</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="uncertainty_estimation.html"
+                        title="previous chapter">Uncertainty Estimation</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../examples/oneport_calibration.html"
+                        title="next chapter">One-Port Calibration</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/tutorials/develop.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<ul class="this-page-menu">
+  <li><a href="/scipy/docs/scipy-docs/tutorials/develop.rst">Edit page</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../examples/oneport_calibration.html" title="One-Port Calibration"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="uncertainty_estimation.html" title="Uncertainty Estimation"
+             >previous</a> |</li>
+        <li><a href="../index.html">scikit-rf 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, alex arsenovic.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>
