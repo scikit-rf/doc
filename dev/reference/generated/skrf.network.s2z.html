@@ -63,7 +63,7 @@
           <a href="skrf.network.innerconnect_s.html" title="skrf.network.innerconnect_s"
              accesskey="P">previous</a> |</li>
         <li><a href="../../index.html">scikit-rf 0.1 documentation</a> &raquo;</li>
-          <li><a href="../network.html" accesskey="U">network (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.network</span></tt>)</a> &raquo;</li> 
+          <li><a href="../network.html" accesskey="U">network (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.network</span></tt>)</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -76,21 +76,25 @@
 <h1>skrf.network.s2z<a class="headerlink" href="#skrf-network-s2z" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="skrf.network.s2z">
-<tt class="descclassname">skrf.network.</tt><tt class="descname">s2z</tt><big>(</big><em>s</em><big>)</big><a class="headerlink" href="#skrf.network.s2z" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">skrf.network.</tt><tt class="descname">s2z</tt><big>(</big><em>s</em>, <em>z0=50</em><big>)</big><a class="headerlink" href="#skrf.network.s2z" title="Permalink to this definition">¶</a></dt>
 <dd><p>convert scattering parameters to impedance parameters <a class="footnote-reference" href="#id2" id="id1">[1]</a></p>
 <div class="math">
-<p><img src="../../_images/math/6adce1cd8a1bc33175e280a836a974d694bd6f98.png" alt="s = \frac {1 + s}{1 - s}"/></p>
+<p><img src="../../_images/math/b06e88d28d9744adff97556d209be4ed1659e0d0.png" alt="z = \sqrt {z_0} \cdot (I + s) (I - s)^{-1} \cdot \sqrt{z_0}"/></p>
 </div><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>s</strong> : complex array-like or number</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>s</strong> : complex array-like</p>
 <blockquote>
 <div><p>scattering parameters</p>
 </div></blockquote>
+<p><strong>z0</strong> : complex array-like or number</p>
+<blockquote>
+<div><p>port impedances</p>
+</div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>z</strong> : complex array-like or number</p>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>z</strong> : complex array-like</p>
 <blockquote class="last">
 <div><p>impedance parameters</p>
 </div></blockquote>
@@ -131,7 +135,7 @@
 <table class="docutils footnote" frame="void" id="id2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Two-port_network">http://en.wikipedia.org/wiki/Two-port_network</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/impedance_parameters">http://en.wikipedia.org/wiki/impedance_parameters</a></td></tr>
 </tbody>
 </table>
 </dd></dl>
@@ -199,7 +203,7 @@
           <a href="skrf.network.innerconnect_s.html" title="skrf.network.innerconnect_s"
              >previous</a> |</li>
         <li><a href="../../index.html">scikit-rf 0.1 documentation</a> &raquo;</li>
-          <li><a href="../network.html" >network (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.network</span></tt>)</a> &raquo;</li> 
+          <li><a href="../network.html" >network (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.network</span></tt>)</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

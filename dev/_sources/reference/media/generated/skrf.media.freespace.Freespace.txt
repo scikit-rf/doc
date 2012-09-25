@@ -38,6 +38,7 @@ skrf.media.freespace.Freespace
   ~Freespace.delay_short
   ~Freespace.electrical_length
   ~Freespace.from_Media
+  ~Freespace.from_csv
   ~Freespace.gamma
   ~Freespace.guess_length_of_delay_short
   ~Freespace.impedance_mismatch
@@ -46,6 +47,7 @@ skrf.media.freespace.Freespace
   ~Freespace.load
   ~Freespace.match
   ~Freespace.open
+  ~Freespace.resistor
   ~Freespace.short
   ~Freespace.shunt
   ~Freespace.shunt_capacitor
@@ -58,6 +60,7 @@ skrf.media.freespace.Freespace
   ~Freespace.theta_2_d
   ~Freespace.thru
   ~Freespace.white_gaussian_polar
+  ~Freespace.write_csv
 
 
 

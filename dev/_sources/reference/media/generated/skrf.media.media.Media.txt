@@ -34,6 +34,7 @@ skrf.media.media.Media
   ~Media.delay_open
   ~Media.delay_short
   ~Media.electrical_length
+  ~Media.from_csv
   ~Media.guess_length_of_delay_short
   ~Media.impedance_mismatch
   ~Media.inductor
@@ -41,6 +42,7 @@ skrf.media.media.Media
   ~Media.load
   ~Media.match
   ~Media.open
+  ~Media.resistor
   ~Media.short
   ~Media.shunt
   ~Media.shunt_capacitor
@@ -53,6 +55,7 @@ skrf.media.media.Media
   ~Media.theta_2_d
   ~Media.thru
   ~Media.white_gaussian_polar
+  ~Media.write_csv
 
 
 

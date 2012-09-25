@@ -72,10 +72,10 @@
             
   <span class="target" id="module-skrf.convenience"></span><div class="section" id="convenience-skrf-convenience">
 <h1>convenience (<a class="reference internal" href="#module-skrf.convenience" title="skrf.convenience"><tt class="xref py py-mod docutils literal"><span class="pre">skrf.convenience</span></tt></a>)<a class="headerlink" href="#convenience-skrf-convenience" title="Permalink to this headline">¶</a></h1>
-<p>Holds pre-initialized  objects&#8217;s and functions that are general
+<p>Holds pre-initialized objects&#8217;s and functions that are general
 conveniences.</p>
-<div class="section" id="functions">
-<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="plotting">
+<h2>Plotting<a class="headerlink" href="#plotting" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="longtable docutils">
 <colgroup>
 <col width="10%" />
@@ -86,18 +86,49 @@ conveniences.</p>
 <td>Save all open Figures to disk.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="generated/skrf.convenience.add_markers_to_lines.html#skrf.convenience.add_markers_to_lines" title="skrf.convenience.add_markers_to_lines"><tt class="xref py py-obj docutils literal"><span class="pre">add_markers_to_lines</span></tt></a>([ax,&nbsp;marker_list,&nbsp;...])</td>
-<td></td>
+<td>adds markers to existing lings on a plot</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="generated/skrf.convenience.legend_off.html#skrf.convenience.legend_off" title="skrf.convenience.legend_off"><tt class="xref py py-obj docutils literal"><span class="pre">legend_off</span></tt></a>([ax])</td>
-<td>turn off the legend for a given axes. if no axes is given then</td>
+<td>turn off the legend for a given axes.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/skrf.convenience.now_string.html#skrf.convenience.now_string" title="skrf.convenience.now_string"><tt class="xref py py-obj docutils literal"><span class="pre">now_string</span></tt></a>()</td>
-<td></td>
+<tr class="row-even"><td><a class="reference internal" href="generated/skrf.convenience.func_on_all_figs.html#skrf.convenience.func_on_all_figs" title="skrf.convenience.func_on_all_figs"><tt class="xref py py-obj docutils literal"><span class="pre">func_on_all_figs</span></tt></a>(func,&nbsp;*args,&nbsp;**kwargs)</td>
+<td>runs a function after making all open figures current.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/skrf.convenience.find_nearest.html#skrf.convenience.find_nearest" title="skrf.convenience.find_nearest"><tt class="xref py py-obj docutils literal"><span class="pre">find_nearest</span></tt></a>(array,&nbsp;value)</td>
+</tbody>
+</table>
+</div>
+<div class="section" id="io">
+<h2>IO<a class="headerlink" href="#io" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/skrf.convenience.hfss_touchstone_2_media.html#skrf.convenience.hfss_touchstone_2_media" title="skrf.convenience.hfss_touchstone_2_media"><tt class="xref py py-obj docutils literal"><span class="pre">hfss_touchstone_2_media</span></tt></a>(filename[,&nbsp;f_unit])</td>
+<td>Creates a <a class="reference internal" href="media/generated/skrf.media.media.Media.html#skrf.media.media.Media" title="skrf.media.media.Media"><tt class="xref py py-class docutils literal"><span class="pre">Media</span></tt></a> object from a a HFSS-style touchstone file with Gamma and Z0 comments</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/skrf.convenience.hfss_touchstone_2_gamma_z0.html#skrf.convenience.hfss_touchstone_2_gamma_z0" title="skrf.convenience.hfss_touchstone_2_gamma_z0"><tt class="xref py py-obj docutils literal"><span class="pre">hfss_touchstone_2_gamma_z0</span></tt></a>(filename)</td>
+<td>Extracts Z0 and Gamma comments from touchstone file</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="general">
+<h2>General<a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/skrf.convenience.now_string.html#skrf.convenience.now_string" title="skrf.convenience.now_string"><tt class="xref py py-obj docutils literal"><span class="pre">now_string</span></tt></a>()</td>
+<td>returns a unique sortable string, representing the current time</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/skrf.convenience.find_nearest.html#skrf.convenience.find_nearest" title="skrf.convenience.find_nearest"><tt class="xref py py-obj docutils literal"><span class="pre">find_nearest</span></tt></a>(array,&nbsp;value)</td>
 <td>find nearest value in array.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/skrf.convenience.find_nearest_index.html#skrf.convenience.find_nearest_index" title="skrf.convenience.find_nearest_index"><tt class="xref py py-obj docutils literal"><span class="pre">find_nearest_index</span></tt></a>(array,&nbsp;value)</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/skrf.convenience.find_nearest_index.html#skrf.convenience.find_nearest_index" title="skrf.convenience.find_nearest_index"><tt class="xref py py-obj docutils literal"><span class="pre">find_nearest_index</span></tt></a>(array,&nbsp;value)</td>
 <td>find nearest value in array.</td>
 </tr>
 </tbody>
@@ -179,6 +210,61 @@ Objects for standard bands.</p>
 </div>
 </div>
 </div>
+<div class="section" id="shorthand-names">
+<h2>Shorthand Names<a class="headerlink" href="#shorthand-names" title="Permalink to this headline">¶</a></h2>
+<p>Below is a list of shorthand object names which can be use to save some 
+typing. These names are defined in the main __init__ module. but listing
+them here makes more sense.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="81%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Shorthand</th>
+<th class="head">Full Object Name</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>F</td>
+<td><a class="reference internal" href="generated/skrf.frequency.Frequency.html#skrf.frequency.Frequency" title="skrf.frequency.Frequency"><tt class="xref py py-class docutils literal"><span class="pre">Frequency</span></tt></a></td>
+</tr>
+<tr class="row-odd"><td>N</td>
+<td><a class="reference internal" href="generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a></td>
+</tr>
+<tr class="row-even"><td>NS</td>
+<td><a class="reference internal" href="generated/skrf.networkSet.NetworkSet.html#skrf.networkSet.NetworkSet" title="skrf.networkSet.NetworkSet"><tt class="xref py py-class docutils literal"><span class="pre">NetworkSet</span></tt></a></td>
+</tr>
+<tr class="row-odd"><td>M</td>
+<td><a class="reference internal" href="media/generated/skrf.media.media.Media.html#skrf.media.media.Media" title="skrf.media.media.Media"><tt class="xref py py-class docutils literal"><span class="pre">Media</span></tt></a></td>
+</tr>
+<tr class="row-even"><td>C</td>
+<td><a class="reference internal" href="calibration/generated/skrf.calibration.calibration.Calibration.html#skrf.calibration.calibration.Calibration" title="skrf.calibration.calibration.Calibration"><tt class="xref py py-class docutils literal"><span class="pre">Calibration</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+<p>The following are shorthand names for commonly used, but unfortunately
+longwinded functions.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Shorthand</th>
+<th class="head">Full Object Name</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>lat</td>
+<td><a class="reference internal" href="generated/skrf.network.load_all_touchstones.html#skrf.network.load_all_touchstones" title="skrf.network.load_all_touchstones"><tt class="xref py py-func docutils literal"><span class="pre">load_all_touchstones()</span></tt></a></td>
+</tr>
+<tr class="row-odd"><td>saf</td>
+<td><a class="reference internal" href="generated/skrf.convenience.save_all_figs.html#skrf.convenience.save_all_figs" title="skrf.convenience.save_all_figs"><tt class="xref py py-func docutils literal"><span class="pre">save_all_figs()</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+</div>
 <div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <table class="docutils footnote" frame="void" id="id2" rules="none">
@@ -202,7 +288,13 @@ Objects for standard bands.</p>
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">convenience (<tt class="docutils literal"><span class="pre">skrf.convenience</span></tt>)</a><ul>
-<li><a class="reference internal" href="#functions">Functions</a><ul>
+<li><a class="reference internal" href="#plotting">Plotting</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#io">IO</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#general">General</a><ul>
 </ul>
 </li>
 <li><a class="reference internal" href="#pre-initialized-objects">Pre-initialized Objects</a><ul>
@@ -213,6 +305,7 @@ Objects for standard bands.</p>
 </li>
 </ul>
 </li>
+<li><a class="reference internal" href="#shorthand-names">Shorthand Names</a></li>
 <li><a class="reference internal" href="#references">References</a></li>
 </ul>
 </li>

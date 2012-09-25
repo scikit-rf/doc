@@ -39,6 +39,7 @@ skrf.media.cpw.CPW
   ~CPW.delay_open
   ~CPW.delay_short
   ~CPW.electrical_length
+  ~CPW.from_csv
   ~CPW.gamma
   ~CPW.guess_length_of_delay_short
   ~CPW.impedance_mismatch
@@ -47,6 +48,7 @@ skrf.media.cpw.CPW
   ~CPW.load
   ~CPW.match
   ~CPW.open
+  ~CPW.resistor
   ~CPW.short
   ~CPW.shunt
   ~CPW.shunt_capacitor
@@ -59,6 +61,7 @@ skrf.media.cpw.CPW
   ~CPW.theta_2_d
   ~CPW.thru
   ~CPW.white_gaussian_polar
+  ~CPW.write_csv
 
 
 

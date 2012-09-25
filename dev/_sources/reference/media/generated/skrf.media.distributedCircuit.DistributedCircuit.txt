@@ -38,6 +38,7 @@ skrf.media.distributedCircuit.DistributedCircuit
   ~DistributedCircuit.delay_short
   ~DistributedCircuit.electrical_length
   ~DistributedCircuit.from_Media
+  ~DistributedCircuit.from_csv
   ~DistributedCircuit.gamma
   ~DistributedCircuit.guess_length_of_delay_short
   ~DistributedCircuit.impedance_mismatch
@@ -46,6 +47,7 @@ skrf.media.distributedCircuit.DistributedCircuit
   ~DistributedCircuit.load
   ~DistributedCircuit.match
   ~DistributedCircuit.open
+  ~DistributedCircuit.resistor
   ~DistributedCircuit.short
   ~DistributedCircuit.shunt
   ~DistributedCircuit.shunt_capacitor
@@ -58,6 +60,7 @@ skrf.media.distributedCircuit.DistributedCircuit
   ~DistributedCircuit.theta_2_d
   ~DistributedCircuit.thru
   ~DistributedCircuit.white_gaussian_polar
+  ~DistributedCircuit.write_csv
 
 
 

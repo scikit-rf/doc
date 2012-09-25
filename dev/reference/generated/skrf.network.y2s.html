@@ -63,7 +63,7 @@
           <a href="skrf.network.z2t.html" title="skrf.network.z2t"
              accesskey="P">previous</a> |</li>
         <li><a href="../../index.html">scikit-rf 0.1 documentation</a> &raquo;</li>
-          <li><a href="../network.html" accesskey="U">network (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.network</span></tt>)</a> &raquo;</li> 
+          <li><a href="../network.html" accesskey="U">network (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.network</span></tt>)</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -76,17 +76,21 @@
 <h1>skrf.network.y2s<a class="headerlink" href="#skrf-network-y2s" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="skrf.network.y2s">
-<tt class="descclassname">skrf.network.</tt><tt class="descname">y2s</tt><big>(</big><em>y</em><big>)</big><a class="headerlink" href="#skrf.network.y2s" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">skrf.network.</tt><tt class="descname">y2s</tt><big>(</big><em>y</em>, <em>z0=50</em><big>)</big><a class="headerlink" href="#skrf.network.y2s" title="Permalink to this definition">¶</a></dt>
 <dd><p>convert admittance parameters to scattering parameters <a class="footnote-reference" href="#id2" id="id1">[1]</a></p>
 <div class="math">
-<p><img src="../../_images/math/797ddcb43924dcf88d176e4e2dee0847ba08f8a1.png" alt="s = \frac {1 - s}{1 + s}"/></p>
+<p><img src="../../_images/math/acf401c32ef8cda21ebe34a5250bdc30e7d3b106.png" alt="s = (I - \sqrt{z_0} \cdot y \cdot \sqrt{z_0})(I + \sqrt{z_0} \cdot y \cdot \sqrt{z_0})^{-1}"/></p>
 </div><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>z</strong> : complex array-like or number</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>y</strong> : complex array-like</p>
 <blockquote>
-<div><p>impedance parameters</p>
+<div><p>admittance parameters</p>
+</div></blockquote>
+<p><strong>z0</strong> : complex array-like or number</p>
+<blockquote>
+<div><p>port impedances</p>
 </div></blockquote>
 </td>
 </tr>
@@ -118,7 +122,7 @@
 <dt><a class="reference internal" href="skrf.network.y2z.html#skrf.network.y2z" title="skrf.network.y2z"><tt class="xref py py-obj docutils literal"><span class="pre">y2z</span></tt></a></dt>
 <dd>converts admittance parameters to impedance parameters</dd>
 <dt><a class="reference internal" href="skrf.network.y2z.html#skrf.network.y2z" title="skrf.network.y2z"><tt class="xref py py-obj docutils literal"><span class="pre">y2z</span></tt></a></dt>
-<dd>converts admittance parameters to scattering transfer parameters</dd>
+<dd>converts admittance parameters to impedance parameters</dd>
 <dt><a class="reference internal" href="skrf.network.t2s.html#skrf.network.t2s" title="skrf.network.t2s"><tt class="xref py py-obj docutils literal"><span class="pre">t2s</span></tt></a></dt>
 <dd>converts scattering transfer paramerters to scattering parameters</dd>
 <dt><a class="reference internal" href="skrf.network.t2z.html#skrf.network.t2z" title="skrf.network.t2z"><tt class="xref py py-obj docutils literal"><span class="pre">t2z</span></tt></a></dt>
@@ -131,7 +135,7 @@
 <table class="docutils footnote" frame="void" id="id2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Two-port_network">http://en.wikipedia.org/wiki/Two-port_network</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Admittance_parameters">http://en.wikipedia.org/wiki/Admittance_parameters</a></td></tr>
 </tbody>
 </table>
 </dd></dl>
@@ -199,7 +203,7 @@
           <a href="skrf.network.z2t.html" title="skrf.network.z2t"
              >previous</a> |</li>
         <li><a href="../../index.html">scikit-rf 0.1 documentation</a> &raquo;</li>
-          <li><a href="../network.html" >network (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.network</span></tt>)</a> &raquo;</li> 
+          <li><a href="../network.html" >network (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.network</span></tt>)</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

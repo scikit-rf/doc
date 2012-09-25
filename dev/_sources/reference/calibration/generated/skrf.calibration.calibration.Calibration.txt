@@ -15,9 +15,11 @@ skrf.calibration.calibration.Calibration
   :nosignatures:
 
   ~Calibration.Ts
+  ~Calibration.caled_ntwk_sets
+  ~Calibration.caled_ntwks
+  ~Calibration.calibration_algorithm_dict
   ~Calibration.coefs
   ~Calibration.error_ntwk
-  ~Calibration.frequency
   ~Calibration.nports
   ~Calibration.nstandards
   ~Calibration.output_from_cal

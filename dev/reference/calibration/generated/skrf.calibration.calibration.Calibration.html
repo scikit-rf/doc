@@ -94,14 +94,20 @@ measurements.</p>
 <tr class="row-odd"><td><a class="reference internal" href="skrf.calibration.calibration.Calibration.Ts.html#skrf.calibration.calibration.Calibration.Ts" title="skrf.calibration.calibration.Calibration.Ts"><tt class="xref py py-obj docutils literal"><span class="pre">Ts</span></tt></a></td>
 <td>T-matricies used for de-embeding, a two-port calibration.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="skrf.calibration.calibration.Calibration.coefs.html#skrf.calibration.calibration.Calibration.coefs" title="skrf.calibration.calibration.Calibration.coefs"><tt class="xref py py-obj docutils literal"><span class="pre">coefs</span></tt></a></td>
+<tr class="row-even"><td><a class="reference internal" href="skrf.calibration.calibration.Calibration.caled_ntwk_sets.html#skrf.calibration.calibration.Calibration.caled_ntwk_sets" title="skrf.calibration.calibration.Calibration.caled_ntwk_sets"><tt class="xref py py-obj docutils literal"><span class="pre">caled_ntwk_sets</span></tt></a></td>
+<td>returns a NetworkSet for each caled_ntwk, based on their names</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.calibration.calibration.Calibration.caled_ntwks.html#skrf.calibration.calibration.Calibration.caled_ntwks" title="skrf.calibration.calibration.Calibration.caled_ntwks"><tt class="xref py py-obj docutils literal"><span class="pre">caled_ntwks</span></tt></a></td>
+<td>list of the calibrated, calibration standards.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.calibration.calibration.Calibration.calibration_algorithm_dict.html#skrf.calibration.calibration.Calibration.calibration_algorithm_dict" title="skrf.calibration.calibration.Calibration.calibration_algorithm_dict"><tt class="xref py py-obj docutils literal"><span class="pre">calibration_algorithm_dict</span></tt></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.calibration.calibration.Calibration.coefs.html#skrf.calibration.calibration.Calibration.coefs" title="skrf.calibration.calibration.Calibration.coefs"><tt class="xref py py-obj docutils literal"><span class="pre">coefs</span></tt></a></td>
 <td>coefs: a dictionary holding the calibration coefficients</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="skrf.calibration.calibration.Calibration.error_ntwk.html#skrf.calibration.calibration.Calibration.error_ntwk" title="skrf.calibration.calibration.Calibration.error_ntwk"><tt class="xref py py-obj docutils literal"><span class="pre">error_ntwk</span></tt></a></td>
+<tr class="row-even"><td><a class="reference internal" href="skrf.calibration.calibration.Calibration.error_ntwk.html#skrf.calibration.calibration.Calibration.error_ntwk" title="skrf.calibration.calibration.Calibration.error_ntwk"><tt class="xref py py-obj docutils literal"><span class="pre">error_ntwk</span></tt></a></td>
 <td>a Network type which represents the error network being</td>
-</tr>
-<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">Calibration.frequency</span></tt></td>
-<td></td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="skrf.calibration.calibration.Calibration.nports.html#skrf.calibration.calibration.Calibration.nports" title="skrf.calibration.calibration.Calibration.nports"><tt class="xref py py-obj docutils literal"><span class="pre">nports</span></tt></a></td>
 <td>the number of ports in the calibration</td>
@@ -167,7 +173,7 @@ measurements.</p>
 <td>see plot_residuals</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="skrf.calibration.calibration.Calibration.plot_uncertainty_per_standard.html#skrf.calibration.calibration.Calibration.plot_uncertainty_per_standard" title="skrf.calibration.calibration.Calibration.plot_uncertainty_per_standard"><tt class="xref py py-obj docutils literal"><span class="pre">plot_uncertainty_per_standard</span></tt></a></td>
-<td>see uncertainty_per_standard</td>
+<td>Plots uncertainty associated with each calibration standard.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="skrf.calibration.calibration.Calibration.run.html#skrf.calibration.calibration.Calibration.run" title="skrf.calibration.calibration.Calibration.run"><tt class="xref py py-obj docutils literal"><span class="pre">run</span></tt></a></td>
 <td>runs the calibration algorihtm.</td>

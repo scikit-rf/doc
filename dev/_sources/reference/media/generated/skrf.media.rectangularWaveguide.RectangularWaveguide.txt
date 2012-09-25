@@ -41,6 +41,7 @@ skrf.media.rectangularWaveguide.RectangularWaveguide
   ~RectangularWaveguide.delay_open
   ~RectangularWaveguide.delay_short
   ~RectangularWaveguide.electrical_length
+  ~RectangularWaveguide.from_csv
   ~RectangularWaveguide.guess_length_of_delay_short
   ~RectangularWaveguide.impedance_mismatch
   ~RectangularWaveguide.inductor
@@ -49,6 +50,7 @@ skrf.media.rectangularWaveguide.RectangularWaveguide
   ~RectangularWaveguide.load
   ~RectangularWaveguide.match
   ~RectangularWaveguide.open
+  ~RectangularWaveguide.resistor
   ~RectangularWaveguide.short
   ~RectangularWaveguide.shunt
   ~RectangularWaveguide.shunt_capacitor
@@ -61,6 +63,7 @@ skrf.media.rectangularWaveguide.RectangularWaveguide
   ~RectangularWaveguide.theta_2_d
   ~RectangularWaveguide.thru
   ~RectangularWaveguide.white_gaussian_polar
+  ~RectangularWaveguide.write_csv
 
 
 

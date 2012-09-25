@@ -63,7 +63,7 @@
           <a href="skrf.calibration.calibration.Calibration.plot_residuals_smith.html" title="skrf.calibration.calibration.Calibration.plot_residuals_smith"
              accesskey="P">previous</a> |</li>
         <li><a href="../../../index.html">scikit-rf 0.1 documentation</a> &raquo;</li>
-          <li><a href="../index.html" >calibration (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.calibration</span></tt>)</a> &raquo;</li>
+          <li><a href="../index.html" >calibration (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.calibration</span></tt>)</a> &raquo;</li>
           <li><a href="skrf.calibration.calibration.Calibration.html" accesskey="U">skrf.calibration.calibration.Calibration</a> &raquo;</li> 
       </ul>
     </div>  
@@ -77,8 +77,28 @@
 <h1>skrf.calibration.calibration.Calibration.plot_uncertainty_per_standard<a class="headerlink" href="#skrf-calibration-calibration-calibration-plot-uncertainty-per-standard" title="Permalink to this headline">¶</a></h1>
 <dl class="method">
 <dt id="skrf.calibration.calibration.Calibration.plot_uncertainty_per_standard">
-<tt class="descclassname">Calibration.</tt><tt class="descname">plot_uncertainty_per_standard</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#skrf.calibration.calibration.Calibration.plot_uncertainty_per_standard" title="Permalink to this definition">¶</a></dt>
-<dd><p>see uncertainty_per_standard</p>
+<tt class="descclassname">Calibration.</tt><tt class="descname">plot_uncertainty_per_standard</tt><big>(</big><em>scale='db'</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#skrf.calibration.calibration.Calibration.plot_uncertainty_per_standard" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots uncertainty associated with each calibration standard.</p>
+<p>This requires that each calibration standard is measured 
+multiple times. The uncertainty associated with each 
+standard is calculated by the complex standard deviation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>scale</strong> : &#8216;db&#8217;, &#8216;lin&#8217;</p>
+<blockquote>
+<div><p>plot uncertainties on linear or log scale</p>
+</div></blockquote>
+<p class="last"><strong>*args, **kwargs</strong> : passed to <a class="reference internal" href="skrf.calibration.calibration.Calibration.uncertainty_per_standard.html#skrf.calibration.calibration.Calibration.uncertainty_per_standard" title="skrf.calibration.calibration.Calibration.uncertainty_per_standard"><tt class="xref py py-func docutils literal"><span class="pre">uncertainty_per_standard()</span></tt></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="skrf.calibration.calibration.Calibration.uncertainty_per_standard.html#skrf.calibration.calibration.Calibration.uncertainty_per_standard" title="skrf.calibration.calibration.Calibration.uncertainty_per_standard"><tt class="xref py py-func docutils literal"><span class="pre">uncertainty_per_standard()</span></tt></a></p>
+</div>
 </dd></dl>
 
 </div>
@@ -144,7 +164,7 @@
           <a href="skrf.calibration.calibration.Calibration.plot_residuals_smith.html" title="skrf.calibration.calibration.Calibration.plot_residuals_smith"
              >previous</a> |</li>
         <li><a href="../../../index.html">scikit-rf 0.1 documentation</a> &raquo;</li>
-          <li><a href="../index.html" >calibration (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.calibration</span></tt>)</a> &raquo;</li>
+          <li><a href="../index.html" >calibration (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.calibration</span></tt>)</a> &raquo;</li>
           <li><a href="skrf.calibration.calibration.Calibration.html" >skrf.calibration.calibration.Calibration</a> &raquo;</li> 
       </ul>
     </div>

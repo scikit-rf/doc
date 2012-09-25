@@ -69,7 +69,9 @@
 <tt class="descclassname">Network.</tt><tt class="descname">s</tt><a class="headerlink" href="#skrf.network.Network.s" title="Permalink to this definition">¶</a></dt>
 <dd><p>the scattering parameter matrix <a class="footnote-reference" href="#id2" id="id1">[1]</a>.</p>
 <p>s-matrix is a 3 dimensional numpy.ndarray which has shape
-<cite>fxnxn</cite>, where <cite>f</cite> is frequency axis and <cite>n</cite> is number of ports</p>
+<cite>fxnxn</cite>, where <cite>f</cite> is frequency axis and <cite>n</cite> is number of ports.
+Note that indexing starts at 0!, so s11 can be accessed by 
+taking the slice s[:,0,0].</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />

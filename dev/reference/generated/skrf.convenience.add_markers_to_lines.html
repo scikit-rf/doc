@@ -77,7 +77,32 @@
 <dl class="function">
 <dt id="skrf.convenience.add_markers_to_lines">
 <tt class="descclassname">skrf.convenience.</tt><tt class="descname">add_markers_to_lines</tt><big>(</big><em>ax=None, marker_list=['o', 'D', 's', '+', 'x'], markevery=10</em><big>)</big><a class="headerlink" href="#skrf.convenience.add_markers_to_lines" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>adds markers to existing lings on a plot</p>
+<p>this is convinient if you have already have a plot made, but then 
+need to add markers afterwards, so that it can be interpreted in 
+black and white. The markevery argument makes the markers less 
+frequent than the data, which is generally what you want.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>ax</strong> : matplotlib.Axes</p>
+<blockquote>
+<div><p>axis which to add markers to, defaults to gca()</p>
+</div></blockquote>
+<p><strong>marker_list</strong> : list of marker characters</p>
+<blockquote>
+<div><p>see matplotlib.plot help for possible marker characters</p>
+</div></blockquote>
+<p><strong>markevery</strong> : int</p>
+<blockquote class="last">
+<div><p>markevery number of points with a marker.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 </div>
 

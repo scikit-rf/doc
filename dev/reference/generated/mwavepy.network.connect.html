@@ -82,7 +82,7 @@ account.</p>
 </div></blockquote>
 <p><strong>k</strong> : int</p>
 <blockquote>
-<div><p>port index on <cite>ntwkA</cite> ( port indecies start from 0 )</p>
+<div><p>port index on <cite>ntwkA</cite> ( port indices start from 0 )</p>
 </div></blockquote>
 <p><strong>ntwkB</strong> : <a class="reference internal" href="skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a></p>
 <blockquote>
@@ -96,7 +96,7 @@ account.</p>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>ntwkC</strong> : <a class="reference internal" href="skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a></p>
 <blockquote class="last">
-<div><p>new network of rank (ntwkA.nports+ntwkB.nports -2)-ports</p>
+<div><p>new network of rank (ntwkA.nports + ntwkB.nports - 2*n)-ports</p>
 </div></blockquote>
 </td>
 </tr>
@@ -115,7 +115,7 @@ account.</p>
 <p>the effect of mis-matched port impedances is handled by inserting
 a 2-port &#8216;mismatch&#8217; network between the two connected ports.
 This mismatch Network is calculated with the
-:func:impedance_mismatch function.</p>
+<a class="reference internal" href="skrf.network.impedance_mismatch.html#skrf.network.impedance_mismatch" title="skrf.network.impedance_mismatch"><tt class="xref py py-func docutils literal"><span class="pre">impedance_mismatch()</span></tt></a> function.</p>
 <p class="rubric">Examples</p>
 <p>To implement a <em>cascade</em> of two networks</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">ntwkA</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">Network</span><span class="p">(</span><span class="s">&#39;ntwkA.s2p&#39;</span><span class="p">)</span>

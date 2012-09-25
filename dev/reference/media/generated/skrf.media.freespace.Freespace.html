@@ -28,7 +28,7 @@
     <link rel="top" title="scikit-rf 0.1 documentation" href="../../../index.html" />
     <link rel="up" title="media (skrf.media)" href="../index.html" />
     <link rel="next" title="skrf.media.freespace.Freespace.Y" href="skrf.media.freespace.Freespace.Y.html" />
-    <link rel="prev" title="skrf.media.cpw.CPW.white_gaussian_polar" href="skrf.media.cpw.CPW.white_gaussian_polar.html" />
+    <link rel="prev" title="skrf.media.cpw.CPW.write_csv" href="skrf.media.cpw.CPW.write_csv.html" />
   <script type="text/javascript">
 	  var _gaq = _gaq || [];
 	    _gaq.push(['_setAccount', 'UA-29068876-1']);
@@ -60,10 +60,10 @@
           <a href="skrf.media.freespace.Freespace.Y.html" title="skrf.media.freespace.Freespace.Y"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="skrf.media.cpw.CPW.white_gaussian_polar.html" title="skrf.media.cpw.CPW.white_gaussian_polar"
+          <a href="skrf.media.cpw.CPW.write_csv.html" title="skrf.media.cpw.CPW.write_csv"
              accesskey="P">previous</a> |</li>
         <li><a href="../../../index.html">scikit-rf 0.1 documentation</a> &raquo;</li>
-          <li><a href="../index.html" accesskey="U">media (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.media</span></tt>)</a> &raquo;</li> 
+          <li><a href="../index.html" accesskey="U">media (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.media</span></tt>)</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -169,29 +169,35 @@ circuit transmission line model given in circuit theory by:</p>
 <tr class="row-even"><td><a class="reference internal" href="skrf.media.freespace.Freespace.from_Media.html#skrf.media.freespace.Freespace.from_Media" title="skrf.media.freespace.Freespace.from_Media"><tt class="xref py py-obj docutils literal"><span class="pre">from_Media</span></tt></a></td>
 <td>Initializes a DistributedCircuit from an existing</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="skrf.media.freespace.Freespace.gamma.html#skrf.media.freespace.Freespace.gamma" title="skrf.media.freespace.Freespace.gamma"><tt class="xref py py-obj docutils literal"><span class="pre">gamma</span></tt></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.media.freespace.Freespace.from_csv.html#skrf.media.freespace.Freespace.from_csv" title="skrf.media.freespace.Freespace.from_csv"><tt class="xref py py-obj docutils literal"><span class="pre">from_csv</span></tt></a></td>
+<td>create a Media from numerical values stored in a csv file.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.media.freespace.Freespace.gamma.html#skrf.media.freespace.Freespace.gamma" title="skrf.media.freespace.Freespace.gamma"><tt class="xref py py-obj docutils literal"><span class="pre">gamma</span></tt></a></td>
 <td>Propagation Constant, <img class="math" src="../../../_images/math/66981fa3920210c6ad8dbe5e968783d5dd7520c3.png" alt="\gamma"/></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="skrf.media.freespace.Freespace.guess_length_of_delay_short.html#skrf.media.freespace.Freespace.guess_length_of_delay_short" title="skrf.media.freespace.Freespace.guess_length_of_delay_short"><tt class="xref py py-obj docutils literal"><span class="pre">guess_length_of_delay_short</span></tt></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.media.freespace.Freespace.guess_length_of_delay_short.html#skrf.media.freespace.Freespace.guess_length_of_delay_short" title="skrf.media.freespace.Freespace.guess_length_of_delay_short"><tt class="xref py py-obj docutils literal"><span class="pre">guess_length_of_delay_short</span></tt></a></td>
 <td>Guess physical length of a delay short.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="skrf.media.freespace.Freespace.impedance_mismatch.html#skrf.media.freespace.Freespace.impedance_mismatch" title="skrf.media.freespace.Freespace.impedance_mismatch"><tt class="xref py py-obj docutils literal"><span class="pre">impedance_mismatch</span></tt></a></td>
+<tr class="row-even"><td><a class="reference internal" href="skrf.media.freespace.Freespace.impedance_mismatch.html#skrf.media.freespace.Freespace.impedance_mismatch" title="skrf.media.freespace.Freespace.impedance_mismatch"><tt class="xref py py-obj docutils literal"><span class="pre">impedance_mismatch</span></tt></a></td>
 <td>Two-port network for an impedance miss-match</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="skrf.media.freespace.Freespace.inductor.html#skrf.media.freespace.Freespace.inductor" title="skrf.media.freespace.Freespace.inductor"><tt class="xref py py-obj docutils literal"><span class="pre">inductor</span></tt></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.media.freespace.Freespace.inductor.html#skrf.media.freespace.Freespace.inductor" title="skrf.media.freespace.Freespace.inductor"><tt class="xref py py-obj docutils literal"><span class="pre">inductor</span></tt></a></td>
 <td>Inductor</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="skrf.media.freespace.Freespace.line.html#skrf.media.freespace.Freespace.line" title="skrf.media.freespace.Freespace.line"><tt class="xref py py-obj docutils literal"><span class="pre">line</span></tt></a></td>
+<tr class="row-even"><td><a class="reference internal" href="skrf.media.freespace.Freespace.line.html#skrf.media.freespace.Freespace.line" title="skrf.media.freespace.Freespace.line"><tt class="xref py py-obj docutils literal"><span class="pre">line</span></tt></a></td>
 <td>Matched transmission line of given length</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="skrf.media.freespace.Freespace.load.html#skrf.media.freespace.Freespace.load" title="skrf.media.freespace.Freespace.load"><tt class="xref py py-obj docutils literal"><span class="pre">load</span></tt></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.media.freespace.Freespace.load.html#skrf.media.freespace.Freespace.load" title="skrf.media.freespace.Freespace.load"><tt class="xref py py-obj docutils literal"><span class="pre">load</span></tt></a></td>
 <td>Load of given reflection coefficient.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="skrf.media.freespace.Freespace.match.html#skrf.media.freespace.Freespace.match" title="skrf.media.freespace.Freespace.match"><tt class="xref py py-obj docutils literal"><span class="pre">match</span></tt></a></td>
+<tr class="row-even"><td><a class="reference internal" href="skrf.media.freespace.Freespace.match.html#skrf.media.freespace.Freespace.match" title="skrf.media.freespace.Freespace.match"><tt class="xref py py-obj docutils literal"><span class="pre">match</span></tt></a></td>
 <td>Perfect matched load (<img class="math" src="../../../_images/math/36cb4e6b083aa5205c6a7884b05cad4c0de36f08.png" alt="\Gamma_0 = 0"/>).</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="skrf.media.freespace.Freespace.open.html#skrf.media.freespace.Freespace.open" title="skrf.media.freespace.Freespace.open"><tt class="xref py py-obj docutils literal"><span class="pre">open</span></tt></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.media.freespace.Freespace.open.html#skrf.media.freespace.Freespace.open" title="skrf.media.freespace.Freespace.open"><tt class="xref py py-obj docutils literal"><span class="pre">open</span></tt></a></td>
 <td>Open (<img class="math" src="../../../_images/math/316cfc077c16efc10b7272974fa3551b01ed5556.png" alt="\Gamma_0 = 1"/>)</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.media.freespace.Freespace.resistor.html#skrf.media.freespace.Freespace.resistor" title="skrf.media.freespace.Freespace.resistor"><tt class="xref py py-obj docutils literal"><span class="pre">resistor</span></tt></a></td>
+<td>Resistor</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="skrf.media.freespace.Freespace.short.html#skrf.media.freespace.Freespace.short" title="skrf.media.freespace.Freespace.short"><tt class="xref py py-obj docutils literal"><span class="pre">short</span></tt></a></td>
 <td>Short (<img class="math" src="../../../_images/math/d4118fe2a9c0472bf22e6ba0eded8deba561c8b0.png" alt="\Gamma_0 = -1"/>)</td>
@@ -229,6 +235,9 @@ circuit transmission line model given in circuit theory by:</p>
 <tr class="row-even"><td><a class="reference internal" href="skrf.media.freespace.Freespace.white_gaussian_polar.html#skrf.media.freespace.Freespace.white_gaussian_polar" title="skrf.media.freespace.Freespace.white_gaussian_polar"><tt class="xref py py-obj docutils literal"><span class="pre">white_gaussian_polar</span></tt></a></td>
 <td>Complex zero-mean gaussian white-noise network.</td>
 </tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.media.freespace.Freespace.write_csv.html#skrf.media.freespace.Freespace.write_csv" title="skrf.media.freespace.Freespace.write_csv"><tt class="xref py py-obj docutils literal"><span class="pre">write_csv</span></tt></a></td>
+<td>write this media&#8217;s frequency, z0, and gamma to a csv file.</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -243,8 +252,8 @@ circuit transmission line model given in circuit theory by:</p>
               <img class="logo" src="../../../_static/scikit_logo_small.png" alt="Logo"/>
             </a></p>
   <h4>Previous topic</h4>
-  <p class="topless"><a href="skrf.media.cpw.CPW.white_gaussian_polar.html"
-                        title="previous chapter">skrf.media.cpw.CPW.white_gaussian_polar</a></p>
+  <p class="topless"><a href="skrf.media.cpw.CPW.write_csv.html"
+                        title="previous chapter">skrf.media.cpw.CPW.write_csv</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="skrf.media.freespace.Freespace.Y.html"
                         title="next chapter">skrf.media.freespace.Freespace.Y</a></p>
@@ -291,10 +300,10 @@ circuit transmission line model given in circuit theory by:</p>
           <a href="skrf.media.freespace.Freespace.Y.html" title="skrf.media.freespace.Freespace.Y"
              >next</a> |</li>
         <li class="right" >
-          <a href="skrf.media.cpw.CPW.white_gaussian_polar.html" title="skrf.media.cpw.CPW.white_gaussian_polar"
+          <a href="skrf.media.cpw.CPW.write_csv.html" title="skrf.media.cpw.CPW.write_csv"
              >previous</a> |</li>
         <li><a href="../../../index.html">scikit-rf 0.1 documentation</a> &raquo;</li>
-          <li><a href="../index.html" >media (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.media</span></tt>)</a> &raquo;</li> 
+          <li><a href="../index.html" >media (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.media</span></tt>)</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
