@@ -1,0 +1,3 @@
+[submodule "scikit-rf"]
+	path = scikit-rf
+	url = git://github.com/scikit-rf/scikit-rf.git

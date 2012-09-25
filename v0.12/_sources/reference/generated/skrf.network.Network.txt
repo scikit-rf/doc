@@ -1,0 +1,58 @@
+skrf.network.Network
+====================
+
+.. currentmodule:: skrf.network
+
+.. autoclass:: Network
+  :no-members:
+
+
+
+.. rubric:: Attributes
+
+.. autosummary::
+  :toctree:
+  :nosignatures:
+
+  ~Network.f
+  ~Network.frequency
+  ~Network.inv
+  ~Network.nports
+  ~Network.number_of_ports
+  ~Network.passivity
+  ~Network.s
+  ~Network.t
+  ~Network.y
+  ~Network.z
+  ~Network.z0
+
+
+
+
+
+.. rubric:: Methods
+
+.. autosummary::
+  :toctree:
+  :nosignatures:
+
+  ~Network.__init__
+  ~Network.add_noise_polar
+  ~Network.add_noise_polar_flatband
+  ~Network.copy
+  ~Network.flip
+  ~Network.interpolate
+  ~Network.interpolate_self
+  ~Network.interpolate_self_npoints
+  ~Network.multiply_noise
+  ~Network.nudge
+  ~Network.plot_it_all
+  ~Network.plot_passivity
+  ~Network.plot_s_smith
+  ~Network.read_touchstone
+  ~Network.renumber
+  ~Network.write_touchstone
+
+
+
+

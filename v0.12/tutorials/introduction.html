@@ -1,0 +1,314 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Introduction &mdash; scikit-rf 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/scipy.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="scikit-rf 0.1 documentation" href="../index.html" />
+    <link rel="next" title="Plotting" href="plotting.html" />
+    <link rel="prev" title="Installation" href="installation.html" />
+  <script type="text/javascript">
+	  var _gaq = _gaq || [];
+	    _gaq.push(['_setAccount', 'UA-29068876-1']);
+		  _gaq.push(['_trackPageview']);
+
+		    (function() {
+			    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+					    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+						  })();
+
+  </script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="plotting.html" title="Plotting"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="installation.html" title="Installation"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">scikit-rf 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="introduction">
+<span id="id1"></span><h1><a class="toc-backref" href="#id4">Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#introduction" id="id4">Introduction</a><ul>
+<li><a class="reference internal" href="#creating-networks" id="id5">Creating Networks</a></li>
+<li><a class="reference internal" href="#basic-network-properties" id="id6">Basic Network Properties</a></li>
+<li><a class="reference internal" href="#network-operators" id="id7">Network Operators</a><ul>
+<li><a class="reference internal" href="#element-wise-operations" id="id8">Element-wise Operations</a></li>
+<li><a class="reference internal" href="#cascading-and-embeding-operations" id="id9">Cascading and Embeding Operations</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#connecting-multi-ports" id="id10">Connecting Multi-ports</a></li>
+<li><a class="reference internal" href="#sub-networks" id="id11">Sub-Networks</a></li>
+<li><a class="reference internal" href="#convenience-functions" id="id12">Convenience Functions</a></li>
+<li><a class="reference internal" href="#references" id="id13">References</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>This is a brief introduction to skrf, aimed at those who are familiar with python. If you are unfamiliar with python, please see scipy&#8217;s <a class="reference external" href="http://www.scipy.org/Getting_Started">Getting Started</a> . This tutorial is most easily followed by using the <a class="reference external" href="http://ipython.scipy.org/moin/">ipython</a> shell with the <cite>&#8211;pylab</cite> flag.</p>
+<p><strong>Note:</strong> All of the scripts and touchstone files used in these tutorials are provided along with this source code in the directory <tt class="docutils literal"><span class="pre">doc/source/pyplots/</span></tt> (relative to the scikit-rf root).</p>
+<div class="section" id="creating-networks">
+<h2><a class="toc-backref" href="#id5">Creating Networks</a><a class="headerlink" href="#creating-networks" title="Permalink to this headline">¶</a></h2>
+<p>For this tutorial, and the rest of the scikit-rf documentation, it is  assumed that skrf has been imported as <tt class="docutils literal"><span class="pre">rf</span></tt>. Whether or not you follow this convention in your own code is up to you:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">skrf</span> <span class="kn">as</span> <span class="nn">rf</span>
+</pre></div>
+</div>
+<p>If this produces an error, please see <a class="reference internal" href="installation.html"><em>Installation</em></a>.</p>
+<p>skrf provides an object for a n-port microwave <a class="reference internal" href="../reference/generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a>. Most commonly, a <a class="reference internal" href="../reference/generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> is constructed from data stored in a touchstone files, like so</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">short</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">Network</span><span class="p">(</span><span class="s">&#39;short.s1p&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">delay_short</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">Network</span><span class="p">(</span><span class="s">&#39;delay_short.s1p&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Once created, the <a class="reference internal" href="../reference/generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> object will print out a short description if entered onto the command line:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">short</span>
+<span class="go">1-Port Network.  75-110 GHz.  201 points. z0=[ 50.]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="basic-network-properties">
+<h2><a class="toc-backref" href="#id6">Basic Network Properties</a><a class="headerlink" href="#basic-network-properties" title="Permalink to this headline">¶</a></h2>
+<p>The basic attributes of a microwave <a class="reference internal" href="../reference/generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> are provided by the
+following properties :</p>
+<ul class="simple">
+<li><a class="reference internal" href="../reference/generated/skrf.network.Network.s.html#skrf.network.Network.s" title="skrf.network.Network.s"><tt class="xref py py-attr docutils literal"><span class="pre">Network.s</span></tt></a> : Scattering Parameter matrix.</li>
+<li><a class="reference internal" href="../reference/generated/skrf.network.Network.z0.html#skrf.network.Network.z0" title="skrf.network.Network.z0"><tt class="xref py py-attr docutils literal"><span class="pre">Network.z0</span></tt></a>  : Characterisic Impedance matrix.</li>
+<li><a class="reference internal" href="../reference/generated/skrf.network.Network.frequency.html#skrf.network.Network.frequency" title="skrf.network.Network.frequency"><tt class="xref py py-attr docutils literal"><span class="pre">Network.frequency</span></tt></a>  : Frequency Object.</li>
+</ul>
+<p>These properties are represented internally as complex numpy.ndarray&#8217;s, (and the indexing starts at 0!). The <a class="reference internal" href="../reference/generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> class has numerous other properties and methods which can found in the  <a class="reference internal" href="../reference/generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> docs. If you are using Ipython, then these properties and methods can be &#8216;tabbed&#8217; out on the command line. Amongst other things, the methods of the <a class="reference internal" href="../reference/generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> class provide convenient ways to plot components of the s-parameters, below is a short list of common plotting commands,</p>
+<ul class="simple">
+<li><tt class="xref py py-func docutils literal"><span class="pre">Network.plot_s_db()</span></tt> : plot magnitude of s-parameters in log scale</li>
+<li><tt class="xref py py-func docutils literal"><span class="pre">Network.plot_s_deg()</span></tt> : plot phase of s-parameters in degrees</li>
+<li><a class="reference internal" href="../reference/generated/skrf.network.Network.plot_s_smith.html#skrf.network.Network.plot_s_smith" title="skrf.network.Network.plot_s_smith"><tt class="xref py py-func docutils literal"><span class="pre">Network.plot_s_smith()</span></tt></a> : plot complex s-parameters on Smith Chart</li>
+</ul>
+<p>For example, to create a 2-port <a class="reference internal" href="../reference/generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> from a touchstone file,
+and then plot all s-parameters on the Smith Chart.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">pylab</span>
+<span class="kn">import</span> <span class="nn">skrf</span> <span class="kn">as</span> <span class="nn">rf</span>
+
+<span class="c"># create a Network type from a touchstone file</span>
+<span class="n">ring_slot</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">Network</span><span class="p">(</span><span class="s">&#39;ring slot.s2p&#39;</span><span class="p">)</span>
+<span class="n">ring_slot</span><span class="o">.</span><span class="n">plot_s_smith</span><span class="p">()</span>
+<span class="n">pylab</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="../pyplots/introduction/simple_plot.py">Source code</a>, <a class="reference external" href="../pyplots/introduction/simple_plot.png">png</a>, <a class="reference external" href="../pyplots/introduction/simple_plot.hires.png">hires.png</a>, <a class="reference external" href="../pyplots/introduction/simple_plot.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="../_images/simple_plot.png" src="../_images/simple_plot.png" />
+</div>
+<p>For more detailed information about plotting see <a class="reference internal" href="plotting.html"><em>Plotting</em></a>.</p>
+</div>
+<div class="section" id="network-operators">
+<h2><a class="toc-backref" href="#id7">Network Operators</a><a class="headerlink" href="#network-operators" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="element-wise-operations">
+<h3><a class="toc-backref" href="#id8">Element-wise Operations</a><a class="headerlink" href="#element-wise-operations" title="Permalink to this headline">¶</a></h3>
+<p>Element-wise mathematical operations on the scattering parameter matrices are accessible through overloaded operators:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">short</span> <span class="o">+</span> <span class="n">delay_short</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">short</span> <span class="o">-</span> <span class="n">delay_short</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">short</span> <span class="o">/</span> <span class="n">delay_short</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">short</span> <span class="o">*</span> <span class="n">delay_short</span>
+</pre></div>
+</div>
+<p>All of these operations return <a class="reference internal" href="../reference/generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> types, so the methods and properties of a <a class="reference internal" href="../reference/generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> are available on the result.  For example, the difference operation (&#8216;-&#8216;) can be used to calculate the complex distance between two networks</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">difference</span> <span class="o">=</span> <span class="p">(</span><span class="n">short</span><span class="o">-</span> <span class="n">delay_short</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The result is stored in the returned <a class="reference internal" href="../reference/generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> object&#8217;s  <a class="reference internal" href="../reference/generated/skrf.network.Network.s.html#skrf.network.Network.s" title="skrf.network.Network.s"><tt class="xref py py-attr docutils literal"><span class="pre">Network.s</span></tt></a> parameter matrix.  So, to plot the magnitude of the complex difference between the networks <cite>short</cite> and <cite>delay_short</cite>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">short</span> <span class="o">-</span> <span class="n">delay_short</span><span class="p">)</span><span class="o">.</span><span class="n">plot_s_mag</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Another common application is calculating the phase difference using the division operator. This can be done</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">delay_short</span><span class="o">/</span><span class="n">short</span><span class="p">)</span><span class="o">.</span><span class="n">plot_s_deg</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="cascading-and-embeding-operations">
+<h3><a class="toc-backref" href="#id9">Cascading and Embeding Operations</a><a class="headerlink" href="#cascading-and-embeding-operations" title="Permalink to this headline">¶</a></h3>
+<p>Cascading and de-embeding 2-port Networks can also be done though operators. The <a class="reference internal" href="../reference/generated/skrf.network.cascade.html#skrf.network.cascade" title="skrf.network.cascade"><tt class="xref py py-func docutils literal"><span class="pre">cascade()</span></tt></a> function can be accessed through the power operator,  <tt class="docutils literal"><span class="pre">**</span></tt>. To calculate a new network which is the cascaded connection of the two individual Networks <tt class="docutils literal"><span class="pre">line</span></tt> and <tt class="docutils literal"><span class="pre">short</span></tt>,</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">line</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">Network</span><span class="p">(</span><span class="s">&#39;line.s2p&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">short</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">Network</span><span class="p">(</span><span class="s">&#39;short.s1p&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">delay_short</span> <span class="o">=</span> <span class="n">line</span> <span class="o">**</span> <span class="n">short</span>
+</pre></div>
+</div>
+<p>De-embedding  can be accomplished either by using the  <a class="reference internal" href="../reference/generated/skrf.network.de_embed.html#skrf.network.de_embed" title="skrf.network.de_embed"><tt class="xref py py-func docutils literal"><span class="pre">de_embed()</span></tt></a> function, or  by cascading the <em>inverse</em> of a network. The inverse of a network is accesible through the property <a class="reference internal" href="../reference/generated/skrf.network.Network.inv.html#skrf.network.Network.inv" title="skrf.network.Network.inv"><tt class="xref py py-attr docutils literal"><span class="pre">Network.inv</span></tt></a>. So,  to de-embed the <em>short</em> from <em>delay_short</em>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">short</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">inv</span> <span class="o">**</span> <span class="n">delay_short</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="connecting-multi-ports">
+<h2><a class="toc-backref" href="#id10">Connecting Multi-ports</a><a class="headerlink" href="#connecting-multi-ports" title="Permalink to this headline">¶</a></h2>
+<p><strong>skrf</strong> supports the connection of arbitrary ports of N-port networks. It accomplishes this using an algorithm call sub-network growth <a class="footnote-reference" href="#id3" id="id2">[1]</a>. This algorithm, which is available through the function <a class="reference internal" href="../reference/generated/skrf.network.connect.html#skrf.network.connect" title="skrf.network.connect"><tt class="xref py py-func docutils literal"><span class="pre">connect()</span></tt></a>, takes into account port impedances. Terminating one port of a ideal 3-way splitter can be done like so:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">tee</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">Network</span><span class="p">(</span><span class="s">&#39;tee.s3p&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">delay_short</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">Network</span><span class="p">(</span><span class="s">&#39;delay_short.s1p&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>to connect port &#8216;1&#8217; of the tee, to port 0 of the delay short:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">terminated_tee</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">tee</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">delay_short</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sub-networks">
+<h2><a class="toc-backref" href="#id11">Sub-Networks</a><a class="headerlink" href="#sub-networks" title="Permalink to this headline">¶</a></h2>
+<p>Frequently, the one-port s-parameters of a multiport network&#8217;s are of interest. These can be accessed by theh sub-network properties, which return one-port <a class="reference internal" href="../reference/generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> objects</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">port1_return</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">s11</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">port1_insertion</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">s21</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="convenience-functions">
+<h2><a class="toc-backref" href="#id12">Convenience Functions</a><a class="headerlink" href="#convenience-functions" title="Permalink to this headline">¶</a></h2>
+<p>Frequently there is an entire directory of touchstone files that need to be analyzed. The function <a class="reference internal" href="../reference/generated/skrf.network.load_all_touchstones.html#skrf.network.load_all_touchstones" title="skrf.network.load_all_touchstones"><tt class="xref py py-func docutils literal"><span class="pre">load_all_touchstones()</span></tt></a> is meant deal with this scenario. It takes a string representing the directory,  and returns a dictionary type with keys equal to the touchstone filenames, and values equal to <a class="reference internal" href="../reference/generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> types:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">ntwk_dict</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">load_all_touchstones</span><span class="p">(</span><span class="s">&#39;.&#39;</span><span class="p">)</span>
+<span class="go">{&#39;delay_short&#39;: 1-Port Network.  75-110 GHz.  201 points. z0=[ 50.],</span>
+<span class="go">&#39;line&#39;: 2-Port Network.  75-110 GHz.  201 points. z0=[ 50.  50.],</span>
+<span class="go">&#39;ring slot&#39;: 2-Port Network.  75-110 GHz.  201 points. z0=[ 50.  50.],</span>
+<span class="go">&#39;short&#39;: 1-Port Network.  75-110 GHz.  201 points. z0=[ 50.]}</span>
+</pre></div>
+</div>
+<p>Other convenient functions, and pre-initialized objects are located in the
+<tt class="xref py py-mod docutils literal"><span class="pre">convenience</span></tt> module</p>
+</div>
+<div class="section" id="references">
+<h2><a class="toc-backref" href="#id13">References</a><a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td>Compton, R.C.; , &#8220;Perspectives in microwave circuit analysis,&#8221; Circuits and Systems, 1989., Proceedings of the 32nd Midwest Symposium on , vol., no., pp.716-718 vol.2, 14-16 Aug 1989. URL: <a class="reference external" href="http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=101955&amp;isnumber=3167">http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=101955&amp;isnumber=3167</a></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/scikit_logo_small.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Introduction</a><ul>
+<li><a class="reference internal" href="#creating-networks">Creating Networks</a></li>
+<li><a class="reference internal" href="#basic-network-properties">Basic Network Properties</a></li>
+<li><a class="reference internal" href="#network-operators">Network Operators</a><ul>
+<li><a class="reference internal" href="#element-wise-operations">Element-wise Operations</a></li>
+<li><a class="reference internal" href="#cascading-and-embeding-operations">Cascading and Embeding Operations</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#connecting-multi-ports">Connecting Multi-ports</a></li>
+<li><a class="reference internal" href="#sub-networks">Sub-Networks</a></li>
+<li><a class="reference internal" href="#convenience-functions">Convenience Functions</a></li>
+<li><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="installation.html"
+                        title="previous chapter">Installation</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="plotting.html"
+                        title="next chapter">Plotting</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/tutorials/introduction.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<ul class="this-page-menu">
+  <li><a href="/scipy/docs/scipy-docs/tutorials/introduction.rst">Edit page</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="plotting.html" title="Plotting"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="installation.html" title="Installation"
+             >previous</a> |</li>
+        <li><a href="../index.html">scikit-rf 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, alex arsenovic.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

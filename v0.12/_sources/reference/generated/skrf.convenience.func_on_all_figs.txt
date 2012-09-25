@@ -1,0 +1,6 @@
+skrf.convenience.func_on_all_figs
+=================================
+
+.. currentmodule:: skrf.convenience
+
+.. autofunction:: func_on_all_figs

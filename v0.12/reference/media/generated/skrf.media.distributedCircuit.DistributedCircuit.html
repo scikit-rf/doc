@@ -1,0 +1,370 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>skrf.media.distributedCircuit.DistributedCircuit &mdash; scikit-rf 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/scipy.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="scikit-rf 0.1 documentation" href="../../../index.html" />
+    <link rel="up" title="media (skrf.media)" href="../index.html" />
+    <link rel="next" title="skrf.media.distributedCircuit.DistributedCircuit.Y" href="skrf.media.distributedCircuit.DistributedCircuit.Y.html" />
+    <link rel="prev" title="skrf.media.media.Media.write_csv" href="skrf.media.media.Media.write_csv.html" />
+  <script type="text/javascript">
+	  var _gaq = _gaq || [];
+	    _gaq.push(['_setAccount', 'UA-29068876-1']);
+		  _gaq.push(['_trackPageview']);
+
+		    (function() {
+			    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+					    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+						  })();
+
+  </script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../../../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="skrf.media.distributedCircuit.DistributedCircuit.Y.html" title="skrf.media.distributedCircuit.DistributedCircuit.Y"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="skrf.media.media.Media.write_csv.html" title="skrf.media.media.Media.write_csv"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../../index.html">scikit-rf 0.1 documentation</a> &raquo;</li>
+          <li><a href="../index.html" accesskey="U">media (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.media</span></tt>)</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="skrf-media-distributedcircuit-distributedcircuit">
+<h1>skrf.media.distributedCircuit.DistributedCircuit<a class="headerlink" href="#skrf-media-distributedcircuit-distributedcircuit" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="skrf.media.distributedCircuit.DistributedCircuit">
+<em class="property">class </em><tt class="descclassname">skrf.media.distributedCircuit.</tt><tt class="descname">DistributedCircuit</tt><big>(</big><em>frequency</em>, <em>C</em>, <em>I</em>, <em>R</em>, <em>G</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#skrf.media.distributedCircuit.DistributedCircuit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generic, distributed circuit TEM transmission line</p>
+<p>A TEM transmission line, defined in terms of  distributed impedance
+and admittance values. A Distributed Circuit may be defined in terms
+of the following attributes,</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Quantity</th>
+<th class="head">Symbol</th>
+<th class="head">Property</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Distributed Capacitance</td>
+<td><img class="math" src="../../../_images/math/b265734eab9ea47f24dd63270fe87298373e2ab0.png" alt="C^{'}"/></td>
+<td><tt class="xref py py-attr docutils literal"><span class="pre">C</span></tt></td>
+</tr>
+<tr class="row-odd"><td>Distributed Inductance</td>
+<td><img class="math" src="../../../_images/math/4b4e1b84c05d1569fc5431d923cacb3b10ea7bd8.png" alt="I^{'}"/></td>
+<td><tt class="xref py py-attr docutils literal"><span class="pre">I</span></tt></td>
+</tr>
+<tr class="row-even"><td>Distributed Resistance</td>
+<td><img class="math" src="../../../_images/math/e4663edd379adecd5611687647c69e9ce50c07ee.png" alt="R^{'}"/></td>
+<td><tt class="xref py py-attr docutils literal"><span class="pre">R</span></tt></td>
+</tr>
+<tr class="row-odd"><td>Distributed Conductance</td>
+<td><img class="math" src="../../../_images/math/69af258fd6693b84a47167572b39cc223c9bab6d.png" alt="G^{'}"/></td>
+<td><tt class="xref py py-attr docutils literal"><span class="pre">G</span></tt></td>
+</tr>
+</tbody>
+</table>
+<p>From these, the following quantities may be calculated, which
+are functions of angular frequency (<img class="math" src="../../../_images/math/54d7d48553f4d9e7ab418118607ea324cbfddfda.png" alt="\omega"/>):</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%" />
+<col width="43%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Quantity</th>
+<th class="head">Symbol</th>
+<th class="head">Property</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Distributed Impedance</td>
+<td><img class="math" src="../../../_images/math/48a714653a34fa7b5935389b902aed7537feacfa.png" alt="Z^{'} = R^{'} + j \omega I^{'}"/></td>
+<td><a class="reference internal" href="skrf.media.distributedCircuit.DistributedCircuit.Z.html#skrf.media.distributedCircuit.DistributedCircuit.Z" title="skrf.media.distributedCircuit.DistributedCircuit.Z"><tt class="xref py py-attr docutils literal"><span class="pre">Z</span></tt></a></td>
+</tr>
+<tr class="row-odd"><td>Distributed Admittance</td>
+<td><img class="math" src="../../../_images/math/84a4cf62aaeb18445601048e2e48df7a80038172.png" alt="Y^{'} = G^{'} + j \omega C^{'}"/></td>
+<td><a class="reference internal" href="skrf.media.distributedCircuit.DistributedCircuit.Y.html#skrf.media.distributedCircuit.DistributedCircuit.Y" title="skrf.media.distributedCircuit.DistributedCircuit.Y"><tt class="xref py py-attr docutils literal"><span class="pre">Y</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+<p>From these we can calculate properties which define their wave
+behavior:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="32%" />
+<col width="40%" />
+<col width="28%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Quantity</th>
+<th class="head">Symbol</th>
+<th class="head">Method</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Characteristic Impedance</td>
+<td><img class="math" src="../../../_images/math/20e4f15adf67a9c0b630bbd49e2700820f0114e5.png" alt="Z_0 = \sqrt{ \frac{Z^{'}}{Y^{'}}}"/></td>
+<td><a class="reference internal" href="skrf.media.distributedCircuit.DistributedCircuit.Z0.html#skrf.media.distributedCircuit.DistributedCircuit.Z0" title="skrf.media.distributedCircuit.DistributedCircuit.Z0"><tt class="xref py py-func docutils literal"><span class="pre">Z0()</span></tt></a></td>
+</tr>
+<tr class="row-odd"><td>Propagation Constant</td>
+<td><img class="math" src="../../../_images/math/557a3ae3c4b00b94bc6d6b1b46022e4eac42780e.png" alt="\gamma = \sqrt{ Z^{'}  Y^{'}}"/></td>
+<td><a class="reference internal" href="skrf.media.distributedCircuit.DistributedCircuit.gamma.html#skrf.media.distributedCircuit.DistributedCircuit.gamma" title="skrf.media.distributedCircuit.DistributedCircuit.gamma"><tt class="xref py py-func docutils literal"><span class="pre">gamma()</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+<p>Given the following definitions, the components of propagation
+constant are interpreted as follows:</p>
+<div class="math">
+<p><img src="../../../_images/math/9c7a2445e8b0fcf6ba22d687a8c07f8cac4e87a4.png" alt="+\Re e\{\gamma\} = \text{attenuation}
+
+-\Im m\{\gamma\} = \text{forward propagation}"/></p>
+</div></dd></dl>
+
+<p class="rubric">Attributes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="skrf.media.distributedCircuit.DistributedCircuit.Y.html#skrf.media.distributedCircuit.DistributedCircuit.Y" title="skrf.media.distributedCircuit.DistributedCircuit.Y"><tt class="xref py py-obj docutils literal"><span class="pre">Y</span></tt></a></td>
+<td>Distributed Admittance, <img class="math" src="../../../_images/math/1a27e212b257b821bdbcc89b0508fe954c4f42d2.png" alt="Y^{'}"/></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.media.distributedCircuit.DistributedCircuit.Z.html#skrf.media.distributedCircuit.DistributedCircuit.Z" title="skrf.media.distributedCircuit.DistributedCircuit.Z"><tt class="xref py py-obj docutils literal"><span class="pre">Z</span></tt></a></td>
+<td>Distributed Impedance, <img class="math" src="../../../_images/math/b236c2c099b9f862b46f03409b9b62eba8778caa.png" alt="Z^{'}"/></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.media.distributedCircuit.DistributedCircuit.characteristic_impedance.html#skrf.media.distributedCircuit.DistributedCircuit.characteristic_impedance" title="skrf.media.distributedCircuit.DistributedCircuit.characteristic_impedance"><tt class="xref py py-obj docutils literal"><span class="pre">characteristic_impedance</span></tt></a></td>
+<td>Characterisitc impedance</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.media.distributedCircuit.DistributedCircuit.propagation_constant.html#skrf.media.distributedCircuit.DistributedCircuit.propagation_constant" title="skrf.media.distributedCircuit.DistributedCircuit.propagation_constant"><tt class="xref py py-obj docutils literal"><span class="pre">propagation_constant</span></tt></a></td>
+<td>Propagation constant</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.media.distributedCircuit.DistributedCircuit.z0.html#skrf.media.distributedCircuit.DistributedCircuit.z0" title="skrf.media.distributedCircuit.DistributedCircuit.z0"><tt class="xref py py-obj docutils literal"><span class="pre">z0</span></tt></a></td>
+<td>Port Impedance</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="skrf.media.distributedCircuit.DistributedCircuit.Z0.html#skrf.media.distributedCircuit.DistributedCircuit.Z0" title="skrf.media.distributedCircuit.DistributedCircuit.Z0"><tt class="xref py py-obj docutils literal"><span class="pre">Z0</span></tt></a></td>
+<td>Characteristic Impedance, <img class="math" src="../../../_images/math/5afe1245c4e1938d9f911f66912d9d70f859dc32.png" alt="Z0"/></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.media.distributedCircuit.DistributedCircuit.__init__.html#skrf.media.distributedCircuit.DistributedCircuit.__init__" title="skrf.media.distributedCircuit.DistributedCircuit.__init__"><tt class="xref py py-obj docutils literal"><span class="pre">__init__</span></tt></a></td>
+<td>Distributed Circuit constructor.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.media.distributedCircuit.DistributedCircuit.capacitor.html#skrf.media.distributedCircuit.DistributedCircuit.capacitor" title="skrf.media.distributedCircuit.DistributedCircuit.capacitor"><tt class="xref py py-obj docutils literal"><span class="pre">capacitor</span></tt></a></td>
+<td>Capacitor</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.media.distributedCircuit.DistributedCircuit.delay_load.html#skrf.media.distributedCircuit.DistributedCircuit.delay_load" title="skrf.media.distributedCircuit.DistributedCircuit.delay_load"><tt class="xref py py-obj docutils literal"><span class="pre">delay_load</span></tt></a></td>
+<td>Delayed load</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.media.distributedCircuit.DistributedCircuit.delay_open.html#skrf.media.distributedCircuit.DistributedCircuit.delay_open" title="skrf.media.distributedCircuit.DistributedCircuit.delay_open"><tt class="xref py py-obj docutils literal"><span class="pre">delay_open</span></tt></a></td>
+<td>Delayed open transmission line</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.media.distributedCircuit.DistributedCircuit.delay_short.html#skrf.media.distributedCircuit.DistributedCircuit.delay_short" title="skrf.media.distributedCircuit.DistributedCircuit.delay_short"><tt class="xref py py-obj docutils literal"><span class="pre">delay_short</span></tt></a></td>
+<td>Delayed Short</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.media.distributedCircuit.DistributedCircuit.electrical_length.html#skrf.media.distributedCircuit.DistributedCircuit.electrical_length" title="skrf.media.distributedCircuit.DistributedCircuit.electrical_length"><tt class="xref py py-obj docutils literal"><span class="pre">electrical_length</span></tt></a></td>
+<td>calculates the electrical length for a given distance, at</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.media.distributedCircuit.DistributedCircuit.from_Media.html#skrf.media.distributedCircuit.DistributedCircuit.from_Media" title="skrf.media.distributedCircuit.DistributedCircuit.from_Media"><tt class="xref py py-obj docutils literal"><span class="pre">from_Media</span></tt></a></td>
+<td>Initializes a DistributedCircuit from an existing</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.media.distributedCircuit.DistributedCircuit.from_csv.html#skrf.media.distributedCircuit.DistributedCircuit.from_csv" title="skrf.media.distributedCircuit.DistributedCircuit.from_csv"><tt class="xref py py-obj docutils literal"><span class="pre">from_csv</span></tt></a></td>
+<td>create a Media from numerical values stored in a csv file.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.media.distributedCircuit.DistributedCircuit.gamma.html#skrf.media.distributedCircuit.DistributedCircuit.gamma" title="skrf.media.distributedCircuit.DistributedCircuit.gamma"><tt class="xref py py-obj docutils literal"><span class="pre">gamma</span></tt></a></td>
+<td>Propagation Constant, <img class="math" src="../../../_images/math/66981fa3920210c6ad8dbe5e968783d5dd7520c3.png" alt="\gamma"/></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.media.distributedCircuit.DistributedCircuit.guess_length_of_delay_short.html#skrf.media.distributedCircuit.DistributedCircuit.guess_length_of_delay_short" title="skrf.media.distributedCircuit.DistributedCircuit.guess_length_of_delay_short"><tt class="xref py py-obj docutils literal"><span class="pre">guess_length_of_delay_short</span></tt></a></td>
+<td>Guess physical length of a delay short.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.media.distributedCircuit.DistributedCircuit.impedance_mismatch.html#skrf.media.distributedCircuit.DistributedCircuit.impedance_mismatch" title="skrf.media.distributedCircuit.DistributedCircuit.impedance_mismatch"><tt class="xref py py-obj docutils literal"><span class="pre">impedance_mismatch</span></tt></a></td>
+<td>Two-port network for an impedance miss-match</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.media.distributedCircuit.DistributedCircuit.inductor.html#skrf.media.distributedCircuit.DistributedCircuit.inductor" title="skrf.media.distributedCircuit.DistributedCircuit.inductor"><tt class="xref py py-obj docutils literal"><span class="pre">inductor</span></tt></a></td>
+<td>Inductor</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.media.distributedCircuit.DistributedCircuit.line.html#skrf.media.distributedCircuit.DistributedCircuit.line" title="skrf.media.distributedCircuit.DistributedCircuit.line"><tt class="xref py py-obj docutils literal"><span class="pre">line</span></tt></a></td>
+<td>Matched transmission line of given length</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.media.distributedCircuit.DistributedCircuit.load.html#skrf.media.distributedCircuit.DistributedCircuit.load" title="skrf.media.distributedCircuit.DistributedCircuit.load"><tt class="xref py py-obj docutils literal"><span class="pre">load</span></tt></a></td>
+<td>Load of given reflection coefficient.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.media.distributedCircuit.DistributedCircuit.match.html#skrf.media.distributedCircuit.DistributedCircuit.match" title="skrf.media.distributedCircuit.DistributedCircuit.match"><tt class="xref py py-obj docutils literal"><span class="pre">match</span></tt></a></td>
+<td>Perfect matched load (<img class="math" src="../../../_images/math/36cb4e6b083aa5205c6a7884b05cad4c0de36f08.png" alt="\Gamma_0 = 0"/>).</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.media.distributedCircuit.DistributedCircuit.open.html#skrf.media.distributedCircuit.DistributedCircuit.open" title="skrf.media.distributedCircuit.DistributedCircuit.open"><tt class="xref py py-obj docutils literal"><span class="pre">open</span></tt></a></td>
+<td>Open (<img class="math" src="../../../_images/math/316cfc077c16efc10b7272974fa3551b01ed5556.png" alt="\Gamma_0 = 1"/>)</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.media.distributedCircuit.DistributedCircuit.resistor.html#skrf.media.distributedCircuit.DistributedCircuit.resistor" title="skrf.media.distributedCircuit.DistributedCircuit.resistor"><tt class="xref py py-obj docutils literal"><span class="pre">resistor</span></tt></a></td>
+<td>Resistor</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.media.distributedCircuit.DistributedCircuit.short.html#skrf.media.distributedCircuit.DistributedCircuit.short" title="skrf.media.distributedCircuit.DistributedCircuit.short"><tt class="xref py py-obj docutils literal"><span class="pre">short</span></tt></a></td>
+<td>Short (<img class="math" src="../../../_images/math/d4118fe2a9c0472bf22e6ba0eded8deba561c8b0.png" alt="\Gamma_0 = -1"/>)</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.media.distributedCircuit.DistributedCircuit.shunt.html#skrf.media.distributedCircuit.DistributedCircuit.shunt" title="skrf.media.distributedCircuit.DistributedCircuit.shunt"><tt class="xref py py-obj docutils literal"><span class="pre">shunt</span></tt></a></td>
+<td>Shunts a <a class="reference internal" href="../../generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.media.distributedCircuit.DistributedCircuit.shunt_capacitor.html#skrf.media.distributedCircuit.DistributedCircuit.shunt_capacitor" title="skrf.media.distributedCircuit.DistributedCircuit.shunt_capacitor"><tt class="xref py py-obj docutils literal"><span class="pre">shunt_capacitor</span></tt></a></td>
+<td>Shunted capacitor</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.media.distributedCircuit.DistributedCircuit.shunt_delay_load.html#skrf.media.distributedCircuit.DistributedCircuit.shunt_delay_load" title="skrf.media.distributedCircuit.DistributedCircuit.shunt_delay_load"><tt class="xref py py-obj docutils literal"><span class="pre">shunt_delay_load</span></tt></a></td>
+<td>Shunted delayed load</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.media.distributedCircuit.DistributedCircuit.shunt_delay_open.html#skrf.media.distributedCircuit.DistributedCircuit.shunt_delay_open" title="skrf.media.distributedCircuit.DistributedCircuit.shunt_delay_open"><tt class="xref py py-obj docutils literal"><span class="pre">shunt_delay_open</span></tt></a></td>
+<td>Shunted delayed open</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.media.distributedCircuit.DistributedCircuit.shunt_delay_short.html#skrf.media.distributedCircuit.DistributedCircuit.shunt_delay_short" title="skrf.media.distributedCircuit.DistributedCircuit.shunt_delay_short"><tt class="xref py py-obj docutils literal"><span class="pre">shunt_delay_short</span></tt></a></td>
+<td>Shunted delayed short</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.media.distributedCircuit.DistributedCircuit.shunt_inductor.html#skrf.media.distributedCircuit.DistributedCircuit.shunt_inductor" title="skrf.media.distributedCircuit.DistributedCircuit.shunt_inductor"><tt class="xref py py-obj docutils literal"><span class="pre">shunt_inductor</span></tt></a></td>
+<td>Shunted inductor</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.media.distributedCircuit.DistributedCircuit.splitter.html#skrf.media.distributedCircuit.DistributedCircuit.splitter" title="skrf.media.distributedCircuit.DistributedCircuit.splitter"><tt class="xref py py-obj docutils literal"><span class="pre">splitter</span></tt></a></td>
+<td>Ideal, lossless n-way splitter.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.media.distributedCircuit.DistributedCircuit.tee.html#skrf.media.distributedCircuit.DistributedCircuit.tee" title="skrf.media.distributedCircuit.DistributedCircuit.tee"><tt class="xref py py-obj docutils literal"><span class="pre">tee</span></tt></a></td>
+<td>Ideal, lossless tee.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.media.distributedCircuit.DistributedCircuit.theta_2_d.html#skrf.media.distributedCircuit.DistributedCircuit.theta_2_d" title="skrf.media.distributedCircuit.DistributedCircuit.theta_2_d"><tt class="xref py py-obj docutils literal"><span class="pre">theta_2_d</span></tt></a></td>
+<td>Converts electrical length to physical distance.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.media.distributedCircuit.DistributedCircuit.thru.html#skrf.media.distributedCircuit.DistributedCircuit.thru" title="skrf.media.distributedCircuit.DistributedCircuit.thru"><tt class="xref py py-obj docutils literal"><span class="pre">thru</span></tt></a></td>
+<td>Matched transmission line of length 0.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.media.distributedCircuit.DistributedCircuit.white_gaussian_polar.html#skrf.media.distributedCircuit.DistributedCircuit.white_gaussian_polar" title="skrf.media.distributedCircuit.DistributedCircuit.white_gaussian_polar"><tt class="xref py py-obj docutils literal"><span class="pre">white_gaussian_polar</span></tt></a></td>
+<td>Complex zero-mean gaussian white-noise network.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.media.distributedCircuit.DistributedCircuit.write_csv.html#skrf.media.distributedCircuit.DistributedCircuit.write_csv" title="skrf.media.distributedCircuit.DistributedCircuit.write_csv"><tt class="xref py py-obj docutils literal"><span class="pre">write_csv</span></tt></a></td>
+<td>write this media&#8217;s frequency, z0, and gamma to a csv file.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../../index.html">
+              <img class="logo" src="../../../_static/scikit_logo_small.png" alt="Logo"/>
+            </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="skrf.media.media.Media.write_csv.html"
+                        title="previous chapter">skrf.media.media.Media.write_csv</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="skrf.media.distributedCircuit.DistributedCircuit.Y.html"
+                        title="next chapter">skrf.media.distributedCircuit.DistributedCircuit.Y</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../../_sources/reference/media/generated/skrf.media.distributedCircuit.DistributedCircuit.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<ul class="this-page-menu">
+  <li><a href="/scipy/docs/reference/media/skrf.media.distributedCircuit.DistributedCircuit">Edit page</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../../../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="skrf.media.distributedCircuit.DistributedCircuit.Y.html" title="skrf.media.distributedCircuit.DistributedCircuit.Y"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="skrf.media.media.Media.write_csv.html" title="skrf.media.media.Media.write_csv"
+             >previous</a> |</li>
+        <li><a href="../../../index.html">scikit-rf 0.1 documentation</a> &raquo;</li>
+          <li><a href="../index.html" >media (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.media</span></tt>)</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, alex arsenovic.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
