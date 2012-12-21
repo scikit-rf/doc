@@ -1,0 +1,154 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>skrf.calibration.calibration.Calibration.uncertainty_per_standard &mdash; scikit-rf 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/scipy.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="scikit-rf 0.1 documentation" href="../../../index.html" />
+  <script type="text/javascript">
+	  var _gaq = _gaq || [];
+	    _gaq.push(['_setAccount', 'UA-29068876-1']);
+		  _gaq.push(['_trackPageview']);
+
+		    (function() {
+			    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+					    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+						  })();
+
+  </script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../../../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../index.html">scikit-rf 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="skrf-calibration-calibration-calibration-uncertainty-per-standard">
+<h1>skrf.calibration.calibration.Calibration.uncertainty_per_standard<a class="headerlink" href="#skrf-calibration-calibration-calibration-uncertainty-per-standard" title="Permalink to this headline">¶</a></h1>
+<dl class="method">
+<dt id="skrf.calibration.calibration.Calibration.uncertainty_per_standard">
+<tt class="descclassname">Calibration.</tt><tt class="descname">uncertainty_per_standard</tt><big>(</big><em>std_names=None</em>, <em>attribute='s'</em><big>)</big><a class="headerlink" href="#skrf.calibration.calibration.Calibration.uncertainty_per_standard" title="Permalink to this definition">¶</a></dt>
+<dd><p>given that you have repeat-connections of single standard,
+this calculates the complex standard deviation (distance)
+for each standard in the calibration across connection #.</p>
+<dl class="docutils">
+<dt>takes:</dt>
+<dd><dl class="first last docutils">
+<dt>std_names: list of strings to uniquely identify each</dt>
+<dd>standard.*</dd>
+<dt>attribute: string passed to func_on_networks to calculate</dt>
+<dd>std deviation on a component if desired. [&#8216;s&#8217;]</dd>
+</dl>
+</dd>
+<dt>returns:</dt>
+<dd>list of skrf.Networks, whose magnitude of s-parameters is
+proportional to the standard deviation for that standard</dd>
+<dt><a href="#id1"><span class="problematic" id="id2">*</span></a>example:</dt>
+<dd><dl class="first last docutils">
+<dt>if your calibration had ideals named like:</dt>
+<dd>&#8216;short 1&#8217;, &#8216;short 2&#8217;, &#8216;open 1&#8217;, &#8216;open 2&#8217;, etc.</dd>
+<dt>you would pass this</dt>
+<dd>mycal.uncertainty_per_standard([&#8216;short&#8217;,&#8217;open&#8217;,&#8217;match&#8217;])</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../../index.html">
+              <img class="logo" src="../../../_static/scikit_logo_small.png" alt="Logo"/>
+            </a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../../_sources/reference/calibration/generated/mwavepy.calibration.calibration.Calibration.uncertainty_per_standard.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<ul class="this-page-menu">
+  <li><a href="/scipy/docs/reference/calibration/mwavepy.calibration.calibration.Calibration.uncertainty_per_standard">Edit page</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../../../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../index.html">scikit-rf 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, alex arsenovic.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

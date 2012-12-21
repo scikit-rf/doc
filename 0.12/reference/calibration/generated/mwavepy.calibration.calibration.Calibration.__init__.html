@@ -1,0 +1,206 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>skrf.calibration.calibration.Calibration.__init__ &mdash; scikit-rf 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/scipy.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="scikit-rf 0.1 documentation" href="../../../index.html" />
+  <script type="text/javascript">
+	  var _gaq = _gaq || [];
+	    _gaq.push(['_setAccount', 'UA-29068876-1']);
+		  _gaq.push(['_trackPageview']);
+
+		    (function() {
+			    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+					    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+						  })();
+
+  </script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../../../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../index.html">scikit-rf 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="skrf-calibration-calibration-calibration-init">
+<h1>skrf.calibration.calibration.Calibration.__init__<a class="headerlink" href="#skrf-calibration-calibration-calibration-init" title="Permalink to this headline">¶</a></h1>
+<dl class="method">
+<dt id="skrf.calibration.calibration.Calibration.__init__">
+<tt class="descclassname">Calibration.</tt><tt class="descname">__init__</tt><big>(</big><em>measured</em>, <em>ideals</em>, <em>type=None</em>, <em>is_reciprocal=False</em>, <em>name=None</em>, <em>sloppy_input=False</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#skrf.calibration.calibration.Calibration.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calibration initializer.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>measured</strong> : list of <a class="reference internal" href="../../generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> objects</p>
+<blockquote>
+<div><p>Raw measurements of the calibration standards. The order
+must align with the <cite>ideals</cite> parameter</p>
+</div></blockquote>
+<p><strong>ideals</strong> : list of <a class="reference internal" href="../../generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> objects</p>
+<blockquote>
+<div><p>Predicted ideal response of the calibration standards.
+The order must align with <cite>ideals</cite> list</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Other Parameters:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first"><strong>type</strong> : string</p>
+<blockquote>
+<div><p>the calibration algorithm. If <cite>None</cite>, the class will inspect
+number of ports on first <cite>measured</cite> Network and choose either
+<cite>&#8216;one port&#8217;</cite> or <cite>&#8216;two port&#8217;</cite>. See <a href="#id3"><span class="problematic" id="id4">Notes_</span></a> section for more
+infor</p>
+</div></blockquote>
+<p><strong>is_reciprocal</strong> : Boolean</p>
+<blockquote>
+<div><p>enables the reciprocity assumption on the calculation of the
+error_network, which is only relevant for one-port
+calibrations.</p>
+</div></blockquote>
+<p><strong>switch_terms</strong> : tuple of <a class="reference internal" href="../../generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> objects</p>
+<blockquote>
+<div><p>The two measured switch terms in the order
+(forward, reverse).  This is only applicable in two-port
+calibrations. See Roger Mark&#8217;s paper on switch terms <a class="footnote-reference" href="#id2" id="id1">[1]</a>
+for explanation of what they are.</p>
+</div></blockquote>
+<p><strong>name: string</strong> :</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>the name of calibration, just for your</dt>
+<dd><p class="first last">convenience [None].</p>
+</dd>
+</dl>
+</div></blockquote>
+<p><strong>sloppy_input</strong> :  Boolean.</p>
+<blockquote>
+<div><p>Allows ideals and measured lists to be &#8216;aligned&#8217; based on
+the network names</p>
+</div></blockquote>
+<p><strong>**kwargs</strong> : key-word arguments</p>
+<blockquote class="last">
+<div><p>passed to the calibration algorithm, defined by <cite>type</cite></p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>All calibration algorithms are in stored in
+<a class="reference internal" href="../calibrationAlgorithms.html#module-skrf.calibration.calibrationAlgorithms" title="skrf.calibration.calibrationAlgorithms"><tt class="xref py py-mod docutils literal"><span class="pre">skrf.calibration.calibrationAlgorithms</span></tt></a> , refer to that
+file for documentation on the algorithms themselves. The
+Calibration class accesses those functions through the attribute
+<cite>&#8216;calibration_algorihtm_dict&#8217;</cite>.</p>
+<p class="rubric">References</p>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Marks, Roger B.; , &#8220;Formulations of the Basic Vector Network Analyzer Error Model including Switch-Terms,&#8221; ARFTG Conference Digest-Fall, 50th , vol.32, no., pp.115-126, Dec. 1997. URL: <a class="reference external" href="http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=4119948&amp;isnumber=4119931">http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=4119948&amp;isnumber=4119931</a></td></tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<p>See the <a class="reference internal" href="../../../tutorials/calibration.html"><em>Calibration</em></a> tutorial, or the
+examples sections for <a class="reference internal" href="../../../examples/oneport_calibration.html"><em>One-Port Calibration</em></a>
+and <a class="reference internal" href="../../../examples/twoport_calibration.html"><em>Two-Port Calibration</em></a></p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../../index.html">
+              <img class="logo" src="../../../_static/scikit_logo_small.png" alt="Logo"/>
+            </a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../../_sources/reference/calibration/generated/mwavepy.calibration.calibration.Calibration.__init__.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<ul class="this-page-menu">
+  <li><a href="/scipy/docs/reference/calibration/mwavepy.calibration.calibration.Calibration.__init__">Edit page</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../../../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../index.html">scikit-rf 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, alex arsenovic.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

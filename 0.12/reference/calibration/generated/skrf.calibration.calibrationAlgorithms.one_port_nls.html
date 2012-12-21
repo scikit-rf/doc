@@ -1,0 +1,194 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>skrf.calibration.calibrationAlgorithms.one_port_nls &mdash; scikit-rf 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/scipy.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="scikit-rf 0.1 documentation" href="../../../index.html" />
+    <link rel="up" title="calibrationAlgorithms (skrf.calibration.calibrationAlgorithms)" href="../calibrationAlgorithms.html" />
+    <link rel="next" title="skrf.calibration.calibrationAlgorithms.two_port" href="skrf.calibration.calibrationAlgorithms.two_port.html" />
+    <link rel="prev" title="skrf.calibration.calibrationAlgorithms.one_port" href="skrf.calibration.calibrationAlgorithms.one_port.html" />
+  <script type="text/javascript">
+	  var _gaq = _gaq || [];
+	    _gaq.push(['_setAccount', 'UA-29068876-1']);
+		  _gaq.push(['_trackPageview']);
+
+		    (function() {
+			    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+					    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+						  })();
+
+  </script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../../../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="skrf.calibration.calibrationAlgorithms.two_port.html" title="skrf.calibration.calibrationAlgorithms.two_port"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="skrf.calibration.calibrationAlgorithms.one_port.html" title="skrf.calibration.calibrationAlgorithms.one_port"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../../index.html">scikit-rf 0.1 documentation</a> &raquo;</li>
+          <li><a href="../index.html" >calibration (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.calibration</span></tt>)</a> &raquo;</li>
+          <li><a href="../calibrationAlgorithms.html" accesskey="U">calibrationAlgorithms (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.calibration.calibrationAlgorithms</span></tt>)</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="skrf-calibration-calibrationalgorithms-one-port-nls">
+<h1>skrf.calibration.calibrationAlgorithms.one_port_nls<a class="headerlink" href="#skrf-calibration-calibrationalgorithms-one-port-nls" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="skrf.calibration.calibrationAlgorithms.one_port_nls">
+<tt class="descclassname">skrf.calibration.calibrationAlgorithms.</tt><tt class="descname">one_port_nls</tt><big>(</big><em>measured</em>, <em>ideals</em><big>)</big><a class="headerlink" href="#skrf.calibration.calibrationAlgorithms.one_port_nls" title="Permalink to this definition">¶</a></dt>
+<dd><p>one port non-linear least squares.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>measured</strong> : list of <tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt> objects or numpy.ndarray</p>
+<blockquote>
+<div><p>a list of the measured reflection coefficients. The elements
+of the list can  either a kxnxn numpy.ndarray, representing a
+s-matrix, or list of  1-port <a class="reference internal" href="../../generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a>
+objects.</p>
+</div></blockquote>
+<p><strong>ideals</strong> : list of <a class="reference internal" href="../../generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> objects or numpy.ndarray</p>
+<blockquote>
+<div><p>a list of the ideal reflection coefficients. The elements
+of the list can  either a kxnxn numpy.ndarray, representing a
+s-matrix, or list of  1-port <a class="reference internal" href="../../generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a>
+objects.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>output</strong> : a dictionary</p>
+<blockquote class="last">
+<div><p>a dictionary containing the following keys:</p>
+<ul class="simple">
+<li>&#8216;error coeffcients&#8217;: dictionary containing standard error
+coefficients</li>
+<li>&#8216;residuals&#8217;: a matrix of residuals from the least squared
+calculation. see numpy.linalg.lstsq() for more info</li>
+<li>&#8216;cov_x&#8217;: covariance matrix</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>Uses <tt class="xref py py-func docutils literal"><span class="pre">scipy.optmize.leastsq()</span></tt> for non-linear least squares
+calculation</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../../index.html">
+              <img class="logo" src="../../../_static/scikit_logo_small.png" alt="Logo"/>
+            </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="skrf.calibration.calibrationAlgorithms.one_port.html"
+                        title="previous chapter">skrf.calibration.calibrationAlgorithms.one_port</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="skrf.calibration.calibrationAlgorithms.two_port.html"
+                        title="next chapter">skrf.calibration.calibrationAlgorithms.two_port</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../../_sources/reference/calibration/generated/skrf.calibration.calibrationAlgorithms.one_port_nls.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<ul class="this-page-menu">
+  <li><a href="/scipy/docs/reference/calibration/skrf.calibration.calibrationAlgorithms.one_port_nls">Edit page</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../../../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="skrf.calibration.calibrationAlgorithms.two_port.html" title="skrf.calibration.calibrationAlgorithms.two_port"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="skrf.calibration.calibrationAlgorithms.one_port.html" title="skrf.calibration.calibrationAlgorithms.one_port"
+             >previous</a> |</li>
+        <li><a href="../../../index.html">scikit-rf 0.1 documentation</a> &raquo;</li>
+          <li><a href="../index.html" >calibration (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.calibration</span></tt>)</a> &raquo;</li>
+          <li><a href="../calibrationAlgorithms.html" >calibrationAlgorithms (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.calibration.calibrationAlgorithms</span></tt>)</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, alex arsenovic.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

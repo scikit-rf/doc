@@ -1,0 +1,46 @@
+skrf.networkSet.NetworkSet
+==========================
+
+.. currentmodule:: skrf.networkSet
+
+.. autoclass:: NetworkSet
+  :no-members:
+
+
+
+.. rubric:: Attributes
+
+.. autosummary::
+  :toctree:
+  :nosignatures:
+
+  ~NetworkSet.inv
+  ~NetworkSet.mean_s_db
+  ~NetworkSet.std_s_db
+
+
+
+
+
+.. rubric:: Methods
+
+.. autosummary::
+  :toctree:
+  :nosignatures:
+
+  ~NetworkSet.__init__
+  ~NetworkSet.copy
+  ~NetworkSet.element_wise_method
+  ~NetworkSet.from_zip
+  ~NetworkSet.plot_logsigma
+  ~NetworkSet.plot_uncertainty_bounds_component
+  ~NetworkSet.plot_uncertainty_bounds_s
+  ~NetworkSet.plot_uncertainty_bounds_s_db
+  ~NetworkSet.plot_uncertainty_decomposition
+  ~NetworkSet.set_wise_function
+  ~NetworkSet.signature
+  ~NetworkSet.uncertainty_ntwk_triplet
+
+
+
+
