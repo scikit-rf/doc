@@ -1,0 +1,6 @@
+skrf.vi.vna.HP8720.ifbw
+=======================
+
+.. currentmodule:: skrf.vi.vna
+
+.. autoattribute:: HP8720.ifbw

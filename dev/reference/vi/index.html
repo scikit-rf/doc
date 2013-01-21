@@ -1,0 +1,213 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>vi (skrf.vi) &mdash; scikit-rf dev documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/scipy.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     'dev',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="scikit-rf dev documentation" href="../../index.html" />
+    <link rel="next" title="skrf.vi.vna.PNAX" href="generated/skrf.vi.vna.PNAX.html" />
+    <link rel="prev" title="skrf.media.freespace.Freespace.write_csv" href="../media/generated/skrf.media.freespace.Freespace.write_csv.html" />
+  <script type="text/javascript">
+	  var _gaq = _gaq || [];
+	    _gaq.push(['_setAccount', 'UA-29068876-1']);
+		  _gaq.push(['_trackPageview']);
+
+		    (function() {
+			    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+					    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+						  })();
+
+  </script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="generated/skrf.vi.vna.PNAX.html" title="skrf.vi.vna.PNAX"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../media/generated/skrf.media.freespace.Freespace.write_csv.html" title="skrf.media.freespace.Freespace.write_csv"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">scikit-rf dev documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <span class="target" id="module-skrf.vi"></span><span class="target" id="module-skrf.vi"></span><div class="section" id="vi-skrf-vi">
+<h1>vi (<a class="reference internal" href="#module-skrf.vi" title="skrf.vi"><tt class="xref py py-mod docutils literal"><span class="pre">skrf.vi</span></tt></a>)<a class="headerlink" href="#vi-skrf-vi" title="Permalink to this headline">¶</a></h1>
+<p>This module holds Virtual Instruments that are intricately related 
+to <strong>skrf</strong>.</p>
+<span class="target" id="module-skrf.vi.vna"></span><span class="target" id="module-skrf.vi.vna"></span><div class="section" id="vector-network-analyzers-skrf-vi-vna">
+<h2>Vector Network Analyzers (<a class="reference internal" href="#module-skrf.vi.vna" title="skrf.vi.vna"><tt class="xref py py-mod docutils literal"><span class="pre">skrf.vi.vna</span></tt></a>)<a class="headerlink" href="#vector-network-analyzers-skrf-vi-vna" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">These Virtual Instruments are very spotily written, and may be subject 
+to major re-writing in the future.</p>
+</div>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/skrf.vi.vna.PNAX.html#skrf.vi.vna.PNAX" title="skrf.vi.vna.PNAX"><tt class="xref py py-obj docutils literal"><span class="pre">PNAX</span></tt></a>([address,&nbsp;channel])</td>
+<td>Agilent PNAX</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/skrf.vi.vna.ZVA40.html#skrf.vi.vna.ZVA40" title="skrf.vi.vna.ZVA40"><tt class="xref py py-obj docutils literal"><span class="pre">ZVA40</span></tt></a>([address,&nbsp;active_channel,&nbsp;continuous])</td>
+<td>Rohde&amp;Scharz ZVA40</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/skrf.vi.vna.HP8510C.html#skrf.vi.vna.HP8510C" title="skrf.vi.vna.HP8510C"><tt class="xref py py-obj docutils literal"><span class="pre">HP8510C</span></tt></a>([address])</td>
+<td>good ole 8510</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/skrf.vi.vna.HP8720.html#skrf.vi.vna.HP8720" title="skrf.vi.vna.HP8720"><tt class="xref py py-obj docutils literal"><span class="pre">HP8720</span></tt></a>([address])</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<span class="target" id="module-skrf.vi.sa"></span><span class="target" id="module-skrf.vi.sa"></span><div class="section" id="spectrum-analyzers-skrf-vi-sa">
+<h2>Spectrum Analyzers  (<a class="reference internal" href="#module-skrf.vi.sa" title="skrf.vi.sa"><tt class="xref py py-mod docutils literal"><span class="pre">skrf.vi.sa</span></tt></a>)<a class="headerlink" href="#spectrum-analyzers-skrf-vi-sa" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/skrf.vi.sa.HP8500.html#skrf.vi.sa.HP8500" title="skrf.vi.sa.HP8500"><tt class="xref py py-obj docutils literal"><span class="pre">HP8500</span></tt></a>([address])</td>
+<td>HP8500&#8217;s series Spectrum Analyzers</td>
+</tr>
+</tbody>
+</table>
+</div>
+<span class="target" id="module-skrf.vi.stages"></span><span class="target" id="module-skrf.vi.stages"></span><div class="section" id="stages-skrf-vi-stages">
+<h2>Stages  (<a class="reference internal" href="#module-skrf.vi.stages" title="skrf.vi.stages"><tt class="xref py py-mod docutils literal"><span class="pre">skrf.vi.stages</span></tt></a>)<a class="headerlink" href="#stages-skrf-vi-stages" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/skrf.vi.stages.ESP300.html#skrf.vi.stages.ESP300" title="skrf.vi.stages.ESP300"><tt class="xref py py-obj docutils literal"><span class="pre">ESP300</span></tt></a>([address,&nbsp;current_axis,&nbsp;...])</td>
+<td>Newport Universal Motion Controller/Driver Model ESP300</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="../../_static/scikit-rf-logo-flat-docs.svg" alt="Logo"/>
+            </a></p>
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">vi (<tt class="docutils literal"><span class="pre">skrf.vi</span></tt>)</a><ul>
+<li><a class="reference internal" href="#vector-network-analyzers-skrf-vi-vna">Vector Network Analyzers (<tt class="docutils literal"><span class="pre">skrf.vi.vna</span></tt>)</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#spectrum-analyzers-skrf-vi-sa">Spectrum Analyzers  (<tt class="docutils literal"><span class="pre">skrf.vi.sa</span></tt>)</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#stages-skrf-vi-stages">Stages  (<tt class="docutils literal"><span class="pre">skrf.vi.stages</span></tt>)</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../media/generated/skrf.media.freespace.Freespace.write_csv.html"
+                        title="previous chapter">skrf.media.freespace.Freespace.write_csv</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="generated/skrf.vi.vna.PNAX.html"
+                        title="next chapter">skrf.vi.vna.PNAX</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/reference/vi/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<ul class="this-page-menu">
+  <li><a href="/scipy/docs/scipy-docs/reference/vi/index.rst">Edit page</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="generated/skrf.vi.vna.PNAX.html" title="skrf.vi.vna.PNAX"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../media/generated/skrf.media.freespace.Freespace.write_csv.html" title="skrf.media.freespace.Freespace.write_csv"
+             >previous</a> |</li>
+        <li><a href="../../index.html">scikit-rf dev documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, scikit-rf development team.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,6 @@
+skrf.vi.vna.ZVA40.sdata
+=======================
+
+.. currentmodule:: skrf.vi.vna
+
+.. autoattribute:: ZVA40.sdata

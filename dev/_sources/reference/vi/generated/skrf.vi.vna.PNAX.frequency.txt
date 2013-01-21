@@ -1,0 +1,6 @@
+skrf.vi.vna.PNAX.frequency
+==========================
+
+.. currentmodule:: skrf.vi.vna
+
+.. autoattribute:: PNAX.frequency

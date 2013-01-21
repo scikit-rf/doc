@@ -1,0 +1,6 @@
+skrf.vi.vna.PNAX.network
+========================
+
+.. currentmodule:: skrf.vi.vna
+
+.. autoattribute:: PNAX.network

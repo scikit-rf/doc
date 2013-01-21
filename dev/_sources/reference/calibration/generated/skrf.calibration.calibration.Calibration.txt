@@ -54,6 +54,7 @@ skrf.calibration.calibration.Calibration
   ~Calibration.total_error
   ~Calibration.unbiased_error
   ~Calibration.uncertainty_per_standard
+  ~Calibration.write
 
 
 

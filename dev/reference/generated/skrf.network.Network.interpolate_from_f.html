@@ -1,0 +1,181 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>skrf.network.Network.interpolate_from_f &mdash; scikit-rf dev documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/scipy.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     'dev',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="scikit-rf dev documentation" href="../../index.html" />
+    <link rel="up" title="network (skrf.network)" href="../network.html" />
+    <link rel="next" title="skrf.network.stitch" href="skrf.network.stitch.html" />
+    <link rel="prev" title="skrf.network.Network.interpolate_self" href="skrf.network.Network.interpolate_self.html" />
+  <script type="text/javascript">
+	  var _gaq = _gaq || [];
+	    _gaq.push(['_setAccount', 'UA-29068876-1']);
+		  _gaq.push(['_trackPageview']);
+
+		    (function() {
+			    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+					    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+						  })();
+
+  </script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="skrf.network.stitch.html" title="skrf.network.stitch"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="skrf.network.Network.interpolate_self.html" title="skrf.network.Network.interpolate_self"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">scikit-rf dev documentation</a> &raquo;</li>
+          <li><a href="../network.html" accesskey="U">network (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.network</span></tt>)</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="skrf-network-network-interpolate-from-f">
+<h1>skrf.network.Network.interpolate_from_f<a class="headerlink" href="#skrf-network-network-interpolate-from-f" title="Permalink to this headline">¶</a></h1>
+<dl class="method">
+<dt id="skrf.network.Network.interpolate_from_f">
+<tt class="descclassname">Network.</tt><tt class="descname">interpolate_from_f</tt><big>(</big><em>f</em>, <em>interp_kwargs={}</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#skrf.network.Network.interpolate_from_f" title="Permalink to this definition">¶</a></dt>
+<dd><p>Interpolates s-parameters from a frequency vector.</p>
+<p>Given a frequency vector, and optionally a <cite>unit</cite> (see **kwargs)
+, interpolate the networks s-parameters linearly in real and 
+imaginary components.</p>
+<p>See <a class="reference internal" href="skrf.network.Network.interpolate.html#skrf.network.Network.interpolate" title="skrf.network.Network.interpolate"><tt class="xref py py-func docutils literal"><span class="pre">interpolate()</span></tt></a> for more information.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>new_frequency</strong> : <a class="reference internal" href="skrf.frequency.Frequency.html#skrf.frequency.Frequency" title="skrf.frequency.Frequency"><tt class="xref py py-class docutils literal"><span class="pre">Frequency</span></tt></a></p>
+<blockquote>
+<div><p>frequency information to interpolate at</p>
+</div></blockquote>
+<p><strong>interp_kwargs :</strong> :</p>
+<blockquote>
+<div><p>dictionary of kwargs to be passed through to 
+<tt class="xref py py-func docutils literal"><span class="pre">scipy.interpolate.interpolate.interp1d()</span></tt></p>
+</div></blockquote>
+<p><strong>**kwargs :</strong> :</p>
+<blockquote class="last">
+<div><p>passed to <tt class="xref py py-func docutils literal"><span class="pre">scipy.interpolate.interp1d()</span></tt> initializer.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="skrf.network.Network.resample.html#skrf.network.Network.resample" title="skrf.network.Network.resample"><tt class="xref py py-obj docutils literal"><span class="pre">resample</span></tt></a>, <a class="reference internal" href="skrf.network.Network.interpolate.html#skrf.network.Network.interpolate" title="skrf.network.Network.interpolate"><tt class="xref py py-obj docutils literal"><span class="pre">interpolate</span></tt></a>, <a class="reference internal" href="skrf.network.Network.interpolate_self.html#skrf.network.Network.interpolate_self" title="skrf.network.Network.interpolate_self"><tt class="xref py py-obj docutils literal"><span class="pre">interpolate_self</span></tt></a></p>
+</div>
+<p class="rubric">Notes</p>
+<p>This creates a new <a class="reference internal" href="skrf.frequency.Frequency.html#skrf.frequency.Frequency" title="skrf.frequency.Frequency"><tt class="xref py py-class docutils literal"><span class="pre">Frequency</span></tt></a>, object 
+using the method <a class="reference internal" href="skrf.frequency.Frequency.from_f.html#skrf.frequency.Frequency.from_f" title="skrf.frequency.Frequency.from_f"><tt class="xref py py-func docutils literal"><span class="pre">from_f()</span></tt></a>, and then calls
+<a class="reference internal" href="skrf.network.Network.interpolate_self.html#skrf.network.Network.interpolate_self" title="skrf.network.Network.interpolate_self"><tt class="xref py py-func docutils literal"><span class="pre">interpolate_self()</span></tt></a>.</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="../../_static/scikit-rf-logo-flat-docs.svg" alt="Logo"/>
+            </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="skrf.network.Network.interpolate_self.html"
+                        title="previous chapter">skrf.network.Network.interpolate_self</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="skrf.network.stitch.html"
+                        title="next chapter">skrf.network.stitch</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/reference/generated/skrf.network.Network.interpolate_from_f.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<ul class="this-page-menu">
+  <li><a href="/scipy/docs/reference/skrf.network.Network.interpolate_from_f">Edit page</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="skrf.network.stitch.html" title="skrf.network.stitch"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="skrf.network.Network.interpolate_self.html" title="skrf.network.Network.interpolate_self"
+             >previous</a> |</li>
+        <li><a href="../../index.html">scikit-rf dev documentation</a> &raquo;</li>
+          <li><a href="../network.html" >network (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.network</span></tt>)</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, scikit-rf development team.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

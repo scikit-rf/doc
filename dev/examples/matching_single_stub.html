@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Circuit Design: Single Stub Matching Network &mdash; scikit-rf 0.12 documentation</title>
+    <title>Visualizing a Single Stub Matching Network &mdash; scikit-rf dev documentation</title>
     
     <link rel="stylesheet" href="../_static/scipy.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.12',
+        VERSION:     'dev',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,9 +25,9 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="scikit-rf 0.12 documentation" href="../index.html" />
-    <link rel="next" title="network (skrf.network)" href="../reference/network.html" />
-    <link rel="prev" title="VNA Noise Analysis" href="vna_noise_analysis.html" />
+    <link rel="top" title="scikit-rf dev documentation" href="../index.html" />
+    <link rel="next" title="One-Port Calibration" href="oneport_calibration.html" />
+    <link rel="prev" title="Media" href="../tutorials/media.html" />
   <script type="text/javascript">
 	  var _gaq = _gaq || [];
 	    _gaq.push(['_setAccount', 'UA-29068876-1']);
@@ -53,15 +53,12 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="../np-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="../reference/network.html" title="network (skrf.network)"
+          <a href="oneport_calibration.html" title="One-Port Calibration"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="vna_noise_analysis.html" title="VNA Noise Analysis"
+          <a href="../tutorials/media.html" title="Media"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">scikit-rf 0.12 documentation</a> &raquo;</li> 
+        <li><a href="../index.html">scikit-rf dev documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -70,22 +67,21 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="circuit-design-single-stub-matching-network">
-<h1>Circuit Design: Single Stub Matching Network<a class="headerlink" href="#circuit-design-single-stub-matching-network" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="visualizing-a-single-stub-matching-network">
+<h1>Visualizing a Single Stub Matching Network<a class="headerlink" href="#visualizing-a-single-stub-matching-network" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p>This example illustrates a way to visualize the design space for a single stub matching network. The matching Network consists of a shunt and series stub arranged as shown below, (image taken from R.M. Weikle&#8217;s Notes)</p>
+<p>This example illustrates a way to visualize the design space for a single stub matching network. The matching Network consists of a shunt and series stub arranged as shown below, (image taken from R.M. Weikle&#8217;s Notes).</p>
 <div class="figure align-center">
 <img alt="../_images/single_stub_matching_diagram.png" src="../_images/single_stub_matching_diagram.png" style="width: 400px;" />
+<p class="caption">Single stub matching Network</p>
 </div>
-<p>A single stub matching network can be designed to produce maximum power transfer to the load, at a single frequency. The matching network has two design parameters:</p>
-<blockquote>
-<div><ul class="simple">
+<p>A single stub matching network can be designed to produce maximum power transfer to the load, <img class="math" src="../_images/math/15c554bae7b9e009eb3af2329f07466ede8c4230.png" alt="Z_L"/> at a single frequency. The matching network has two design parameters:</p>
+<ul class="simple">
 <li>length of series tline</li>
 <li>length of shunt tline</li>
 </ul>
-</div></blockquote>
-<p>This script illustrates how to create a plot of return loss magnitude off the matched load, vs series and shunt line lengths. The optimal designs are then seen as the minima of a 2D surface.</p>
+<p>This script illustrates how to create a plot of reflection coefficient magnitude, vs series and shunt line lengths. The optimal designs are then seen as the minima of a 2D surface.</p>
 </div>
 <div class="section" id="script">
 <h2>Script<a class="headerlink" href="#script" title="Permalink to this headline">¶</a></h2>
@@ -95,10 +91,10 @@
 
 <span class="c"># Inputs</span>
 <span class="n">wg</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">wr10</span> <span class="c"># The Media class</span>
-<span class="n">f0</span> <span class="o">=</span> <span class="mi">90</span>                 <span class="c"># Design Frequency in GHz</span>
+<span class="n">f0</span> <span class="o">=</span> <span class="mi">90</span> 		<span class="c"># Design Frequency in GHz</span>
 <span class="n">d_start</span><span class="p">,</span> <span class="n">d_stop</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="mi">180</span> <span class="c"># span of tline lengths [degrees]</span>
-<span class="n">n</span> <span class="o">=</span> <span class="mi">51</span>                  <span class="c"># number of points</span>
-<span class="n">Gamma0</span> <span class="o">=</span> <span class="o">.</span><span class="mi">5</span>     <span class="c"># the reflection coefficient off the load we are matching</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">21</span>		<span class="c"># number of points</span>
+<span class="n">Gamma0</span> <span class="o">=</span> <span class="o">.</span><span class="mi">5</span> 	<span class="c"># the reflection coefficient off the load we are matching</span>
 
 
 <span class="c"># change wg.frequency so we only simulat at f0</span>
@@ -109,19 +105,21 @@
 <span class="n">d_range</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="n">d_start</span><span class="p">,</span><span class="n">d_stop</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">single_stub</span><span class="p">(</span><span class="n">wg</span><span class="p">,</span> <span class="n">d</span><span class="p">):</span>
-        <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        function to return series-shunt stub matching network, given a</span>
-<span class="sd">        WorkingBand and the electrical lengths of the stubs</span>
-<span class="sd">        &#39;&#39;&#39;</span>
-        <span class="k">return</span> <span class="n">wg</span><span class="o">.</span><span class="n">shunt_delay_open</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="s">&#39;deg&#39;</span><span class="p">)</span> <span class="o">**</span> <span class="n">wg</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="s">&#39;deg&#39;</span><span class="p">)</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    function to return series-shunt stub matching network, given a</span>
+<span class="sd">    WorkingBand and the electrical lengths of the stubs</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="n">wg</span><span class="o">.</span><span class="n">shunt_delay_open</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="s">&#39;deg&#39;</span><span class="p">)</span> <span class="o">**</span> <span class="n">wg</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="s">&#39;deg&#39;</span><span class="p">)</span>
 
 <span class="c"># loop through all line-lengths for series and shunt tlines, and store</span>
 <span class="c"># reflection coefficient magnitude in array</span>
 <span class="n">output</span> <span class="o">=</span> <span class="n">array</span><span class="p">([[</span> <span class="p">(</span><span class="n">single_stub</span><span class="p">(</span><span class="n">wg</span><span class="p">,</span> <span class="p">[</span><span class="n">d0</span><span class="p">,</span><span class="n">d1</span><span class="p">])</span><span class="o">**</span><span class="n">load</span><span class="p">)</span><span class="o">.</span><span class="n">s_mag</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> \
-        <span class="k">for</span> <span class="n">d0</span> <span class="ow">in</span> <span class="n">d_range</span><span class="p">]</span> <span class="k">for</span> <span class="n">d1</span> <span class="ow">in</span> <span class="n">d_range</span><span class="p">]</span> <span class="p">)</span>
+    <span class="k">for</span> <span class="n">d0</span> <span class="ow">in</span> <span class="n">d_range</span><span class="p">]</span> <span class="k">for</span> <span class="n">d1</span> <span class="ow">in</span> <span class="n">d_range</span><span class="p">]</span> <span class="p">)</span>
 
 
-<span class="c"># show the resultant return loss for the parameters space</span>
+<span class="c">### Plots</span>
+
+<span class="c"># show the resultant return loss for the parameters space in 2D</span>
 <span class="n">figure</span><span class="p">()</span>
 <span class="n">title</span><span class="p">(</span><span class="s">&#39;Series-Shunt Stub Matching Network Design Space (2D)&#39;</span><span class="p">)</span>
 <span class="n">imshow</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
@@ -131,7 +129,9 @@
 <span class="n">yticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="o">/</span><span class="mi">5</span><span class="p">),</span><span class="n">d_range</span><span class="p">[</span><span class="mi">0</span><span class="p">::</span><span class="n">n</span><span class="o">/</span><span class="mi">5</span><span class="p">])</span>
 <span class="n">cbar</span> <span class="o">=</span> <span class="n">colorbar</span><span class="p">()</span>
 <span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s">&#39;Return Loss Magnitude&#39;</span><span class="p">)</span>
+<span class="n">grid</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
 
+<span class="c"># show the resultant return loss for the parameters space in 3D</span>
 <span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>
 
 <span class="n">fig</span><span class="o">=</span><span class="n">figure</span><span class="p">()</span>
@@ -142,18 +142,19 @@
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&#39;Shunt T-line[deg]&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s">&#39;Return Loss Magnitude&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">r&#39;Series-Shunt Stub Matching Network Design Space (3D)&#39;</span><span class="p">)</span>
-<span class="n">draw</span><span class="p">()</span>
+
+
 <span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p>(<a class="reference external" href="../pyplots/examples/single_stub_design_optimization.py">Source code</a>)</p>
+<div class="figure">
+<img alt="../_images/single_stub_design_optimization_00.png" src="../_images/single_stub_design_optimization_00.png" />
+<p class="caption">(<a class="reference external" href="../pyplots/examples/single_stub_design_optimization_00.png">png</a>, <a class="reference external" href="../pyplots/examples/single_stub_design_optimization_00.hires.png">hires.png</a>, <a class="reference external" href="../pyplots/examples/single_stub_design_optimization_00.pdf">pdf</a>)</p>
 </div>
-<div class="section" id="output">
-<h2>Output<a class="headerlink" href="#output" title="Permalink to this headline">¶</a></h2>
-<div class="figure align-center">
-<img alt="../_images/Series-Shunt_Stub_Matching_2D.png" src="../_images/Series-Shunt_Stub_Matching_2D.png" style="width: 800px;" />
-</div>
-<div class="figure align-center">
-<img alt="../_images/Series-Shunt_Stub_Matching_3D.png" src="../_images/Series-Shunt_Stub_Matching_3D.png" style="width: 800px;" />
+<div class="figure">
+<img alt="../_images/single_stub_design_optimization_01.png" src="../_images/single_stub_design_optimization_01.png" />
+<p class="caption">(<a class="reference external" href="../pyplots/examples/single_stub_design_optimization_01.png">png</a>, <a class="reference external" href="../pyplots/examples/single_stub_design_optimization_01.hires.png">hires.png</a>, <a class="reference external" href="../pyplots/examples/single_stub_design_optimization_01.pdf">pdf</a>)</p>
 </div>
 </div>
 </div>
@@ -165,24 +166,23 @@
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="../index.html">
-              <img class="logo" src="../_static/scikit_logo_small.png" alt="Logo"/>
+              <img class="logo" src="../_static/scikit-rf-logo-flat-docs.svg" alt="Logo"/>
             </a></p>
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Circuit Design: Single Stub Matching Network</a><ul>
+<li><a class="reference internal" href="#">Visualizing a Single Stub Matching Network</a><ul>
 <li><a class="reference internal" href="#introduction">Introduction</a></li>
 <li><a class="reference internal" href="#script">Script</a></li>
-<li><a class="reference internal" href="#output">Output</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="vna_noise_analysis.html"
-                        title="previous chapter">VNA Noise Analysis</a></p>
+  <p class="topless"><a href="../tutorials/media.html"
+                        title="previous chapter">Media</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="../reference/network.html"
-                        title="next chapter">network (<tt class="docutils literal"><span class="pre">skrf.network</span></tt>)</a></p>
+  <p class="topless"><a href="oneport_calibration.html"
+                        title="next chapter">One-Port Calibration</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="../_sources/examples/matching_single_stub.txt"
@@ -220,19 +220,16 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="../np-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="../reference/network.html" title="network (skrf.network)"
+          <a href="oneport_calibration.html" title="One-Port Calibration"
              >next</a> |</li>
         <li class="right" >
-          <a href="vna_noise_analysis.html" title="VNA Noise Analysis"
+          <a href="../tutorials/media.html" title="Media"
              >previous</a> |</li>
-        <li><a href="../index.html">scikit-rf 0.12 documentation</a> &raquo;</li> 
+        <li><a href="../index.html">scikit-rf dev documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2011, alex arsenovic.
+        &copy; Copyright 2013, scikit-rf development team.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

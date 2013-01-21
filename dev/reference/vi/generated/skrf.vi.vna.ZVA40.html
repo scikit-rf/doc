@@ -1,0 +1,217 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>skrf.vi.vna.ZVA40 &mdash; scikit-rf dev documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/scipy.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     'dev',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="scikit-rf dev documentation" href="../../../index.html" />
+    <link rel="up" title="vi (skrf.vi)" href="../index.html" />
+    <link rel="next" title="skrf.vi.vna.ZVA40.continuous" href="skrf.vi.vna.ZVA40.continuous.html" />
+    <link rel="prev" title="skrf.vi.vna.PNAX.__init__" href="skrf.vi.vna.PNAX.__init__.html" />
+  <script type="text/javascript">
+	  var _gaq = _gaq || [];
+	    _gaq.push(['_setAccount', 'UA-29068876-1']);
+		  _gaq.push(['_trackPageview']);
+
+		    (function() {
+			    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+					    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+						  })();
+
+  </script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="skrf.vi.vna.ZVA40.continuous.html" title="skrf.vi.vna.ZVA40.continuous"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="skrf.vi.vna.PNAX.__init__.html" title="skrf.vi.vna.PNAX.__init__"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../../index.html">scikit-rf dev documentation</a> &raquo;</li>
+          <li><a href="../index.html" accesskey="U">vi (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.vi</span></tt>)</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="skrf-vi-vna-zva40">
+<h1>skrf.vi.vna.ZVA40<a class="headerlink" href="#skrf-vi-vna-zva40" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="skrf.vi.vna.ZVA40">
+<em class="property">class </em><tt class="descclassname">skrf.vi.vna.</tt><tt class="descname">ZVA40</tt><big>(</big><em>address=20</em>, <em>active_channel=1</em>, <em>continuous=True</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#skrf.vi.vna.ZVA40" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rohde&amp;Scharz ZVA40</p>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skrf.vi.vna</span> <span class="kn">import</span> <span class="n">ZVA40</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">ZVA40</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dut</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">network</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<p class="rubric">Attributes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="skrf.vi.vna.ZVA40.continuous.html#skrf.vi.vna.ZVA40.continuous" title="skrf.vi.vna.ZVA40.continuous"><tt class="xref py py-obj docutils literal"><span class="pre">continuous</span></tt></a></td>
+<td>set/get continuous sweep mode on/off [boolean]</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.vi.vna.ZVA40.error.html#skrf.vi.vna.ZVA40.error" title="skrf.vi.vna.ZVA40.error"><tt class="xref py py-obj docutils literal"><span class="pre">error</span></tt></a></td>
+<td>returns list errors stored on vna</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.vi.vna.ZVA40.fdata.html#skrf.vi.vna.ZVA40.fdata" title="skrf.vi.vna.ZVA40.fdata"><tt class="xref py py-obj docutils literal"><span class="pre">fdata</span></tt></a></td>
+<td>formated s-parameter data [a numpy array]</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.vi.vna.ZVA40.frequency.html#skrf.vi.vna.ZVA40.frequency" title="skrf.vi.vna.ZVA40.frequency"><tt class="xref py py-obj docutils literal"><span class="pre">frequency</span></tt></a></td>
+<td>a frequency object, representing the current frequency axis</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.vi.vna.ZVA40.one_port.html#skrf.vi.vna.ZVA40.one_port" title="skrf.vi.vna.ZVA40.one_port"><tt class="xref py py-obj docutils literal"><span class="pre">one_port</span></tt></a></td>
+<td>a network representing the current active trace</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.vi.vna.ZVA40.s11.html#skrf.vi.vna.ZVA40.s11" title="skrf.vi.vna.ZVA40.s11"><tt class="xref py py-obj docutils literal"><span class="pre">s11</span></tt></a></td>
+<td>this is just for legacy support, there is no gurantee this</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.vi.vna.ZVA40.sdata.html#skrf.vi.vna.ZVA40.sdata" title="skrf.vi.vna.ZVA40.sdata"><tt class="xref py py-obj docutils literal"><span class="pre">sdata</span></tt></a></td>
+<td>unformated s-parameter data [a numpy array]</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="skrf.vi.vna.ZVA40.__init__.html#skrf.vi.vna.ZVA40.__init__" title="skrf.vi.vna.ZVA40.__init__"><tt class="xref py py-obj docutils literal"><span class="pre">__init__</span></tt></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.vi.vna.ZVA40.add_trace.html#skrf.vi.vna.ZVA40.add_trace" title="skrf.vi.vna.ZVA40.add_trace"><tt class="xref py py-obj docutils literal"><span class="pre">add_trace</span></tt></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.vi.vna.ZVA40.initiate.html#skrf.vi.vna.ZVA40.initiate" title="skrf.vi.vna.ZVA40.initiate"><tt class="xref py py-obj docutils literal"><span class="pre">initiate</span></tt></a></td>
+<td>initiate a sweep on current channel (low level timing)</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.vi.vna.ZVA40.set_active_trace.html#skrf.vi.vna.ZVA40.set_active_trace" title="skrf.vi.vna.ZVA40.set_active_trace"><tt class="xref py py-obj docutils literal"><span class="pre">set_active_trace</span></tt></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.vi.vna.ZVA40.sweep.html#skrf.vi.vna.ZVA40.sweep" title="skrf.vi.vna.ZVA40.sweep"><tt class="xref py py-obj docutils literal"><span class="pre">sweep</span></tt></a></td>
+<td>initiate a sweep on current channel. if vna is in continous</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.vi.vna.ZVA40.update_trace_list.html#skrf.vi.vna.ZVA40.update_trace_list" title="skrf.vi.vna.ZVA40.update_trace_list"><tt class="xref py py-obj docutils literal"><span class="pre">update_trace_list</span></tt></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.vi.vna.ZVA40.upload_cal_data.html#skrf.vi.vna.ZVA40.upload_cal_data" title="skrf.vi.vna.ZVA40.upload_cal_data"><tt class="xref py py-obj docutils literal"><span class="pre">upload_cal_data</span></tt></a></td>
+<td>for explanation of this code see the</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.vi.vna.ZVA40.wait.html#skrf.vi.vna.ZVA40.wait" title="skrf.vi.vna.ZVA40.wait"><tt class="xref py py-obj docutils literal"><span class="pre">wait</span></tt></a></td>
+<td>wait for preceding command to finish before executing subsequent</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../../index.html">
+              <img class="logo" src="../../../_static/scikit-rf-logo-flat-docs.svg" alt="Logo"/>
+            </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="skrf.vi.vna.PNAX.__init__.html"
+                        title="previous chapter">skrf.vi.vna.PNAX.__init__</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="skrf.vi.vna.ZVA40.continuous.html"
+                        title="next chapter">skrf.vi.vna.ZVA40.continuous</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../../_sources/reference/vi/generated/skrf.vi.vna.ZVA40.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<ul class="this-page-menu">
+  <li><a href="/scipy/docs/reference/vi/skrf.vi.vna.ZVA40">Edit page</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="skrf.vi.vna.ZVA40.continuous.html" title="skrf.vi.vna.ZVA40.continuous"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="skrf.vi.vna.PNAX.__init__.html" title="skrf.vi.vna.PNAX.__init__"
+             >previous</a> |</li>
+        <li><a href="../../../index.html">scikit-rf dev documentation</a> &raquo;</li>
+          <li><a href="../index.html" >vi (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.vi</span></tt>)</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, scikit-rf development team.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

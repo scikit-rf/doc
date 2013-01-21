@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>skrf.network.Network.z &mdash; scikit-rf 0.12 documentation</title>
+    <title>skrf.network.Network.z &mdash; scikit-rf dev documentation</title>
     
     <link rel="stylesheet" href="../../_static/scipy.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.12',
+        VERSION:     'dev',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,10 +25,10 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <link rel="top" title="scikit-rf 0.12 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-rf dev documentation" href="../../index.html" />
     <link rel="up" title="skrf.network.Network" href="skrf.network.Network.html" />
     <link rel="next" title="skrf.network.Network.z0" href="skrf.network.Network.z0.html" />
-    <link rel="prev" title="skrf.network.Network.y" href="skrf.network.Network.y.html" />
+    <link rel="prev" title="skrf.network.Network.y_re" href="skrf.network.Network.y_re.html" />
   <script type="text/javascript">
 	  var _gaq = _gaq || [];
 	    _gaq.push(['_setAccount', 'UA-29068876-1']);
@@ -54,16 +54,13 @@
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="../../np-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
           <a href="skrf.network.Network.z0.html" title="skrf.network.Network.z0"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="skrf.network.Network.y.html" title="skrf.network.Network.y"
+          <a href="skrf.network.Network.y_re.html" title="skrf.network.Network.y_re"
              accesskey="P">previous</a> |</li>
-        <li><a href="../../index.html">scikit-rf 0.12 documentation</a> &raquo;</li>
-          <li><a href="../network.html" >network (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.network</span></tt>)</a> &raquo;</li>
+        <li><a href="../../index.html">scikit-rf dev documentation</a> &raquo;</li>
+          <li><a href="../network.html" >network (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.network</span></tt>)</a> &raquo;</li>
           <li><a href="skrf.network.Network.html" accesskey="U">skrf.network.Network</a> &raquo;</li> 
       </ul>
     </div>  
@@ -78,7 +75,34 @@
 <dl class="attribute">
 <dt id="skrf.network.Network.z">
 <tt class="descclassname">Network.</tt><tt class="descname">z</tt><a class="headerlink" href="#skrf.network.Network.z" title="Permalink to this definition">¶</a></dt>
-<dd><p>impedance parameters</p>
+<dd><p>Impedance parameter matrix.</p>
+<p>The z-matrix  <a class="footnote-reference" href="#id2" id="id1">[1]</a> is a 3-dimensional <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">numpy.ndarray</span></tt></a> which has shape
+<cite>fxnxn</cite>, where <cite>f</cite> is frequency axis and <cite>n</cite> is number of ports.
+Note that indexing starts at 0, so z11 can be accessed by 
+taking the slice <cite>z[:,0,0]</cite>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>z</strong> : complex <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">numpy.ndarray</span></tt></a> of shape <cite>fxnxn</cite></p>
+<blockquote class="last">
+<div><p>the Impedance parameter matrix.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="skrf.network.Network.s.html#skrf.network.Network.s" title="skrf.network.Network.s"><tt class="xref py py-obj docutils literal"><span class="pre">s</span></tt></a>, <a class="reference internal" href="skrf.network.Network.y.html#skrf.network.Network.y" title="skrf.network.Network.y"><tt class="xref py py-obj docutils literal"><span class="pre">y</span></tt></a>, <a class="reference internal" href="#skrf.network.Network.z" title="skrf.network.Network.z"><tt class="xref py py-obj docutils literal"><span class="pre">z</span></tt></a>, <a class="reference internal" href="skrf.network.Network.t.html#skrf.network.Network.t" title="skrf.network.Network.t"><tt class="xref py py-obj docutils literal"><span class="pre">t</span></tt></a>, <a class="reference internal" href="skrf.network.Network.a.html#skrf.network.Network.a" title="skrf.network.Network.a"><tt class="xref py py-obj docutils literal"><span class="pre">a</span></tt></a></p>
+</div>
+<p class="rubric">References</p>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/impedance_parameters">http://en.wikipedia.org/wiki/impedance_parameters</a></td></tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -90,11 +114,11 @@
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="../../index.html">
-              <img class="logo" src="../../_static/scikit_logo_small.png" alt="Logo"/>
+              <img class="logo" src="../../_static/scikit-rf-logo-flat-docs.svg" alt="Logo"/>
             </a></p>
   <h4>Previous topic</h4>
-  <p class="topless"><a href="skrf.network.Network.y.html"
-                        title="previous chapter">skrf.network.Network.y</a></p>
+  <p class="topless"><a href="skrf.network.Network.y_re.html"
+                        title="previous chapter">skrf.network.Network.y_re</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="skrf.network.Network.z0.html"
                         title="next chapter">skrf.network.Network.z0</a></p>
@@ -135,21 +159,18 @@
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="../../np-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
           <a href="skrf.network.Network.z0.html" title="skrf.network.Network.z0"
              >next</a> |</li>
         <li class="right" >
-          <a href="skrf.network.Network.y.html" title="skrf.network.Network.y"
+          <a href="skrf.network.Network.y_re.html" title="skrf.network.Network.y_re"
              >previous</a> |</li>
-        <li><a href="../../index.html">scikit-rf 0.12 documentation</a> &raquo;</li>
-          <li><a href="../network.html" >network (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.network</span></tt>)</a> &raquo;</li>
+        <li><a href="../../index.html">scikit-rf dev documentation</a> &raquo;</li>
+          <li><a href="../network.html" >network (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.network</span></tt>)</a> &raquo;</li>
           <li><a href="skrf.network.Network.html" >skrf.network.Network</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2011, alex arsenovic.
+        &copy; Copyright 2013, scikit-rf development team.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

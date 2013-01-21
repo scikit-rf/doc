@@ -1,0 +1,185 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Virtual Instruments &mdash; scikit-rf dev documentation</title>
+    
+    <link rel="stylesheet" href="../_static/scipy.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'dev',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="scikit-rf dev documentation" href="../index.html" />
+    <link rel="next" title="Calibration" href="calibration.html" />
+    <link rel="prev" title="NetworkSet" href="networkset.html" />
+  <script type="text/javascript">
+	  var _gaq = _gaq || [];
+	    _gaq.push(['_setAccount', 'UA-29068876-1']);
+		  _gaq.push(['_trackPageview']);
+
+		    (function() {
+			    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+					    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+						  })();
+
+  </script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="calibration.html" title="Calibration"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="networkset.html" title="NetworkSet"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">scikit-rf dev documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="virtual-instruments">
+<span id="virtualinstruments"></span><h1><a class="toc-backref" href="#id1">Virtual Instruments</a><a class="headerlink" href="#virtual-instruments" title="Permalink to this headline">¶</a></h1>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#virtual-instruments" id="id1">Virtual Instruments</a></li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The vi module is not well written or tested at this point.</p>
+</div>
+<p>The <a class="reference internal" href="../reference/virtualInstruments/index.html#module-skrf.vi" title="skrf.vi"><tt class="xref py py-mod docutils literal"><span class="pre">vi</span></tt></a> module holds  classes
+for GPIB/VISA instruments that are intricately related to skrf.
+Most of the classes were created for the sole purpose of retrieving data
+so that calibration and measurements could be carried out offline with skrf,
+therefore most other instrument capabilities are neglected.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">To use the virtual instrument classes you must have <a class="reference external" href="http://pyvisa.sourceforge.net/pyvisa/">pyvisa</a> installed, and a working VISA installation.</p>
+</div>
+<p>A list of VNA&#8217;s that have been are partially supported.</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><a class="reference internal" href="../reference/virtualInstruments/generated/skrf.vi.vna.HP8510C.html#skrf.vi.vna.HP8510C" title="skrf.vi.vna.HP8510C"><tt class="xref py py-class docutils literal"><span class="pre">HP8510C</span></tt></a></li>
+<li><a class="reference internal" href="../reference/virtualInstruments/generated/skrf.vi.vna.HP8720.html#skrf.vi.vna.HP8720" title="skrf.vi.vna.HP8720"><tt class="xref py py-class docutils literal"><span class="pre">HP8720</span></tt></a></li>
+</ul>
+</td><td><ul class="simple">
+<li><a class="reference internal" href="../reference/virtualInstruments/generated/skrf.vi.vna.PNAX.html#skrf.vi.vna.PNAX" title="skrf.vi.vna.PNAX"><tt class="xref py py-class docutils literal"><span class="pre">PNAX</span></tt></a></li>
+<li><a class="reference internal" href="../reference/virtualInstruments/generated/skrf.vi.vna.ZVA40.html#skrf.vi.vna.ZVA40" title="skrf.vi.vna.ZVA40"><tt class="xref py py-class docutils literal"><span class="pre">ZVA40</span></tt></a></li>
+</ul>
+</td></tr></table>
+<p>An example usage of the <a class="reference internal" href="../reference/virtualInstruments/generated/skrf.vi.vna.HP8510C.html#skrf.vi.vna.HP8510C" title="skrf.vi.vna.HP8510C"><tt class="xref py py-class docutils literal"><span class="pre">HP8510C</span></tt></a> class to retrieve some s-parameter data</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="kn">from</span> <span class="nn">skrf.vi</span> <span class="kn">import</span> <span class="n">vna</span>
+
+<span class="gp">In [2]: </span><span class="n">my_vna</span> <span class="o">=</span> <span class="n">vna</span><span class="o">.</span><span class="n">HP8510C</span><span class="p">(</span><span class="n">address</span> <span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+
+<span class="c">#if an error is thrown at this point there is most likely a problem with your visa setup</span>
+<span class="gp">In [3]: </span><span class="n">dut_1</span> <span class="o">=</span> <span class="n">my_vna</span><span class="o">.</span><span class="n">s11</span>
+
+<span class="gp">In [4]: </span><span class="n">dut_2</span> <span class="o">=</span> <span class="n">my_vna</span><span class="o">.</span><span class="n">s21</span>
+
+<span class="gp">In [5]: </span><span class="n">dut_3</span> <span class="o">=</span> <span class="n">my_vna</span><span class="o">.</span><span class="n">two_port</span>
+</pre></div>
+</div>
+<p>Unfortunately, the syntax is different for every VNA class, so the
+above example wont directly translate to other VNA&#8217;s. Re-writing
+all of the VNA classes to follow the same convention is on the
+<a class="reference external" href="https://github.com/scikit-rf/scikit-rf/blob/develop/TODO.rst">TODO list</a></p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/scikit-rf-logo-flat-docs.svg" alt="Logo"/>
+            </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="networkset.html"
+                        title="previous chapter">NetworkSet</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="calibration.html"
+                        title="next chapter">Calibration</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/tutorials/virtualinstruments.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<ul class="this-page-menu">
+  <li><a href="/scipy/docs/scipy-docs/tutorials/virtualinstruments.rst">Edit page</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="calibration.html" title="Calibration"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="networkset.html" title="NetworkSet"
+             >previous</a> |</li>
+        <li><a href="../index.html">scikit-rf dev documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, scikit-rf development team.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

@@ -40,6 +40,7 @@ skrf.networkSet.NetworkSet
   ~NetworkSet.set_wise_function
   ~NetworkSet.signature
   ~NetworkSet.uncertainty_ntwk_triplet
+  ~NetworkSet.write
 
 
 

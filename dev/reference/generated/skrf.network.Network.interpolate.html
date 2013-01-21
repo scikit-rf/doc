@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>skrf.network.Network.interpolate &mdash; scikit-rf 0.12 documentation</title>
+    <title>skrf.network.Network.interpolate &mdash; scikit-rf dev documentation</title>
     
     <link rel="stylesheet" href="../../_static/scipy.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.12',
+        VERSION:     'dev',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,10 +25,10 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <link rel="top" title="scikit-rf 0.12 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-rf dev documentation" href="../../index.html" />
     <link rel="up" title="network (skrf.network)" href="../network.html" />
     <link rel="next" title="skrf.network.Network.interpolate_self" href="skrf.network.Network.interpolate_self.html" />
-    <link rel="prev" title="skrf.network.de_embed" href="skrf.network.de_embed.html" />
+    <link rel="prev" title="skrf.network.Network.resample" href="skrf.network.Network.resample.html" />
   <script type="text/javascript">
 	  var _gaq = _gaq || [];
 	    _gaq.push(['_setAccount', 'UA-29068876-1']);
@@ -54,16 +54,13 @@
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="../../np-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
           <a href="skrf.network.Network.interpolate_self.html" title="skrf.network.Network.interpolate_self"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="skrf.network.de_embed.html" title="skrf.network.de_embed"
+          <a href="skrf.network.Network.resample.html" title="skrf.network.Network.resample"
              accesskey="P">previous</a> |</li>
-        <li><a href="../../index.html">scikit-rf 0.12 documentation</a> &raquo;</li>
-          <li><a href="../network.html" accesskey="U">network (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.network</span></tt>)</a> &raquo;</li> 
+        <li><a href="../../index.html">scikit-rf dev documentation</a> &raquo;</li>
+          <li><a href="../network.html" accesskey="U">network (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.network</span></tt>)</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -77,16 +74,19 @@
 <dl class="method">
 <dt id="skrf.network.Network.interpolate">
 <tt class="descclassname">Network.</tt><tt class="descname">interpolate</tt><big>(</big><em>new_frequency</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#skrf.network.Network.interpolate" title="Permalink to this definition">¶</a></dt>
-<dd><p>calculates an interpolated network.</p>
-<p>The default interpolation type is linear. see Notes for how to
-use other interpolation types.</p>
+<dd><p>Return an interpolated network, from a new :class:&#8217;~skrf.frequency.Frequency&#8217;.</p>
+<p>Interpolate the networks s-parameters linearly in real and 
+imaginary components. Other interpolation types can be used 
+by passing appropriate <cite>**kwargs</cite>. This function <cite>returns</cite> an 
+interpolated Network. Alternatively <a class="reference internal" href="skrf.network.Network.interpolate_self.html#skrf.network.Network.interpolate_self" title="skrf.network.Network.interpolate_self"><tt class="xref py py-func docutils literal"><span class="pre">interpolate_self()</span></tt></a> 
+will interpolate self.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>new_frequency</strong> : <a class="reference internal" href="skrf.frequency.Frequency.html#skrf.frequency.Frequency" title="skrf.frequency.Frequency"><tt class="xref py py-class docutils literal"><span class="pre">Frequency</span></tt></a></p>
 <blockquote>
-<div><p>frequency information to interpolate at</p>
+<div><p>frequency information to interpolate</p>
 </div></blockquote>
 <p><strong>**kwargs</strong> : keyword arguments</p>
 <blockquote>
@@ -102,18 +102,34 @@ use other interpolation types.</p>
 </tr>
 </tbody>
 </table>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="skrf.network.Network.resample.html#skrf.network.Network.resample" title="skrf.network.Network.resample"><tt class="xref py py-obj docutils literal"><span class="pre">resample</span></tt></a>, <a class="reference internal" href="skrf.network.Network.interpolate_self.html#skrf.network.Network.interpolate_self" title="skrf.network.Network.interpolate_self"><tt class="xref py py-obj docutils literal"><span class="pre">interpolate_self</span></tt></a>, <a class="reference internal" href="skrf.network.Network.interpolate_from_f.html#skrf.network.Network.interpolate_from_f" title="skrf.network.Network.interpolate_from_f"><tt class="xref py py-obj docutils literal"><span class="pre">interpolate_from_f</span></tt></a></p>
+</div>
 <p class="rubric">Notes</p>
-<dl class="docutils">
-<dt>useful keyword for  <tt class="xref py py-func docutils literal"><span class="pre">scipy.interpolate.interp1d()</span></tt>,</dt>
-<dd><dl class="first last docutils">
-<dt>kind <span class="classifier-delimiter">:</span> <span class="classifier">str or int</span></dt>
+<p>See  <tt class="xref py py-func docutils literal"><span class="pre">scipy.interpolate.interpolate.interp1d()</span></tt> for useful 
+kwargs. For example</p>
+<blockquote>
+<div><dl class="docutils">
+<dt><strong>kind</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str or int</span></dt>
 <dd>Specifies the kind of interpolation as a string (&#8216;linear&#8217;,
 &#8216;nearest&#8217;, &#8216;zero&#8217;, &#8216;slinear&#8217;, &#8216;quadratic, &#8216;cubic&#8217;) or
-as an integer
-specifying the order of the spline interpolator to use.</dd>
+as an integer specifying the order of the spline 
+interpolator to use.</dd>
 </dl>
-</dd>
-</dl>
+</div></blockquote>
+<p class="rubric">Examples</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [2]: </span><span class="n">n</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">ring_slot</span> 
+
+<span class="gp">In [3]: </span><span class="n">n</span>
+<span class="gr">Out[3]: </span><span class="mi">2</span><span class="o">-</span><span class="n">Port</span> <span class="n">Network</span><span class="p">:</span> <span class="s">&#39;ring slot&#39;</span><span class="p">,</span>  <span class="mi">75</span><span class="o">-</span><span class="mi">110</span> <span class="n">GHz</span><span class="p">,</span> <span class="mi">201</span> <span class="n">pts</span><span class="p">,</span> <span class="n">z0</span><span class="o">=</span><span class="p">[</span> <span class="mf">50.</span><span class="o">+</span><span class="mf">0.j</span>  <span class="mf">50.</span><span class="o">+</span><span class="mf">0.j</span><span class="p">]</span>
+
+<span class="gp">In [4]: </span><span class="n">new_freq</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">Frequency</span><span class="p">(</span><span class="mi">75</span><span class="p">,</span><span class="mi">110</span><span class="p">,</span><span class="mi">501</span><span class="p">,</span><span class="s">&#39;ghz&#39;</span><span class="p">)</span>
+
+<span class="gp">In [5]: </span><span class="n">n</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">new_freq</span><span class="p">,</span> <span class="n">kind</span> <span class="o">=</span> <span class="s">&#39;cubic&#39;</span><span class="p">)</span>
+<span class="gr">Out[5]: </span><span class="mi">2</span><span class="o">-</span><span class="n">Port</span> <span class="n">Network</span><span class="p">:</span> <span class="s">&#39;ring slot&#39;</span><span class="p">,</span>  <span class="mi">75</span><span class="o">-</span><span class="mi">110</span> <span class="n">GHz</span><span class="p">,</span> <span class="mi">501</span> <span class="n">pts</span><span class="p">,</span> <span class="n">z0</span><span class="o">=</span><span class="p">[</span> <span class="mf">50.</span><span class="o">+</span><span class="mf">0.j</span>  <span class="mf">50.</span><span class="o">+</span><span class="mf">0.j</span><span class="p">]</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </div>
@@ -125,11 +141,11 @@ specifying the order of the spline interpolator to use.</dd>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="../../index.html">
-              <img class="logo" src="../../_static/scikit_logo_small.png" alt="Logo"/>
+              <img class="logo" src="../../_static/scikit-rf-logo-flat-docs.svg" alt="Logo"/>
             </a></p>
   <h4>Previous topic</h4>
-  <p class="topless"><a href="skrf.network.de_embed.html"
-                        title="previous chapter">skrf.network.de_embed</a></p>
+  <p class="topless"><a href="skrf.network.Network.resample.html"
+                        title="previous chapter">skrf.network.Network.resample</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="skrf.network.Network.interpolate_self.html"
                         title="next chapter">skrf.network.Network.interpolate_self</a></p>
@@ -170,20 +186,17 @@ specifying the order of the spline interpolator to use.</dd>
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="../../np-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
           <a href="skrf.network.Network.interpolate_self.html" title="skrf.network.Network.interpolate_self"
              >next</a> |</li>
         <li class="right" >
-          <a href="skrf.network.de_embed.html" title="skrf.network.de_embed"
+          <a href="skrf.network.Network.resample.html" title="skrf.network.Network.resample"
              >previous</a> |</li>
-        <li><a href="../../index.html">scikit-rf 0.12 documentation</a> &raquo;</li>
-          <li><a href="../network.html" >network (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.network</span></tt>)</a> &raquo;</li> 
+        <li><a href="../../index.html">scikit-rf dev documentation</a> &raquo;</li>
+          <li><a href="../network.html" >network (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.network</span></tt>)</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2011, alex arsenovic.
+        &copy; Copyright 2013, scikit-rf development team.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

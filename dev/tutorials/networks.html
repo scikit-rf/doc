@@ -1,0 +1,515 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Networks &mdash; scikit-rf dev documentation</title>
+    
+    <link rel="stylesheet" href="../_static/scipy.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'dev',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="scikit-rf dev documentation" href="../index.html" />
+    <link rel="next" title="Plotting" href="plotting.html" />
+    <link rel="prev" title="Introduction" href="introduction.html" />
+  <script type="text/javascript">
+	  var _gaq = _gaq || [];
+	    _gaq.push(['_setAccount', 'UA-29068876-1']);
+		  _gaq.push(['_trackPageview']);
+
+		    (function() {
+			    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+					    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+						  })();
+
+  </script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="plotting.html" title="Plotting"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="introduction.html" title="Introduction"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">scikit-rf dev documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="networks">
+<span id="id1"></span><h1><a class="toc-backref" href="#id4">Networks</a><a class="headerlink" href="#networks" title="Permalink to this headline">¶</a></h1>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#networks" id="id4">Networks</a><ul>
+<li><a class="reference internal" href="#introduction" id="id5">Introduction</a></li>
+<li><a class="reference internal" href="#creating-networks" id="id6">Creating Networks</a></li>
+<li><a class="reference internal" href="#network-basics" id="id7">Network Basics</a></li>
+<li><a class="reference internal" href="#network-operators" id="id8">Network Operators</a><ul>
+<li><a class="reference internal" href="#linear-operations" id="id9">Linear Operations</a></li>
+<li><a class="reference internal" href="#cascading-and-de-embedding" id="id10">Cascading and De-embedding</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#connecting-multi-ports" id="id11">Connecting Multi-ports</a></li>
+<li><a class="reference internal" href="#interpolation-and-stitching" id="id12">Interpolation and Stitching</a></li>
+<li><a class="reference internal" href="#reading-and-writing" id="id13">Reading and Writing</a></li>
+<li><a class="reference internal" href="#impedance-and-admittance-parameters" id="id14">Impedance and Admittance Parameters</a></li>
+<li><a class="reference internal" href="#creating-networks-from-scratch" id="id15">Creating Networks &#8216;From Scratch&#8217;</a></li>
+<li><a class="reference internal" href="#sub-networks" id="id16">Sub-Networks</a></li>
+<li><a class="reference internal" href="#references" id="id17">References</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="introduction">
+<h2><a class="toc-backref" href="#id5">Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>For this tutorial, and the rest of the scikit-rf documentation, it is  assumed that <strong>skrf</strong> has been imported as <tt class="docutils literal"><span class="pre">rf</span></tt>. Whether or not you follow this convention in your own code is up to you.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">skrf</span> <span class="kn">as</span> <span class="nn">rf</span>
+</pre></div>
+</div>
+<p>If this produces an error, please see <a class="reference internal" href="installation.html"><em>Installation</em></a>.  The code in this tutorial assumes that you are in the directory <tt class="docutils literal"><span class="pre">scikit-rf/doc</span></tt>.</p>
+</div>
+<div class="section" id="creating-networks">
+<h2><a class="toc-backref" href="#id6">Creating Networks</a><a class="headerlink" href="#creating-networks" title="Permalink to this headline">¶</a></h2>
+<p><strong>skrf</strong> provides an object for a N-port microwave <a class="reference internal" href="../reference/generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a>. A <a class="reference internal" href="../reference/generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> can be created in a number of ways. One way is from data stored in a touchstone file.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">ring_slot</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">Network</span><span class="p">(</span><span class="s">&#39;../skrf/data/ring slot.s2p&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A short description of the network will be printed out if entered onto the command line</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">ring_slot</span>
+<span class="gr">Out[1]: </span><span class="mi">2</span><span class="o">-</span><span class="n">Port</span> <span class="n">Network</span><span class="p">:</span> <span class="s">&#39;ring slot&#39;</span><span class="p">,</span>  <span class="mi">75</span><span class="o">-</span><span class="mi">110</span> <span class="n">GHz</span><span class="p">,</span> <span class="mi">201</span> <span class="n">pts</span><span class="p">,</span> <span class="n">z0</span><span class="o">=</span><span class="p">[</span> <span class="mf">50.</span><span class="o">+</span><span class="mf">0.j</span>  <span class="mf">50.</span><span class="o">+</span><span class="mf">0.j</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Networks can also be created from a pickled Network (written by <a class="reference internal" href="../reference/generated/skrf.network.Network.write.html#skrf.network.Network.write" title="skrf.network.Network.write"><tt class="xref py py-func docutils literal"><span class="pre">Network.write()</span></tt></a>),</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">ring_slot</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">Network</span><span class="p">(</span><span class="s">&#39;../skrf/data/ring slot.ntwk&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>or from directly passing values for the frequency, s-paramters  and z0.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">custom_ntwk</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">Network</span><span class="p">(</span><span class="n">f</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1j</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">z0</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Seen <a class="reference internal" href="../reference/generated/skrf.network.Network.__init__.html#skrf.network.Network.__init__" title="skrf.network.Network.__init__"><tt class="xref py py-func docutils literal"><span class="pre">Network.__init__()</span></tt></a>  for more informaition on network creation.</p>
+</div>
+<div class="section" id="network-basics">
+<h2><a class="toc-backref" href="#id7">Network Basics</a><a class="headerlink" href="#network-basics" title="Permalink to this headline">¶</a></h2>
+<p>The basic attributes of a microwave <a class="reference internal" href="../reference/generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> are provided by the
+following properties :</p>
+<ul class="simple">
+<li><a class="reference internal" href="../reference/generated/skrf.network.Network.s.html#skrf.network.Network.s" title="skrf.network.Network.s"><tt class="xref py py-attr docutils literal"><span class="pre">Network.s</span></tt></a> : Scattering Parameter matrix.</li>
+<li><a class="reference internal" href="../reference/generated/skrf.network.Network.z0.html#skrf.network.Network.z0" title="skrf.network.Network.z0"><tt class="xref py py-attr docutils literal"><span class="pre">Network.z0</span></tt></a>  : Port Characteristic Impedance matrix.</li>
+<li><a class="reference internal" href="../reference/generated/skrf.network.Network.frequency.html#skrf.network.Network.frequency" title="skrf.network.Network.frequency"><tt class="xref py py-attr docutils literal"><span class="pre">Network.frequency</span></tt></a>  : Frequency Object.</li>
+</ul>
+<p>All of the network parameters are represented internally as complex <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">numpy.ndarray</span></tt></a> &#8216;s of shape <em>FxNxN</em>, where <em>F</em> is the number of frequency points and <em>N</em> is the number of ports.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">shape</span><span class="p">(</span><span class="n">ring_slot</span><span class="o">.</span><span class="n">s</span><span class="p">)</span>
+<span class="gr">Out[1]: </span><span class="p">(</span><span class="mi">201</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Note that the indexing starts at 0, so the first 10 values of <img class="math" src="../_images/math/22be5db8fd80406116d0806bb55504fc107b77b0.png" alt="S_{11}"/> can be accessed with</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">ring_slot</span><span class="o">.</span><span class="n">s</span><span class="p">[:</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="gr">Out[1]: </span>
+<span class="go">array([-0.50372318+0.4578448j , -0.49581904+0.45707698j,</span>
+<span class="go">       -0.48782538+0.4561578j , -0.47974451+0.45508186j,</span>
+<span class="go">       -0.47157898+0.45384372j, -0.46333160+0.45243787j,</span>
+<span class="go">       -0.45500548+0.45085878j, -0.44660400+0.44910088j,</span>
+<span class="go">       -0.43813086+0.4471586j , -0.42959005+0.44502637j])</span>
+</pre></div>
+</div>
+<p>The <a class="reference internal" href="../reference/generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> object has numerous other properties and methods which can found in the <a class="reference internal" href="../reference/generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> docstring. If you are using IPython, then these properties and methods can be &#8216;tabbed&#8217; out on the command line.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">short</span><span class="o">.</span><span class="n">s</span><span class="o">&lt;</span><span class="n">TAB</span><span class="o">&gt;</span>
+<span class="go">rf.data.line.s              rf.data.line.s_arcl         rf.data.line.s_im</span>
+<span class="go">rf.data.line.s11            rf.data.line.s_arcl_unwrap  rf.data.line.s_mag</span>
+<span class="go">...</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Although this tutorial focuses on s-parametes, other  network representations such as Impedance (<a class="reference internal" href="../reference/generated/skrf.network.Network.z.html#skrf.network.Network.z" title="skrf.network.Network.z"><tt class="xref py py-attr docutils literal"><span class="pre">Network.z</span></tt></a>) and Admittance Parameters (<a class="reference internal" href="../reference/generated/skrf.network.Network.y.html#skrf.network.Network.y" title="skrf.network.Network.y"><tt class="xref py py-attr docutils literal"><span class="pre">Network.y</span></tt></a>) are available as well, see <a class="reference internal" href="#impedance-and-admittance-parameters">Impedance and Admittance Parameters</a> .</p>
+</div>
+<p>Amongst other things, the methods of the <a class="reference internal" href="../reference/generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> class provide convenient ways to plot components of the network parameters,</p>
+<ul class="simple">
+<li><a class="reference internal" href="../reference/generated/skrf.network.Network.plot_s_db.html#skrf.network.Network.plot_s_db" title="skrf.network.Network.plot_s_db"><tt class="xref py py-func docutils literal"><span class="pre">Network.plot_s_db()</span></tt></a> : plot magnitude of s-parameters in log scale</li>
+<li><a class="reference internal" href="../reference/generated/skrf.network.Network.plot_s_deg.html#skrf.network.Network.plot_s_deg" title="skrf.network.Network.plot_s_deg"><tt class="xref py py-func docutils literal"><span class="pre">Network.plot_s_deg()</span></tt></a> : plot phase of s-parameters in degrees</li>
+<li><a class="reference internal" href="../reference/generated/skrf.network.Network.plot_s_smith.html#skrf.network.Network.plot_s_smith" title="skrf.network.Network.plot_s_smith"><tt class="xref py py-func docutils literal"><span class="pre">Network.plot_s_smith()</span></tt></a> : plot complex s-parameters on Smith Chart</li>
+<li>...</li>
+</ul>
+<p>To plot all four s-parameters of the <tt class="docutils literal"><span class="pre">ring_slot</span></tt> on the Smith Chart.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">ring_slot</span><span class="o">.</span><span class="n">plot_s_smith</span><span class="p">();</span>
+</pre></div>
+</div>
+<img alt="../_images/ring_slot,smith.png" src="../_images/ring_slot,smith.png" />
+<p>Or plot a pair of s-parameters individually, in log magnitude</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">figure</span><span class="p">();</span>
+
+<span class="gp">In [2]: </span><span class="n">ring_slot</span><span class="o">.</span><span class="n">plot_s_db</span><span class="p">(</span><span class="n">m</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span>     <span class="c"># s21</span>
+
+<span class="gp">In [3]: </span><span class="n">ring_slot</span><span class="o">.</span><span class="n">plot_s_db</span><span class="p">(</span><span class="n">m</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span> <span class="c"># s11</span>
+</pre></div>
+</div>
+<img alt="../_images/ring_slot,db.png" src="../_images/ring_slot,db.png" />
+<p>For more detailed information about plotting see <a class="reference internal" href="plotting.html"><em>Plotting</em></a>.</p>
+</div>
+<div class="section" id="network-operators">
+<h2><a class="toc-backref" href="#id8">Network Operators</a><a class="headerlink" href="#network-operators" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="linear-operations">
+<h3><a class="toc-backref" href="#id9">Linear Operations</a><a class="headerlink" href="#linear-operations" title="Permalink to this headline">¶</a></h3>
+<p>Element-wise mathematical operations on the scattering parameter matrices are accessible through overloaded operators. To illustrate their usage, load a couple  Networks stored in the <tt class="docutils literal"><span class="pre">data</span></tt> module.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">short</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">wr2p2_short</span>
+
+<span class="gp">In [2]: </span><span class="n">delayshort</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">wr2p2_delayshort</span>
+
+<span class="gp">In [3]: </span><span class="n">short</span> <span class="o">-</span> <span class="n">delayshort</span>
+<span class="gr">Out[3]: </span><span class="mi">1</span><span class="o">-</span><span class="n">Port</span> <span class="n">Network</span><span class="p">:</span> <span class="s">&#39;wr2p2,short&#39;</span><span class="p">,</span>  <span class="mi">330</span><span class="o">-</span><span class="mi">500</span> <span class="n">GHz</span><span class="p">,</span> <span class="mi">201</span> <span class="n">pts</span><span class="p">,</span> <span class="n">z0</span><span class="o">=</span><span class="p">[</span> <span class="mf">50.</span><span class="o">+</span><span class="mf">0.j</span><span class="p">]</span>
+
+<span class="gp">In [4]: </span><span class="n">short</span> <span class="o">+</span> <span class="n">delayshort</span>
+<span class="gr">Out[4]: </span><span class="mi">1</span><span class="o">-</span><span class="n">Port</span> <span class="n">Network</span><span class="p">:</span> <span class="s">&#39;wr2p2,short&#39;</span><span class="p">,</span>  <span class="mi">330</span><span class="o">-</span><span class="mi">500</span> <span class="n">GHz</span><span class="p">,</span> <span class="mi">201</span> <span class="n">pts</span><span class="p">,</span> <span class="n">z0</span><span class="o">=</span><span class="p">[</span> <span class="mf">50.</span><span class="o">+</span><span class="mf">0.j</span><span class="p">]</span>
+
+<span class="gp">In [5]: </span><span class="n">short</span> <span class="o">*</span> <span class="n">delayshort</span>
+<span class="gr">Out[5]: </span><span class="mi">1</span><span class="o">-</span><span class="n">Port</span> <span class="n">Network</span><span class="p">:</span> <span class="s">&#39;wr2p2,short&#39;</span><span class="p">,</span>  <span class="mi">330</span><span class="o">-</span><span class="mi">500</span> <span class="n">GHz</span><span class="p">,</span> <span class="mi">201</span> <span class="n">pts</span><span class="p">,</span> <span class="n">z0</span><span class="o">=</span><span class="p">[</span> <span class="mf">50.</span><span class="o">+</span><span class="mf">0.j</span><span class="p">]</span>
+
+<span class="gp">In [6]: </span><span class="n">short</span> <span class="o">/</span> <span class="n">delayshort</span>
+<span class="gr">Out[6]: </span><span class="mi">1</span><span class="o">-</span><span class="n">Port</span> <span class="n">Network</span><span class="p">:</span> <span class="s">&#39;wr2p2,short&#39;</span><span class="p">,</span>  <span class="mi">330</span><span class="o">-</span><span class="mi">500</span> <span class="n">GHz</span><span class="p">,</span> <span class="mi">201</span> <span class="n">pts</span><span class="p">,</span> <span class="n">z0</span><span class="o">=</span><span class="p">[</span> <span class="mf">50.</span><span class="o">+</span><span class="mf">0.j</span><span class="p">]</span>
+
+<span class="gp">In [7]: </span><span class="n">short</span> <span class="o">/</span> <span class="n">delayshort</span>
+<span class="gr">Out[7]: </span><span class="mi">1</span><span class="o">-</span><span class="n">Port</span> <span class="n">Network</span><span class="p">:</span> <span class="s">&#39;wr2p2,short&#39;</span><span class="p">,</span>  <span class="mi">330</span><span class="o">-</span><span class="mi">500</span> <span class="n">GHz</span><span class="p">,</span> <span class="mi">201</span> <span class="n">pts</span><span class="p">,</span> <span class="n">z0</span><span class="o">=</span><span class="p">[</span> <span class="mf">50.</span><span class="o">+</span><span class="mf">0.j</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>All of these operations return <a class="reference internal" href="../reference/generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> types, so the methods and properties of a <a class="reference internal" href="../reference/generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> are available on the result.  For example, to plot the complex difference  between  <tt class="docutils literal"><span class="pre">short</span></tt> and <tt class="docutils literal"><span class="pre">delay_short</span></tt>,</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">figure</span><span class="p">();</span>
+
+<span class="gp">In [2]: </span><span class="n">difference</span> <span class="o">=</span> <span class="p">(</span><span class="n">short</span><span class="o">-</span> <span class="n">delayshort</span><span class="p">)</span>
+
+<span class="gp">In [3]: </span><span class="n">difference</span><span class="o">.</span><span class="n">plot_s_mag</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="../_images/operator_illustration,difference.png" src="../_images/operator_illustration,difference.png" />
+<p>Another common application is calculating the phase difference using the division operator,</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">figure</span><span class="p">();</span>
+
+<span class="gp">In [2]: </span><span class="p">(</span><span class="n">delayshort</span><span class="o">/</span><span class="n">short</span><span class="p">)</span><span class="o">.</span><span class="n">plot_s_deg</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="../_images/operator_illustration,division.png" src="../_images/operator_illustration,division.png" />
+<p>Linear operators can also be used with scalars or an <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">numpy.ndarray</span></tt></a>  that ais the same length as the <a class="reference internal" href="../reference/generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a>.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="nb">open</span> <span class="o">=</span> <span class="p">(</span><span class="n">short</span><span class="o">*-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="gp">In [2]: </span><span class="nb">open</span><span class="o">.</span><span class="n">s</span><span class="p">[:</span><span class="mi">3</span><span class="p">,</span><span class="o">...</span><span class="p">]</span>
+<span class="gr">Out[2]: </span>
+<span class="go">array([[[ 1.-0.j]],</span>
+
+<span class="go">       [[ 1.-0.j]],</span>
+
+<span class="go">       [[ 1.-0.j]]])</span>
+
+<span class="gp">In [3]: </span><span class="n">rando</span> <span class="o">=</span>  <span class="nb">open</span> <span class="o">*</span><span class="n">rand</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">open</span><span class="p">))</span>
+
+<span class="gp">In [4]: </span><span class="n">rando</span><span class="o">.</span><span class="n">s</span><span class="p">[:</span><span class="mi">3</span><span class="p">,</span><span class="o">...</span><span class="p">]</span>
+<span class="gr">Out[4]: </span>
+<span class="go">array([[[ 0.97721025+0.j]],</span>
+
+<span class="go">       [[ 0.18949636+0.j]],</span>
+
+<span class="go">       [[ 0.51342514+0.j]]])</span>
+</pre></div>
+</div>
+<p>Note that if you multiply a Network by an <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">numpy.ndarray</span></tt></a>  be sure to place the array on right side.</p>
+</div>
+<div class="section" id="cascading-and-de-embedding">
+<h3><a class="toc-backref" href="#id10">Cascading and De-embedding</a><a class="headerlink" href="#cascading-and-de-embedding" title="Permalink to this headline">¶</a></h3>
+<p>Cascading and de-embeding 2-port Networks can also be done though operators. The <a class="reference internal" href="../reference/generated/skrf.network.cascade.html#skrf.network.cascade" title="skrf.network.cascade"><tt class="xref py py-func docutils literal"><span class="pre">cascade()</span></tt></a> function can be called through the power operator,  <tt class="docutils literal"><span class="pre">**</span></tt>. To calculate a new network which is the cascaded connection of the two individual Networks <tt class="docutils literal"><span class="pre">line</span></tt> and <tt class="docutils literal"><span class="pre">short</span></tt>,</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">short</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">wr2p2_short</span>
+
+<span class="gp">In [2]: </span><span class="n">line</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">wr2p2_line</span>
+
+<span class="gp">In [3]: </span><span class="n">delayshort</span> <span class="o">=</span> <span class="n">line</span> <span class="o">**</span> <span class="n">short</span>
+</pre></div>
+</div>
+<p>De-embedding  can be accomplished by cascading the <em>inverse</em> of a network. The inverse of a network is accessed through the property <a class="reference internal" href="../reference/generated/skrf.network.Network.inv.html#skrf.network.Network.inv" title="skrf.network.Network.inv"><tt class="xref py py-attr docutils literal"><span class="pre">Network.inv</span></tt></a>. To de-embed the <tt class="docutils literal"><span class="pre">short</span></tt> from <tt class="docutils literal"><span class="pre">delay_short</span></tt>,</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">short</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">inv</span> <span class="o">**</span> <span class="n">delayshort</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="connecting-multi-ports">
+<h2><a class="toc-backref" href="#id11">Connecting Multi-ports</a><a class="headerlink" href="#connecting-multi-ports" title="Permalink to this headline">¶</a></h2>
+<p><strong>skrf</strong> supports the connection of arbitrary ports of N-port networks. It accomplishes this using an algorithm called sub-network growth <a class="footnote-reference" href="#id3" id="id2">[1]</a>,  available through the function <a class="reference internal" href="../reference/generated/skrf.network.connect.html#skrf.network.connect" title="skrf.network.connect"><tt class="xref py py-func docutils literal"><span class="pre">connect()</span></tt></a>. Terminating one port of an ideal 3-way splitter can be done like so,</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">tee</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">Network</span><span class="p">(</span><span class="s">&#39;../skrf/data/tee.s3p&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To connect port <cite>1</cite> of the tee, to port <cite>0</cite> of the delay short,</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">terminated_tee</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">tee</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">delayshort</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Note that this function takes into account port impedances, and if connecting ports have different port impedances an appropriate impedance mismatch is inserted.</p>
+</div>
+<div class="section" id="interpolation-and-stitching">
+<h2><a class="toc-backref" href="#id12">Interpolation and Stitching</a><a class="headerlink" href="#interpolation-and-stitching" title="Permalink to this headline">¶</a></h2>
+<p>A common need is to change the number of frequency points of a <a class="reference internal" href="../reference/generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a>. For instance, to use the operators and cascading functions the networks involved must have matching frequencies. If two networks have different frequency information, then an error will be raised,</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">line</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">wr2p2_line</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="gp">In [2]: </span><span class="n">line1</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">wr2p2_line1</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="gp">In [3]: </span><span class="n">line1</span>
+<span class="gr">Out[3]: </span><span class="mi">2</span><span class="o">-</span><span class="n">Port</span> <span class="n">Network</span><span class="p">:</span> <span class="s">&#39;wr2p2,line1&#39;</span><span class="p">,</span>  <span class="mi">330</span><span class="o">-</span><span class="mi">500</span> <span class="n">GHz</span><span class="p">,</span> <span class="mi">101</span> <span class="n">pts</span><span class="p">,</span> <span class="n">z0</span><span class="o">=</span><span class="p">[</span> <span class="mf">50.</span><span class="o">+</span><span class="mf">0.j</span>  <span class="mf">50.</span><span class="o">+</span><span class="mf">0.j</span><span class="p">]</span>
+
+<span class="gp">In [4]: </span><span class="n">line</span>
+<span class="gr">Out[4]: </span><span class="mi">2</span><span class="o">-</span><span class="n">Port</span> <span class="n">Network</span><span class="p">:</span> <span class="s">&#39;wr2p2,line&#39;</span><span class="p">,</span>  <span class="mi">330</span><span class="o">-</span><span class="mi">500</span> <span class="n">GHz</span><span class="p">,</span> <span class="mi">201</span> <span class="n">pts</span><span class="p">,</span> <span class="n">z0</span><span class="o">=</span><span class="p">[</span> <span class="mf">50.</span><span class="o">+</span><span class="mf">0.j</span>  <span class="mf">50.</span><span class="o">+</span><span class="mf">0.j</span><span class="p">]</span>
+
+<span class="gp">In [5]: </span><span class="n">line1</span><span class="o">+</span><span class="n">line</span>
+<span class="go">---------------------------------------------------------------------------</span>
+<span class="go">IndexError                                Traceback (most recent call last)</span>
+<span class="go">&lt;ipython-input-5-82040f7eab08&gt; in &lt;module&gt;()</span>
+<span class="go">----&gt; 1 line1+line</span>
+
+<span class="go">/home/alex/data/docs/code/path/skrf/network.pyc in __add__(self, other)</span>
+<span class="go">    438         </span>
+<span class="go">    439         if isinstance(other, Network):</span>
+<span class="go">--&gt; 440             self.__compatable_for_scalar_operation_test(other)</span>
+<span class="go">    441             result.s = self.s + other.s</span>
+<span class="go">    442         else:</span>
+
+<span class="go">/home/alex/data/docs/code/path/skrf/network.pyc in __compatable_for_scalar_operation_test(self, other)</span>
+<span class="go">    564         &#39;&#39;&#39;</span>
+<span class="go">    565         if other.frequency  != self.frequency:</span>
+<span class="go">--&gt; 566             raise IndexError(&#39;Networks must have same frequency. See `Network.interpolate`&#39;)</span>
+<span class="go">    567 </span>
+<span class="go">    568         if other.s.shape != self.s.shape:</span>
+
+<span class="go">IndexError: Networks must have same frequency. See `Network.interpolate`</span>
+</pre></div>
+</div>
+<p>This problem can be solved by interpolating one of Networks, using <a class="reference internal" href="../reference/generated/skrf.network.Network.resample.html#skrf.network.Network.resample" title="skrf.network.Network.resample"><tt class="xref py py-func docutils literal"><span class="pre">Network.resample()</span></tt></a>.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">line1</span>
+<span class="gr">Out[1]: </span><span class="mi">2</span><span class="o">-</span><span class="n">Port</span> <span class="n">Network</span><span class="p">:</span> <span class="s">&#39;wr2p2,line1&#39;</span><span class="p">,</span>  <span class="mi">330</span><span class="o">-</span><span class="mi">500</span> <span class="n">GHz</span><span class="p">,</span> <span class="mi">101</span> <span class="n">pts</span><span class="p">,</span> <span class="n">z0</span><span class="o">=</span><span class="p">[</span> <span class="mf">50.</span><span class="o">+</span><span class="mf">0.j</span>  <span class="mf">50.</span><span class="o">+</span><span class="mf">0.j</span><span class="p">]</span>
+
+<span class="gp">In [2]: </span><span class="n">line1</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="mi">201</span><span class="p">)</span>
+
+<span class="gp">In [3]: </span><span class="n">line1</span>
+<span class="gr">Out[3]: </span><span class="mi">2</span><span class="o">-</span><span class="n">Port</span> <span class="n">Network</span><span class="p">:</span> <span class="s">&#39;wr2p2,line1&#39;</span><span class="p">,</span>  <span class="mi">330</span><span class="o">-</span><span class="mi">500</span> <span class="n">GHz</span><span class="p">,</span> <span class="mi">201</span> <span class="n">pts</span><span class="p">,</span> <span class="n">z0</span><span class="o">=</span><span class="p">[</span> <span class="mf">50.</span><span class="o">+</span><span class="mf">0.j</span>  <span class="mf">50.</span><span class="o">+</span><span class="mf">0.j</span><span class="p">]</span>
+
+<span class="gp">In [4]: </span><span class="n">line1</span><span class="o">+</span><span class="n">line</span>
+<span class="gr">Out[4]: </span><span class="mi">2</span><span class="o">-</span><span class="n">Port</span> <span class="n">Network</span><span class="p">:</span> <span class="s">&#39;wr2p2,line1&#39;</span><span class="p">,</span>  <span class="mi">330</span><span class="o">-</span><span class="mi">500</span> <span class="n">GHz</span><span class="p">,</span> <span class="mi">201</span> <span class="n">pts</span><span class="p">,</span> <span class="n">z0</span><span class="o">=</span><span class="p">[</span> <span class="mf">50.</span><span class="o">+</span><span class="mf">0.j</span>  <span class="mf">50.</span><span class="o">+</span><span class="mf">0.j</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>A related application is the need to combine Networks which cover different frequency ranges. Two  Netwoks can be stitched together using <a class="reference internal" href="../reference/generated/skrf.network.stitch.html#skrf.network.stitch" title="skrf.network.stitch"><tt class="xref py py-func docutils literal"><span class="pre">stitch()</span></tt></a>, which  concatenates their s-parameter matrices along their frequency axis. To combine a WR-2.2 Network with a WR-1.5 Network,</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="kn">from</span> <span class="nn">skrf.data</span> <span class="kn">import</span> <span class="n">wr2p2_line</span><span class="p">,</span> <span class="n">wr1p5_line</span>
+
+<span class="gp">In [2]: </span><span class="n">line</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">stitch</span><span class="p">(</span><span class="n">wr2p2_line</span><span class="p">,</span> <span class="n">wr1p5_line</span><span class="p">)</span>
+
+<span class="gp">In [3]: </span><span class="n">line</span>
+<span class="gr">Out[3]: </span><span class="mi">2</span><span class="o">-</span><span class="n">Port</span> <span class="n">Network</span><span class="p">:</span> <span class="s">&#39;wr2p2,line&#39;</span><span class="p">,</span>  <span class="mi">330</span><span class="o">-</span><span class="mi">750</span> <span class="n">GHz</span><span class="p">,</span> <span class="mi">402</span> <span class="n">pts</span><span class="p">,</span> <span class="n">z0</span><span class="o">=</span><span class="p">[</span> <span class="mf">50.</span><span class="o">+</span><span class="mf">0.j</span>  <span class="mf">50.</span><span class="o">+</span><span class="mf">0.j</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="reading-and-writing">
+<h2><a class="toc-backref" href="#id13">Reading and Writing</a><a class="headerlink" href="#reading-and-writing" title="Permalink to this headline">¶</a></h2>
+<p>While <strong>skrf</strong> supports reading and writing the touchstone file format, it also provides native IO capabilities for any skrf object through the functions <a class="reference internal" href="../reference/io/generated/skrf.io.general.read.html#skrf.io.general.read" title="skrf.io.general.read"><tt class="xref py py-func docutils literal"><span class="pre">read()</span></tt></a> and <a class="reference internal" href="../reference/io/generated/skrf.io.general.write.html#skrf.io.general.write" title="skrf.io.general.write"><tt class="xref py py-func docutils literal"><span class="pre">write()</span></tt></a>. These functions can also be called through the Network methods <a class="reference internal" href="../reference/generated/skrf.network.Network.read.html#skrf.network.Network.read" title="skrf.network.Network.read"><tt class="xref py py-func docutils literal"><span class="pre">Network.read()</span></tt></a> and <a class="reference internal" href="../reference/generated/skrf.network.Network.write.html#skrf.network.Network.write" title="skrf.network.Network.write"><tt class="xref py py-func docutils literal"><span class="pre">Network.write()</span></tt></a>. The Network constructor (<a class="reference internal" href="../reference/generated/skrf.network.Network.__init__.html#skrf.network.Network.__init__" title="skrf.network.Network.__init__"><tt class="xref py py-func docutils literal"><span class="pre">Network.__init__()</span></tt></a> ) calls <a class="reference internal" href="../reference/io/generated/skrf.io.general.read.html#skrf.io.general.read" title="skrf.io.general.read"><tt class="xref py py-func docutils literal"><span class="pre">read()</span></tt></a> implicitly if a skrf file is passed.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">line</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">Network</span><span class="p">(</span><span class="s">&#39;../skrf/data/line.s2p&#39;</span><span class="p">)</span>
+
+<span class="gp">In [2]: </span><span class="n">line</span><span class="o">.</span><span class="n">write</span><span class="p">()</span> <span class="c"># write out Network using native IO</span>
+<span class="go">line.ntwk</span>
+
+<span class="gp">In [3]: </span><span class="n">rf</span><span class="o">.</span><span class="n">Netwrok</span><span class="p">(</span><span class="s">&#39;line.ntwk&#39;</span><span class="p">)</span> <span class="c"># read Network using native IO</span>
+</pre></div>
+</div>
+<p>Frequently there is an entire directory of files that need to be analyzed. The function <a class="reference internal" href="../reference/io/generated/skrf.io.general.read_all.html#skrf.io.general.read_all" title="skrf.io.general.read_all"><tt class="xref py py-func docutils literal"><span class="pre">read_all()</span></tt></a> is used to create objects from all files in a directory quickly. Given a directory of skrf-readable files, <a class="reference internal" href="../reference/io/generated/skrf.io.general.read_all.html#skrf.io.general.read_all" title="skrf.io.general.read_all"><tt class="xref py py-func docutils literal"><span class="pre">read_all()</span></tt></a>  returns a <a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></a>  with keys equal to the filenames, and values equal to objects. To load all <strong>skrf</strong> files in the <tt class="docutils literal"><span class="pre">skrf/data/</span></tt> directory which contain the string <tt class="docutils literal"><span class="pre">\'wr2p2\'</span></tt>.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">dict_o_ntwks</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">read_all</span><span class="p">(</span><span class="s">&#39;../skrf/data/&#39;</span><span class="p">,</span> <span class="n">contains</span> <span class="o">=</span> <span class="s">&#39;wr2p2&#39;</span><span class="p">)</span>
+
+<span class="gp">In [2]: </span><span class="n">dict_o_ntwks</span>
+<span class="gr">Out[2]: </span>
+<span class="go">{&#39;wr2p2,delayshort&#39;: 1-Port Network: &#39;wr2p2,delayshort&#39;,  330-500 GHz, 201 pts, z0=[ 50.+0.j],</span>
+<span class="go"> &#39;wr2p2,line&#39;: 2-Port Network: &#39;wr2p2,line&#39;,  330-500 GHz, 201 pts, z0=[ 50.+0.j  50.+0.j],</span>
+<span class="go"> &#39;wr2p2,line1&#39;: 2-Port Network: &#39;wr2p2,line1&#39;,  330-500 GHz, 101 pts, z0=[ 50.+0.j  50.+0.j],</span>
+<span class="go"> &#39;wr2p2,short&#39;: 1-Port Network: &#39;wr2p2,short&#39;,  330-500 GHz, 201 pts, z0=[ 50.+0.j]}</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../reference/io/generated/skrf.io.general.read_all.html#skrf.io.general.read_all" title="skrf.io.general.read_all"><tt class="xref py py-func docutils literal"><span class="pre">read_all()</span></tt></a> has a companion function, <a class="reference internal" href="../reference/io/generated/skrf.io.general.write_all.html#skrf.io.general.write_all" title="skrf.io.general.write_all"><tt class="xref py py-func docutils literal"><span class="pre">write_all()</span></tt></a> which takes a dictionary of <strong>skrf</strong> objects, and writes each object to an individual file.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">rf</span><span class="o">.</span><span class="n">write_all</span><span class="p">(</span><span class="n">dict_o_ntwks</span><span class="p">,</span> <span class="nb">dir</span> <span class="o">=</span> <span class="s">&#39;.&#39;</span><span class="p">)</span>
+
+<span class="gp">In [2]: </span><span class="n">ls</span>
+<span class="go">wr2p2,delayshort.ntwk   wr2p2,line.ntwk         wr2p2,short.ntwk</span>
+</pre></div>
+</div>
+<p>It is also possible to write a dictionary of objects to a single file, by using <a class="reference internal" href="../reference/io/generated/skrf.io.general.write.html#skrf.io.general.write" title="skrf.io.general.write"><tt class="xref py py-func docutils literal"><span class="pre">write()</span></tt></a>,</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">rf</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;dict_o_ntwk.p&#39;</span><span class="p">,</span> <span class="n">dict_o_ntwks</span><span class="p">)</span>
+
+<span class="gp">In [2]: </span><span class="n">ls</span>
+<span class="go">dict_o_ntwk.p</span>
+</pre></div>
+</div>
+<p>A similar function <a class="reference internal" href="../reference/io/generated/skrf.io.general.save_sesh.html#skrf.io.general.save_sesh" title="skrf.io.general.save_sesh"><tt class="xref py py-func docutils literal"><span class="pre">save_sesh()</span></tt></a>, can be used to
+save all <strong>skrf</strong> objects in the current namespace.</p>
+</div>
+<div class="section" id="impedance-and-admittance-parameters">
+<h2><a class="toc-backref" href="#id14">Impedance and Admittance Parameters</a><a class="headerlink" href="#impedance-and-admittance-parameters" title="Permalink to this headline">¶</a></h2>
+<p>This tutorial focuses on s-parameters, but other network represenations are available as well. Impedance  and Admittance Parameters can be accessed through the parameters <a class="reference internal" href="../reference/generated/skrf.network.Network.z.html#skrf.network.Network.z" title="skrf.network.Network.z"><tt class="xref py py-attr docutils literal"><span class="pre">Network.z</span></tt></a> and <a class="reference internal" href="../reference/generated/skrf.network.Network.y.html#skrf.network.Network.y" title="skrf.network.Network.y"><tt class="xref py py-attr docutils literal"><span class="pre">Network.y</span></tt></a>, respectively. Scalar components of complex parameters, such as  <a class="reference internal" href="../reference/generated/skrf.network.Network.z_re.html#skrf.network.Network.z_re" title="skrf.network.Network.z_re"><tt class="xref py py-attr docutils literal"><span class="pre">Network.z_re</span></tt></a>, <a class="reference internal" href="../reference/generated/skrf.network.Network.z_im.html#skrf.network.Network.z_im" title="skrf.network.Network.z_im"><tt class="xref py py-attr docutils literal"><span class="pre">Network.z_im</span></tt></a> and plotting methods like <a class="reference internal" href="../reference/generated/skrf.network.Network.plot_z_mag.html#skrf.network.Network.plot_z_mag" title="skrf.network.Network.plot_z_mag"><tt class="xref py py-func docutils literal"><span class="pre">Network.plot_z_mag()</span></tt></a> are available as well.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">ring_slot</span><span class="o">.</span><span class="n">z</span><span class="p">[:</span><span class="mi">3</span><span class="p">,</span><span class="o">...</span><span class="p">]</span>
+<span class="gr">Out[1]: </span>
+<span class="go">array([[[ 0.88442687+28.15350224j,  0.94703504+30.46757222j],</span>
+<span class="go">        [ 0.94703504+30.46757222j,  1.04344170+43.45766805j]],</span>
+
+<span class="go">       [[ 0.91624901+28.72415928j,  0.98188607+31.09594438j],</span>
+<span class="go">        [ 0.98188607+31.09594438j,  1.08168411+44.17642274j]],</span>
+
+<span class="go">       [[ 0.94991736+29.31694632j,  1.01876516+31.74874257j],</span>
+<span class="go">        [ 1.01876516+31.74874257j,  1.12215451+44.92215712j]]])</span>
+
+<span class="gp">In [2]: </span><span class="n">figure</span><span class="p">();</span>
+
+<span class="gp">In [3]: </span><span class="n">ring_slot</span><span class="o">.</span><span class="n">plot_z_im</span><span class="p">(</span><span class="n">m</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="../_images/ring_slot_z_re.png" src="../_images/ring_slot_z_re.png" />
+</div>
+<div class="section" id="creating-networks-from-scratch">
+<h2><a class="toc-backref" href="#id15">Creating Networks &#8216;From Scratch&#8217;</a><a class="headerlink" href="#creating-networks-from-scratch" title="Permalink to this headline">¶</a></h2>
+<p>A <a class="reference internal" href="../reference/generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> can be created <cite>from scratch</cite> by  passing values of relevant properties as keyword arguments to the constructor,</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">frequency</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">Frequency</span><span class="p">(</span><span class="mi">75</span><span class="p">,</span><span class="mi">110</span><span class="p">,</span><span class="mi">101</span><span class="p">,</span><span class="s">&#39;ghz&#39;</span><span class="p">)</span>
+
+<span class="gp">In [2]: </span><span class="n">s</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">ones</span><span class="p">(</span><span class="mi">101</span><span class="p">)</span>
+
+<span class="gp">In [3]: </span><span class="n">wr10_short</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">Network</span><span class="p">(</span><span class="n">frequency</span> <span class="o">=</span> <span class="n">frequency</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="p">,</span> <span class="n">z0</span> <span class="o">=</span> <span class="mi">50</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>For more information creating Networks representing transmission line and lumped components, see the <a class="reference internal" href="../reference/media/index.html#module-skrf.media" title="skrf.media"><tt class="xref py py-mod docutils literal"><span class="pre">media</span></tt></a> module.</p>
+</div>
+<div class="section" id="sub-networks">
+<h2><a class="toc-backref" href="#id16">Sub-Networks</a><a class="headerlink" href="#sub-networks" title="Permalink to this headline">¶</a></h2>
+<p>Frequently, the one-port s-parameters of a multiport network&#8217;s are of interest. These can be accessed by the sub-network properties, which return one-port <a class="reference internal" href="../reference/generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> objects,</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">port1_return</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">s11</span>
+
+<span class="gp">In [2]: </span><span class="n">port1_return</span>
+<span class="gr">Out[2]: </span><span class="mi">1</span><span class="o">-</span><span class="n">Port</span> <span class="n">Network</span><span class="p">:</span> <span class="s">&#39;line&#39;</span><span class="p">,</span>  <span class="mi">75</span><span class="o">-</span><span class="mi">110</span> <span class="n">GHz</span><span class="p">,</span> <span class="mi">201</span> <span class="n">pts</span><span class="p">,</span> <span class="n">z0</span><span class="o">=</span><span class="p">[</span> <span class="mf">50.</span><span class="o">+</span><span class="mf">0.j</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="references">
+<h2><a class="toc-backref" href="#id17">References</a><a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td>Compton, R.C.; , &#8220;Perspectives in microwave circuit analysis,&#8221; Circuits and Systems, 1989., Proceedings of the 32nd Midwest Symposium on , vol., no., pp.716-718 vol.2, 14-16 Aug 1989. URL: <a class="reference external" href="http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=101955&amp;isnumber=3167">http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=101955&amp;isnumber=3167</a></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/scikit-rf-logo-flat-docs.svg" alt="Logo"/>
+            </a></p>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Networks</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#creating-networks">Creating Networks</a></li>
+<li><a class="reference internal" href="#network-basics">Network Basics</a></li>
+<li><a class="reference internal" href="#network-operators">Network Operators</a><ul>
+<li><a class="reference internal" href="#linear-operations">Linear Operations</a></li>
+<li><a class="reference internal" href="#cascading-and-de-embedding">Cascading and De-embedding</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#connecting-multi-ports">Connecting Multi-ports</a></li>
+<li><a class="reference internal" href="#interpolation-and-stitching">Interpolation and Stitching</a></li>
+<li><a class="reference internal" href="#reading-and-writing">Reading and Writing</a></li>
+<li><a class="reference internal" href="#impedance-and-admittance-parameters">Impedance and Admittance Parameters</a></li>
+<li><a class="reference internal" href="#creating-networks-from-scratch">Creating Networks &#8216;From Scratch&#8217;</a></li>
+<li><a class="reference internal" href="#sub-networks">Sub-Networks</a></li>
+<li><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="introduction.html"
+                        title="previous chapter">Introduction</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="plotting.html"
+                        title="next chapter">Plotting</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/tutorials/networks.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<ul class="this-page-menu">
+  <li><a href="/scipy/docs/scipy-docs/tutorials/networks.rst">Edit page</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="plotting.html" title="Plotting"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="introduction.html" title="Introduction"
+             >previous</a> |</li>
+        <li><a href="../index.html">scikit-rf dev documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, scikit-rf development team.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

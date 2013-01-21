@@ -1,0 +1,6 @@
+skrf.vi.vna.PNAX.continuous
+===========================
+
+.. currentmodule:: skrf.vi.vna
+
+.. autoattribute:: PNAX.continuous

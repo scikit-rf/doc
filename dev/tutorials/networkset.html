@@ -1,0 +1,304 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>NetworkSet &mdash; scikit-rf dev documentation</title>
+    
+    <link rel="stylesheet" href="../_static/scipy.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'dev',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="scikit-rf dev documentation" href="../index.html" />
+    <link rel="next" title="Virtual Instruments" href="virtualinstruments.html" />
+    <link rel="prev" title="Plotting" href="plotting.html" />
+  <script type="text/javascript">
+	  var _gaq = _gaq || [];
+	    _gaq.push(['_setAccount', 'UA-29068876-1']);
+		  _gaq.push(['_trackPageview']);
+
+		    (function() {
+			    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+					    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+						  })();
+
+  </script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="virtualinstruments.html" title="Virtual Instruments"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="plotting.html" title="Plotting"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">scikit-rf dev documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="networkset">
+<span id="id1"></span><h1><a class="toc-backref" href="#id2">NetworkSet</a><a class="headerlink" href="#networkset" title="Permalink to this headline">¶</a></h1>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#networkset" id="id2">NetworkSet</a><ul>
+<li><a class="reference internal" href="#creating-a-networkset" id="id3">Creating a <a class="reference internal" href="../reference/generated/skrf.networkSet.NetworkSet.html#skrf.networkSet.NetworkSet" title="skrf.networkSet.NetworkSet"><tt class="xref py py-class docutils literal"><span class="pre">NetworkSet</span></tt></a></a></li>
+<li><a class="reference internal" href="#accesing-network-methods" id="id4">Accesing Network Methods</a></li>
+<li><a class="reference internal" href="#statistical-properties" id="id5">Statistical Properties</a></li>
+<li><a class="reference internal" href="#plotting-uncertainty-bounds" id="id6">Plotting Uncertainty Bounds</a></li>
+<li><a class="reference internal" href="#reading-and-writing" id="id7">Reading and Writing</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>The <a class="reference internal" href="../reference/generated/skrf.networkSet.NetworkSet.html#skrf.networkSet.NetworkSet" title="skrf.networkSet.NetworkSet"><tt class="xref py py-class docutils literal"><span class="pre">NetworkSet</span></tt></a> object
+represents an unordered  set of networks and provides  methods for
+calculating statistical quantities and displaying uncertainty bounds.</p>
+<div class="section" id="creating-a-networkset">
+<h2><a class="toc-backref" href="#id3">Creating a <a class="reference internal" href="../reference/generated/skrf.networkSet.NetworkSet.html#skrf.networkSet.NetworkSet" title="skrf.networkSet.NetworkSet"><tt class="xref py py-class docutils literal"><span class="pre">NetworkSet</span></tt></a></a><a class="headerlink" href="#creating-a-networkset" title="Permalink to this headline">¶</a></h2>
+<p>For this example, assume that numerous measurements of a single network
+are made. These measurements have been retrieved from a VNA and are
+in the form of touchstone files. A set of example data can be found in
+<tt class="docutils literal"><span class="pre">scikit-rf/skrf/data/</span></tt>, with naming convention <tt class="docutils literal"><span class="pre">ro,*.s1p</span></tt>,</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">skrf</span> <span class="kn">as</span> <span class="nn">rf</span>
+
+<span class="gp">In [2]: </span><span class="n">ls</span> <span class="o">../</span><span class="n">skrf</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">ro</span><span class="o">*</span>
+<span class="go">../skrf/data/ro,1.s1p  ../skrf/data/ro,2.s1p  ../skrf/data/ro,3.s1p</span>
+</pre></div>
+</div>
+<p>The files <tt class="docutils literal"><span class="pre">ro,1.s1p</span></tt> , <tt class="docutils literal"><span class="pre">ro,2.s1p</span></tt>, ...  are redundant measurements on
+which we would like to calculate statistics using the <a class="reference internal" href="../reference/generated/skrf.networkSet.NetworkSet.html#skrf.networkSet.NetworkSet" title="skrf.networkSet.NetworkSet"><tt class="xref py py-class docutils literal"><span class="pre">NetworkSet</span></tt></a>
+class.</p>
+<p>A <a class="reference internal" href="../reference/generated/skrf.networkSet.NetworkSet.html#skrf.networkSet.NetworkSet" title="skrf.networkSet.NetworkSet"><tt class="xref py py-class docutils literal"><span class="pre">NetworkSet</span></tt></a> is created from a list or dict of
+<a class="reference internal" href="../reference/generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a>&#8216;s. So first we need to load all of the
+touchstone files. This can be done quickly with
+<a class="reference internal" href="../reference/io/generated/skrf.io.general.read_all.html#skrf.io.general.read_all" title="skrf.io.general.read_all"><tt class="xref py py-func docutils literal"><span class="pre">read_all()</span></tt></a> , which loads all skrf-readable objects
+in a directory. The argument <tt class="docutils literal"><span class="pre">contains</span></tt> is used to load only files
+which match a given substring.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">rf</span><span class="o">.</span><span class="n">read_all</span><span class="p">(</span><span class="s">&#39;../skrf/data/&#39;</span><span class="p">,</span> <span class="n">contains</span><span class="o">=</span><span class="s">&#39;ro&#39;</span><span class="p">)</span>
+<span class="gr">Out[1]: </span>
+<span class="go">{&#39;ro,1&#39;: 1-Port Network: &#39;ro,1&#39;,  500-750 GHz, 201 pts, z0=[ 50.+0.j],</span>
+<span class="go"> &#39;ro,2&#39;: 1-Port Network: &#39;ro,2&#39;,  500-750 GHz, 201 pts, z0=[ 50.+0.j],</span>
+<span class="go"> &#39;ro,3&#39;: 1-Port Network: &#39;ro,3&#39;,  500-750 GHz, 201 pts, z0=[ 50.+0.j]}</span>
+</pre></div>
+</div>
+<p>This can be passed directly to the <a class="reference internal" href="../reference/generated/skrf.networkSet.NetworkSet.html#skrf.networkSet.NetworkSet" title="skrf.networkSet.NetworkSet"><tt class="xref py py-class docutils literal"><span class="pre">NetworkSet</span></tt></a> constructor,</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">ro_dict</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">read_all</span><span class="p">(</span><span class="s">&#39;../skrf/data/&#39;</span><span class="p">,</span> <span class="n">contains</span><span class="o">=</span><span class="s">&#39;ro&#39;</span><span class="p">)</span>
+
+<span class="gp">In [2]: </span><span class="n">ro_ns</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">NetworkSet</span><span class="p">(</span><span class="n">ro_dict</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;ro set&#39;</span><span class="p">)</span> <span class="c">#name is optional</span>
+
+<span class="gp">In [3]: </span><span class="n">ro_ns</span>
+<span class="gr">Out[3]: </span><span class="n">A</span> <span class="n">NetworkSet</span> <span class="n">of</span> <span class="n">length</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>A NetworkSet can also be constructed from zipfile of touchstones
+through the class method <a class="reference internal" href="../reference/generated/skrf.networkSet.NetworkSet.from_zip.html#skrf.networkSet.NetworkSet.from_zip" title="skrf.networkSet.NetworkSet.from_zip"><tt class="xref py py-func docutils literal"><span class="pre">NetworkSet.from_zip()</span></tt></a></p>
+</div>
+<div class="section" id="accesing-network-methods">
+<h2><a class="toc-backref" href="#id4">Accesing Network Methods</a><a class="headerlink" href="#accesing-network-methods" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="../reference/generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> elements in a <a class="reference internal" href="../reference/generated/skrf.networkSet.NetworkSet.html#skrf.networkSet.NetworkSet" title="skrf.networkSet.NetworkSet"><tt class="xref py py-class docutils literal"><span class="pre">NetworkSet</span></tt></a> can be accessed like the elements of list,</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">ro_ns</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gr">Out[1]: </span><span class="mi">1</span><span class="o">-</span><span class="n">Port</span> <span class="n">Network</span><span class="p">:</span> <span class="s">&#39;ro,1&#39;</span><span class="p">,</span>  <span class="mi">500</span><span class="o">-</span><span class="mi">750</span> <span class="n">GHz</span><span class="p">,</span> <span class="mi">201</span> <span class="n">pts</span><span class="p">,</span> <span class="n">z0</span><span class="o">=</span><span class="p">[</span> <span class="mf">50.</span><span class="o">+</span><span class="mf">0.j</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Most <a class="reference internal" href="../reference/generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> methods are also methods of
+<a class="reference internal" href="../reference/generated/skrf.networkSet.NetworkSet.html#skrf.networkSet.NetworkSet" title="skrf.networkSet.NetworkSet"><tt class="xref py py-class docutils literal"><span class="pre">NetworkSet</span></tt></a>. These methods are called on each
+<a class="reference internal" href="../reference/generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> element individually. For example to
+plot the log-magnitude of the s-parameters of each Network,
+(see <a class="reference internal" href="plotting.html"><em>Plotting</em></a> for details on <a class="reference internal" href="../reference/generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a>
+ploting methods).</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">ro_ns</span><span class="o">.</span><span class="n">plot_s_db</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s">&#39;Mean Response&#39;</span><span class="p">)</span>
+<span class="gr">Out[1]: </span><span class="p">[</span><span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">]</span>
+</pre></div>
+</div>
+<img alt="../_images/ns_plot_s_db.png" src="../_images/ns_plot_s_db.png" />
+</div>
+<div class="section" id="statistical-properties">
+<h2><a class="toc-backref" href="#id5">Statistical Properties</a><a class="headerlink" href="#statistical-properties" title="Permalink to this headline">¶</a></h2>
+<p>Statistical quantities can be calculated by accessing
+properties of the NetworkSet. For example, to calculate the complex
+average of the set, access the <tt class="docutils literal"><span class="pre">mean_s</span></tt> property</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">ro_ns</span><span class="o">.</span><span class="n">mean_s</span>
+<span class="gr">Out[1]: </span><span class="mi">1</span><span class="o">-</span><span class="n">Port</span> <span class="n">Network</span><span class="p">:</span> <span class="s">&#39;ro set&#39;</span><span class="p">,</span>  <span class="mi">500</span><span class="o">-</span><span class="mi">750</span> <span class="n">GHz</span><span class="p">,</span> <span class="mi">201</span> <span class="n">pts</span><span class="p">,</span> <span class="n">z0</span><span class="o">=</span><span class="p">[</span> <span class="mf">50.</span><span class="o">+</span><span class="mf">0.j</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Because the statistical operator methods are generated upon initialization
+they are not explicitly documented in this manual.</p>
+</div>
+<p>The naming convention of the statistical operator properties are <cite>NetworkSet.function_parameter</cite>, where <cite>function</cite> is the name of the
+statistical function, and <cite>parameter</cite> is the Network parameter to operate
+on. These methods return a <a class="reference internal" href="../reference/generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> object, so they can be
+saved or plotted in the same way as you would with a Network.
+To plot the log-magnitude of the complex mean response</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">figure</span><span class="p">();</span>
+
+<span class="gp">In [2]: </span><span class="n">ro_ns</span><span class="o">.</span><span class="n">mean_s</span><span class="o">.</span><span class="n">plot_s_db</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s">&#39;ro&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="../_images/ns_mean_s_plot_s_db.png" src="../_images/ns_mean_s_plot_s_db.png" />
+<p>Or to plot the standard deviation of the complex s-parameters,</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">figure</span><span class="p">();</span>
+
+<span class="gp">In [2]: </span><span class="n">ro_ns</span><span class="o">.</span><span class="n">std_s</span><span class="o">.</span><span class="n">plot_s_re</span><span class="p">(</span><span class="n">y_label</span><span class="o">=</span><span class="s">&#39;Standard Deviations&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="../_images/ns_std_s_plot_s_re.png" src="../_images/ns_std_s_plot_s_re.png" />
+<p>Using these properties it is possible to calculate statistical quantities on the scalar
+components of the complex network parameters. To calculate the
+mean of the phase component,</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">figure</span><span class="p">();</span>
+
+<span class="gp">In [2]: </span><span class="n">ro_ns</span><span class="o">.</span><span class="n">mean_s_deg</span><span class="o">.</span><span class="n">plot_s_re</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="../_images/ns_mean_s_deg.png" src="../_images/ns_mean_s_deg.png" />
+</div>
+<div class="section" id="plotting-uncertainty-bounds">
+<h2><a class="toc-backref" href="#id6">Plotting Uncertainty Bounds</a><a class="headerlink" href="#plotting-uncertainty-bounds" title="Permalink to this headline">¶</a></h2>
+<p>Uncertainty bounds can be plotted through the methods</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">figure</span><span class="p">();</span>
+
+<span class="gp">In [2]: </span><span class="n">ro_ns</span><span class="o">.</span><span class="n">plot_uncertainty_bounds_s_db</span><span class="p">()</span>
+
+<span class="gp">In [3]: </span><span class="n">figure</span><span class="p">();</span>
+
+<span class="gp">In [4]: </span><span class="n">ro_ns</span><span class="o">.</span><span class="n">plot_uncertainty_bounds_s_deg</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="../_images/ns_plot_uncertainty_bounds_s_db.png" src="../_images/ns_plot_uncertainty_bounds_s_db.png" />
+<img alt="../_images/ns_plot_uncertainty_bounds_s_deg.png" src="../_images/ns_plot_uncertainty_bounds_s_deg.png" />
+</div>
+<div class="section" id="reading-and-writing">
+<h2><a class="toc-backref" href="#id7">Reading and Writing</a><a class="headerlink" href="#reading-and-writing" title="Permalink to this headline">¶</a></h2>
+<p>NetworkSets can be saved to disk using skrf&#8217;s native IO capabilities. This
+can be ccomplished through the <a class="reference internal" href="../reference/generated/skrf.networkSet.NetworkSet.write.html#skrf.networkSet.NetworkSet.write" title="skrf.networkSet.NetworkSet.write"><tt class="xref py py-func docutils literal"><span class="pre">NetworkSet.write()</span></tt></a> method.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">ro_set</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
+
+<span class="gp">In [2]: </span><span class="n">ls</span>
+<span class="go">ro set.ns</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Note that if the NetworkSet&#8217;s <tt class="docutils literal"><span class="pre">name</span></tt> attribute is not assigned, then you must provide a filename to <a class="reference internal" href="../reference/generated/skrf.networkSet.NetworkSet.write.html#skrf.networkSet.NetworkSet.write" title="skrf.networkSet.NetworkSet.write"><tt class="xref py py-func docutils literal"><span class="pre">NetworkSet.write()</span></tt></a>.</p>
+</div>
+<p>Alternatively, you can write the Network set by directly calling the
+<a class="reference internal" href="../reference/io/generated/skrf.io.general.write.html#skrf.io.general.write" title="skrf.io.general.write"><tt class="xref py py-func docutils literal"><span class="pre">write()</span></tt></a> function. In either case, the resultant
+file can be read back into memory using <a class="reference internal" href="../reference/io/generated/skrf.io.general.read.html#skrf.io.general.read" title="skrf.io.general.read"><tt class="xref py py-func docutils literal"><span class="pre">read()</span></tt></a>.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">ro_ns</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s">&#39;ro set.ns&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/scikit-rf-logo-flat-docs.svg" alt="Logo"/>
+            </a></p>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">NetworkSet</a><ul>
+<li><a class="reference internal" href="#creating-a-networkset">Creating a <tt class="docutils literal"><span class="pre">NetworkSet</span></tt></a></li>
+<li><a class="reference internal" href="#accesing-network-methods">Accesing Network Methods</a></li>
+<li><a class="reference internal" href="#statistical-properties">Statistical Properties</a></li>
+<li><a class="reference internal" href="#plotting-uncertainty-bounds">Plotting Uncertainty Bounds</a></li>
+<li><a class="reference internal" href="#reading-and-writing">Reading and Writing</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="plotting.html"
+                        title="previous chapter">Plotting</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="virtualinstruments.html"
+                        title="next chapter">Virtual Instruments</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/tutorials/networkset.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<ul class="this-page-menu">
+  <li><a href="/scipy/docs/scipy-docs/tutorials/networkset.rst">Edit page</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="virtualinstruments.html" title="Virtual Instruments"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="plotting.html" title="Plotting"
+             >previous</a> |</li>
+        <li><a href="../index.html">scikit-rf dev documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, scikit-rf development team.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

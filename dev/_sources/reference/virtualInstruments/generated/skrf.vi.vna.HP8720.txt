@@ -1,0 +1,44 @@
+skrf.vi.vna.HP8720
+==================
+
+.. currentmodule:: skrf.vi.vna
+
+.. autoclass:: HP8720
+  :no-members:
+
+
+
+.. rubric:: Attributes
+
+.. autosummary::
+  :toctree:
+  :nosignatures:
+
+  ~HP8720.averaging
+  ~HP8720.continuous
+  ~HP8720.error
+  ~HP8720.frequency
+  ~HP8720.ifbw
+  ~HP8720.one_port
+  ~HP8720.s11
+  ~HP8720.s12
+  ~HP8720.s21
+  ~HP8720.s22
+  ~HP8720.switch_terms
+  ~HP8720.two_port
+
+
+
+
+
+.. rubric:: Methods
+
+.. autosummary::
+  :toctree:
+  :nosignatures:
+
+  ~HP8720.__init__
+
+
+
+

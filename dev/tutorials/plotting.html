@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Plotting &mdash; scikit-rf 0.12 documentation</title>
+    <title>Plotting &mdash; scikit-rf dev documentation</title>
     
     <link rel="stylesheet" href="../_static/scipy.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.12',
+        VERSION:     'dev',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,9 +25,9 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="scikit-rf 0.12 documentation" href="../index.html" />
-    <link rel="next" title="Calibration" href="calibration.html" />
-    <link rel="prev" title="Introduction" href="introduction.html" />
+    <link rel="top" title="scikit-rf dev documentation" href="../index.html" />
+    <link rel="next" title="NetworkSet" href="networkset.html" />
+    <link rel="prev" title="Networks" href="networks.html" />
   <script type="text/javascript">
 	  var _gaq = _gaq || [];
 	    _gaq.push(['_setAccount', 'UA-29068876-1']);
@@ -53,15 +53,12 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="../np-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="calibration.html" title="Calibration"
+          <a href="networkset.html" title="NetworkSet"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="introduction.html" title="Introduction"
+          <a href="networks.html" title="Networks"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">scikit-rf 0.12 documentation</a> &raquo;</li> 
+        <li><a href="../index.html">scikit-rf dev documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -76,139 +73,271 @@
 <p class="topic-title first">Contents</p>
 <ul class="simple">
 <li><a class="reference internal" href="#plotting" id="id2">Plotting</a><ul>
-<li><a class="reference internal" href="#magnitude" id="id3">Magnitude</a></li>
-<li><a class="reference internal" href="#phase" id="id4">Phase</a></li>
+<li><a class="reference internal" href="#plotting-methods" id="id3">Plotting Methods</a></li>
+<li><a class="reference internal" href="#complex-plots" id="id4">Complex Plots</a><ul>
 <li><a class="reference internal" href="#smith-chart" id="id5">Smith Chart</a></li>
-<li><a class="reference internal" href="#multiple-s-parameters" id="id6">Multiple S-parameters</a></li>
-<li><a class="reference internal" href="#comparing-with-simulation" id="id7">Comparing with Simulation</a></li>
-<li><a class="reference internal" href="#saving-plots" id="id8">Saving Plots</a></li>
+<li><a class="reference internal" href="#complex-plane" id="id6">Complex Plane</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#rectangular-plots" id="id7">Rectangular Plots</a><ul>
+<li><a class="reference internal" href="#log-magnitude" id="id8">Log-Magnitude</a></li>
+<li><a class="reference internal" href="#phase" id="id9">Phase</a></li>
+<li><a class="reference internal" href="#impedance-admittance" id="id10">Impedance, Admittance</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#customizing-plots" id="id11">Customizing Plots</a></li>
+<li><a class="reference internal" href="#saving-plots" id="id12">Saving Plots</a></li>
+<li><a class="reference internal" href="#misc" id="id13">Misc</a><ul>
+<li><a class="reference internal" href="#adding-markers-to-lines" id="id14">Adding Markers to Lines</a></li>
+<li><a class="reference internal" href="#formating-plots" id="id15">Formating Plots</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 </div>
-<p>This tutorial illustrates how to create common plots associated with microwave networks. The plotting functions are implemented as methods of the <a class="reference internal" href="../reference/generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> class, which is provided by the <a class="reference internal" href="../reference/network.html#module-skrf.network" title="skrf.network"><tt class="xref py py-mod docutils literal"><span class="pre">skrf.network</span></tt></a> module. Below is a list of the some of the plotting functions of network s-parameters,</p>
-<ul class="simple">
-<li><tt class="xref py py-func docutils literal"><span class="pre">Network.plot_s_re()</span></tt></li>
-<li><tt class="xref py py-func docutils literal"><span class="pre">Network.plot_s_im()</span></tt></li>
-<li><tt class="xref py py-func docutils literal"><span class="pre">Network.plot_s_mag()</span></tt></li>
-<li><tt class="xref py py-func docutils literal"><span class="pre">Network.plot_s_db()</span></tt></li>
-<li><tt class="xref py py-func docutils literal"><span class="pre">Network.plot_s_deg()</span></tt></li>
-<li><tt class="xref py py-func docutils literal"><span class="pre">Network.plot_s_deg_unwrapped()</span></tt></li>
-<li><tt class="xref py py-func docutils literal"><span class="pre">Network.plot_s_rad()</span></tt></li>
-<li><tt class="xref py py-func docutils literal"><span class="pre">Network.plot_s_rad_unwrapped()</span></tt></li>
-<li><a class="reference internal" href="../reference/generated/skrf.network.Network.plot_s_smith.html#skrf.network.Network.plot_s_smith" title="skrf.network.Network.plot_s_smith"><tt class="xref py py-func docutils literal"><span class="pre">Network.plot_s_smith()</span></tt></a></li>
-<li><tt class="xref py py-func docutils literal"><span class="pre">Network.plot_s_complex()</span></tt></li>
+<div class="section" id="plotting-methods">
+<h2><a class="toc-backref" href="#id3">Plotting Methods</a><a class="headerlink" href="#plotting-methods" title="Permalink to this headline">¶</a></h2>
+<p>Network plotting abilities are implemented as methods of the <a class="reference internal" href="../reference/generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> class. Some of the plotting functions of network s-parameters are,</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><a class="reference internal" href="../reference/generated/skrf.network.Network.plot_s_re.html#skrf.network.Network.plot_s_re" title="skrf.network.Network.plot_s_re"><tt class="xref py py-func docutils literal"><span class="pre">Network.plot_s_re()</span></tt></a></li>
+<li><a class="reference internal" href="../reference/generated/skrf.network.Network.plot_s_im.html#skrf.network.Network.plot_s_im" title="skrf.network.Network.plot_s_im"><tt class="xref py py-func docutils literal"><span class="pre">Network.plot_s_im()</span></tt></a></li>
+<li><a class="reference internal" href="../reference/generated/skrf.network.Network.plot_s_mag.html#skrf.network.Network.plot_s_mag" title="skrf.network.Network.plot_s_mag"><tt class="xref py py-func docutils literal"><span class="pre">Network.plot_s_mag()</span></tt></a></li>
+<li><a class="reference internal" href="../reference/generated/skrf.network.Network.plot_s_db.html#skrf.network.Network.plot_s_db" title="skrf.network.Network.plot_s_db"><tt class="xref py py-func docutils literal"><span class="pre">Network.plot_s_db()</span></tt></a></li>
+<li><a class="reference internal" href="../reference/generated/skrf.network.Network.plot_s_deg.html#skrf.network.Network.plot_s_deg" title="skrf.network.Network.plot_s_deg"><tt class="xref py py-func docutils literal"><span class="pre">Network.plot_s_deg()</span></tt></a></li>
 </ul>
-<div class="section" id="magnitude">
-<h2><a class="toc-backref" href="#id3">Magnitude</a><a class="headerlink" href="#magnitude" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">pylab</span>
-<span class="kn">import</span> <span class="nn">skrf</span> <span class="kn">as</span> <span class="nn">rf</span>
+</td><td><ul class="simple">
+<li><a class="reference internal" href="../reference/generated/skrf.network.Network.plot_s_deg_unwrap.html#skrf.network.Network.plot_s_deg_unwrap" title="skrf.network.Network.plot_s_deg_unwrap"><tt class="xref py py-func docutils literal"><span class="pre">Network.plot_s_deg_unwrap()</span></tt></a></li>
+<li><a class="reference internal" href="../reference/generated/skrf.network.Network.plot_s_rad.html#skrf.network.Network.plot_s_rad" title="skrf.network.Network.plot_s_rad"><tt class="xref py py-func docutils literal"><span class="pre">Network.plot_s_rad()</span></tt></a></li>
+<li><a class="reference internal" href="../reference/generated/skrf.network.Network.plot_s_rad_unwrap.html#skrf.network.Network.plot_s_rad_unwrap" title="skrf.network.Network.plot_s_rad_unwrap"><tt class="xref py py-func docutils literal"><span class="pre">Network.plot_s_rad_unwrap()</span></tt></a></li>
+<li><a class="reference internal" href="../reference/generated/skrf.network.Network.plot_s_smith.html#skrf.network.Network.plot_s_smith" title="skrf.network.Network.plot_s_smith"><tt class="xref py py-func docutils literal"><span class="pre">Network.plot_s_smith()</span></tt></a></li>
+<li><a class="reference internal" href="../reference/generated/skrf.network.Network.plot_s_complex.html#skrf.network.Network.plot_s_complex" title="skrf.network.Network.plot_s_complex"><tt class="xref py py-func docutils literal"><span class="pre">Network.plot_s_complex()</span></tt></a></li>
+</ul>
+</td></tr></table>
+<p>Similar methods exist for Impedance (<a class="reference internal" href="../reference/generated/skrf.network.Network.z.html#skrf.network.Network.z" title="skrf.network.Network.z"><tt class="xref py py-attr docutils literal"><span class="pre">Network.z</span></tt></a>) and Admittance Parameters (<a class="reference internal" href="../reference/generated/skrf.network.Network.y.html#skrf.network.Network.y" title="skrf.network.Network.y"><tt class="xref py py-attr docutils literal"><span class="pre">Network.y</span></tt></a>),</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><a class="reference internal" href="../reference/generated/skrf.network.Network.plot_z_re.html#skrf.network.Network.plot_z_re" title="skrf.network.Network.plot_z_re"><tt class="xref py py-func docutils literal"><span class="pre">Network.plot_z_re()</span></tt></a></li>
+<li><a class="reference internal" href="../reference/generated/skrf.network.Network.plot_z_im.html#skrf.network.Network.plot_z_im" title="skrf.network.Network.plot_z_im"><tt class="xref py py-func docutils literal"><span class="pre">Network.plot_z_im()</span></tt></a></li>
+<li>...</li>
+</ul>
+</td><td><ul class="simple">
+<li><a class="reference internal" href="../reference/generated/skrf.network.Network.plot_y_re.html#skrf.network.Network.plot_y_re" title="skrf.network.Network.plot_y_re"><tt class="xref py py-func docutils literal"><span class="pre">Network.plot_y_re()</span></tt></a></li>
+<li><a class="reference internal" href="../reference/generated/skrf.network.Network.plot_z_im.html#skrf.network.Network.plot_z_im" title="skrf.network.Network.plot_z_im"><tt class="xref py py-func docutils literal"><span class="pre">Network.plot_z_im()</span></tt></a></li>
+<li>...</li>
+</ul>
+</td></tr></table>
+<p>Step-by-step examples of how to create and customize plots are given
+below.</p>
+</div>
+<div class="section" id="complex-plots">
+<h2><a class="toc-backref" href="#id4">Complex Plots</a><a class="headerlink" href="#complex-plots" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="smith-chart">
+<h3><a class="toc-backref" href="#id5">Smith Chart</a><a class="headerlink" href="#smith-chart" title="Permalink to this headline">¶</a></h3>
+<p>As a first example, load a <a class="reference internal" href="../reference/generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> from the
+<tt class="docutils literal"><span class="pre">data</span></tt> module, and plot all four  s-parameters on the Smith chart.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">skrf</span> <span class="kn">as</span> <span class="nn">rf</span>
 
-<span class="c"># create a Network type from a touchstone file of a horn antenna</span>
-<span class="n">ring_slot</span><span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">Network</span><span class="p">(</span><span class="s">&#39;ring slot array measured.s1p&#39;</span><span class="p">)</span>
+<span class="gp">In [2]: </span><span class="kn">from</span> <span class="nn">skrf.data</span> <span class="kn">import</span> <span class="n">ring_slot</span>
 
-<span class="c"># plot magnitude (in db) of S11</span>
-<span class="n">pylab</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">pylab</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;WR-10 Ringslot Array, Mag&#39;</span><span class="p">)</span>
-<span class="n">ring_slot</span><span class="o">.</span><span class="n">plot_s_db</span><span class="p">(</span><span class="n">m</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="c"># m,n are S-Matrix indecies</span>
-<span class="c"># show the plots</span>
-<span class="n">pylab</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="gp">In [3]: </span><span class="n">ring_slot</span>
+<span class="go"> Out[3]: 2-Port Network: &#39;ring slot&#39;,  75-110 GHz, 501 pts, z0=[ 50.+0.j  50.+0.j]</span>
+
+<span class="gp">In [4]: </span><span class="n">ring_slot</span><span class="o">.</span><span class="n">plot_s_smith</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href="../pyplots/plotting/plot_ringslot_mag.py">Source code</a>, <a class="reference external" href="../pyplots/plotting/plot_ringslot_mag.png">png</a>, <a class="reference external" href="../pyplots/plotting/plot_ringslot_mag.hires.png">hires.png</a>, <a class="reference external" href="../pyplots/plotting/plot_ringslot_mag.pdf">pdf</a>)</p>
-<div class="figure">
-<img alt="../_images/plot_ringslot_mag.png" src="../_images/plot_ringslot_mag.png" />
+<img alt="../_images/plotting-ring_slot,smith.png" src="../_images/plotting-ring_slot,smith.png" />
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you dont see any plots after issuing these commands, then you may not have  started ipython with the <tt class="docutils literal"><span class="pre">--pylab</span></tt> flag. Try <tt class="docutils literal"><span class="pre">from</span> <span class="pre">pylab</span> <span class="pre">import</span> <span class="pre">*</span></tt> to import the matplotlib commands and <tt class="docutils literal"><span class="pre">ion()</span></tt>  to turn on interactive plotting. See <a class="reference external" href="http://matplotlib.org/users/shell.html">this page</a> , for more info on ipython&#8217;s <cite>pylab</cite> mode.</p>
 </div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Why do my plots look different? See  <a class="reference internal" href="#formating-plots">Formating Plots</a></p>
+</div>
+<p>The smith chart can be drawn with some impedance values labeled through the <tt class="docutils literal"><span class="pre">draw_labels</span></tt> argument.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">figure</span><span class="p">();</span>
+
+<span class="gp">In [2]: </span><span class="n">ring_slot</span><span class="o">.</span><span class="n">plot_s_smith</span><span class="p">(</span><span class="n">draw_labels</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="../_images/plotting-ring_slot,smith1.png" src="../_images/plotting-ring_slot,smith1.png" />
+<p>Another common option is to draw addmitance contours, instead of impedance. This is controled through the  <tt class="docutils literal"><span class="pre">chart_type</span></tt> argument.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">figure</span><span class="p">();</span>
+
+<span class="gp">In [2]: </span><span class="n">ring_slot</span><span class="o">.</span><span class="n">plot_s_smith</span><span class="p">(</span><span class="n">chart_type</span><span class="o">=</span><span class="s">&#39;y&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="../_images/plotting-ring_slot,smith2.png" src="../_images/plotting-ring_slot,smith2.png" />
+<p>See <a class="reference internal" href="../reference/generated/skrf.plotting.smith.html#skrf.plotting.smith" title="skrf.plotting.smith"><tt class="xref py py-func docutils literal"><span class="pre">smith()</span></tt></a> for more info on customizing the Smith Chart.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If more than one <tt class="docutils literal"><span class="pre">plot_s_smith()</span></tt> command is issued on a single figure, you may need to call <tt class="xref py py-func docutils literal"><span class="pre">draw()</span></tt> to refresh the  chart.</p>
+</div>
+</div>
+<div class="section" id="complex-plane">
+<h3><a class="toc-backref" href="#id6">Complex Plane</a><a class="headerlink" href="#complex-plane" title="Permalink to this headline">¶</a></h3>
+<p>Network parameters can also be plotted in the complex plane without a Smith Chart through <a class="reference internal" href="../reference/generated/skrf.network.Network.plot_s_complex.html#skrf.network.Network.plot_s_complex" title="skrf.network.Network.plot_s_complex"><tt class="xref py py-func docutils literal"><span class="pre">Network.plot_s_complex()</span></tt></a>.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">figure</span><span class="p">();</span>
+
+<span class="gp">In [2]: </span><span class="n">ring_slot</span><span class="o">.</span><span class="n">plot_s_complex</span><span class="p">();</span>
+</pre></div>
+</div>
+<img alt="../_images/plotting-ring_slot,complex.png" src="../_images/plotting-ring_slot,complex.png" />
+</div>
+</div>
+<div class="section" id="rectangular-plots">
+<h2><a class="toc-backref" href="#id7">Rectangular Plots</a><a class="headerlink" href="#rectangular-plots" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="log-magnitude">
+<h3><a class="toc-backref" href="#id8">Log-Magnitude</a><a class="headerlink" href="#log-magnitude" title="Permalink to this headline">¶</a></h3>
+<p>Scalar components of the complex network parameters can be plotted vs
+frequency as well. To plot the log-magnitude of the s-parameters vs. frequency,</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">figure</span><span class="p">();</span>
+
+<span class="gp">In [2]: </span><span class="n">ring_slot</span><span class="o">.</span><span class="n">plot_s_db</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="../_images/plotting-ring_slot,db.png" src="../_images/plotting-ring_slot,db.png" />
+<p>When no arguments are passed to the plotting methods, all parameters are plotted. Single parameters can be plotted by passing indecies <tt class="docutils literal"><span class="pre">m</span></tt> and <tt class="docutils literal"><span class="pre">n</span></tt> to the plotting commands (indexing start from 0). Comparing the simulated reflection coefficient off the ring slot to a measurement,</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="kn">from</span> <span class="nn">skrf.data</span> <span class="kn">import</span> <span class="n">ring_slot_meas</span>
+
+<span class="gp">In [2]: </span><span class="n">figure</span><span class="p">();</span>
+
+<span class="gp">In [3]: </span><span class="n">ring_slot</span><span class="o">.</span><span class="n">plot_s_db</span><span class="p">(</span><span class="n">m</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="c"># s11</span>
+
+<span class="gp">In [4]: </span><span class="n">ring_slot_meas</span><span class="o">.</span><span class="n">plot_s_db</span><span class="p">(</span><span class="n">m</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="c"># s11</span>
+</pre></div>
+</div>
+<img alt="../_images/plotting-ring_slot,db2.png" src="../_images/plotting-ring_slot,db2.png" />
+<p>See <a class="reference internal" href="#customizing-plots">Customizing Plots</a> for more information on customization.</p>
 </div>
 <div class="section" id="phase">
-<h2><a class="toc-backref" href="#id4">Phase</a><a class="headerlink" href="#phase" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">pylab</span>
-<span class="kn">import</span> <span class="nn">skrf</span> <span class="kn">as</span> <span class="nn">rf</span>
+<h3><a class="toc-backref" href="#id9">Phase</a><a class="headerlink" href="#phase" title="Permalink to this headline">¶</a></h3>
+<p>Plot phase,</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">figure</span><span class="p">();</span>
 
-<span class="n">ring_slot</span><span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">Network</span><span class="p">(</span><span class="s">&#39;ring slot array measured.s1p&#39;</span><span class="p">)</span>
-<span class="n">pylab</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">pylab</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;WR-10 Ringslot Array, Phase&#39;</span><span class="p">)</span>
-<span class="c"># kwargs given to plot commands are passed through to the pylab.plot</span>
-<span class="c"># command</span>
-<span class="n">ring_slot</span><span class="o">.</span><span class="n">plot_s_deg</span><span class="p">(</span><span class="n">m</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="n">markevery</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s">&#39;o&#39;</span><span class="p">)</span>
-<span class="n">pylab</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="gp">In [2]: </span><span class="n">ring_slot</span><span class="o">.</span><span class="n">plot_s_deg</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href="../pyplots/plotting/plot_ringslot_phase.py">Source code</a>, <a class="reference external" href="../pyplots/plotting/plot_ringslot_phase.png">png</a>, <a class="reference external" href="../pyplots/plotting/plot_ringslot_phase.hires.png">hires.png</a>, <a class="reference external" href="../pyplots/plotting/plot_ringslot_phase.pdf">pdf</a>)</p>
-<div class="figure">
-<img alt="../_images/plot_ringslot_phase.png" src="../_images/plot_ringslot_phase.png" />
-</div>
-</div>
-<div class="section" id="smith-chart">
-<h2><a class="toc-backref" href="#id5">Smith Chart</a><a class="headerlink" href="#smith-chart" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">pylab</span>
-<span class="kn">import</span> <span class="nn">skrf</span> <span class="kn">as</span> <span class="nn">rf</span>
+<img alt="../_images/plotting-ring_slot,deg.png" src="../_images/plotting-ring_slot,deg.png" />
+<p>Or unwrapped phase,</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">figure</span><span class="p">();</span>
 
-<span class="n">ring_slot</span><span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">Network</span><span class="p">(</span><span class="s">&#39;ring slot array measured.s1p&#39;</span><span class="p">)</span>
-
-<span class="n">pylab</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">pylab</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;WR-10 Ringslot Array, Smith&#39;</span><span class="p">)</span>
-<span class="n">ring_slot</span><span class="o">.</span><span class="n">plot_s_smith</span><span class="p">(</span><span class="n">m</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="c"># m,n are S-Matrix indecies</span>
-<span class="n">pylab</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="gp">In [2]: </span><span class="n">ring_slot</span><span class="o">.</span><span class="n">plot_s_deg_unwrap</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href="../pyplots/plotting/plot_ringslot_smith.py">Source code</a>, <a class="reference external" href="../pyplots/plotting/plot_ringslot_smith.png">png</a>, <a class="reference external" href="../pyplots/plotting/plot_ringslot_smith.hires.png">hires.png</a>, <a class="reference external" href="../pyplots/plotting/plot_ringslot_smith.pdf">pdf</a>)</p>
-<div class="figure">
-<img alt="../_images/plot_ringslot_smith.png" src="../_images/plot_ringslot_smith.png" />
+<img alt="../_images/plotting-ring_slot,deg_unwrap.png" src="../_images/plotting-ring_slot,deg_unwrap.png" />
 </div>
-<p>The Smith Chart can be also drawn independently of any <a class="reference internal" href="../reference/generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> object through the <a class="reference internal" href="../reference/generated/skrf.plotting.smith.html#skrf.plotting.smith" title="skrf.plotting.smith"><tt class="xref py py-func docutils literal"><span class="pre">smith()</span></tt></a> function. This function also allows admittance contours can also be drawn.</p>
-</div>
-<div class="section" id="multiple-s-parameters">
-<h2><a class="toc-backref" href="#id6">Multiple S-parameters</a><a class="headerlink" href="#multiple-s-parameters" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">pylab</span>
-<span class="kn">import</span> <span class="nn">skrf</span> <span class="kn">as</span> <span class="nn">rf</span>
+<div class="section" id="impedance-admittance">
+<h3><a class="toc-backref" href="#id10">Impedance, Admittance</a><a class="headerlink" href="#impedance-admittance" title="Permalink to this headline">¶</a></h3>
+<p>The components the Impendanc and Admittance parameters can be plotted
+similarly,</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">figure</span><span class="p">();</span>
 
-<span class="c"># from the extension you know this is a 2-port network</span>
-<span class="n">ring_slot</span><span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">Network</span><span class="p">(</span><span class="s">&#39;ring slot array simulation.s2p&#39;</span><span class="p">)</span>
-
-<span class="n">pylab</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">pylab</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;WR-10 Ringslot Array Simulated, Mag&#39;</span><span class="p">)</span>
-<span class="c"># if no indecies are passed to the plot command it will plot all</span>
-<span class="c"># available s-parameters</span>
-<span class="n">ring_slot</span><span class="o">.</span><span class="n">plot_s_db</span><span class="p">()</span>
-<span class="n">pylab</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="gp">In [2]: </span><span class="n">ring_slot</span><span class="o">.</span><span class="n">plot_z_im</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href="../pyplots/plotting/plot_ringslot_simulated_mag.py">Source code</a>, <a class="reference external" href="../pyplots/plotting/plot_ringslot_simulated_mag.png">png</a>, <a class="reference external" href="../pyplots/plotting/plot_ringslot_simulated_mag.hires.png">hires.png</a>, <a class="reference external" href="../pyplots/plotting/plot_ringslot_simulated_mag.pdf">pdf</a>)</p>
-<div class="figure">
-<img alt="../_images/plot_ringslot_simulated_mag.png" src="../_images/plot_ringslot_simulated_mag.png" />
-</div>
-</div>
-<div class="section" id="comparing-with-simulation">
-<h2><a class="toc-backref" href="#id7">Comparing with Simulation</a><a class="headerlink" href="#comparing-with-simulation" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">pylab</span>
-<span class="kn">import</span> <span class="nn">skrf</span> <span class="kn">as</span> <span class="nn">rf</span>
+<img alt="../_images/plotting-ring_slot,z_im.png" src="../_images/plotting-ring_slot,z_im.png" />
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">figure</span><span class="p">();</span>
 
-<span class="c"># from the extension you know this is a 2-port network</span>
-<span class="n">ring_slot_sim</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">Network</span><span class="p">(</span><span class="s">&#39;ring slot array simulation.s2p&#39;</span><span class="p">)</span>
-<span class="n">ring_slot_meas</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">Network</span><span class="p">(</span><span class="s">&#39;ring slot array measured.s1p&#39;</span><span class="p">)</span>
-
-<span class="n">pylab</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">pylab</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;WR-10 Ringslot Array Simulated vs Measured&#39;</span><span class="p">)</span>
-<span class="c"># if no indecies are passed to the plot command it will plot all</span>
-<span class="c"># available s-parameters</span>
-<span class="n">ring_slot_sim</span><span class="o">.</span><span class="n">plot_s_db</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;Simulated&#39;</span><span class="p">)</span>
-<span class="n">ring_slot_meas</span><span class="o">.</span><span class="n">plot_s_db</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;Measured&#39;</span><span class="p">)</span>
-<span class="n">pylab</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="gp">In [2]: </span><span class="n">ring_slot</span><span class="o">.</span><span class="n">plot_y_re</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href="../pyplots/plotting/plot_ringslot_simulated_vs_measured.py">Source code</a>, <a class="reference external" href="../pyplots/plotting/plot_ringslot_simulated_vs_measured.png">png</a>, <a class="reference external" href="../pyplots/plotting/plot_ringslot_simulated_vs_measured.hires.png">hires.png</a>, <a class="reference external" href="../pyplots/plotting/plot_ringslot_simulated_vs_measured.pdf">pdf</a>)</p>
-<div class="figure">
-<img alt="../_images/plot_ringslot_simulated_vs_measured.png" src="../_images/plot_ringslot_simulated_vs_measured.png" />
+<img alt="../_images/plotting-ring_slot,y_re.png" src="../_images/plotting-ring_slot,y_re.png" />
 </div>
+</div>
+<div class="section" id="customizing-plots">
+<h2><a class="toc-backref" href="#id11">Customizing Plots</a><a class="headerlink" href="#customizing-plots" title="Permalink to this headline">¶</a></h2>
+<p>The legend entries are automatically filled in with the Network&#8217;s <tt class="xref py py-attr docutils literal"><span class="pre">name</span></tt>. The entry can be overidden by passing the <tt class="docutils literal"><span class="pre">label</span></tt> argument to the plot method.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">figure</span><span class="p">();</span>
+
+<span class="gp">In [2]: </span><span class="n">ring_slot</span><span class="o">.</span><span class="n">plot_s_db</span><span class="p">(</span><span class="n">m</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s">&#39;Simulation&#39;</span><span class="p">)</span>
+
+<span class="gp">In [3]: </span><span class="n">ring_slot_meas</span><span class="o">.</span><span class="n">plot_s_db</span><span class="p">(</span><span class="n">m</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s">&#39;Measured&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="../_images/plotting-ring_slot,db3.png" src="../_images/plotting-ring_slot,db3.png" />
+<p>The frequency unit used on the x-axis is automatically filled in from
+the Networks <a class="reference internal" href="../reference/generated/skrf.network.Network.frequency.html#skrf.network.Network.frequency" title="skrf.network.Network.frequency"><tt class="xref py py-attr docutils literal"><span class="pre">frequency</span></tt></a> attribute. To change
+the label, change the frequency&#8217;s <tt class="docutils literal"><span class="pre">unit</span></tt>.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">ring_slot</span><span class="o">.</span><span class="n">frequency</span><span class="o">.</span><span class="n">unit</span> <span class="o">=</span> <span class="s">&#39;mhz&#39;</span>
+</pre></div>
+</div>
+<p>Other key word arguments given to the plotting methods are passed through to the matplotlib <tt class="xref py py-func docutils literal"><span class="pre">plot()</span></tt> function.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">figure</span><span class="p">();</span>
+
+<span class="gp">In [2]: </span><span class="n">ring_slot</span><span class="o">.</span><span class="n">plot_s_db</span><span class="p">(</span><span class="n">m</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s">&#39;Simulation&#39;</span><span class="p">)</span>
+
+<span class="gp">In [3]: </span><span class="n">ring_slot_meas</span><span class="o">.</span><span class="n">plot_s_db</span><span class="p">(</span><span class="n">m</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s">&#39;x&#39;</span><span class="p">,</span> <span class="n">markevery</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span><span class="n">label</span> <span class="o">=</span> <span class="s">&#39;Measured&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="../_images/plotting-ring_slot,db4.png" src="../_images/plotting-ring_slot,db4.png" />
+<p>All components of the plots can be customized through  <a class="reference external" href="http://matplotlib.sourceforge.net">matplotlib</a>  functions.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">figure</span><span class="p">();</span>
+
+<span class="gp">In [2]: </span><span class="n">ring_slot</span><span class="o">.</span><span class="n">plot_s_smith</span><span class="p">()</span>
+
+<span class="gp">In [3]: </span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Real Part&#39;</span><span class="p">);</span>
+
+<span class="gp">In [4]: </span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Imaginary Part&#39;</span><span class="p">);</span>
+
+<span class="gp">In [5]: </span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Smith Chart&#39;</span><span class="p">);</span>
+
+<span class="gp">In [6]: </span><span class="n">draw</span><span class="p">();</span>
+</pre></div>
+</div>
+<img alt="../_images/plotting-ring_slot,smith3.png" src="../_images/plotting-ring_slot,smith3.png" />
 </div>
 <div class="section" id="saving-plots">
-<h2><a class="toc-backref" href="#id8">Saving Plots</a><a class="headerlink" href="#saving-plots" title="Permalink to this headline">¶</a></h2>
-<p>Plots can be saved in various file formats using the GUI provided by the matplotlib. However, skrf provides a convenience function, called <a class="reference internal" href="../reference/generated/skrf.convenience.save_all_figs.html#skrf.convenience.save_all_figs" title="skrf.convenience.save_all_figs"><tt class="xref py py-func docutils literal"><span class="pre">save_all_figs()</span></tt></a>,  that allows all open figures to be saved to disk in multiple file formats, with filenames pulled from each figure&#8217;s title:</p>
+<h2><a class="toc-backref" href="#id12">Saving Plots</a><a class="headerlink" href="#saving-plots" title="Permalink to this headline">¶</a></h2>
+<p>Plots can be saved in various file formats using the GUI provided by the matplotlib. However, skrf provides a convenience function, called <a class="reference internal" href="../reference/generated/skrf.plotting.save_all_figs.html#skrf.plotting.save_all_figs" title="skrf.plotting.save_all_figs"><tt class="xref py py-func docutils literal"><span class="pre">save_all_figs()</span></tt></a>,  that allows all open figures to be saved to disk in multiple file formats, with filenames pulled from each figure&#8217;s title:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">rf</span><span class="o">.</span><span class="n">save_all_figs</span><span class="p">(</span><span class="s">&#39;.&#39;</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;eps&#39;</span><span class="p">,</span><span class="s">&#39;pdf&#39;</span><span class="p">])</span>
 <span class="go">./WR-10 Ringslot Array Simulated vs Measured.eps</span>
 <span class="go">./WR-10 Ringslot Array Simulated vs Measured.pdf</span>
 </pre></div>
+</div>
+</div>
+<div class="section" id="misc">
+<h2><a class="toc-backref" href="#id13">Misc</a><a class="headerlink" href="#misc" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="adding-markers-to-lines">
+<h3><a class="toc-backref" href="#id14">Adding Markers to Lines</a><a class="headerlink" href="#adding-markers-to-lines" title="Permalink to this headline">¶</a></h3>
+<p>A common need is to make a color plot, interpretable in greyscale print.
+There is a convenient function, <a class="reference internal" href="../reference/generated/skrf.plotting.add_markers_to_lines.html#skrf.plotting.add_markers_to_lines" title="skrf.plotting.add_markers_to_lines"><tt class="xref py py-func docutils literal"><span class="pre">add_markers_to_lines()</span></tt></a>, which  adds markers each line in a plots <em>after</em> the plot has been made. In this way, adding markers to an already written set of plotting commands is easy.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">figure</span><span class="p">();</span>
+
+<span class="gp">In [2]: </span><span class="n">ring_slot</span><span class="o">.</span><span class="n">plot_s_db</span><span class="p">(</span><span class="n">m</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="gp">In [3]: </span><span class="n">ring_slot_meas</span><span class="o">.</span><span class="n">plot_s_db</span><span class="p">(</span><span class="n">m</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="gp">In [4]: </span><span class="n">rf</span><span class="o">.</span><span class="n">add_markers_to_lines</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="../_images/plotting-ring_slot,db6.png" src="../_images/plotting-ring_slot,db6.png" />
+</div>
+<div class="section" id="formating-plots">
+<h3><a class="toc-backref" href="#id15">Formating Plots</a><a class="headerlink" href="#formating-plots" title="Permalink to this headline">¶</a></h3>
+<p>It is likely that your plots dont look exactly like the ones in this
+tutorial. This is because matplotlib supports a vast amount of <a class="reference external" href="http://matplotlib.org/users/customizing.html">customization</a>.  Formating options can be customized <cite>on-the-fly</cite> by modifying values of the <tt class="docutils literal"><span class="pre">rcParams</span></tt> dictionary. Once these are set to your liking they can be saved to your <tt class="docutils literal"><span class="pre">.matplotlibrc</span></tt> file.</p>
+<p>Here are some relevant parameters which should get your plots looking close to the ones in this tutorial:</p>
+<div class="highlight-python"><pre>my_params = {
+'figure.dpi':  120,
+'figure.figsize': [4,3],
+'figure.subplot.left' : 0.15,
+'figure.subplot.right'      : 0.9,
+'figure.subplot.bottom'     : 0.12,
+'axes.titlesize'    : 'medium',
+'axes.labelsize'    : 10 ,
+'ytick.labelsize'   :'small',
+'xtick.labelsize'   :'small',
+'legend.fontsize'   : 8  #small,
+'legend.loc'            : 'best',
+'font.size'         : 10.0,
+'font.family'       : 'serif',
+'text.usetex' : True,    # if you have latex
+}
+
+rcParams.update(my_params)</pre>
+</div>
+<p>The project <a class="reference external" href="http://tonysyu.github.com/mpltools/">mpltools</a> provides a way  to  switch between pre-defined <cite>styles</cite>, and contains other useful plotting-related features.</p>
 </div>
 </div>
 </div>
@@ -220,27 +349,40 @@
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="../index.html">
-              <img class="logo" src="../_static/scikit_logo_small.png" alt="Logo"/>
+              <img class="logo" src="../_static/scikit-rf-logo-flat-docs.svg" alt="Logo"/>
             </a></p>
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Plotting</a><ul>
-<li><a class="reference internal" href="#magnitude">Magnitude</a></li>
-<li><a class="reference internal" href="#phase">Phase</a></li>
+<li><a class="reference internal" href="#plotting-methods">Plotting Methods</a></li>
+<li><a class="reference internal" href="#complex-plots">Complex Plots</a><ul>
 <li><a class="reference internal" href="#smith-chart">Smith Chart</a></li>
-<li><a class="reference internal" href="#multiple-s-parameters">Multiple S-parameters</a></li>
-<li><a class="reference internal" href="#comparing-with-simulation">Comparing with Simulation</a></li>
+<li><a class="reference internal" href="#complex-plane">Complex Plane</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#rectangular-plots">Rectangular Plots</a><ul>
+<li><a class="reference internal" href="#log-magnitude">Log-Magnitude</a></li>
+<li><a class="reference internal" href="#phase">Phase</a></li>
+<li><a class="reference internal" href="#impedance-admittance">Impedance, Admittance</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#customizing-plots">Customizing Plots</a></li>
 <li><a class="reference internal" href="#saving-plots">Saving Plots</a></li>
+<li><a class="reference internal" href="#misc">Misc</a><ul>
+<li><a class="reference internal" href="#adding-markers-to-lines">Adding Markers to Lines</a></li>
+<li><a class="reference internal" href="#formating-plots">Formating Plots</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="introduction.html"
-                        title="previous chapter">Introduction</a></p>
+  <p class="topless"><a href="networks.html"
+                        title="previous chapter">Networks</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="calibration.html"
-                        title="next chapter">Calibration</a></p>
+  <p class="topless"><a href="networkset.html"
+                        title="next chapter">NetworkSet</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="../_sources/tutorials/plotting.txt"
@@ -278,19 +420,16 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="../np-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="calibration.html" title="Calibration"
+          <a href="networkset.html" title="NetworkSet"
              >next</a> |</li>
         <li class="right" >
-          <a href="introduction.html" title="Introduction"
+          <a href="networks.html" title="Networks"
              >previous</a> |</li>
-        <li><a href="../index.html">scikit-rf 0.12 documentation</a> &raquo;</li> 
+        <li><a href="../index.html">scikit-rf dev documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2011, alex arsenovic.
+        &copy; Copyright 2013, scikit-rf development team.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
