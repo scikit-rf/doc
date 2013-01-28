@@ -1,0 +1,190 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>skrf.io.general.read &mdash; scikit-rf 0.13 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/scipy.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '0.13',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="scikit-rf 0.13 documentation" href="../../../index.html" />
+    <link rel="up" title="io (skrf.io)" href="../index.html" />
+    <link rel="next" title="skrf.io.general.read_all" href="skrf.io.general.read_all.html" />
+    <link rel="prev" title="skrf.io.csv.pna_csv_2_ntwks" href="skrf.io.csv.pna_csv_2_ntwks.html" />
+  <script type="text/javascript">
+	  var _gaq = _gaq || [];
+	    _gaq.push(['_setAccount', 'UA-29068876-1']);
+		  _gaq.push(['_trackPageview']);
+
+		    (function() {
+			    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+					    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+						  })();
+
+  </script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="skrf.io.general.read_all.html" title="skrf.io.general.read_all"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="skrf.io.csv.pna_csv_2_ntwks.html" title="skrf.io.csv.pna_csv_2_ntwks"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../../index.html">scikit-rf 0.13 documentation</a> &raquo;</li>
+          <li><a href="../index.html" accesskey="U">io (<tt class="docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.io</span></tt>)</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="skrf-io-general-read">
+<h1>skrf.io.general.read<a class="headerlink" href="#skrf-io-general-read" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="skrf.io.general.read">
+<tt class="descclassname">skrf.io.general.</tt><tt class="descname">read</tt><big>(</big><em>file</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#skrf.io.general.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read  skrf object[s] from a pickle file</p>
+<p>Reads a skrf object that is written with <a class="reference internal" href="skrf.io.general.write.html#skrf.io.general.write" title="skrf.io.general.write"><tt class="xref py py-func docutils literal"><span class="pre">write()</span></tt></a>, which uses
+the <a class="reference external" href="http://docs.python.org/library/pickle.html#pickle" title="(in Python v2.7)"><tt class="xref py py-mod docutils literal"><span class="pre">pickle</span></tt></a> module.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>file</strong> : str or file-object</p>
+<blockquote>
+<div><p>name of file, or  a file-object</p>
+</div></blockquote>
+<p><strong>*args, **kwargs</strong> : arguments and keyword arguments</p>
+<blockquote class="last">
+<div><p>passed through to pickle.load</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><a class="reference internal" href="#skrf.io.general.read" title="skrf.io.general.read"><tt class="xref py py-obj docutils literal"><span class="pre">read</span></tt></a></dt>
+<dd>read a skrf object</dd>
+<dt><a class="reference internal" href="skrf.io.general.write.html#skrf.io.general.write" title="skrf.io.general.write"><tt class="xref py py-obj docutils literal"><span class="pre">write</span></tt></a></dt>
+<dd>write skrf object[s]</dd>
+<dt><a class="reference internal" href="skrf.io.general.read_all.html#skrf.io.general.read_all" title="skrf.io.general.read_all"><tt class="xref py py-obj docutils literal"><span class="pre">read_all</span></tt></a></dt>
+<dd>read all skrf objects in a directory</dd>
+<dt><a class="reference internal" href="skrf.io.general.write_all.html#skrf.io.general.write_all" title="skrf.io.general.write_all"><tt class="xref py py-obj docutils literal"><span class="pre">write_all</span></tt></a></dt>
+<dd>write dictionary of skrf objects to a directory</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>if <cite>file</cite> is a file-object it is left open, if it is a filename then 
+a file-object is opened and closed. If file is a file-object 
+and reading fails, then the position is reset back to 0 using seek
+if possible.</p>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">Network</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span><span class="n">s</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="n">z0</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">n</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;my_ntwk.ntwk&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">n_2</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s">&#39;my_ntwk.ntwk&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../../index.html">
+              <img class="logo" src="../../../_static/scikit-rf-logo-flat-docs.svg" alt="Logo"/>
+            </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="skrf.io.csv.pna_csv_2_ntwks.html"
+                        title="previous chapter">skrf.io.csv.pna_csv_2_ntwks</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="skrf.io.general.read_all.html"
+                        title="next chapter">skrf.io.general.read_all</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../../_sources/reference/io/generated/skrf.io.general.read.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<ul class="this-page-menu">
+  <li><a href="/scipy/docs/reference/io/skrf.io.general.read">Edit page</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="skrf.io.general.read_all.html" title="skrf.io.general.read_all"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="skrf.io.csv.pna_csv_2_ntwks.html" title="skrf.io.csv.pna_csv_2_ntwks"
+             >previous</a> |</li>
+        <li><a href="../../../index.html">scikit-rf 0.13 documentation</a> &raquo;</li>
+          <li><a href="../index.html" >io (<tt class="docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.io</span></tt>)</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, scikit-rf development team.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

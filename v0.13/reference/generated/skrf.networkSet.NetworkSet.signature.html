@@ -1,0 +1,193 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>skrf.networkSet.NetworkSet.signature &mdash; scikit-rf 0.13 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/scipy.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.13',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="scikit-rf 0.13 documentation" href="../../index.html" />
+    <link rel="up" title="skrf.networkSet.NetworkSet" href="skrf.networkSet.NetworkSet.html" />
+    <link rel="next" title="skrf.networkSet.NetworkSet.uncertainty_ntwk_triplet" href="skrf.networkSet.NetworkSet.uncertainty_ntwk_triplet.html" />
+    <link rel="prev" title="skrf.networkSet.NetworkSet.set_wise_function" href="skrf.networkSet.NetworkSet.set_wise_function.html" />
+  <script type="text/javascript">
+	  var _gaq = _gaq || [];
+	    _gaq.push(['_setAccount', 'UA-29068876-1']);
+		  _gaq.push(['_trackPageview']);
+
+		    (function() {
+			    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+					    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+						  })();
+
+  </script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="skrf.networkSet.NetworkSet.uncertainty_ntwk_triplet.html" title="skrf.networkSet.NetworkSet.uncertainty_ntwk_triplet"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="skrf.networkSet.NetworkSet.set_wise_function.html" title="skrf.networkSet.NetworkSet.set_wise_function"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">scikit-rf 0.13 documentation</a> &raquo;</li>
+          <li><a href="../networkSet.html" >networkSet (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.networkSet</span></tt>)</a> &raquo;</li>
+          <li><a href="skrf.networkSet.NetworkSet.html" accesskey="U">skrf.networkSet.NetworkSet</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="skrf-networkset-networkset-signature">
+<h1>skrf.networkSet.NetworkSet.signature<a class="headerlink" href="#skrf-networkset-networkset-signature" title="Permalink to this headline">¶</a></h1>
+<dl class="method">
+<dt id="skrf.networkSet.NetworkSet.signature">
+<tt class="descclassname">NetworkSet.</tt><tt class="descname">signature</tt><big>(</big><em>m=0</em>, <em>n=0</em>, <em>from_mean=False</em>, <em>operation='__sub__'</em>, <em>component='s_mag'</em>, <em>vmax=None</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#skrf.networkSet.NetworkSet.signature" title="Permalink to this definition">¶</a></dt>
+<dd><p>visualization of relative changes in a NetworkSet.</p>
+<p>Creates a colored image representing the devation of each
+Network from the from mean Network of the NetworkSet, vs
+frequency.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>m</strong> : int</p>
+<blockquote>
+<div><p>first s-parameters index</p>
+</div></blockquote>
+<p><strong>n</strong> : int</p>
+<blockquote>
+<div><p>second s-parameter index</p>
+</div></blockquote>
+<p><strong>from_mean</strong> : Boolean</p>
+<blockquote>
+<div><p>calculate distance from mean if True. or distance from 
+first network in networkset if False.</p>
+</div></blockquote>
+<p><strong>operation</strong> : [&#8216;__sub__&#8217;, &#8216;__div__&#8217;], ..</p>
+<blockquote>
+<div><p>operation to apply between each network and the reference 
+network, which is either the mean, or the initial ntwk.</p>
+</div></blockquote>
+<p><strong>component</strong> : [&#8216;s_mag&#8217;,&#8217;s_db&#8217;,&#8217;s_deg&#8217; ..]</p>
+<blockquote>
+<div><p>scalar component of Network to plot on the imshow. should 
+be a property of the Network object.</p>
+</div></blockquote>
+<p><strong>vmax</strong> : number</p>
+<blockquote>
+<div><p>sets upper limit of colorbar, if None, will be set to
+3*mean of the magnitude of the complex difference</p>
+</div></blockquote>
+<p><strong>*args,**kwargs</strong> : arguments, keyword arguments</p>
+<blockquote class="last">
+<div><p>passed to <tt class="xref py py-func docutils literal"><span class="pre">imshow()</span></tt></p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="../../_static/scikit-rf-logo-flat-docs.svg" alt="Logo"/>
+            </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="skrf.networkSet.NetworkSet.set_wise_function.html"
+                        title="previous chapter">skrf.networkSet.NetworkSet.set_wise_function</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="skrf.networkSet.NetworkSet.uncertainty_ntwk_triplet.html"
+                        title="next chapter">skrf.networkSet.NetworkSet.uncertainty_ntwk_triplet</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/reference/generated/skrf.networkSet.NetworkSet.signature.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<ul class="this-page-menu">
+  <li><a href="/scipy/docs/reference/skrf.networkSet.NetworkSet.signature">Edit page</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="skrf.networkSet.NetworkSet.uncertainty_ntwk_triplet.html" title="skrf.networkSet.NetworkSet.uncertainty_ntwk_triplet"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="skrf.networkSet.NetworkSet.set_wise_function.html" title="skrf.networkSet.NetworkSet.set_wise_function"
+             >previous</a> |</li>
+        <li><a href="../../index.html">scikit-rf 0.13 documentation</a> &raquo;</li>
+          <li><a href="../networkSet.html" >networkSet (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.networkSet</span></tt>)</a> &raquo;</li>
+          <li><a href="skrf.networkSet.NetworkSet.html" >skrf.networkSet.NetworkSet</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, scikit-rf development team.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

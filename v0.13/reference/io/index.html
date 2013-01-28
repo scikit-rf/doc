@@ -1,0 +1,237 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>io (skrf.io) &mdash; scikit-rf 0.13 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/scipy.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.13',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="scikit-rf 0.13 documentation" href="../../index.html" />
+    <link rel="next" title="skrf.io.general.read" href="generated/skrf.io.general.read.html" />
+    <link rel="prev" title="skrf.util.get_extn" href="../generated/skrf.util.get_extn.html" />
+  <script type="text/javascript">
+	  var _gaq = _gaq || [];
+	    _gaq.push(['_setAccount', 'UA-29068876-1']);
+		  _gaq.push(['_trackPageview']);
+
+		    (function() {
+			    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+					    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+						  })();
+
+  </script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="generated/skrf.io.general.read.html" title="skrf.io.general.read"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../generated/skrf.util.get_extn.html" title="skrf.util.get_extn"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">scikit-rf 0.13 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <span class="target" id="module-skrf.io"></span><span class="target" id="module-skrf.io"></span><div class="section" id="io-skrf-io">
+<h1>io (<a class="reference internal" href="#module-skrf.io" title="skrf.io"><tt class="xref py py-mod docutils literal"><span class="pre">skrf.io</span></tt></a>)<a class="headerlink" href="#io-skrf-io" title="Permalink to this headline">¶</a></h1>
+<p>This Package provides functions and objects for input/output.</p>
+<p>The  general functions  <a class="reference internal" href="generated/skrf.io.general.read.html#skrf.io.general.read" title="skrf.io.general.read"><tt class="xref py py-func docutils literal"><span class="pre">read()</span></tt></a> and <a class="reference internal" href="generated/skrf.io.general.write.html#skrf.io.general.write" title="skrf.io.general.write"><tt class="xref py py-func docutils literal"><span class="pre">write()</span></tt></a> 
+can be used to read and write [almost] any skrf object to disk, using the 
+<a class="reference external" href="http://docs.python.org/library/pickle.html#pickle" title="(in Python v2.7)"><tt class="xref py py-mod docutils literal"><span class="pre">pickle</span></tt></a> module.</p>
+<p>Reading and writing touchstone files is supported through the 
+<a class="reference internal" href="generated/skrf.io.touchstone.Touchstone.html#skrf.io.touchstone.Touchstone" title="skrf.io.touchstone.Touchstone"><tt class="xref py py-class docutils literal"><span class="pre">Touchstone</span></tt></a> class, which can be more easily used 
+through the Network constructor, <a class="reference internal" href="../generated/skrf.network.Network.__init__.html#skrf.network.Network.__init__" title="skrf.network.Network.__init__"><tt class="xref py py-func docutils literal"><span class="pre">__init__()</span></tt></a></p>
+<span class="target" id="module-skrf.io.general"></span><span class="target" id="module-skrf.io.general"></span><div class="section" id="general-skrf-io-general">
+<h2>general (<a class="reference internal" href="#module-skrf.io.general" title="skrf.io.general"><tt class="xref py py-mod docutils literal"><span class="pre">skrf.io.general</span></tt></a>)<a class="headerlink" href="#general-skrf-io-general" title="Permalink to this headline">¶</a></h2>
+<p>General io functions for reading and writing skrf objects</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/skrf.io.general.read.html#skrf.io.general.read" title="skrf.io.general.read"><tt class="xref py py-obj docutils literal"><span class="pre">read</span></tt></a>(file,&nbsp;*args,&nbsp;**kwargs)</td>
+<td>Read  skrf object[s] from a pickle file</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/skrf.io.general.read_all.html#skrf.io.general.read_all" title="skrf.io.general.read_all"><tt class="xref py py-obj docutils literal"><span class="pre">read_all</span></tt></a>([dir,&nbsp;contains])</td>
+<td>Read all skrf objects in a directory</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/skrf.io.general.write.html#skrf.io.general.write" title="skrf.io.general.write"><tt class="xref py py-obj docutils literal"><span class="pre">write</span></tt></a>(file,&nbsp;obj[,&nbsp;overwrite])</td>
+<td>Write skrf object[s] to a file</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/skrf.io.general.write_all.html#skrf.io.general.write_all" title="skrf.io.general.write_all"><tt class="xref py py-obj docutils literal"><span class="pre">write_all</span></tt></a>(dict_objs[,&nbsp;dir])</td>
+<td>Write a dictionary of skrf objects individual files in <cite>dir</cite>.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/skrf.io.general.save_sesh.html#skrf.io.general.save_sesh" title="skrf.io.general.save_sesh"><tt class="xref py py-obj docutils literal"><span class="pre">save_sesh</span></tt></a>(dict_objs[,&nbsp;file,&nbsp;module,&nbsp;...])</td>
+<td>Save all <cite>skrf</cite> objects in the local namespace.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<span class="target" id="module-skrf.io.touchstone"></span><span class="target" id="module-skrf.io.touchstone"></span><div class="section" id="touchstone-skrf-io-touchstone">
+<h2>touchstone (<a class="reference internal" href="#module-skrf.io.touchstone" title="skrf.io.touchstone"><tt class="xref py py-mod docutils literal"><span class="pre">skrf.io.touchstone</span></tt></a>)<a class="headerlink" href="#touchstone-skrf-io-touchstone" title="Permalink to this headline">¶</a></h2>
+<p>Touchstone class</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/skrf.io.touchstone.Touchstone.html#skrf.io.touchstone.Touchstone" title="skrf.io.touchstone.Touchstone"><tt class="xref py py-obj docutils literal"><span class="pre">Touchstone</span></tt></a>(file)</td>
+<td>class to read touchstone s-parameter files</td>
+</tr>
+</tbody>
+</table>
+<p>Functions related to reading/writing touchstones.</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/skrf.io.touchstone.hfss_touchstone_2_gamma_z0.html#skrf.io.touchstone.hfss_touchstone_2_gamma_z0" title="skrf.io.touchstone.hfss_touchstone_2_gamma_z0"><tt class="xref py py-obj docutils literal"><span class="pre">hfss_touchstone_2_gamma_z0</span></tt></a>(filename)</td>
+<td>Extracts Z0 and Gamma comments from touchstone file</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/skrf.io.touchstone.hfss_touchstone_2_media.html#skrf.io.touchstone.hfss_touchstone_2_media" title="skrf.io.touchstone.hfss_touchstone_2_media"><tt class="xref py py-obj docutils literal"><span class="pre">hfss_touchstone_2_media</span></tt></a>(filename[,&nbsp;f_unit])</td>
+<td>Creates a <a class="reference internal" href="../media/generated/skrf.media.media.Media.html#skrf.media.media.Media" title="skrf.media.media.Media"><tt class="xref py py-class docutils literal"><span class="pre">Media</span></tt></a> object from a a HFSS-style touchstone file with Gamma and Z0 comments</td>
+</tr>
+</tbody>
+</table>
+</div>
+<span class="target" id="module-skrf.io.csv"></span><span class="target" id="module-skrf.io.csv"></span><div class="section" id="csv-skrf-io-csv">
+<h2>csv (<a class="reference internal" href="#module-skrf.io.csv" title="skrf.io.csv"><tt class="xref py py-mod docutils literal"><span class="pre">skrf.io.csv</span></tt></a>)<a class="headerlink" href="#csv-skrf-io-csv" title="Permalink to this headline">¶</a></h2>
+<p>Functions for reading and writing standard csv files</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/skrf.io.csv.read_pna_csv.html#skrf.io.csv.read_pna_csv" title="skrf.io.csv.read_pna_csv"><tt class="xref py py-obj docutils literal"><span class="pre">read_pna_csv</span></tt></a>(filename,&nbsp;*args,&nbsp;**kwargs)</td>
+<td>Reads data from a csv file written by an Agilient PNA</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/skrf.io.csv.pna_csv_2_ntwks.html#skrf.io.csv.pna_csv_2_ntwks" title="skrf.io.csv.pna_csv_2_ntwks"><tt class="xref py py-obj docutils literal"><span class="pre">pna_csv_2_ntwks</span></tt></a>(filename)</td>
+<td>Reads a PNAX csv file, and returns a list of one-port Networks</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="../../_static/scikit-rf-logo-flat-docs.svg" alt="Logo"/>
+            </a></p>
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">io (<tt class="docutils literal"><span class="pre">skrf.io</span></tt>)</a><ul>
+<li><a class="reference internal" href="#general-skrf-io-general">general (<tt class="docutils literal"><span class="pre">skrf.io.general</span></tt>)</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#touchstone-skrf-io-touchstone">touchstone (<tt class="docutils literal"><span class="pre">skrf.io.touchstone</span></tt>)</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#csv-skrf-io-csv">csv (<tt class="docutils literal"><span class="pre">skrf.io.csv</span></tt>)</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../generated/skrf.util.get_extn.html"
+                        title="previous chapter">skrf.util.get_extn</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="generated/skrf.io.general.read.html"
+                        title="next chapter">skrf.io.general.read</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/reference/io/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<ul class="this-page-menu">
+  <li><a href="/scipy/docs/scipy-docs/reference/io/index.rst">Edit page</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="generated/skrf.io.general.read.html" title="skrf.io.general.read"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../generated/skrf.util.get_extn.html" title="skrf.util.get_extn"
+             >previous</a> |</li>
+        <li><a href="../../index.html">scikit-rf 0.13 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, scikit-rf development team.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

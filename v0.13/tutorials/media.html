@@ -1,0 +1,442 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Media &mdash; scikit-rf 0.13 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/scipy.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.13',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="scikit-rf 0.13 documentation" href="../index.html" />
+    <link rel="next" title="Visualizing a Single Stub Matching Network" href="../examples/matching_single_stub.html" />
+    <link rel="prev" title="Calibration" href="calibration.html" />
+  <script type="text/javascript">
+	  var _gaq = _gaq || [];
+	    _gaq.push(['_setAccount', 'UA-29068876-1']);
+		  _gaq.push(['_trackPageview']);
+
+		    (function() {
+			    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+					    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+						  })();
+
+  </script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../examples/matching_single_stub.html" title="Visualizing a Single Stub Matching Network"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="calibration.html" title="Calibration"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">scikit-rf 0.13 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="media">
+<span id="id1"></span><h1><a class="toc-backref" href="#id4">Media</a><a class="headerlink" href="#media" title="Permalink to this headline">¶</a></h1>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#media" id="id4">Media</a><ul>
+<li><a class="reference internal" href="#introduction" id="id5">Introduction</a><ul>
+<li><a class="reference internal" href="#media-s-supported-by-skrf" id="id6">Media&#8217;s Supported by skrf</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#creating-media-objects" id="id7">Creating <a class="reference internal" href="../reference/media/generated/skrf.media.media.Media.html#skrf.media.media.Media" title="skrf.media.media.Media"><tt class="xref py py-class docutils literal"><span class="pre">Media</span></tt></a> Objects</a><ul>
+<li><a class="reference internal" href="#coplanar-waveguide" id="id8">Coplanar Waveguide</a></li>
+<li><a class="reference internal" href="#freespace" id="id9">Freespace</a></li>
+<li><a class="reference internal" href="#rectangular-waveguide" id="id10">Rectangular Waveguide</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#working-with-media-s" id="id11">Working with Media&#8217;s</a></li>
+<li><a class="reference internal" href="#network-synthesis" id="id12">Network Synthesis</a></li>
+<li><a class="reference internal" href="#building-cicuits" id="id13">Building Cicuits</a></li>
+<li><a class="reference internal" href="#design-optimization" id="id14">Design Optimization</a></li>
+<li><a class="reference internal" href="#references" id="id15">References</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="introduction">
+<h2><a class="toc-backref" href="#id5">Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p><strong>skrf</strong> supports the  microwave network synthesis based on transmission line models. Network creation is accomplished through methods of the Media class, which represents a transmission line object for a given medium. Once constructed, a <a class="reference internal" href="../reference/media/generated/skrf.media.media.Media.html#skrf.media.media.Media" title="skrf.media.media.Media"><tt class="xref py py-class docutils literal"><span class="pre">Media</span></tt></a> object contains the neccesary properties such as <tt class="docutils literal"><span class="pre">propagation</span> <span class="pre">constant</span></tt> and <tt class="docutils literal"><span class="pre">characteristic</span> <span class="pre">impedance</span></tt>, that are needed to generate microwave circuits.</p>
+<p>This tutorial illustrates how created Networks using several different <a class="reference internal" href="../reference/media/generated/skrf.media.media.Media.html#skrf.media.media.Media" title="skrf.media.media.Media"><tt class="xref py py-class docutils literal"><span class="pre">Media</span></tt></a> objects. The basic usage is,</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">skrf</span> <span class="kn">as</span> <span class="nn">rf</span>
+
+<span class="gp">In [2]: </span><span class="n">freq</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">Frequency</span><span class="p">(</span><span class="mi">75</span><span class="p">,</span><span class="mi">110</span><span class="p">,</span><span class="mi">101</span><span class="p">,</span><span class="s">&#39;ghz&#39;</span><span class="p">)</span>
+
+<span class="gp">In [3]: </span><span class="n">cpw</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">media</span><span class="o">.</span><span class="n">CPW</span><span class="p">(</span><span class="n">freq</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="mf">10e-6</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mf">5e-6</span><span class="p">,</span> <span class="n">ep_r</span><span class="o">=</span><span class="mf">10.6</span><span class="p">)</span>
+
+<span class="gp">In [4]: </span><span class="n">cpw</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s">&#39;100um line&#39;</span><span class="p">)</span>
+<span class="gr">Out[4]: </span><span class="mi">2</span><span class="o">-</span><span class="n">Port</span> <span class="n">Network</span><span class="p">:</span> <span class="s">&#39;100um line&#39;</span><span class="p">,</span>  <span class="mi">75</span><span class="o">-</span><span class="mi">110</span> <span class="n">GHz</span><span class="p">,</span> <span class="mi">101</span> <span class="n">pts</span><span class="p">,</span> <span class="n">z0</span><span class="o">=</span><span class="p">[</span> <span class="mf">50.06074662</span><span class="o">+</span><span class="mf">0.j</span>  <span class="mf">50.06074662</span><span class="o">+</span><span class="mf">0.j</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>More detailed examples illustrating how to create various kinds of Media
+objects are given below.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The network creation and connection syntax of <strong>skrf</strong> are cumbersome
+if you need to doing complex circuit design. For a this type of
+application, you may be interested in using <a class="reference external" href="http://www.qucs.sourceforge.net">QUCS</a> instead.
+<strong>skrf</strong>&#8216;s synthesis cabilities lend themselves more to scripted applications
+such as  <a class="reference internal" href="#design-optimization">Design Optimization</a> or batch processing.</p>
+</div>
+<div class="section" id="media-s-supported-by-skrf">
+<h3><a class="toc-backref" href="#id6">Media&#8217;s Supported by skrf</a><a class="headerlink" href="#media-s-supported-by-skrf" title="Permalink to this headline">¶</a></h3>
+<p>The base-class, <a class="reference internal" href="../reference/media/generated/skrf.media.media.Media.html#skrf.media.media.Media" title="skrf.media.media.Media"><tt class="xref py py-class docutils literal"><span class="pre">Media</span></tt></a>,  is constructed directly from
+values of propagation constant and characteristic impedance. Specific
+instances of Media objects can be created from relevant physical and
+electrical properties. Below is a list of mediums types supported by skrf,</p>
+<ul class="simple">
+<li><a class="reference internal" href="../reference/media/generated/skrf.media.cpw.CPW.html#skrf.media.cpw.CPW" title="skrf.media.cpw.CPW"><tt class="xref py py-class docutils literal"><span class="pre">CPW</span></tt></a></li>
+<li><a class="reference internal" href="../reference/media/generated/skrf.media.rectangularWaveguide.RectangularWaveguide.html#skrf.media.rectangularWaveguide.RectangularWaveguide" title="skrf.media.rectangularWaveguide.RectangularWaveguide"><tt class="xref py py-class docutils literal"><span class="pre">RectangularWaveguide</span></tt></a></li>
+<li><a class="reference internal" href="../reference/media/generated/skrf.media.freespace.Freespace.html#skrf.media.freespace.Freespace" title="skrf.media.freespace.Freespace"><tt class="xref py py-class docutils literal"><span class="pre">Freespace</span></tt></a></li>
+<li><a class="reference internal" href="../reference/media/generated/skrf.media.distributedCircuit.DistributedCircuit.html#skrf.media.distributedCircuit.DistributedCircuit" title="skrf.media.distributedCircuit.DistributedCircuit"><tt class="xref py py-class docutils literal"><span class="pre">DistributedCircuit</span></tt></a></li>
+<li><a class="reference internal" href="../reference/media/generated/skrf.media.media.Media.html#skrf.media.media.Media" title="skrf.media.media.Media"><tt class="xref py py-class docutils literal"><span class="pre">Media</span></tt></a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="creating-media-objects">
+<h2><a class="toc-backref" href="#id7">Creating <a class="reference internal" href="../reference/media/generated/skrf.media.media.Media.html#skrf.media.media.Media" title="skrf.media.media.Media"><tt class="xref py py-class docutils literal"><span class="pre">Media</span></tt></a> Objects</a><a class="headerlink" href="#creating-media-objects" title="Permalink to this headline">¶</a></h2>
+<p>Typically, network analysis is done within a given frequency band. When a <a class="reference internal" href="../reference/media/generated/skrf.media.media.Media.html#skrf.media.media.Media" title="skrf.media.media.Media"><tt class="xref py py-class docutils literal"><span class="pre">Media</span></tt></a> object is created, it must be given  a  <a class="reference internal" href="../reference/generated/skrf.frequency.Frequency.html#skrf.frequency.Frequency" title="skrf.frequency.Frequency"><tt class="xref py py-class docutils literal"><span class="pre">Frequency</span></tt></a> object. This prevent having to repitously provide frequency information for each new network created.</p>
+<div class="section" id="coplanar-waveguide">
+<h3><a class="toc-backref" href="#id8">Coplanar Waveguide</a><a class="headerlink" href="#coplanar-waveguide" title="Permalink to this headline">¶</a></h3>
+<p>Here is an example of how to initialize a coplanar waveguide <a class="footnote-reference" href="#id3" id="id2">[1]</a> media. The instance has  a 10um center conductor, gap of 5um, and substrate with relative permativity of 10.6,</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">skrf</span> <span class="kn">as</span> <span class="nn">rf</span>
+
+<span class="gp">In [2]: </span><span class="n">freq</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">Frequency</span><span class="p">(</span><span class="mi">75</span><span class="p">,</span><span class="mi">110</span><span class="p">,</span><span class="mi">101</span><span class="p">,</span><span class="s">&#39;ghz&#39;</span><span class="p">)</span>
+
+<span class="gp">In [3]: </span><span class="n">cpw</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">media</span><span class="o">.</span><span class="n">CPW</span><span class="p">(</span><span class="n">freq</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="mf">10e-6</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mf">5e-6</span><span class="p">,</span> <span class="n">ep_r</span><span class="o">=</span><span class="mf">10.6</span><span class="p">)</span>
+
+<span class="gp">In [4]: </span><span class="n">cpw</span>
+<span class="gr">Out[4]: </span>
+<span class="go">Coplanar Waveguide Media.  75-110 GHz.  101 points</span>
+<span class="go"> W= 1.00e-05m, S= 5.00e-06m</span>
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="../reference/media/generated/skrf.media.cpw.CPW.html#skrf.media.cpw.CPW" title="skrf.media.cpw.CPW"><tt class="xref py py-class docutils literal"><span class="pre">CPW</span></tt></a> for details on that class.</p>
+</div>
+<div class="section" id="freespace">
+<h3><a class="toc-backref" href="#id9">Freespace</a><a class="headerlink" href="#freespace" title="Permalink to this headline">¶</a></h3>
+<p>Here is another example, this time constructing a plane-wave in freespace from 10-20GHz</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">freq</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">Frequency</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">101</span><span class="p">,</span><span class="s">&#39;ghz&#39;</span><span class="p">)</span>
+
+<span class="gp">In [2]: </span><span class="n">fs</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">media</span><span class="o">.</span><span class="n">Freespace</span><span class="p">(</span><span class="n">freq</span><span class="p">)</span>
+
+<span class="gp">In [3]: </span><span class="n">fs</span>
+<span class="gr">Out[3]: </span><span class="n">Freespace</span>  <span class="n">Media</span><span class="o">.</span>  <span class="mi">10</span><span class="o">-</span><span class="mi">20</span> <span class="n">GHz</span><span class="o">.</span>  <span class="mi">101</span> <span class="n">points</span>
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="../reference/media/generated/skrf.media.freespace.Freespace.html#skrf.media.freespace.Freespace" title="skrf.media.freespace.Freespace"><tt class="xref py py-class docutils literal"><span class="pre">Freespace</span></tt></a> for details.</p>
+</div>
+<div class="section" id="rectangular-waveguide">
+<h3><a class="toc-backref" href="#id10">Rectangular Waveguide</a><a class="headerlink" href="#rectangular-waveguide" title="Permalink to this headline">¶</a></h3>
+<p>or a WR-10 Rectangular Waveguide</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">freq</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">Frequency</span><span class="p">(</span><span class="mi">75</span><span class="p">,</span><span class="mi">110</span><span class="p">,</span><span class="mi">101</span><span class="p">,</span><span class="s">&#39;ghz&#39;</span><span class="p">)</span>
+
+<span class="gp">In [2]: </span><span class="n">wg</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">media</span><span class="o">.</span><span class="n">RectangularWaveguide</span><span class="p">(</span><span class="n">freq</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mi">100</span><span class="o">*</span><span class="n">rf</span><span class="o">.</span><span class="n">mil</span><span class="p">,</span><span class="n">z0</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span> <span class="c"># see note below about z0</span>
+
+<span class="gp">In [3]: </span><span class="n">wg</span>
+<span class="gr">Out[3]: </span>
+<span class="go">Rectangular Waveguide Media.  75-110 GHz.  101 points</span>
+<span class="go"> a= 2.54e-03m, b= 1.27e-03m</span>
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="../reference/media/generated/skrf.media.rectangularWaveguide.RectangularWaveguide.html#skrf.media.rectangularWaveguide.RectangularWaveguide" title="skrf.media.rectangularWaveguide.RectangularWaveguide"><tt class="xref py py-class docutils literal"><span class="pre">RectangularWaveguide</span></tt></a> for details.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <tt class="docutils literal"><span class="pre">z0</span></tt> argument in the Rectangular Waveguide constructor is used
+to force a specifc port impedance. This is commonly used to match
+the port impedance to what a VNA stores in a touchstone file. See
+<a class="reference internal" href="../reference/media/generated/skrf.media.media.Media.__init__.html#skrf.media.media.Media.__init__" title="skrf.media.media.Media.__init__"><tt class="xref py py-func docutils literal"><span class="pre">media.Media.__init__()</span></tt></a> for more information.</p>
+</div>
+</div>
+</div>
+<div class="section" id="working-with-media-s">
+<h2><a class="toc-backref" href="#id11">Working with Media&#8217;s</a><a class="headerlink" href="#working-with-media-s" title="Permalink to this headline">¶</a></h2>
+<p>Once constructed, the pertinent wave quantities of the media such as
+propagation constant and characteristic impedance can be accessed through
+the properties <a class="reference internal" href="../reference/media/generated/skrf.media.media.Media.propagation_constant.html#skrf.media.media.Media.propagation_constant" title="skrf.media.media.Media.propagation_constant"><tt class="xref py py-attr docutils literal"><span class="pre">propagation_constant</span></tt></a> and
+<a class="reference internal" href="../reference/media/generated/skrf.media.media.Media.characteristic_impedance.html#skrf.media.media.Media.characteristic_impedance" title="skrf.media.media.Media.characteristic_impedance"><tt class="xref py py-attr docutils literal"><span class="pre">characteristic_impedance</span></tt></a>. These properties return
+complex <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">numpy.ndarray</span></tt></a>&#8216;s,</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">cpw</span><span class="o">.</span><span class="n">propagation_constant</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+<span class="gr">Out[1]: </span><span class="n">array</span><span class="p">([</span> <span class="mf">0.</span><span class="o">+</span><span class="mf">3785.59740815j</span><span class="p">,</span>  <span class="mf">0.</span><span class="o">+</span><span class="mf">3803.26352939j</span><span class="p">,</span>  <span class="mf">0.</span><span class="o">+</span><span class="mf">3820.92965062j</span><span class="p">])</span>
+
+<span class="gp">In [2]: </span><span class="n">cpw</span><span class="o">.</span><span class="n">characteristic_impedance</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+<span class="gr">Out[2]: </span><span class="n">array</span><span class="p">([</span> <span class="mf">50.06074662</span><span class="o">+</span><span class="mf">0.j</span><span class="p">,</span>  <span class="mf">50.06074662</span><span class="o">+</span><span class="mf">0.j</span><span class="p">,</span>  <span class="mf">50.06074662</span><span class="o">+</span><span class="mf">0.j</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>As an example, plot the cpw&#8217;s propagation constant vs frequency.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">plot</span><span class="p">(</span><span class="n">cpw</span><span class="o">.</span><span class="n">frequency</span><span class="o">.</span><span class="n">f_scaled</span><span class="p">,</span> <span class="n">cpw</span><span class="o">.</span><span class="n">propagation_constant</span><span class="o">.</span><span class="n">imag</span><span class="p">);</span>
+
+<span class="gp">In [2]: </span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Frequency [GHz]&#39;</span><span class="p">);</span>
+
+<span class="gp">In [3]: </span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Propagation Constant [rad/m]&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<img alt="../_images/media-cpw_propagation_constant.png" src="../_images/media-cpw_propagation_constant.png" />
+<p>Because the wave quantities are dynamic they change when the attributes
+of the cpw line change. To illustrate this, plot the propagation constant of the cpw for various values of substrated permativity,</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">figure</span><span class="p">();</span>
+
+<span class="gp">In [2]: </span><span class="k">for</span> <span class="n">ep_r</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">]:</span>
+<span class="gp">   ...:</span>      <span class="n">cpw</span><span class="o">.</span><span class="n">ep_r</span> <span class="o">=</span> <span class="n">ep_r</span>
+<span class="gp">   ...:</span>      <span class="n">plot</span><span class="p">(</span><span class="n">cpw</span><span class="o">.</span><span class="n">frequency</span><span class="o">.</span><span class="n">f_scaled</span><span class="p">,</span> <span class="n">cpw</span><span class="o">.</span><span class="n">propagation_constant</span><span class="o">.</span><span class="n">imag</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;er=</span><span class="si">%.1f</span><span class="s">&#39;</span><span class="o">%</span><span class="n">ep_r</span><span class="p">)</span>
+<span class="gp">   ...:</span> 
+
+<span class="gp">In [3]: </span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Frequency [GHz]&#39;</span><span class="p">);</span>
+
+<span class="gp">In [4]: </span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Propagation Constant [rad/m]&#39;</span><span class="p">);</span>
+
+<span class="gp">In [5]: </span><span class="n">legend</span><span class="p">();</span>
+
+<span class="gp">In [6]: </span><span class="n">cpw</span><span class="o">.</span><span class="n">ep_r</span> <span class="o">=</span> <span class="mf">10.6</span>
+</pre></div>
+</div>
+<img alt="../_images/media-cpw_propagation_constant2.png" src="../_images/media-cpw_propagation_constant2.png" />
+</div>
+<div class="section" id="network-synthesis">
+<h2><a class="toc-backref" href="#id12">Network Synthesis</a><a class="headerlink" href="#network-synthesis" title="Permalink to this headline">¶</a></h2>
+<p>Networks are created through methods of a Media object.  Here is a brief
+list of some generic network components skrf supports,</p>
+<ul class="simple">
+<li><a class="reference internal" href="../reference/media/generated/skrf.media.media.Media.match.html#skrf.media.media.Media.match" title="skrf.media.media.Media.match"><tt class="xref py py-func docutils literal"><span class="pre">match()</span></tt></a></li>
+<li><a class="reference internal" href="../reference/media/generated/skrf.media.media.Media.short.html#skrf.media.media.Media.short" title="skrf.media.media.Media.short"><tt class="xref py py-func docutils literal"><span class="pre">short()</span></tt></a></li>
+<li><a class="reference internal" href="../reference/media/generated/skrf.media.media.Media.open.html#skrf.media.media.Media.open" title="skrf.media.media.Media.open"><tt class="xref py py-func docutils literal"><span class="pre">open()</span></tt></a></li>
+<li><a class="reference internal" href="../reference/media/generated/skrf.media.media.Media.load.html#skrf.media.media.Media.load" title="skrf.media.media.Media.load"><tt class="xref py py-func docutils literal"><span class="pre">load()</span></tt></a></li>
+<li><a class="reference internal" href="../reference/media/generated/skrf.media.media.Media.line.html#skrf.media.media.Media.line" title="skrf.media.media.Media.line"><tt class="xref py py-func docutils literal"><span class="pre">line()</span></tt></a></li>
+<li><a class="reference internal" href="../reference/media/generated/skrf.media.media.Media.thru.html#skrf.media.media.Media.thru" title="skrf.media.media.Media.thru"><tt class="xref py py-func docutils literal"><span class="pre">thru()</span></tt></a></li>
+<li><a class="reference internal" href="../reference/media/generated/skrf.media.media.Media.tee.html#skrf.media.media.Media.tee" title="skrf.media.media.Media.tee"><tt class="xref py py-func docutils literal"><span class="pre">tee()</span></tt></a></li>
+<li><a class="reference internal" href="../reference/media/generated/skrf.media.media.Media.delay_short.html#skrf.media.media.Media.delay_short" title="skrf.media.media.Media.delay_short"><tt class="xref py py-func docutils literal"><span class="pre">delay_short()</span></tt></a></li>
+<li><a class="reference internal" href="../reference/media/generated/skrf.media.media.Media.shunt_delay_open.html#skrf.media.media.Media.shunt_delay_open" title="skrf.media.media.Media.shunt_delay_open"><tt class="xref py py-func docutils literal"><span class="pre">shunt_delay_open()</span></tt></a></li>
+</ul>
+<p>Usage of these methods can is demonstrated below.</p>
+<p>To create a 1-port network for a rectangular waveguide short,</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">wg</span><span class="o">.</span><span class="n">short</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#39;short&#39;</span><span class="p">)</span>
+<span class="gr">Out[1]: </span><span class="mi">1</span><span class="o">-</span><span class="n">Port</span> <span class="n">Network</span><span class="p">:</span> <span class="s">&#39;short&#39;</span><span class="p">,</span>  <span class="mi">75</span><span class="o">-</span><span class="mi">110</span> <span class="n">GHz</span><span class="p">,</span> <span class="mi">101</span> <span class="n">pts</span><span class="p">,</span> <span class="n">z0</span><span class="o">=</span><span class="p">[</span> <span class="mf">50.</span><span class="o">+</span><span class="mf">0.j</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Or to create a <img class="math" src="../_images/math/6a7dfa8a2a90d521b2b03f5b82a1fb9f85dce88c.png" alt="90^{\circ}"/> section of cpw line,</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">cpw</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">d</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span><span class="n">unit</span><span class="o">=</span><span class="s">&#39;deg&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;line&#39;</span><span class="p">)</span>
+<span class="gr">Out[1]: </span><span class="mi">2</span><span class="o">-</span><span class="n">Port</span> <span class="n">Network</span><span class="p">:</span> <span class="s">&#39;line&#39;</span><span class="p">,</span>  <span class="mi">75</span><span class="o">-</span><span class="mi">110</span> <span class="n">GHz</span><span class="p">,</span> <span class="mi">101</span> <span class="n">pts</span><span class="p">,</span> <span class="n">z0</span><span class="o">=</span><span class="p">[</span> <span class="mf">50.06074662</span><span class="o">+</span><span class="mf">0.j</span>  <span class="mf">50.06074662</span><span class="o">+</span><span class="mf">0.j</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Simple circuits like <a class="reference internal" href="../reference/media/generated/skrf.media.media.Media.short.html#skrf.media.media.Media.short" title="skrf.media.media.Media.short"><tt class="xref py py-func docutils literal"><span class="pre">short()</span></tt></a>
+and <a class="reference internal" href="../reference/media/generated/skrf.media.media.Media.open.html#skrf.media.media.Media.open" title="skrf.media.media.Media.open"><tt class="xref py py-func docutils literal"><span class="pre">open()</span></tt></a> are ideal short and opens with
+<img class="math" src="../_images/math/09fb8bb3661e46b2f16766b33c610d719599659e.png" alt="\Gamma = -1"/> and <img class="math" src="../_images/math/bd9dfff9ac003a32800cc0a49d78b53c5dad0032.png" alt="\Gamma = 1"/>, i.e. they dont take
+into account sophisticated effects of the discontinuties.
+Effects of discontinuities are implemented as methods specific to a
+given Media, like <tt class="xref py py-func docutils literal"><span class="pre">CPW.cpw_short</span></tt>.</p>
+</div>
+</div>
+<div class="section" id="building-cicuits">
+<h2><a class="toc-backref" href="#id13">Building Cicuits</a><a class="headerlink" href="#building-cicuits" title="Permalink to this headline">¶</a></h2>
+<p>By connecting a series of simple circuits, more complex circuits can be
+made. To build a the <img class="math" src="../_images/math/6a7dfa8a2a90d521b2b03f5b82a1fb9f85dce88c.png" alt="90^{\circ}"/> delay short, in the
+rectangular waveguide media defined above.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">delay_short</span> <span class="o">=</span> <span class="n">wg</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">d</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span><span class="n">unit</span><span class="o">=</span><span class="s">&#39;deg&#39;</span><span class="p">)</span> <span class="o">**</span> <span class="n">wg</span><span class="o">.</span><span class="n">short</span><span class="p">()</span>
+
+<span class="gp">In [2]: </span><span class="n">delay_short</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#39;delay short&#39;</span>
+
+<span class="gp">In [3]: </span><span class="n">delay_short</span>
+<span class="gr">Out[3]: </span><span class="mi">1</span><span class="o">-</span><span class="n">Port</span> <span class="n">Network</span><span class="p">:</span> <span class="s">&#39;delay short&#39;</span><span class="p">,</span>  <span class="mi">75</span><span class="o">-</span><span class="mi">110</span> <span class="n">GHz</span><span class="p">,</span> <span class="mi">101</span> <span class="n">pts</span><span class="p">,</span> <span class="n">z0</span><span class="o">=</span><span class="p">[</span> <span class="mf">50.</span><span class="o">+</span><span class="mf">0.j</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>When Networks with more than 2 ports need to be connected together, use
+<a class="reference internal" href="../reference/generated/skrf.network.connect.html#skrf.network.connect" title="skrf.network.connect"><tt class="xref py py-func docutils literal"><span class="pre">rf.connect()</span></tt></a>.  To create a two-port network for a shunted delayed open, you can create an ideal 3-way splitter (a &#8216;tee&#8217;) and conect the delayed open to one of its ports,</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">tee</span> <span class="o">=</span> <span class="n">cpw</span><span class="o">.</span><span class="n">tee</span><span class="p">()</span>
+
+<span class="gp">In [2]: </span><span class="n">delay_open</span> <span class="o">=</span> <span class="n">cpw</span><span class="o">.</span><span class="n">delay_open</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span><span class="s">&#39;deg&#39;</span><span class="p">)</span>
+
+<span class="gp">In [3]: </span><span class="n">shunt_open</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">tee</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">delay_open</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If a specific circuit is created frequenctly, it may make sense to
+use a function to create the circuit. This can be done most quickly using lamba</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">delay_short</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">wg</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="s">&#39;deg&#39;</span><span class="p">)</span><span class="o">**</span><span class="n">wg</span><span class="o">.</span><span class="n">short</span><span class="p">()</span>
+
+<span class="gp">In [2]: </span><span class="n">delay_short</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+<span class="gr">Out[2]: </span><span class="mi">1</span><span class="o">-</span><span class="n">Port</span> <span class="n">Network</span><span class="p">:</span> <span class="s">&#39;&#39;</span><span class="p">,</span>  <span class="mi">75</span><span class="o">-</span><span class="mi">110</span> <span class="n">GHz</span><span class="p">,</span> <span class="mi">101</span> <span class="n">pts</span><span class="p">,</span> <span class="n">z0</span><span class="o">=</span><span class="p">[</span> <span class="mf">50.</span><span class="o">+</span><span class="mf">0.j</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>This is how many of <strong>skrf</strong>&#8216;s network creation methods are made internally.</p>
+<p>A more useful example may be to create a function for a shunt-stub tuner,
+that will work for any media object</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="k">def</span> <span class="nf">shunt_stub</span><span class="p">(</span><span class="n">med</span><span class="p">,</span> <span class="n">d0</span><span class="p">,</span> <span class="n">d1</span><span class="p">):</span>
+<span class="gp">   ...:</span>      <span class="k">return</span> <span class="n">med</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">d0</span><span class="p">,</span><span class="s">&#39;deg&#39;</span><span class="p">)</span><span class="o">**</span><span class="n">med</span><span class="o">.</span><span class="n">shunt_delay_open</span><span class="p">(</span><span class="n">d1</span><span class="p">,</span><span class="s">&#39;deg&#39;</span><span class="p">)</span>
+<span class="gp">   ...:</span> 
+
+<span class="gp">In [2]: </span><span class="n">shunt_stub</span><span class="p">(</span><span class="n">cpw</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">90</span><span class="p">)</span>
+<span class="gr">Out[2]: </span><span class="mi">2</span><span class="o">-</span><span class="n">Port</span> <span class="n">Network</span><span class="p">:</span> <span class="s">&#39;&#39;</span><span class="p">,</span>  <span class="mi">75</span><span class="o">-</span><span class="mi">110</span> <span class="n">GHz</span><span class="p">,</span> <span class="mi">101</span> <span class="n">pts</span><span class="p">,</span> <span class="n">z0</span><span class="o">=</span><span class="p">[</span> <span class="mf">50.06074662</span><span class="o">+</span><span class="mf">0.j</span>  <span class="mf">50.06074662</span><span class="o">+</span><span class="mf">0.j</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="design-optimization">
+<h2><a class="toc-backref" href="#id14">Design Optimization</a><a class="headerlink" href="#design-optimization" title="Permalink to this headline">¶</a></h2>
+<p>The abilities of <a class="reference external" href="http://www.scipy.org">scipy</a>&#8216;s optimizers can be used to automate network design. In this example, skrf is used to automate the single stub design. First, we create a &#8216;cost&#8217; function which returns somthing we want to minimize, such as the reflection coefficient magnitude at band center. Then, one of scipy&#8217;s minimization algorithms is used to determine the optimal parameters of the stub lengths to minimize this cost.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">fmin</span>
+
+<span class="c"># the load we are trying to match</span>
+<span class="gp">In [2]: </span><span class="n">load</span> <span class="o">=</span> <span class="n">cpw</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">rf</span><span class="o">.</span><span class="n">zl_2_Gamma0</span><span class="p">(</span><span class="n">z0</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">zl</span><span class="o">=</span><span class="mi">100</span><span class="p">))</span>
+
+<span class="c"># single stub circuit generator function</span>
+<span class="gp">In [3]: </span><span class="k">def</span> <span class="nf">shunt_stub</span><span class="p">(</span><span class="n">med</span><span class="p">,</span> <span class="n">d0</span><span class="p">,</span> <span class="n">d1</span><span class="p">):</span>
+<span class="gp">   ...:</span>      <span class="k">return</span> <span class="n">med</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">d0</span><span class="p">,</span><span class="s">&#39;deg&#39;</span><span class="p">)</span><span class="o">**</span><span class="n">med</span><span class="o">.</span><span class="n">shunt_delay_open</span><span class="p">(</span><span class="n">d1</span><span class="p">,</span><span class="s">&#39;deg&#39;</span><span class="p">)</span>
+<span class="gp">   ...:</span> 
+
+<span class="c"># define the cost function we want to minimize (this uses sloppy namespace)</span>
+<span class="gp">In [4]: </span><span class="k">def</span> <span class="nf">cost</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
+<span class="gp">   ...:</span>      <span class="k">return</span> <span class="p">(</span><span class="n">shunt_stub</span><span class="p">(</span><span class="n">cpw</span><span class="p">,</span><span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">d</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">**</span> <span class="n">load</span><span class="p">)[</span><span class="mi">100</span><span class="p">]</span><span class="o">.</span><span class="n">s_mag</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+<span class="gp">   ...:</span> 
+
+<span class="c"># initial guess of optimal delay lengths in degrees</span>
+<span class="gp">In [5]: </span><span class="n">d0</span> <span class="o">=</span> <span class="mi">120</span><span class="p">,</span><span class="mi">40</span> <span class="c"># initial guess</span>
+
+<span class="c">#determine the optimal delays</span>
+<span class="gp">In [6]: </span><span class="n">d_opt</span> <span class="o">=</span> <span class="n">fmin</span><span class="p">(</span><span class="n">cost</span><span class="p">,(</span><span class="mi">120</span><span class="p">,</span><span class="mi">40</span><span class="p">))</span>
+<span class="go">Optimization terminated successfully.</span>
+<span class="go">         Current function value: 0.333333</span>
+<span class="go">         Iterations: 65</span>
+<span class="go">         Function evaluations: 140</span>
+
+<span class="gp">In [7]: </span><span class="n">d_opt</span>
+<span class="gr">Out[7]: </span><span class="n">array</span><span class="p">([</span>  <span class="mf">1.74945025e+02</span><span class="p">,</span>  <span class="o">-</span><span class="mf">9.55405994e-08</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="references">
+<h2><a class="toc-backref" href="#id15">References</a><a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td><a class="reference external" href="http://www.microwaves101.com/encyclopedia/coplanarwaveguide.cfm">http://www.microwaves101.com/encyclopedia/coplanarwaveguide.cfm</a></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/scikit-rf-logo-flat-docs.svg" alt="Logo"/>
+            </a></p>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Media</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a><ul>
+<li><a class="reference internal" href="#media-s-supported-by-skrf">Media&#8217;s Supported by skrf</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#creating-media-objects">Creating <tt class="docutils literal"><span class="pre">Media</span></tt> Objects</a><ul>
+<li><a class="reference internal" href="#coplanar-waveguide">Coplanar Waveguide</a></li>
+<li><a class="reference internal" href="#freespace">Freespace</a></li>
+<li><a class="reference internal" href="#rectangular-waveguide">Rectangular Waveguide</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#working-with-media-s">Working with Media&#8217;s</a></li>
+<li><a class="reference internal" href="#network-synthesis">Network Synthesis</a></li>
+<li><a class="reference internal" href="#building-cicuits">Building Cicuits</a></li>
+<li><a class="reference internal" href="#design-optimization">Design Optimization</a></li>
+<li><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="calibration.html"
+                        title="previous chapter">Calibration</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../examples/matching_single_stub.html"
+                        title="next chapter">Visualizing a Single Stub Matching Network</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/tutorials/media.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<ul class="this-page-menu">
+  <li><a href="/scipy/docs/scipy-docs/tutorials/media.rst">Edit page</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../examples/matching_single_stub.html" title="Visualizing a Single Stub Matching Network"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="calibration.html" title="Calibration"
+             >previous</a> |</li>
+        <li><a href="../index.html">scikit-rf 0.13 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, scikit-rf development team.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

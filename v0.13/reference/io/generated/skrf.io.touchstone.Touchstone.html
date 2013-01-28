@@ -1,0 +1,192 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>skrf.io.touchstone.Touchstone &mdash; scikit-rf 0.13 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/scipy.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '0.13',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="scikit-rf 0.13 documentation" href="../../../index.html" />
+    <link rel="up" title="io (skrf.io)" href="../index.html" />
+    <link rel="next" title="skrf.io.touchstone.Touchstone.__init__" href="skrf.io.touchstone.Touchstone.__init__.html" />
+    <link rel="prev" title="skrf.io.general.save_sesh" href="skrf.io.general.save_sesh.html" />
+  <script type="text/javascript">
+	  var _gaq = _gaq || [];
+	    _gaq.push(['_setAccount', 'UA-29068876-1']);
+		  _gaq.push(['_trackPageview']);
+
+		    (function() {
+			    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+					    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+						  })();
+
+  </script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="skrf.io.touchstone.Touchstone.__init__.html" title="skrf.io.touchstone.Touchstone.__init__"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="skrf.io.general.save_sesh.html" title="skrf.io.general.save_sesh"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../../index.html">scikit-rf 0.13 documentation</a> &raquo;</li>
+          <li><a href="../index.html" accesskey="U">io (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.io</span></tt>)</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="skrf-io-touchstone-touchstone">
+<h1>skrf.io.touchstone.Touchstone<a class="headerlink" href="#skrf-io-touchstone-touchstone" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="skrf.io.touchstone.Touchstone">
+<em class="property">class </em><tt class="descclassname">skrf.io.touchstone.</tt><tt class="descname">Touchstone</tt><big>(</big><em>file</em><big>)</big><a class="headerlink" href="#skrf.io.touchstone.Touchstone" title="Permalink to this definition">¶</a></dt>
+<dd><p>class to read touchstone s-parameter files</p>
+<p>The reference for writing this class is the draft of the
+Touchstone(R) File Format Specification Rev 2.0 <a class="footnote-reference" href="#id2" id="id1">[1]</a></p>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="http://www.eda-stds.org/ibis/adhoc/interconnect/touchstone_spec2_draft.pdf">http://www.eda-stds.org/ibis/adhoc/interconnect/touchstone_spec2_draft.pdf</a></td></tr>
+</tbody>
+</table>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="skrf.io.touchstone.Touchstone.__init__.html#skrf.io.touchstone.Touchstone.__init__" title="skrf.io.touchstone.Touchstone.__init__"><tt class="xref py py-obj docutils literal"><span class="pre">__init__</span></tt></a></td>
+<td>constructor</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.io.touchstone.Touchstone.get_comments.html#skrf.io.touchstone.Touchstone.get_comments" title="skrf.io.touchstone.Touchstone.get_comments"><tt class="xref py py-obj docutils literal"><span class="pre">get_comments</span></tt></a></td>
+<td>Returns the comments which appear anywhere in the file.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.io.touchstone.Touchstone.get_format.html#skrf.io.touchstone.Touchstone.get_format" title="skrf.io.touchstone.Touchstone.get_format"><tt class="xref py py-obj docutils literal"><span class="pre">get_format</span></tt></a></td>
+<td>returns the file format string used for the given format.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.io.touchstone.Touchstone.get_noise_data.html#skrf.io.touchstone.Touchstone.get_noise_data" title="skrf.io.touchstone.Touchstone.get_noise_data"><tt class="xref py py-obj docutils literal"><span class="pre">get_noise_data</span></tt></a></td>
+<td>TODO: NIY</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.io.touchstone.Touchstone.get_noise_names.html#skrf.io.touchstone.Touchstone.get_noise_names" title="skrf.io.touchstone.Touchstone.get_noise_names"><tt class="xref py py-obj docutils literal"><span class="pre">get_noise_names</span></tt></a></td>
+<td>TODO: NIY</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.io.touchstone.Touchstone.get_sparameter_arrays.html#skrf.io.touchstone.Touchstone.get_sparameter_arrays" title="skrf.io.touchstone.Touchstone.get_sparameter_arrays"><tt class="xref py py-obj docutils literal"><span class="pre">get_sparameter_arrays</span></tt></a></td>
+<td>returns the sparameters as a tuple of arrays, where the first element is</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.io.touchstone.Touchstone.get_sparameter_data.html#skrf.io.touchstone.Touchstone.get_sparameter_data" title="skrf.io.touchstone.Touchstone.get_sparameter_data"><tt class="xref py py-obj docutils literal"><span class="pre">get_sparameter_data</span></tt></a></td>
+<td>get the data of the sparameter with the given format.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.io.touchstone.Touchstone.get_sparameter_names.html#skrf.io.touchstone.Touchstone.get_sparameter_names" title="skrf.io.touchstone.Touchstone.get_sparameter_names"><tt class="xref py py-obj docutils literal"><span class="pre">get_sparameter_names</span></tt></a></td>
+<td>generate a list of column names for the s-parameter data</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.io.touchstone.Touchstone.load_file.html#skrf.io.touchstone.Touchstone.load_file" title="skrf.io.touchstone.Touchstone.load_file"><tt class="xref py py-obj docutils literal"><span class="pre">load_file</span></tt></a></td>
+<td>Load the touchstone file into the interal data structures</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../../index.html">
+              <img class="logo" src="../../../_static/scikit-rf-logo-flat-docs.svg" alt="Logo"/>
+            </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="skrf.io.general.save_sesh.html"
+                        title="previous chapter">skrf.io.general.save_sesh</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="skrf.io.touchstone.Touchstone.__init__.html"
+                        title="next chapter">skrf.io.touchstone.Touchstone.__init__</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../../_sources/reference/io/generated/skrf.io.touchstone.Touchstone.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<ul class="this-page-menu">
+  <li><a href="/scipy/docs/reference/io/skrf.io.touchstone.Touchstone">Edit page</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="skrf.io.touchstone.Touchstone.__init__.html" title="skrf.io.touchstone.Touchstone.__init__"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="skrf.io.general.save_sesh.html" title="skrf.io.general.save_sesh"
+             >previous</a> |</li>
+        <li><a href="../../../index.html">scikit-rf 0.13 documentation</a> &raquo;</li>
+          <li><a href="../index.html" >io (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.io</span></tt>)</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, scikit-rf development team.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

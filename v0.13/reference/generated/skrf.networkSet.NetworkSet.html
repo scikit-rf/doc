@@ -1,0 +1,265 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>skrf.networkSet.NetworkSet &mdash; scikit-rf 0.13 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/scipy.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.13',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="scikit-rf 0.13 documentation" href="../../index.html" />
+    <link rel="up" title="networkSet (skrf.networkSet)" href="../networkSet.html" />
+    <link rel="next" title="skrf.networkSet.NetworkSet.inv" href="skrf.networkSet.NetworkSet.inv.html" />
+    <link rel="prev" title="skrf.networkSet.NetworkSet.write" href="skrf.networkSet.NetworkSet.write.html" />
+  <script type="text/javascript">
+	  var _gaq = _gaq || [];
+	    _gaq.push(['_setAccount', 'UA-29068876-1']);
+		  _gaq.push(['_trackPageview']);
+
+		    (function() {
+			    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+					    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+						  })();
+
+  </script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="skrf.networkSet.NetworkSet.inv.html" title="skrf.networkSet.NetworkSet.inv"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="skrf.networkSet.NetworkSet.write.html" title="skrf.networkSet.NetworkSet.write"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">scikit-rf 0.13 documentation</a> &raquo;</li>
+          <li><a href="../networkSet.html" accesskey="U">networkSet (<tt class="docutils literal docutils literal"><span class="pre">skrf.networkSet</span></tt>)</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="skrf-networkset-networkset">
+<h1>skrf.networkSet.NetworkSet<a class="headerlink" href="#skrf-networkset-networkset" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="skrf.networkSet.NetworkSet">
+<em class="property">class </em><tt class="descclassname">skrf.networkSet.</tt><tt class="descname">NetworkSet</tt><big>(</big><em>ntwk_set</em>, <em>name=None</em><big>)</big><a class="headerlink" href="#skrf.networkSet.NetworkSet" title="Permalink to this definition">¶</a></dt>
+<dd><p>A set of Networks.</p>
+<p>This class allows functions on sets of Networks, such as mean or
+standard deviation, to be calculated conveniently. The results are
+returned in <a class="reference internal" href="skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> objects, so that they may be
+plotted and saved in like <a class="reference internal" href="skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> objects.</p>
+<p>This class also provides methods which can be used to plot uncertainty
+bounds for a set of <a class="reference internal" href="skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a>.</p>
+<p>The names of the <a class="reference internal" href="#skrf.networkSet.NetworkSet" title="skrf.networkSet.NetworkSet"><tt class="xref py py-class docutils literal"><span class="pre">NetworkSet</span></tt></a> properties are generated
+dynamically upon ititialization, and thus documentation for
+individual properties and methods is not available. However, the
+properties do follow the convention:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">my_network_set</span><span class="o">.</span><span class="n">function_name_network_property_name</span>
+</pre></div>
+</div>
+<p>For example, the complex average (mean)
+<a class="reference internal" href="skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> for a
+<a class="reference internal" href="#skrf.networkSet.NetworkSet" title="skrf.networkSet.NetworkSet"><tt class="xref py py-class docutils literal"><span class="pre">NetworkSet</span></tt></a> is:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">my_network_set</span><span class="o">.</span><span class="n">mean_s</span>
+</pre></div>
+</div>
+<p>This accesses the  property &#8216;s&#8217;, for each element in the
+set, and <strong>then</strong> calculates the &#8216;mean&#8217; of the resultant set. The
+order of operations is important.</p>
+<p>Results are returned as <a class="reference internal" href="skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> objects,
+so they may be plotted or saved in the same way as for
+<a class="reference internal" href="skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> objects:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">my_network_set</span><span class="o">.</span><span class="n">mean_s</span><span class="o">.</span><span class="n">plot_s_mag</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_network_set</span><span class="o">.</span><span class="n">mean_s</span><span class="o">.</span><span class="n">write_touchstone</span><span class="p">(</span><span class="s">&#39;mean_response&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If you are calculating functions that return scalar variables, then
+the result is accessable through the Network property .s_re. For
+example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">std_s_deg</span> <span class="o">=</span> <span class="n">my_network_set</span><span class="o">.</span><span class="n">std_s_deg</span>
+</pre></div>
+</div>
+<p>This result would be plotted by:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">std_s_deg</span><span class="o">.</span><span class="n">plot_s_re</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The operators, properties, and methods of NetworkSet object are
+dynamically generated by private methods</p>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="xref py py-func docutils literal"><span class="pre">__add_a_operator()</span></tt></li>
+<li><tt class="xref py py-func docutils literal"><span class="pre">__add_a_func_on_property()</span></tt></li>
+<li><tt class="xref py py-func docutils literal"><span class="pre">__add_a_element_wise_method()</span></tt></li>
+<li><tt class="xref py py-func docutils literal"><span class="pre">__add_a_plot_uncertainty()</span></tt></li>
+</ul>
+</div></blockquote>
+<p>thus, documentation on the individual methods and properties are
+not available.</p>
+</dd></dl>
+
+<p class="rubric">Attributes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="skrf.networkSet.NetworkSet.inv.html#skrf.networkSet.NetworkSet.inv" title="skrf.networkSet.NetworkSet.inv"><tt class="xref py py-obj docutils literal"><span class="pre">inv</span></tt></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.networkSet.NetworkSet.mean_s_db.html#skrf.networkSet.NetworkSet.mean_s_db" title="skrf.networkSet.NetworkSet.mean_s_db"><tt class="xref py py-obj docutils literal"><span class="pre">mean_s_db</span></tt></a></td>
+<td>the mean magnitude in dB.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.networkSet.NetworkSet.std_s_db.html#skrf.networkSet.NetworkSet.std_s_db" title="skrf.networkSet.NetworkSet.std_s_db"><tt class="xref py py-obj docutils literal"><span class="pre">std_s_db</span></tt></a></td>
+<td>the mean magnitude in dB.</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="skrf.networkSet.NetworkSet.__init__.html#skrf.networkSet.NetworkSet.__init__" title="skrf.networkSet.NetworkSet.__init__"><tt class="xref py py-obj docutils literal"><span class="pre">__init__</span></tt></a></td>
+<td>Initializer for NetworkSet</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.networkSet.NetworkSet.copy.html#skrf.networkSet.NetworkSet.copy" title="skrf.networkSet.NetworkSet.copy"><tt class="xref py py-obj docutils literal"><span class="pre">copy</span></tt></a></td>
+<td>copies each network of the network set.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.networkSet.NetworkSet.element_wise_method.html#skrf.networkSet.NetworkSet.element_wise_method" title="skrf.networkSet.NetworkSet.element_wise_method"><tt class="xref py py-obj docutils literal"><span class="pre">element_wise_method</span></tt></a></td>
+<td>calls a given method of each element and returns the result as</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.networkSet.NetworkSet.from_zip.html#skrf.networkSet.NetworkSet.from_zip" title="skrf.networkSet.NetworkSet.from_zip"><tt class="xref py py-obj docutils literal"><span class="pre">from_zip</span></tt></a></td>
+<td>creates a NetworkSet from a zipfile of touchstones.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.networkSet.NetworkSet.plot_logsigma.html#skrf.networkSet.NetworkSet.plot_logsigma" title="skrf.networkSet.NetworkSet.plot_logsigma"><tt class="xref py py-obj docutils literal"><span class="pre">plot_logsigma</span></tt></a></td>
+<td>plots the uncertainty for the set in units of log-sigma.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.networkSet.NetworkSet.plot_uncertainty_bounds_component.html#skrf.networkSet.NetworkSet.plot_uncertainty_bounds_component" title="skrf.networkSet.NetworkSet.plot_uncertainty_bounds_component"><tt class="xref py py-obj docutils literal"><span class="pre">plot_uncertainty_bounds_component</span></tt></a></td>
+<td>plots mean value of the NetworkSet with +- uncertainty bounds</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.networkSet.NetworkSet.plot_uncertainty_bounds_s.html#skrf.networkSet.NetworkSet.plot_uncertainty_bounds_s" title="skrf.networkSet.NetworkSet.plot_uncertainty_bounds_s"><tt class="xref py py-obj docutils literal"><span class="pre">plot_uncertainty_bounds_s</span></tt></a></td>
+<td>Plots complex uncertianty bounds plot on smith chart.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.networkSet.NetworkSet.plot_uncertainty_bounds_s_db.html#skrf.networkSet.NetworkSet.plot_uncertainty_bounds_s_db" title="skrf.networkSet.NetworkSet.plot_uncertainty_bounds_s_db"><tt class="xref py py-obj docutils literal"><span class="pre">plot_uncertainty_bounds_s_db</span></tt></a></td>
+<td>this just calls</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.networkSet.NetworkSet.plot_uncertainty_decomposition.html#skrf.networkSet.NetworkSet.plot_uncertainty_decomposition" title="skrf.networkSet.NetworkSet.plot_uncertainty_decomposition"><tt class="xref py py-obj docutils literal"><span class="pre">plot_uncertainty_decomposition</span></tt></a></td>
+<td>plots the total and  component-wise uncertainty</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.networkSet.NetworkSet.set_wise_function.html#skrf.networkSet.NetworkSet.set_wise_function" title="skrf.networkSet.NetworkSet.set_wise_function"><tt class="xref py py-obj docutils literal"><span class="pre">set_wise_function</span></tt></a></td>
+<td>calls a function on a specific property of the networks in</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.networkSet.NetworkSet.signature.html#skrf.networkSet.NetworkSet.signature" title="skrf.networkSet.NetworkSet.signature"><tt class="xref py py-obj docutils literal"><span class="pre">signature</span></tt></a></td>
+<td>visualization of relative changes in a NetworkSet.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.networkSet.NetworkSet.uncertainty_ntwk_triplet.html#skrf.networkSet.NetworkSet.uncertainty_ntwk_triplet" title="skrf.networkSet.NetworkSet.uncertainty_ntwk_triplet"><tt class="xref py py-obj docutils literal"><span class="pre">uncertainty_ntwk_triplet</span></tt></a></td>
+<td>returns a 3-tuple of Network objects which contain the</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.networkSet.NetworkSet.write.html#skrf.networkSet.NetworkSet.write" title="skrf.networkSet.NetworkSet.write"><tt class="xref py py-obj docutils literal"><span class="pre">write</span></tt></a></td>
+<td>Write the NetworkSet to disk using <a class="reference internal" href="../io/generated/skrf.io.general.write.html#skrf.io.general.write" title="skrf.io.general.write"><tt class="xref py py-func docutils literal"><span class="pre">write()</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="../../_static/scikit-rf-logo-flat-docs.svg" alt="Logo"/>
+            </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="skrf.networkSet.NetworkSet.write.html"
+                        title="previous chapter">skrf.networkSet.NetworkSet.write</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="skrf.networkSet.NetworkSet.inv.html"
+                        title="next chapter">skrf.networkSet.NetworkSet.inv</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/reference/generated/skrf.networkSet.NetworkSet.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<ul class="this-page-menu">
+  <li><a href="/scipy/docs/reference/skrf.networkSet.NetworkSet">Edit page</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="skrf.networkSet.NetworkSet.inv.html" title="skrf.networkSet.NetworkSet.inv"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="skrf.networkSet.NetworkSet.write.html" title="skrf.networkSet.NetworkSet.write"
+             >previous</a> |</li>
+        <li><a href="../../index.html">scikit-rf 0.13 documentation</a> &raquo;</li>
+          <li><a href="../networkSet.html" >networkSet (<tt class="docutils literal docutils literal"><span class="pre">skrf.networkSet</span></tt>)</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, scikit-rf development team.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
