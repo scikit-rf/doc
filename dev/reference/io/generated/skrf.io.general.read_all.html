@@ -60,7 +60,7 @@
           <a href="skrf.io.general.read.html" title="skrf.io.general.read"
              accesskey="P">previous</a> |</li>
         <li><a href="../../../index.html">scikit-rf dev documentation</a> &raquo;</li>
-          <li><a href="../index.html" accesskey="U">io (<tt class="docutils literal docutils literal docutils literal"><span class="pre">skrf.io</span></tt>)</a> &raquo;</li> 
+          <li><a href="../index.html" accesskey="U">io (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.io</span></tt>)</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -73,7 +73,7 @@
 <h1>skrf.io.general.read_all<a class="headerlink" href="#skrf-io-general-read-all" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="skrf.io.general.read_all">
-<tt class="descclassname">skrf.io.general.</tt><tt class="descname">read_all</tt><big>(</big><em>dir='.'</em>, <em>contains=None</em><big>)</big><a class="headerlink" href="#skrf.io.general.read_all" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">skrf.io.general.</tt><tt class="descname">read_all</tt><big>(</big><em>dir='.'</em>, <em>contains=None</em>, <em>f_unit=None</em><big>)</big><a class="headerlink" href="#skrf.io.general.read_all" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read all skrf objects in a directory</p>
 <p>Attempts to load all files in <cite>dir</cite>, using <a class="reference internal" href="skrf.io.general.read.html#skrf.io.general.read" title="skrf.io.general.read"><tt class="xref py py-func docutils literal"><span class="pre">read()</span></tt></a>. Any file 
 that is not readable by skrf is skipped. Optionally, simple filtering
@@ -89,6 +89,11 @@ can be achieved through the use of <cite>contains</cite> argument.</p>
 <p><strong>contains</strong> : str, optional</p>
 <blockquote>
 <div><p>if not None, only files containing this substring will be loaded</p>
+</div></blockquote>
+<p><strong>f_unit</strong> : [&#8216;hz&#8217;,&#8217;khz&#8217;,&#8217;mhz&#8217;,&#8217;ghz&#8217;,&#8217;thz&#8217;]</p>
+<blockquote>
+<div><p>for all <a class="reference internal" href="../../generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> objects, set their 
+frequencies&#8217;s <tt class="xref py py-attr docutils literal"><span class="pre">f_unit</span></tt></p>
 </div></blockquote>
 </td>
 </tr>
@@ -185,7 +190,7 @@ filenames without extensions, and the values are the objects</p>
           <a href="skrf.io.general.read.html" title="skrf.io.general.read"
              >previous</a> |</li>
         <li><a href="../../../index.html">scikit-rf dev documentation</a> &raquo;</li>
-          <li><a href="../index.html" >io (<tt class="docutils literal docutils literal docutils literal"><span class="pre">skrf.io</span></tt>)</a> &raquo;</li> 
+          <li><a href="../index.html" >io (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.io</span></tt>)</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

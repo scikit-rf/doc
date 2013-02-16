@@ -79,7 +79,7 @@
 <p class="first admonition-title">Warning</p>
 <p class="last">The vi module is not well written or tested at this point.</p>
 </div>
-<p>The <a class="reference internal" href="../reference/virtualInstruments/index.html#module-skrf.vi" title="skrf.vi"><tt class="xref py py-mod docutils literal"><span class="pre">vi</span></tt></a> module holds  classes
+<p>The <a class="reference internal" href="../reference/vi/index.html#module-skrf.vi" title="skrf.vi"><tt class="xref py py-mod docutils literal"><span class="pre">vi</span></tt></a> module holds  classes
 for GPIB/VISA instruments that are intricately related to skrf.
 Most of the classes were created for the sole purpose of retrieving data
 so that calibration and measurements could be carried out offline with skrf,
@@ -90,15 +90,15 @@ therefore most other instrument capabilities are neglected.</p>
 </div>
 <p>A list of VNA&#8217;s that have been are partially supported.</p>
 <table class="hlist"><tr><td><ul class="simple">
-<li><a class="reference internal" href="../reference/virtualInstruments/generated/skrf.vi.vna.HP8510C.html#skrf.vi.vna.HP8510C" title="skrf.vi.vna.HP8510C"><tt class="xref py py-class docutils literal"><span class="pre">HP8510C</span></tt></a></li>
-<li><a class="reference internal" href="../reference/virtualInstruments/generated/skrf.vi.vna.HP8720.html#skrf.vi.vna.HP8720" title="skrf.vi.vna.HP8720"><tt class="xref py py-class docutils literal"><span class="pre">HP8720</span></tt></a></li>
+<li><a class="reference internal" href="../reference/vi/generated/skrf.vi.vna.HP8510C.html#skrf.vi.vna.HP8510C" title="skrf.vi.vna.HP8510C"><tt class="xref py py-class docutils literal"><span class="pre">HP8510C</span></tt></a></li>
+<li><a class="reference internal" href="../reference/vi/generated/skrf.vi.vna.HP8720.html#skrf.vi.vna.HP8720" title="skrf.vi.vna.HP8720"><tt class="xref py py-class docutils literal"><span class="pre">HP8720</span></tt></a></li>
 </ul>
 </td><td><ul class="simple">
-<li><a class="reference internal" href="../reference/virtualInstruments/generated/skrf.vi.vna.PNAX.html#skrf.vi.vna.PNAX" title="skrf.vi.vna.PNAX"><tt class="xref py py-class docutils literal"><span class="pre">PNAX</span></tt></a></li>
-<li><a class="reference internal" href="../reference/virtualInstruments/generated/skrf.vi.vna.ZVA40.html#skrf.vi.vna.ZVA40" title="skrf.vi.vna.ZVA40"><tt class="xref py py-class docutils literal"><span class="pre">ZVA40</span></tt></a></li>
+<li><a class="reference internal" href="../reference/vi/generated/skrf.vi.vna.PNA.html#skrf.vi.vna.PNA" title="skrf.vi.vna.PNA"><tt class="xref py py-class docutils literal"><span class="pre">PNA</span></tt></a></li>
+<li><a class="reference internal" href="../reference/vi/generated/skrf.vi.vna.ZVA40.html#skrf.vi.vna.ZVA40" title="skrf.vi.vna.ZVA40"><tt class="xref py py-class docutils literal"><span class="pre">ZVA40</span></tt></a></li>
 </ul>
 </td></tr></table>
-<p>An example usage of the <a class="reference internal" href="../reference/virtualInstruments/generated/skrf.vi.vna.HP8510C.html#skrf.vi.vna.HP8510C" title="skrf.vi.vna.HP8510C"><tt class="xref py py-class docutils literal"><span class="pre">HP8510C</span></tt></a> class to retrieve some s-parameter data</p>
+<p>An example usage of the <a class="reference internal" href="../reference/vi/generated/skrf.vi.vna.HP8510C.html#skrf.vi.vna.HP8510C" title="skrf.vi.vna.HP8510C"><tt class="xref py py-class docutils literal"><span class="pre">HP8510C</span></tt></a> class to retrieve some s-parameter data</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="kn">from</span> <span class="nn">skrf.vi</span> <span class="kn">import</span> <span class="n">vna</span>
 
 <span class="gp">In [2]: </span><span class="n">my_vna</span> <span class="o">=</span> <span class="n">vna</span><span class="o">.</span><span class="n">HP8510C</span><span class="p">(</span><span class="n">address</span> <span class="o">=</span><span class="mi">16</span><span class="p">)</span>

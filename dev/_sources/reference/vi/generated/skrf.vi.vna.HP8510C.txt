@@ -37,6 +37,7 @@ skrf.vi.vna.HP8510C
   :nosignatures:
 
   ~HP8510C.__init__
+  ~HP8510C.write
 
 
 

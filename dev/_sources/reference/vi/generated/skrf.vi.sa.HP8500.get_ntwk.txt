@@ -3,4 +3,4 @@ skrf.vi.sa.HP8500.get_ntwk
 
 .. currentmodule:: skrf.vi.sa
 
-.. autoattribute:: HP8500.get_ntwk
+.. automethod:: HP8500.get_ntwk

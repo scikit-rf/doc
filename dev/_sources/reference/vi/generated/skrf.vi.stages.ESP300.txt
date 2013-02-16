@@ -39,6 +39,7 @@ skrf.vi.stages.ESP300
   ~ESP300.__init__
   ~ESP300.send_stop
   ~ESP300.wait_for_stop
+  ~ESP300.write
 
 
 

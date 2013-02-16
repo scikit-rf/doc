@@ -39,6 +39,7 @@ skrf.networkSet.NetworkSet
   ~NetworkSet.plot_uncertainty_decomposition
   ~NetworkSet.set_wise_function
   ~NetworkSet.signature
+  ~NetworkSet.to_dict
   ~NetworkSet.uncertainty_ntwk_triplet
   ~NetworkSet.write
 

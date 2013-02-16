@@ -25,6 +25,7 @@ skrf.network.Network
   ~Network.a_rad
   ~Network.a_rad_unwrap
   ~Network.a_re
+  ~Network.a_vswr
   ~Network.f
   ~Network.frequency
   ~Network.inv
@@ -46,6 +47,7 @@ skrf.network.Network
   ~Network.s_rad
   ~Network.s_rad_unwrap
   ~Network.s_re
+  ~Network.s_vswr
   ~Network.t
   ~Network.y
   ~Network.y_arcl
@@ -58,6 +60,7 @@ skrf.network.Network
   ~Network.y_rad
   ~Network.y_rad_unwrap
   ~Network.y_re
+  ~Network.y_vswr
   ~Network.z
   ~Network.z0
   ~Network.z_arcl
@@ -70,6 +73,7 @@ skrf.network.Network
   ~Network.z_rad
   ~Network.z_rad_unwrap
   ~Network.z_re
+  ~Network.z_vswr
 
 
 
@@ -87,6 +91,7 @@ skrf.network.Network
   ~Network.copy
   ~Network.copy_from
   ~Network.flip
+  ~Network.func_on_parameter
   ~Network.interpolate
   ~Network.interpolate_from_f
   ~Network.interpolate_self
@@ -105,6 +110,7 @@ skrf.network.Network
   ~Network.plot_a_rad
   ~Network.plot_a_rad_unwrap
   ~Network.plot_a_re
+  ~Network.plot_a_vswr
   ~Network.plot_it_all
   ~Network.plot_passivity
   ~Network.plot_s_arcl
@@ -120,6 +126,7 @@ skrf.network.Network
   ~Network.plot_s_rad_unwrap
   ~Network.plot_s_re
   ~Network.plot_s_smith
+  ~Network.plot_s_vswr
   ~Network.plot_y_arcl
   ~Network.plot_y_arcl_unwrap
   ~Network.plot_y_complex
@@ -132,6 +139,7 @@ skrf.network.Network
   ~Network.plot_y_rad
   ~Network.plot_y_rad_unwrap
   ~Network.plot_y_re
+  ~Network.plot_y_vswr
   ~Network.plot_z_arcl
   ~Network.plot_z_arcl_unwrap
   ~Network.plot_z_complex
@@ -144,6 +152,7 @@ skrf.network.Network
   ~Network.plot_z_rad
   ~Network.plot_z_rad_unwrap
   ~Network.plot_z_re
+  ~Network.plot_z_vswr
   ~Network.read
   ~Network.read_touchstone
   ~Network.renumber

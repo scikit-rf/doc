@@ -40,6 +40,7 @@ skrf.vi.vna.ZVA40
   ~ZVA40.update_trace_list
   ~ZVA40.upload_cal_data
   ~ZVA40.wait
+  ~ZVA40.write
 
 
 

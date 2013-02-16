@@ -27,8 +27,8 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <link rel="top" title="scikit-rf dev documentation" href="../../../index.html" />
     <link rel="up" title="skrf.vi.sa.HP8500" href="skrf.vi.sa.HP8500.html" />
-    <link rel="next" title="skrf.vi.sa.HP8500.trace_a" href="skrf.vi.sa.HP8500.trace_a.html" />
-    <link rel="prev" title="skrf.vi.sa.HP8500.frequency" href="skrf.vi.sa.HP8500.frequency.html" />
+    <link rel="next" title="skrf.vi.sa.HP8500.goto_local" href="skrf.vi.sa.HP8500.goto_local.html" />
+    <link rel="prev" title="skrf.vi.sa.HP8500.cont_sweep" href="skrf.vi.sa.HP8500.cont_sweep.html" />
   <script type="text/javascript">
 	  var _gaq = _gaq || [];
 	    _gaq.push(['_setAccount', 'UA-29068876-1']);
@@ -54,13 +54,13 @@
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="skrf.vi.sa.HP8500.trace_a.html" title="skrf.vi.sa.HP8500.trace_a"
+          <a href="skrf.vi.sa.HP8500.goto_local.html" title="skrf.vi.sa.HP8500.goto_local"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="skrf.vi.sa.HP8500.frequency.html" title="skrf.vi.sa.HP8500.frequency"
+          <a href="skrf.vi.sa.HP8500.cont_sweep.html" title="skrf.vi.sa.HP8500.cont_sweep"
              accesskey="P">previous</a> |</li>
         <li><a href="../../../index.html">scikit-rf dev documentation</a> &raquo;</li>
-          <li><a href="../index.html" >vi (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.vi</span></tt>)</a> &raquo;</li>
+          <li><a href="../index.html" >vi (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.vi</span></tt>)</a> &raquo;</li>
           <li><a href="skrf.vi.sa.HP8500.html" accesskey="U">skrf.vi.sa.HP8500</a> &raquo;</li> 
       </ul>
     </div>  
@@ -72,9 +72,9 @@
             
   <div class="section" id="skrf-vi-sa-hp8500-get-ntwk">
 <h1>skrf.vi.sa.HP8500.get_ntwk<a class="headerlink" href="#skrf-vi-sa-hp8500-get-ntwk" title="Permalink to this headline">¶</a></h1>
-<dl class="attribute">
+<dl class="method">
 <dt id="skrf.vi.sa.HP8500.get_ntwk">
-<tt class="descclassname">HP8500.</tt><tt class="descname">get_ntwk</tt><a class="headerlink" href="#skrf.vi.sa.HP8500.get_ntwk" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">HP8500.</tt><tt class="descname">get_ntwk</tt><big>(</big><em>trace='a'</em>, <em>goto_local=False</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#skrf.vi.sa.HP8500.get_ntwk" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get a trace and return the data in a <a class="reference internal" href="../../generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> format</p>
 <p>This will save instrument stage to reg 1, activate single sweep
 mode, sweep, save data, then recal state from reg 1.</p>
@@ -117,11 +117,11 @@ assume the user is knows this.</p>
               <img class="logo" src="../../../_static/scikit-rf-logo-flat-docs.svg" alt="Logo"/>
             </a></p>
   <h4>Previous topic</h4>
-  <p class="topless"><a href="skrf.vi.sa.HP8500.frequency.html"
-                        title="previous chapter">skrf.vi.sa.HP8500.frequency</a></p>
+  <p class="topless"><a href="skrf.vi.sa.HP8500.cont_sweep.html"
+                        title="previous chapter">skrf.vi.sa.HP8500.cont_sweep</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="skrf.vi.sa.HP8500.trace_a.html"
-                        title="next chapter">skrf.vi.sa.HP8500.trace_a</a></p>
+  <p class="topless"><a href="skrf.vi.sa.HP8500.goto_local.html"
+                        title="next chapter">skrf.vi.sa.HP8500.goto_local</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="../../../_sources/reference/vi/generated/skrf.vi.sa.HP8500.get_ntwk.txt"
@@ -159,13 +159,13 @@ assume the user is knows this.</p>
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="skrf.vi.sa.HP8500.trace_a.html" title="skrf.vi.sa.HP8500.trace_a"
+          <a href="skrf.vi.sa.HP8500.goto_local.html" title="skrf.vi.sa.HP8500.goto_local"
              >next</a> |</li>
         <li class="right" >
-          <a href="skrf.vi.sa.HP8500.frequency.html" title="skrf.vi.sa.HP8500.frequency"
+          <a href="skrf.vi.sa.HP8500.cont_sweep.html" title="skrf.vi.sa.HP8500.cont_sweep"
              >previous</a> |</li>
         <li><a href="../../../index.html">scikit-rf dev documentation</a> &raquo;</li>
-          <li><a href="../index.html" >vi (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.vi</span></tt>)</a> &raquo;</li>
+          <li><a href="../index.html" >vi (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.vi</span></tt>)</a> &raquo;</li>
           <li><a href="skrf.vi.sa.HP8500.html" >skrf.vi.sa.HP8500</a> &raquo;</li> 
       </ul>
     </div>

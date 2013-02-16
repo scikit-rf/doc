@@ -1,6 +1,0 @@
-skrf.vi.vna.ZVA40.wait
-======================
-
-.. currentmodule:: skrf.vi.vna
-
-.. automethod:: ZVA40.wait

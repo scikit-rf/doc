@@ -19,6 +19,8 @@ skrf.calibration.calibration.Calibration
   ~Calibration.caled_ntwks
   ~Calibration.calibration_algorithm_dict
   ~Calibration.coefs
+  ~Calibration.coefs_ntwks
+  ~Calibration.coefs_ntwks_2p
   ~Calibration.error_ntwk
   ~Calibration.nports
   ~Calibration.nstandards
@@ -43,6 +45,8 @@ skrf.calibration.calibration.Calibration
   ~Calibration.biased_error
   ~Calibration.func_per_standard
   ~Calibration.mean_residuals
+  ~Calibration.plot_caled_ntwks
+  ~Calibration.plot_coefs
   ~Calibration.plot_coefs_db
   ~Calibration.plot_errors
   ~Calibration.plot_residuals

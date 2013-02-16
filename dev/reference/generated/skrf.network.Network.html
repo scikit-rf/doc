@@ -73,7 +73,7 @@
 <h1>skrf.network.Network<a class="headerlink" href="#skrf-network-network" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="skrf.network.Network">
-<em class="property">class </em><tt class="descclassname">skrf.network.</tt><tt class="descname">Network</tt><big>(</big><em>file=None</em>, <em>name=None</em>, <em>comments=None</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#skrf.network.Network" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">skrf.network.</tt><tt class="descname">Network</tt><big>(</big><em>file=None</em>, <em>name=None</em>, <em>comments=None</em>, <em>f_unit=None</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#skrf.network.Network" title="Permalink to this definition">¶</a></dt>
 <dd><p>A n-port electrical network <a class="footnote-reference" href="#id2" id="id1">[1]</a>.</p>
 <p>For instructions on how to create Network see  <a class="reference internal" href="skrf.network.Network.__init__.html#skrf.network.Network.__init__" title="skrf.network.Network.__init__"><tt class="xref py py-func docutils literal"><span class="pre">__init__()</span></tt></a>.</p>
 <dl class="docutils">
@@ -86,7 +86,7 @@
 </dd>
 </dl>
 <p>The <a class="reference internal" href="#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> class stores these data structures internally
-in the form of complex <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">numpy.ndarray</span></tt></a>&#8216;s. These arrays are not
+in the form of complex <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.7)"><tt class="xref py py-class docutils literal"><span class="pre">numpy.ndarray</span></tt></a>&#8216;s. These arrays are not
 interfaced directly but instead through the use of the properties:</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -114,7 +114,7 @@ interfaced directly but instead through the use of the properties:</p>
 representations such as <a class="reference internal" href="skrf.network.Network.z.html#skrf.network.Network.z" title="skrf.network.Network.z"><tt class="xref py py-attr docutils literal"><span class="pre">z</span></tt></a> and  <a class="reference internal" href="skrf.network.Network.y.html#skrf.network.Network.y" title="skrf.network.Network.y"><tt class="xref py py-attr docutils literal"><span class="pre">y</span></tt></a> are 
 available. Scalar projections of the complex network parameters 
 are accesable through properties as well. These also return 
-<a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">numpy.ndarray</span></tt></a>&#8216;s.</p>
+<a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.7)"><tt class="xref py py-class docutils literal"><span class="pre">numpy.ndarray</span></tt></a>&#8216;s.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="32%" />
@@ -270,68 +270,74 @@ can be saved to disk in the form of touchstone files with the
 <tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.a_re.html#skrf.network.Network.a_re" title="skrf.network.Network.a_re"><tt class="xref py py-obj docutils literal"><span class="pre">a_re</span></tt></a></td>
 <td>The re component of the a-matrix   ..</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.f.html#skrf.network.Network.f" title="skrf.network.Network.f"><tt class="xref py py-obj docutils literal"><span class="pre">f</span></tt></a></td>
+<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.a_vswr.html#skrf.network.Network.a_vswr" title="skrf.network.Network.a_vswr"><tt class="xref py py-obj docutils literal"><span class="pre">a_vswr</span></tt></a></td>
+<td>The vswr component of the a-matrix   ..</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.f.html#skrf.network.Network.f" title="skrf.network.Network.f"><tt class="xref py py-obj docutils literal"><span class="pre">f</span></tt></a></td>
 <td>the frequency vector for the network, in Hz.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.frequency.html#skrf.network.Network.frequency" title="skrf.network.Network.frequency"><tt class="xref py py-obj docutils literal"><span class="pre">frequency</span></tt></a></td>
+<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.frequency.html#skrf.network.Network.frequency" title="skrf.network.Network.frequency"><tt class="xref py py-obj docutils literal"><span class="pre">frequency</span></tt></a></td>
 <td>frequency information for the network.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.inv.html#skrf.network.Network.inv" title="skrf.network.Network.inv"><tt class="xref py py-obj docutils literal"><span class="pre">inv</span></tt></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.inv.html#skrf.network.Network.inv" title="skrf.network.Network.inv"><tt class="xref py py-obj docutils literal"><span class="pre">inv</span></tt></a></td>
 <td>a <a class="reference internal" href="#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> object with &#8216;inverse&#8217; s-parameters.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.nports.html#skrf.network.Network.nports" title="skrf.network.Network.nports"><tt class="xref py py-obj docutils literal"><span class="pre">nports</span></tt></a></td>
+<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.nports.html#skrf.network.Network.nports" title="skrf.network.Network.nports"><tt class="xref py py-obj docutils literal"><span class="pre">nports</span></tt></a></td>
 <td>the number of ports the network has.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.number_of_ports.html#skrf.network.Network.number_of_ports" title="skrf.network.Network.number_of_ports"><tt class="xref py py-obj docutils literal"><span class="pre">number_of_ports</span></tt></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.number_of_ports.html#skrf.network.Network.number_of_ports" title="skrf.network.Network.number_of_ports"><tt class="xref py py-obj docutils literal"><span class="pre">number_of_ports</span></tt></a></td>
 <td>the number of ports the network has.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.passivity.html#skrf.network.Network.passivity" title="skrf.network.Network.passivity"><tt class="xref py py-obj docutils literal"><span class="pre">passivity</span></tt></a></td>
+<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.passivity.html#skrf.network.Network.passivity" title="skrf.network.Network.passivity"><tt class="xref py py-obj docutils literal"><span class="pre">passivity</span></tt></a></td>
 <td>passivity metric for a multi-port network.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.s.html#skrf.network.Network.s" title="skrf.network.Network.s"><tt class="xref py py-obj docutils literal"><span class="pre">s</span></tt></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.s.html#skrf.network.Network.s" title="skrf.network.Network.s"><tt class="xref py py-obj docutils literal"><span class="pre">s</span></tt></a></td>
 <td>Scattering parameter matrix.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.s11.html#skrf.network.Network.s11" title="skrf.network.Network.s11"><tt class="xref py py-obj docutils literal"><span class="pre">s11</span></tt></a></td>
+<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.s11.html#skrf.network.Network.s11" title="skrf.network.Network.s11"><tt class="xref py py-obj docutils literal"><span class="pre">s11</span></tt></a></td>
 <td>one-port sub-network.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.s12.html#skrf.network.Network.s12" title="skrf.network.Network.s12"><tt class="xref py py-obj docutils literal"><span class="pre">s12</span></tt></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.s12.html#skrf.network.Network.s12" title="skrf.network.Network.s12"><tt class="xref py py-obj docutils literal"><span class="pre">s12</span></tt></a></td>
 <td>one-port sub-network.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.s21.html#skrf.network.Network.s21" title="skrf.network.Network.s21"><tt class="xref py py-obj docutils literal"><span class="pre">s21</span></tt></a></td>
+<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.s21.html#skrf.network.Network.s21" title="skrf.network.Network.s21"><tt class="xref py py-obj docutils literal"><span class="pre">s21</span></tt></a></td>
 <td>one-port sub-network.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.s22.html#skrf.network.Network.s22" title="skrf.network.Network.s22"><tt class="xref py py-obj docutils literal"><span class="pre">s22</span></tt></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.s22.html#skrf.network.Network.s22" title="skrf.network.Network.s22"><tt class="xref py py-obj docutils literal"><span class="pre">s22</span></tt></a></td>
 <td>one-port sub-network.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.s_arcl.html#skrf.network.Network.s_arcl" title="skrf.network.Network.s_arcl"><tt class="xref py py-obj docutils literal"><span class="pre">s_arcl</span></tt></a></td>
+<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.s_arcl.html#skrf.network.Network.s_arcl" title="skrf.network.Network.s_arcl"><tt class="xref py py-obj docutils literal"><span class="pre">s_arcl</span></tt></a></td>
 <td>The arcl component of the s-matrix   ..</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.s_arcl_unwrap.html#skrf.network.Network.s_arcl_unwrap" title="skrf.network.Network.s_arcl_unwrap"><tt class="xref py py-obj docutils literal"><span class="pre">s_arcl_unwrap</span></tt></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.s_arcl_unwrap.html#skrf.network.Network.s_arcl_unwrap" title="skrf.network.Network.s_arcl_unwrap"><tt class="xref py py-obj docutils literal"><span class="pre">s_arcl_unwrap</span></tt></a></td>
 <td>The arcl_unwrap component of the s-matrix   ..</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.s_db.html#skrf.network.Network.s_db" title="skrf.network.Network.s_db"><tt class="xref py py-obj docutils literal"><span class="pre">s_db</span></tt></a></td>
+<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.s_db.html#skrf.network.Network.s_db" title="skrf.network.Network.s_db"><tt class="xref py py-obj docutils literal"><span class="pre">s_db</span></tt></a></td>
 <td>The db component of the s-matrix   ..</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.s_deg.html#skrf.network.Network.s_deg" title="skrf.network.Network.s_deg"><tt class="xref py py-obj docutils literal"><span class="pre">s_deg</span></tt></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.s_deg.html#skrf.network.Network.s_deg" title="skrf.network.Network.s_deg"><tt class="xref py py-obj docutils literal"><span class="pre">s_deg</span></tt></a></td>
 <td>The deg component of the s-matrix   ..</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.s_deg_unwrap.html#skrf.network.Network.s_deg_unwrap" title="skrf.network.Network.s_deg_unwrap"><tt class="xref py py-obj docutils literal"><span class="pre">s_deg_unwrap</span></tt></a></td>
+<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.s_deg_unwrap.html#skrf.network.Network.s_deg_unwrap" title="skrf.network.Network.s_deg_unwrap"><tt class="xref py py-obj docutils literal"><span class="pre">s_deg_unwrap</span></tt></a></td>
 <td>The deg_unwrap component of the s-matrix   ..</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.s_im.html#skrf.network.Network.s_im" title="skrf.network.Network.s_im"><tt class="xref py py-obj docutils literal"><span class="pre">s_im</span></tt></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.s_im.html#skrf.network.Network.s_im" title="skrf.network.Network.s_im"><tt class="xref py py-obj docutils literal"><span class="pre">s_im</span></tt></a></td>
 <td>The im component of the s-matrix   ..</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.s_mag.html#skrf.network.Network.s_mag" title="skrf.network.Network.s_mag"><tt class="xref py py-obj docutils literal"><span class="pre">s_mag</span></tt></a></td>
+<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.s_mag.html#skrf.network.Network.s_mag" title="skrf.network.Network.s_mag"><tt class="xref py py-obj docutils literal"><span class="pre">s_mag</span></tt></a></td>
 <td>The mag component of the s-matrix   ..</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.s_rad.html#skrf.network.Network.s_rad" title="skrf.network.Network.s_rad"><tt class="xref py py-obj docutils literal"><span class="pre">s_rad</span></tt></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.s_rad.html#skrf.network.Network.s_rad" title="skrf.network.Network.s_rad"><tt class="xref py py-obj docutils literal"><span class="pre">s_rad</span></tt></a></td>
 <td>The rad component of the s-matrix   ..</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.s_rad_unwrap.html#skrf.network.Network.s_rad_unwrap" title="skrf.network.Network.s_rad_unwrap"><tt class="xref py py-obj docutils literal"><span class="pre">s_rad_unwrap</span></tt></a></td>
+<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.s_rad_unwrap.html#skrf.network.Network.s_rad_unwrap" title="skrf.network.Network.s_rad_unwrap"><tt class="xref py py-obj docutils literal"><span class="pre">s_rad_unwrap</span></tt></a></td>
 <td>The rad_unwrap component of the s-matrix   ..</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.s_re.html#skrf.network.Network.s_re" title="skrf.network.Network.s_re"><tt class="xref py py-obj docutils literal"><span class="pre">s_re</span></tt></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.s_re.html#skrf.network.Network.s_re" title="skrf.network.Network.s_re"><tt class="xref py py-obj docutils literal"><span class="pre">s_re</span></tt></a></td>
 <td>The re component of the s-matrix   ..</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.s_vswr.html#skrf.network.Network.s_vswr" title="skrf.network.Network.s_vswr"><tt class="xref py py-obj docutils literal"><span class="pre">s_vswr</span></tt></a></td>
+<td>The vswr component of the s-matrix   ..</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.t.html#skrf.network.Network.t" title="skrf.network.Network.t"><tt class="xref py py-obj docutils literal"><span class="pre">t</span></tt></a></td>
 <td>Scattering transfer parameters</td>
@@ -369,41 +375,47 @@ can be saved to disk in the form of touchstone files with the
 <tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.y_re.html#skrf.network.Network.y_re" title="skrf.network.Network.y_re"><tt class="xref py py-obj docutils literal"><span class="pre">y_re</span></tt></a></td>
 <td>The re component of the y-matrix   ..</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.z.html#skrf.network.Network.z" title="skrf.network.Network.z"><tt class="xref py py-obj docutils literal"><span class="pre">z</span></tt></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.y_vswr.html#skrf.network.Network.y_vswr" title="skrf.network.Network.y_vswr"><tt class="xref py py-obj docutils literal"><span class="pre">y_vswr</span></tt></a></td>
+<td>The vswr component of the y-matrix   ..</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.z.html#skrf.network.Network.z" title="skrf.network.Network.z"><tt class="xref py py-obj docutils literal"><span class="pre">z</span></tt></a></td>
 <td>Impedance parameter matrix.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.z0.html#skrf.network.Network.z0" title="skrf.network.Network.z0"><tt class="xref py py-obj docutils literal"><span class="pre">z0</span></tt></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.z0.html#skrf.network.Network.z0" title="skrf.network.Network.z0"><tt class="xref py py-obj docutils literal"><span class="pre">z0</span></tt></a></td>
 <td>Characteristic impedance[s] of the network ports.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.z_arcl.html#skrf.network.Network.z_arcl" title="skrf.network.Network.z_arcl"><tt class="xref py py-obj docutils literal"><span class="pre">z_arcl</span></tt></a></td>
+<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.z_arcl.html#skrf.network.Network.z_arcl" title="skrf.network.Network.z_arcl"><tt class="xref py py-obj docutils literal"><span class="pre">z_arcl</span></tt></a></td>
 <td>The arcl component of the z-matrix   ..</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.z_arcl_unwrap.html#skrf.network.Network.z_arcl_unwrap" title="skrf.network.Network.z_arcl_unwrap"><tt class="xref py py-obj docutils literal"><span class="pre">z_arcl_unwrap</span></tt></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.z_arcl_unwrap.html#skrf.network.Network.z_arcl_unwrap" title="skrf.network.Network.z_arcl_unwrap"><tt class="xref py py-obj docutils literal"><span class="pre">z_arcl_unwrap</span></tt></a></td>
 <td>The arcl_unwrap component of the z-matrix   ..</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.z_db.html#skrf.network.Network.z_db" title="skrf.network.Network.z_db"><tt class="xref py py-obj docutils literal"><span class="pre">z_db</span></tt></a></td>
+<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.z_db.html#skrf.network.Network.z_db" title="skrf.network.Network.z_db"><tt class="xref py py-obj docutils literal"><span class="pre">z_db</span></tt></a></td>
 <td>The db component of the z-matrix   ..</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.z_deg.html#skrf.network.Network.z_deg" title="skrf.network.Network.z_deg"><tt class="xref py py-obj docutils literal"><span class="pre">z_deg</span></tt></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.z_deg.html#skrf.network.Network.z_deg" title="skrf.network.Network.z_deg"><tt class="xref py py-obj docutils literal"><span class="pre">z_deg</span></tt></a></td>
 <td>The deg component of the z-matrix   ..</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.z_deg_unwrap.html#skrf.network.Network.z_deg_unwrap" title="skrf.network.Network.z_deg_unwrap"><tt class="xref py py-obj docutils literal"><span class="pre">z_deg_unwrap</span></tt></a></td>
+<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.z_deg_unwrap.html#skrf.network.Network.z_deg_unwrap" title="skrf.network.Network.z_deg_unwrap"><tt class="xref py py-obj docutils literal"><span class="pre">z_deg_unwrap</span></tt></a></td>
 <td>The deg_unwrap component of the z-matrix   ..</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.z_im.html#skrf.network.Network.z_im" title="skrf.network.Network.z_im"><tt class="xref py py-obj docutils literal"><span class="pre">z_im</span></tt></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.z_im.html#skrf.network.Network.z_im" title="skrf.network.Network.z_im"><tt class="xref py py-obj docutils literal"><span class="pre">z_im</span></tt></a></td>
 <td>The im component of the z-matrix   ..</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.z_mag.html#skrf.network.Network.z_mag" title="skrf.network.Network.z_mag"><tt class="xref py py-obj docutils literal"><span class="pre">z_mag</span></tt></a></td>
+<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.z_mag.html#skrf.network.Network.z_mag" title="skrf.network.Network.z_mag"><tt class="xref py py-obj docutils literal"><span class="pre">z_mag</span></tt></a></td>
 <td>The mag component of the z-matrix   ..</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.z_rad.html#skrf.network.Network.z_rad" title="skrf.network.Network.z_rad"><tt class="xref py py-obj docutils literal"><span class="pre">z_rad</span></tt></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.z_rad.html#skrf.network.Network.z_rad" title="skrf.network.Network.z_rad"><tt class="xref py py-obj docutils literal"><span class="pre">z_rad</span></tt></a></td>
 <td>The rad component of the z-matrix   ..</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.z_rad_unwrap.html#skrf.network.Network.z_rad_unwrap" title="skrf.network.Network.z_rad_unwrap"><tt class="xref py py-obj docutils literal"><span class="pre">z_rad_unwrap</span></tt></a></td>
+<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.z_rad_unwrap.html#skrf.network.Network.z_rad_unwrap" title="skrf.network.Network.z_rad_unwrap"><tt class="xref py py-obj docutils literal"><span class="pre">z_rad_unwrap</span></tt></a></td>
 <td>The rad_unwrap component of the z-matrix   ..</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.z_re.html#skrf.network.Network.z_re" title="skrf.network.Network.z_re"><tt class="xref py py-obj docutils literal"><span class="pre">z_re</span></tt></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.z_re.html#skrf.network.Network.z_re" title="skrf.network.Network.z_re"><tt class="xref py py-obj docutils literal"><span class="pre">z_re</span></tt></a></td>
 <td>The re component of the z-matrix   ..</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.z_vswr.html#skrf.network.Network.z_vswr" title="skrf.network.Network.z_vswr"><tt class="xref py py-obj docutils literal"><span class="pre">z_vswr</span></tt></a></td>
+<td>The vswr component of the z-matrix   ..</td>
 </tr>
 </tbody>
 </table>
@@ -432,59 +444,65 @@ can be saved to disk in the form of touchstone files with the
 <tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.flip.html#skrf.network.Network.flip" title="skrf.network.Network.flip"><tt class="xref py py-obj docutils literal"><span class="pre">flip</span></tt></a></td>
 <td>swaps the ports of a two port Network</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.interpolate.html#skrf.network.Network.interpolate" title="skrf.network.Network.interpolate"><tt class="xref py py-obj docutils literal"><span class="pre">interpolate</span></tt></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.func_on_parameter.html#skrf.network.Network.func_on_parameter" title="skrf.network.Network.func_on_parameter"><tt class="xref py py-obj docutils literal"><span class="pre">func_on_parameter</span></tt></a></td>
+<td>Aplies a function parameter matrix, one frequency slice at a time</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.interpolate.html#skrf.network.Network.interpolate" title="skrf.network.Network.interpolate"><tt class="xref py py-obj docutils literal"><span class="pre">interpolate</span></tt></a></td>
 <td>Return an interpolated network, from a new :class:&#8217;~skrf.frequency.Frequency&#8217;.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.interpolate_from_f.html#skrf.network.Network.interpolate_from_f" title="skrf.network.Network.interpolate_from_f"><tt class="xref py py-obj docutils literal"><span class="pre">interpolate_from_f</span></tt></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.interpolate_from_f.html#skrf.network.Network.interpolate_from_f" title="skrf.network.Network.interpolate_from_f"><tt class="xref py py-obj docutils literal"><span class="pre">interpolate_from_f</span></tt></a></td>
 <td>Interpolates s-parameters from a frequency vector.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.interpolate_self.html#skrf.network.Network.interpolate_self" title="skrf.network.Network.interpolate_self"><tt class="xref py py-obj docutils literal"><span class="pre">interpolate_self</span></tt></a></td>
+<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.interpolate_self.html#skrf.network.Network.interpolate_self" title="skrf.network.Network.interpolate_self"><tt class="xref py py-obj docutils literal"><span class="pre">interpolate_self</span></tt></a></td>
 <td>Interpolates s-parameters given a new</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.interpolate_self_npoints.html#skrf.network.Network.interpolate_self_npoints" title="skrf.network.Network.interpolate_self_npoints"><tt class="xref py py-obj docutils literal"><span class="pre">interpolate_self_npoints</span></tt></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.interpolate_self_npoints.html#skrf.network.Network.interpolate_self_npoints" title="skrf.network.Network.interpolate_self_npoints"><tt class="xref py py-obj docutils literal"><span class="pre">interpolate_self_npoints</span></tt></a></td>
 <td>Interpolate network based on a new number of frequency points</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.multiply_noise.html#skrf.network.Network.multiply_noise" title="skrf.network.Network.multiply_noise"><tt class="xref py py-obj docutils literal"><span class="pre">multiply_noise</span></tt></a></td>
+<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.multiply_noise.html#skrf.network.Network.multiply_noise" title="skrf.network.Network.multiply_noise"><tt class="xref py py-obj docutils literal"><span class="pre">multiply_noise</span></tt></a></td>
 <td>multiplys a complex bivariate gaussian white-noise signal</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.nudge.html#skrf.network.Network.nudge" title="skrf.network.Network.nudge"><tt class="xref py py-obj docutils literal"><span class="pre">nudge</span></tt></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.nudge.html#skrf.network.Network.nudge" title="skrf.network.Network.nudge"><tt class="xref py py-obj docutils literal"><span class="pre">nudge</span></tt></a></td>
 <td>Perturb s-parameters by small amount.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.plot_a_arcl.html#skrf.network.Network.plot_a_arcl" title="skrf.network.Network.plot_a_arcl"><tt class="xref py py-obj docutils literal"><span class="pre">plot_a_arcl</span></tt></a></td>
+<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.plot_a_arcl.html#skrf.network.Network.plot_a_arcl" title="skrf.network.Network.plot_a_arcl"><tt class="xref py py-obj docutils literal"><span class="pre">plot_a_arcl</span></tt></a></td>
 <td>plot the Network attribute <tt class="xref py py-attr docutils literal"><span class="pre">a_arcl</span></tt> vs frequency.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.plot_a_arcl_unwrap.html#skrf.network.Network.plot_a_arcl_unwrap" title="skrf.network.Network.plot_a_arcl_unwrap"><tt class="xref py py-obj docutils literal"><span class="pre">plot_a_arcl_unwrap</span></tt></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.plot_a_arcl_unwrap.html#skrf.network.Network.plot_a_arcl_unwrap" title="skrf.network.Network.plot_a_arcl_unwrap"><tt class="xref py py-obj docutils literal"><span class="pre">plot_a_arcl_unwrap</span></tt></a></td>
 <td>plot the Network attribute <tt class="xref py py-attr docutils literal"><span class="pre">a_arcl_unwrap</span></tt> vs frequency.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.plot_a_complex.html#skrf.network.Network.plot_a_complex" title="skrf.network.Network.plot_a_complex"><tt class="xref py py-obj docutils literal"><span class="pre">plot_a_complex</span></tt></a></td>
+<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.plot_a_complex.html#skrf.network.Network.plot_a_complex" title="skrf.network.Network.plot_a_complex"><tt class="xref py py-obj docutils literal"><span class="pre">plot_a_complex</span></tt></a></td>
 <td>plot the Network attribute <tt class="xref py py-attr docutils literal"><span class="pre">a</span></tt> vs frequency.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.plot_a_db.html#skrf.network.Network.plot_a_db" title="skrf.network.Network.plot_a_db"><tt class="xref py py-obj docutils literal"><span class="pre">plot_a_db</span></tt></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.plot_a_db.html#skrf.network.Network.plot_a_db" title="skrf.network.Network.plot_a_db"><tt class="xref py py-obj docutils literal"><span class="pre">plot_a_db</span></tt></a></td>
 <td>plot the Network attribute <tt class="xref py py-attr docutils literal"><span class="pre">a_db</span></tt> vs frequency.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.plot_a_deg.html#skrf.network.Network.plot_a_deg" title="skrf.network.Network.plot_a_deg"><tt class="xref py py-obj docutils literal"><span class="pre">plot_a_deg</span></tt></a></td>
+<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.plot_a_deg.html#skrf.network.Network.plot_a_deg" title="skrf.network.Network.plot_a_deg"><tt class="xref py py-obj docutils literal"><span class="pre">plot_a_deg</span></tt></a></td>
 <td>plot the Network attribute <tt class="xref py py-attr docutils literal"><span class="pre">a_deg</span></tt> vs frequency.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.plot_a_deg_unwrap.html#skrf.network.Network.plot_a_deg_unwrap" title="skrf.network.Network.plot_a_deg_unwrap"><tt class="xref py py-obj docutils literal"><span class="pre">plot_a_deg_unwrap</span></tt></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.plot_a_deg_unwrap.html#skrf.network.Network.plot_a_deg_unwrap" title="skrf.network.Network.plot_a_deg_unwrap"><tt class="xref py py-obj docutils literal"><span class="pre">plot_a_deg_unwrap</span></tt></a></td>
 <td>plot the Network attribute <tt class="xref py py-attr docutils literal"><span class="pre">a_deg_unwrap</span></tt> vs frequency.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.plot_a_im.html#skrf.network.Network.plot_a_im" title="skrf.network.Network.plot_a_im"><tt class="xref py py-obj docutils literal"><span class="pre">plot_a_im</span></tt></a></td>
+<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.plot_a_im.html#skrf.network.Network.plot_a_im" title="skrf.network.Network.plot_a_im"><tt class="xref py py-obj docutils literal"><span class="pre">plot_a_im</span></tt></a></td>
 <td>plot the Network attribute <tt class="xref py py-attr docutils literal"><span class="pre">a_im</span></tt> vs frequency.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.plot_a_mag.html#skrf.network.Network.plot_a_mag" title="skrf.network.Network.plot_a_mag"><tt class="xref py py-obj docutils literal"><span class="pre">plot_a_mag</span></tt></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.plot_a_mag.html#skrf.network.Network.plot_a_mag" title="skrf.network.Network.plot_a_mag"><tt class="xref py py-obj docutils literal"><span class="pre">plot_a_mag</span></tt></a></td>
 <td>plot the Network attribute <tt class="xref py py-attr docutils literal"><span class="pre">a_mag</span></tt> vs frequency.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.plot_a_polar.html#skrf.network.Network.plot_a_polar" title="skrf.network.Network.plot_a_polar"><tt class="xref py py-obj docutils literal"><span class="pre">plot_a_polar</span></tt></a></td>
+<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.plot_a_polar.html#skrf.network.Network.plot_a_polar" title="skrf.network.Network.plot_a_polar"><tt class="xref py py-obj docutils literal"><span class="pre">plot_a_polar</span></tt></a></td>
 <td>plot the Network attribute <tt class="xref py py-attr docutils literal"><span class="pre">a</span></tt> vs frequency.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.plot_a_rad.html#skrf.network.Network.plot_a_rad" title="skrf.network.Network.plot_a_rad"><tt class="xref py py-obj docutils literal"><span class="pre">plot_a_rad</span></tt></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.plot_a_rad.html#skrf.network.Network.plot_a_rad" title="skrf.network.Network.plot_a_rad"><tt class="xref py py-obj docutils literal"><span class="pre">plot_a_rad</span></tt></a></td>
 <td>plot the Network attribute <tt class="xref py py-attr docutils literal"><span class="pre">a_rad</span></tt> vs frequency.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.plot_a_rad_unwrap.html#skrf.network.Network.plot_a_rad_unwrap" title="skrf.network.Network.plot_a_rad_unwrap"><tt class="xref py py-obj docutils literal"><span class="pre">plot_a_rad_unwrap</span></tt></a></td>
+<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.plot_a_rad_unwrap.html#skrf.network.Network.plot_a_rad_unwrap" title="skrf.network.Network.plot_a_rad_unwrap"><tt class="xref py py-obj docutils literal"><span class="pre">plot_a_rad_unwrap</span></tt></a></td>
 <td>plot the Network attribute <tt class="xref py py-attr docutils literal"><span class="pre">a_rad_unwrap</span></tt> vs frequency.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.plot_a_re.html#skrf.network.Network.plot_a_re" title="skrf.network.Network.plot_a_re"><tt class="xref py py-obj docutils literal"><span class="pre">plot_a_re</span></tt></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.plot_a_re.html#skrf.network.Network.plot_a_re" title="skrf.network.Network.plot_a_re"><tt class="xref py py-obj docutils literal"><span class="pre">plot_a_re</span></tt></a></td>
 <td>plot the Network attribute <tt class="xref py py-attr docutils literal"><span class="pre">a_re</span></tt> vs frequency.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.plot_a_vswr.html#skrf.network.Network.plot_a_vswr" title="skrf.network.Network.plot_a_vswr"><tt class="xref py py-obj docutils literal"><span class="pre">plot_a_vswr</span></tt></a></td>
+<td>plot the Network attribute <tt class="xref py py-attr docutils literal"><span class="pre">a_vswr</span></tt> vs frequency.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.plot_it_all.html#skrf.network.Network.plot_it_all" title="skrf.network.Network.plot_it_all"><tt class="xref py py-obj docutils literal"><span class="pre">plot_it_all</span></tt></a></td>
 <td></td>
@@ -531,41 +549,47 @@ can be saved to disk in the form of touchstone files with the
 <tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.plot_s_smith.html#skrf.network.Network.plot_s_smith" title="skrf.network.Network.plot_s_smith"><tt class="xref py py-obj docutils literal"><span class="pre">plot_s_smith</span></tt></a></td>
 <td>plots the scattering parameter on a smith chart</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.plot_y_arcl.html#skrf.network.Network.plot_y_arcl" title="skrf.network.Network.plot_y_arcl"><tt class="xref py py-obj docutils literal"><span class="pre">plot_y_arcl</span></tt></a></td>
+<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.plot_s_vswr.html#skrf.network.Network.plot_s_vswr" title="skrf.network.Network.plot_s_vswr"><tt class="xref py py-obj docutils literal"><span class="pre">plot_s_vswr</span></tt></a></td>
+<td>plot the Network attribute <tt class="xref py py-attr docutils literal"><span class="pre">s_vswr</span></tt> vs frequency.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.plot_y_arcl.html#skrf.network.Network.plot_y_arcl" title="skrf.network.Network.plot_y_arcl"><tt class="xref py py-obj docutils literal"><span class="pre">plot_y_arcl</span></tt></a></td>
 <td>plot the Network attribute <tt class="xref py py-attr docutils literal"><span class="pre">y_arcl</span></tt> vs frequency.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.plot_y_arcl_unwrap.html#skrf.network.Network.plot_y_arcl_unwrap" title="skrf.network.Network.plot_y_arcl_unwrap"><tt class="xref py py-obj docutils literal"><span class="pre">plot_y_arcl_unwrap</span></tt></a></td>
+<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.plot_y_arcl_unwrap.html#skrf.network.Network.plot_y_arcl_unwrap" title="skrf.network.Network.plot_y_arcl_unwrap"><tt class="xref py py-obj docutils literal"><span class="pre">plot_y_arcl_unwrap</span></tt></a></td>
 <td>plot the Network attribute <tt class="xref py py-attr docutils literal"><span class="pre">y_arcl_unwrap</span></tt> vs frequency.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.plot_y_complex.html#skrf.network.Network.plot_y_complex" title="skrf.network.Network.plot_y_complex"><tt class="xref py py-obj docutils literal"><span class="pre">plot_y_complex</span></tt></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.plot_y_complex.html#skrf.network.Network.plot_y_complex" title="skrf.network.Network.plot_y_complex"><tt class="xref py py-obj docutils literal"><span class="pre">plot_y_complex</span></tt></a></td>
 <td>plot the Network attribute <tt class="xref py py-attr docutils literal"><span class="pre">y</span></tt> vs frequency.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.plot_y_db.html#skrf.network.Network.plot_y_db" title="skrf.network.Network.plot_y_db"><tt class="xref py py-obj docutils literal"><span class="pre">plot_y_db</span></tt></a></td>
+<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.plot_y_db.html#skrf.network.Network.plot_y_db" title="skrf.network.Network.plot_y_db"><tt class="xref py py-obj docutils literal"><span class="pre">plot_y_db</span></tt></a></td>
 <td>plot the Network attribute <tt class="xref py py-attr docutils literal"><span class="pre">y_db</span></tt> vs frequency.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.plot_y_deg.html#skrf.network.Network.plot_y_deg" title="skrf.network.Network.plot_y_deg"><tt class="xref py py-obj docutils literal"><span class="pre">plot_y_deg</span></tt></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.plot_y_deg.html#skrf.network.Network.plot_y_deg" title="skrf.network.Network.plot_y_deg"><tt class="xref py py-obj docutils literal"><span class="pre">plot_y_deg</span></tt></a></td>
 <td>plot the Network attribute <tt class="xref py py-attr docutils literal"><span class="pre">y_deg</span></tt> vs frequency.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.plot_y_deg_unwrap.html#skrf.network.Network.plot_y_deg_unwrap" title="skrf.network.Network.plot_y_deg_unwrap"><tt class="xref py py-obj docutils literal"><span class="pre">plot_y_deg_unwrap</span></tt></a></td>
+<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.plot_y_deg_unwrap.html#skrf.network.Network.plot_y_deg_unwrap" title="skrf.network.Network.plot_y_deg_unwrap"><tt class="xref py py-obj docutils literal"><span class="pre">plot_y_deg_unwrap</span></tt></a></td>
 <td>plot the Network attribute <tt class="xref py py-attr docutils literal"><span class="pre">y_deg_unwrap</span></tt> vs frequency.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.plot_y_im.html#skrf.network.Network.plot_y_im" title="skrf.network.Network.plot_y_im"><tt class="xref py py-obj docutils literal"><span class="pre">plot_y_im</span></tt></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.plot_y_im.html#skrf.network.Network.plot_y_im" title="skrf.network.Network.plot_y_im"><tt class="xref py py-obj docutils literal"><span class="pre">plot_y_im</span></tt></a></td>
 <td>plot the Network attribute <tt class="xref py py-attr docutils literal"><span class="pre">y_im</span></tt> vs frequency.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.plot_y_mag.html#skrf.network.Network.plot_y_mag" title="skrf.network.Network.plot_y_mag"><tt class="xref py py-obj docutils literal"><span class="pre">plot_y_mag</span></tt></a></td>
+<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.plot_y_mag.html#skrf.network.Network.plot_y_mag" title="skrf.network.Network.plot_y_mag"><tt class="xref py py-obj docutils literal"><span class="pre">plot_y_mag</span></tt></a></td>
 <td>plot the Network attribute <tt class="xref py py-attr docutils literal"><span class="pre">y_mag</span></tt> vs frequency.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.plot_y_polar.html#skrf.network.Network.plot_y_polar" title="skrf.network.Network.plot_y_polar"><tt class="xref py py-obj docutils literal"><span class="pre">plot_y_polar</span></tt></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.plot_y_polar.html#skrf.network.Network.plot_y_polar" title="skrf.network.Network.plot_y_polar"><tt class="xref py py-obj docutils literal"><span class="pre">plot_y_polar</span></tt></a></td>
 <td>plot the Network attribute <tt class="xref py py-attr docutils literal"><span class="pre">y</span></tt> vs frequency.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.plot_y_rad.html#skrf.network.Network.plot_y_rad" title="skrf.network.Network.plot_y_rad"><tt class="xref py py-obj docutils literal"><span class="pre">plot_y_rad</span></tt></a></td>
+<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.plot_y_rad.html#skrf.network.Network.plot_y_rad" title="skrf.network.Network.plot_y_rad"><tt class="xref py py-obj docutils literal"><span class="pre">plot_y_rad</span></tt></a></td>
 <td>plot the Network attribute <tt class="xref py py-attr docutils literal"><span class="pre">y_rad</span></tt> vs frequency.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.plot_y_rad_unwrap.html#skrf.network.Network.plot_y_rad_unwrap" title="skrf.network.Network.plot_y_rad_unwrap"><tt class="xref py py-obj docutils literal"><span class="pre">plot_y_rad_unwrap</span></tt></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.plot_y_rad_unwrap.html#skrf.network.Network.plot_y_rad_unwrap" title="skrf.network.Network.plot_y_rad_unwrap"><tt class="xref py py-obj docutils literal"><span class="pre">plot_y_rad_unwrap</span></tt></a></td>
 <td>plot the Network attribute <tt class="xref py py-attr docutils literal"><span class="pre">y_rad_unwrap</span></tt> vs frequency.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.plot_y_re.html#skrf.network.Network.plot_y_re" title="skrf.network.Network.plot_y_re"><tt class="xref py py-obj docutils literal"><span class="pre">plot_y_re</span></tt></a></td>
+<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.plot_y_re.html#skrf.network.Network.plot_y_re" title="skrf.network.Network.plot_y_re"><tt class="xref py py-obj docutils literal"><span class="pre">plot_y_re</span></tt></a></td>
 <td>plot the Network attribute <tt class="xref py py-attr docutils literal"><span class="pre">y_re</span></tt> vs frequency.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.plot_y_vswr.html#skrf.network.Network.plot_y_vswr" title="skrf.network.Network.plot_y_vswr"><tt class="xref py py-obj docutils literal"><span class="pre">plot_y_vswr</span></tt></a></td>
+<td>plot the Network attribute <tt class="xref py py-attr docutils literal"><span class="pre">y_vswr</span></tt> vs frequency.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.plot_z_arcl.html#skrf.network.Network.plot_z_arcl" title="skrf.network.Network.plot_z_arcl"><tt class="xref py py-obj docutils literal"><span class="pre">plot_z_arcl</span></tt></a></td>
 <td>plot the Network attribute <tt class="xref py py-attr docutils literal"><span class="pre">z_arcl</span></tt> vs frequency.</td>
@@ -603,22 +627,25 @@ can be saved to disk in the form of touchstone files with the
 <tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.plot_z_re.html#skrf.network.Network.plot_z_re" title="skrf.network.Network.plot_z_re"><tt class="xref py py-obj docutils literal"><span class="pre">plot_z_re</span></tt></a></td>
 <td>plot the Network attribute <tt class="xref py py-attr docutils literal"><span class="pre">z_re</span></tt> vs frequency.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.read.html#skrf.network.Network.read" title="skrf.network.Network.read"><tt class="xref py py-obj docutils literal"><span class="pre">read</span></tt></a></td>
+<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.plot_z_vswr.html#skrf.network.Network.plot_z_vswr" title="skrf.network.Network.plot_z_vswr"><tt class="xref py py-obj docutils literal"><span class="pre">plot_z_vswr</span></tt></a></td>
+<td>plot the Network attribute <tt class="xref py py-attr docutils literal"><span class="pre">z_vswr</span></tt> vs frequency.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.read.html#skrf.network.Network.read" title="skrf.network.Network.read"><tt class="xref py py-obj docutils literal"><span class="pre">read</span></tt></a></td>
 <td>Read a Network from a &#8216;ntwk&#8217; file</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.read_touchstone.html#skrf.network.Network.read_touchstone" title="skrf.network.Network.read_touchstone"><tt class="xref py py-obj docutils literal"><span class="pre">read_touchstone</span></tt></a></td>
+<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.read_touchstone.html#skrf.network.Network.read_touchstone" title="skrf.network.Network.read_touchstone"><tt class="xref py py-obj docutils literal"><span class="pre">read_touchstone</span></tt></a></td>
 <td>loads values from a touchstone file.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.renumber.html#skrf.network.Network.renumber" title="skrf.network.Network.renumber"><tt class="xref py py-obj docutils literal"><span class="pre">renumber</span></tt></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.renumber.html#skrf.network.Network.renumber" title="skrf.network.Network.renumber"><tt class="xref py py-obj docutils literal"><span class="pre">renumber</span></tt></a></td>
 <td>renumbers some ports of a two port Network</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.resample.html#skrf.network.Network.resample" title="skrf.network.Network.resample"><tt class="xref py py-obj docutils literal"><span class="pre">resample</span></tt></a></td>
+<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.resample.html#skrf.network.Network.resample" title="skrf.network.Network.resample"><tt class="xref py py-obj docutils literal"><span class="pre">resample</span></tt></a></td>
 <td>Interpolate network based on a new number of frequency points</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.write.html#skrf.network.Network.write" title="skrf.network.Network.write"><tt class="xref py py-obj docutils literal"><span class="pre">write</span></tt></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.write.html#skrf.network.Network.write" title="skrf.network.Network.write"><tt class="xref py py-obj docutils literal"><span class="pre">write</span></tt></a></td>
 <td>Write the Network to disk using the <a class="reference external" href="http://docs.python.org/library/pickle.html#pickle" title="(in Python v2.7)"><tt class="xref py py-mod docutils literal"><span class="pre">pickle</span></tt></a> module.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="skrf.network.Network.write_touchstone.html#skrf.network.Network.write_touchstone" title="skrf.network.Network.write_touchstone"><tt class="xref py py-obj docutils literal"><span class="pre">write_touchstone</span></tt></a></td>
+<tr class="row-even"><td><a class="reference internal" href="skrf.network.Network.write_touchstone.html#skrf.network.Network.write_touchstone" title="skrf.network.Network.write_touchstone"><tt class="xref py py-obj docutils literal"><span class="pre">write_touchstone</span></tt></a></td>
 <td>write a contents of the <a class="reference internal" href="#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> to a touchstone file.</td>
 </tr>
 </tbody>

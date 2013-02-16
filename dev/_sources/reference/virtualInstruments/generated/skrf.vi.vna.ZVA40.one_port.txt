@@ -1,6 +1,0 @@
-skrf.vi.vna.ZVA40.one_port
-==========================
-
-.. currentmodule:: skrf.vi.vna
-
-.. autoattribute:: ZVA40.one_port

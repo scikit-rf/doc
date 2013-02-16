@@ -17,7 +17,6 @@ skrf.vi.sa.HP8500
   ~HP8500.f_start
   ~HP8500.f_stop
   ~HP8500.frequency
-  ~HP8500.get_ntwk
   ~HP8500.trace_a
   ~HP8500.trace_b
 
@@ -33,11 +32,13 @@ skrf.vi.sa.HP8500
 
   ~HP8500.__init__
   ~HP8500.cont_sweep
+  ~HP8500.get_ntwk
   ~HP8500.goto_local
   ~HP8500.recall_state
   ~HP8500.save_state
   ~HP8500.single_sweep
   ~HP8500.sweep
+  ~HP8500.write
 
 
 

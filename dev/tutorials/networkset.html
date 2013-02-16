@@ -107,7 +107,7 @@ touchstone files. This can be done quickly with
 in a directory. The argument <tt class="docutils literal"><span class="pre">contains</span></tt> is used to load only files
 which match a given substring.</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">rf</span><span class="o">.</span><span class="n">read_all</span><span class="p">(</span><span class="s">&#39;../skrf/data/&#39;</span><span class="p">,</span> <span class="n">contains</span><span class="o">=</span><span class="s">&#39;ro&#39;</span><span class="p">)</span>
-<span class="gr">Out[1]: </span>
+<span class="go"> Out[1]: </span>
 <span class="go">{&#39;ro,1&#39;: 1-Port Network: &#39;ro,1&#39;,  500-750 GHz, 201 pts, z0=[ 50.+0.j],</span>
 <span class="go"> &#39;ro,2&#39;: 1-Port Network: &#39;ro,2&#39;,  500-750 GHz, 201 pts, z0=[ 50.+0.j],</span>
 <span class="go"> &#39;ro,3&#39;: 1-Port Network: &#39;ro,3&#39;,  500-750 GHz, 201 pts, z0=[ 50.+0.j]}</span>
@@ -119,7 +119,7 @@ which match a given substring.</p>
 <span class="gp">In [2]: </span><span class="n">ro_ns</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">NetworkSet</span><span class="p">(</span><span class="n">ro_dict</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;ro set&#39;</span><span class="p">)</span> <span class="c">#name is optional</span>
 
 <span class="gp">In [3]: </span><span class="n">ro_ns</span>
-<span class="gr">Out[3]: </span><span class="n">A</span> <span class="n">NetworkSet</span> <span class="n">of</span> <span class="n">length</span> <span class="mi">3</span>
+<span class="go"> Out[3]: A NetworkSet of length 3</span>
 </pre></div>
 </div>
 <p>A NetworkSet can also be constructed from zipfile of touchstones
@@ -129,7 +129,7 @@ through the class method <a class="reference internal" href="../reference/genera
 <h2><a class="toc-backref" href="#id4">Accesing Network Methods</a><a class="headerlink" href="#accesing-network-methods" title="Permalink to this headline">¶</a></h2>
 <p>The <a class="reference internal" href="../reference/generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> elements in a <a class="reference internal" href="../reference/generated/skrf.networkSet.NetworkSet.html#skrf.networkSet.NetworkSet" title="skrf.networkSet.NetworkSet"><tt class="xref py py-class docutils literal"><span class="pre">NetworkSet</span></tt></a> can be accessed like the elements of list,</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">ro_ns</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="gr">Out[1]: </span><span class="mi">1</span><span class="o">-</span><span class="n">Port</span> <span class="n">Network</span><span class="p">:</span> <span class="s">&#39;ro,1&#39;</span><span class="p">,</span>  <span class="mi">500</span><span class="o">-</span><span class="mi">750</span> <span class="n">GHz</span><span class="p">,</span> <span class="mi">201</span> <span class="n">pts</span><span class="p">,</span> <span class="n">z0</span><span class="o">=</span><span class="p">[</span> <span class="mf">50.</span><span class="o">+</span><span class="mf">0.j</span><span class="p">]</span>
+<span class="go"> Out[1]: 1-Port Network: &#39;ro,1&#39;,  500-750 GHz, 201 pts, z0=[ 50.+0.j]</span>
 </pre></div>
 </div>
 <p>Most <a class="reference internal" href="../reference/generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> methods are also methods of
@@ -139,7 +139,7 @@ plot the log-magnitude of the s-parameters of each Network,
 (see <a class="reference internal" href="plotting.html"><em>Plotting</em></a> for details on <a class="reference internal" href="../reference/generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a>
 ploting methods).</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">ro_ns</span><span class="o">.</span><span class="n">plot_s_db</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s">&#39;Mean Response&#39;</span><span class="p">)</span>
-<span class="gr">Out[1]: </span><span class="p">[</span><span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">]</span>
+<span class="go"> Out[1]: [None, None, None]</span>
 </pre></div>
 </div>
 <img alt="../_images/ns_plot_s_db.png" src="../_images/ns_plot_s_db.png" />
@@ -150,7 +150,7 @@ ploting methods).</p>
 properties of the NetworkSet. For example, to calculate the complex
 average of the set, access the <tt class="docutils literal"><span class="pre">mean_s</span></tt> property</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">ro_ns</span><span class="o">.</span><span class="n">mean_s</span>
-<span class="gr">Out[1]: </span><span class="mi">1</span><span class="o">-</span><span class="n">Port</span> <span class="n">Network</span><span class="p">:</span> <span class="s">&#39;ro set&#39;</span><span class="p">,</span>  <span class="mi">500</span><span class="o">-</span><span class="mi">750</span> <span class="n">GHz</span><span class="p">,</span> <span class="mi">201</span> <span class="n">pts</span><span class="p">,</span> <span class="n">z0</span><span class="o">=</span><span class="p">[</span> <span class="mf">50.</span><span class="o">+</span><span class="mf">0.j</span><span class="p">]</span>
+<span class="go"> Out[1]: 1-Port Network: &#39;ro set&#39;,  500-750 GHz, 201 pts, z0=[ 50.+0.j]</span>
 </pre></div>
 </div>
 <div class="admonition note">

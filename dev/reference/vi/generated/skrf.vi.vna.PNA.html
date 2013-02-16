@@ -1,0 +1,308 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>skrf.vi.vna.PNA &mdash; scikit-rf dev documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/scipy.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     'dev',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="scikit-rf dev documentation" href="../../../index.html" />
+    <link rel="up" title="vi (skrf.vi)" href="../index.html" />
+    <link rel="next" title="skrf.vi.vna.PNA.continuous" href="skrf.vi.vna.PNA.continuous.html" />
+    <link rel="prev" title="skrf.vi.stages.ESP300.write" href="skrf.vi.stages.ESP300.write.html" />
+  <script type="text/javascript">
+	  var _gaq = _gaq || [];
+	    _gaq.push(['_setAccount', 'UA-29068876-1']);
+		  _gaq.push(['_trackPageview']);
+
+		    (function() {
+			    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+					    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+						  })();
+
+  </script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="skrf.vi.vna.PNA.continuous.html" title="skrf.vi.vna.PNA.continuous"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="skrf.vi.stages.ESP300.write.html" title="skrf.vi.stages.ESP300.write"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../../index.html">scikit-rf dev documentation</a> &raquo;</li>
+          <li><a href="../index.html" accesskey="U">vi (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.vi</span></tt>)</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="skrf-vi-vna-pna">
+<h1>skrf.vi.vna.PNA<a class="headerlink" href="#skrf-vi-vna-pna" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="skrf.vi.vna.PNA">
+<em class="property">class </em><tt class="descclassname">skrf.vi.vna.</tt><tt class="descname">PNA</tt><big>(</big><em>address=16</em>, <em>channel=1</em>, <em>timeout=3</em>, <em>echo=False</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#skrf.vi.vna.PNA" title="Permalink to this definition">¶</a></dt>
+<dd><p>Agilent PNA[X]</p>
+<p>Below are lists of some high-level commands sorted by functionality.</p>
+<p>Object IO</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><a class="reference internal" href="skrf.vi.vna.PNA.get_oneport.html#skrf.vi.vna.PNA.get_oneport" title="skrf.vi.vna.PNA.get_oneport"><tt class="xref py py-func docutils literal"><span class="pre">get_oneport()</span></tt></a></li>
+<li><a class="reference internal" href="skrf.vi.vna.PNA.get_twoport.html#skrf.vi.vna.PNA.get_twoport" title="skrf.vi.vna.PNA.get_twoport"><tt class="xref py py-func docutils literal"><span class="pre">get_twoport()</span></tt></a></li>
+<li><a class="reference internal" href="skrf.vi.vna.PNA.get_frequency.html#skrf.vi.vna.PNA.get_frequency" title="skrf.vi.vna.PNA.get_frequency"><tt class="xref py py-func docutils literal"><span class="pre">get_frequency()</span></tt></a></li>
+</ul>
+</td><td><ul class="simple">
+<li><a class="reference internal" href="skrf.vi.vna.PNA.get_network.html#skrf.vi.vna.PNA.get_network" title="skrf.vi.vna.PNA.get_network"><tt class="xref py py-func docutils literal"><span class="pre">get_network()</span></tt></a></li>
+<li><a class="reference internal" href="skrf.vi.vna.PNA.get_network_all_meas.html#skrf.vi.vna.PNA.get_network_all_meas" title="skrf.vi.vna.PNA.get_network_all_meas"><tt class="xref py py-func docutils literal"><span class="pre">get_network_all_meas()</span></tt></a></li>
+</ul>
+</td></tr></table>
+<p>Simple IO</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><a class="reference internal" href="skrf.vi.vna.PNA.get_data_snp.html#skrf.vi.vna.PNA.get_data_snp" title="skrf.vi.vna.PNA.get_data_snp"><tt class="xref py py-func docutils literal"><span class="pre">get_data_snp()</span></tt></a></li>
+<li><a class="reference internal" href="skrf.vi.vna.PNA.get_data.html#skrf.vi.vna.PNA.get_data" title="skrf.vi.vna.PNA.get_data"><tt class="xref py py-func docutils literal"><span class="pre">get_data()</span></tt></a></li>
+<li><a class="reference internal" href="skrf.vi.vna.PNA.get_sdata.html#skrf.vi.vna.PNA.get_sdata" title="skrf.vi.vna.PNA.get_sdata"><tt class="xref py py-func docutils literal"><span class="pre">get_sdata()</span></tt></a></li>
+</ul>
+</td><td><ul class="simple">
+<li><a class="reference internal" href="skrf.vi.vna.PNA.get_fdata.html#skrf.vi.vna.PNA.get_fdata" title="skrf.vi.vna.PNA.get_fdata"><tt class="xref py py-func docutils literal"><span class="pre">get_fdata()</span></tt></a></li>
+<li><a class="reference internal" href="skrf.vi.vna.PNA.get_rdata.html#skrf.vi.vna.PNA.get_rdata" title="skrf.vi.vna.PNA.get_rdata"><tt class="xref py py-func docutils literal"><span class="pre">get_rdata()</span></tt></a></li>
+</ul>
+</td></tr></table>
+<p class="rubric">Notes</p>
+<p>This instrument references <cite>measurements</cite> and <cite>traces</cite>. Traces are 
+displayed traces, while measurements are active measurements on the 
+VNA which may or may not be displayed on screen.</p>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skrf.vi.vna</span> <span class="kn">import</span> <span class="n">PNA</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">PNA</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">get_oneport</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">get_twoport</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<p class="rubric">Attributes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="skrf.vi.vna.PNA.continuous.html#skrf.vi.vna.PNA.continuous" title="skrf.vi.vna.PNA.continuous"><tt class="xref py py-obj docutils literal"><span class="pre">continuous</span></tt></a></td>
+<td>Set continuous sweeping ON/OFF</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.vi.vna.PNA.idn.html#skrf.vi.vna.PNA.idn" title="skrf.vi.vna.PNA.idn"><tt class="xref py py-obj docutils literal"><span class="pre">idn</span></tt></a></td>
+<td>Identifying string for the instrument</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.vi.vna.PNA.if_bw.html#skrf.vi.vna.PNA.if_bw" title="skrf.vi.vna.PNA.if_bw"><tt class="xref py py-obj docutils literal"><span class="pre">if_bw</span></tt></a></td>
+<td>IF bandwidth</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.vi.vna.PNA.npoints.html#skrf.vi.vna.PNA.npoints" title="skrf.vi.vna.PNA.npoints"><tt class="xref py py-obj docutils literal"><span class="pre">npoints</span></tt></a></td>
+<td>Number of points for the measurment</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.vi.vna.PNA.ntraces.html#skrf.vi.vna.PNA.ntraces" title="skrf.vi.vna.PNA.ntraces"><tt class="xref py py-obj docutils literal"><span class="pre">ntraces</span></tt></a></td>
+<td>The number of measurement traces that exist on the current channel</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="skrf.vi.vna.PNA.__init__.html#skrf.vi.vna.PNA.__init__" title="skrf.vi.vna.PNA.__init__"><tt class="xref py py-obj docutils literal"><span class="pre">__init__</span></tt></a></td>
+<td>Constructor</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.vi.vna.PNA.create_meas.html#skrf.vi.vna.PNA.create_meas" title="skrf.vi.vna.PNA.create_meas"><tt class="xref py py-obj docutils literal"><span class="pre">create_meas</span></tt></a></td>
+<td>Create a new measurement.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.vi.vna.PNA.create_meas_hidden.html#skrf.vi.vna.PNA.create_meas_hidden" title="skrf.vi.vna.PNA.create_meas_hidden"><tt class="xref py py-obj docutils literal"><span class="pre">create_meas_hidden</span></tt></a></td>
+<td>Create a new measurement but dont display it.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.vi.vna.PNA.delete_all_meas.html#skrf.vi.vna.PNA.delete_all_meas" title="skrf.vi.vna.PNA.delete_all_meas"><tt class="xref py py-obj docutils literal"><span class="pre">delete_all_meas</span></tt></a></td>
+<td>duh</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.vi.vna.PNA.delete_meas.html#skrf.vi.vna.PNA.delete_meas" title="skrf.vi.vna.PNA.delete_meas"><tt class="xref py py-obj docutils literal"><span class="pre">delete_meas</span></tt></a></td>
+<td>Delete a measurement with name <cite>name</cite></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.vi.vna.PNA.display_trace.html#skrf.vi.vna.PNA.display_trace" title="skrf.vi.vna.PNA.display_trace"><tt class="xref py py-obj docutils literal"><span class="pre">display_trace</span></tt></a></td>
+<td>Display a given measurment on specified trace number.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.vi.vna.PNA.func_on_all_traces.html#skrf.vi.vna.PNA.func_on_all_traces" title="skrf.vi.vna.PNA.func_on_all_traces"><tt class="xref py py-obj docutils literal"><span class="pre">func_on_all_traces</span></tt></a></td>
+<td>Run a function on all traces are active</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.vi.vna.PNA.get_active_meas.html#skrf.vi.vna.PNA.get_active_meas" title="skrf.vi.vna.PNA.get_active_meas"><tt class="xref py py-obj docutils literal"><span class="pre">get_active_meas</span></tt></a></td>
+<td>Get the name of the active measurement</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.vi.vna.PNA.get_data.html#skrf.vi.vna.PNA.get_data" title="skrf.vi.vna.PNA.get_data"><tt class="xref py py-obj docutils literal"><span class="pre">get_data</span></tt></a></td>
+<td>Get data for current active measuremnent</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.vi.vna.PNA.get_data_snp.html#skrf.vi.vna.PNA.get_data_snp" title="skrf.vi.vna.PNA.get_data_snp"><tt class="xref py py-obj docutils literal"><span class="pre">get_data_snp</span></tt></a></td>
+<td>Get n-port, s-parameter data.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.vi.vna.PNA.get_fdata.html#skrf.vi.vna.PNA.get_fdata" title="skrf.vi.vna.PNA.get_fdata"><tt class="xref py py-obj docutils literal"><span class="pre">get_fdata</span></tt></a></td>
+<td>Get formated data   ..</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.vi.vna.PNA.get_frequency.html#skrf.vi.vna.PNA.get_frequency" title="skrf.vi.vna.PNA.get_frequency"><tt class="xref py py-obj docutils literal"><span class="pre">get_frequency</span></tt></a></td>
+<td>Get frequency data for active meas.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.vi.vna.PNA.get_meas_list.html#skrf.vi.vna.PNA.get_meas_list" title="skrf.vi.vna.PNA.get_meas_list"><tt class="xref py py-obj docutils literal"><span class="pre">get_meas_list</span></tt></a></td>
+<td>Get a list of existent measurements</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.vi.vna.PNA.get_network.html#skrf.vi.vna.PNA.get_network" title="skrf.vi.vna.PNA.get_network"><tt class="xref py py-obj docutils literal"><span class="pre">get_network</span></tt></a></td>
+<td>Returns a <a class="reference internal" href="../../generated/skrf.network.Network.html#skrf.network.Network" title="skrf.network.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> object representing the</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.vi.vna.PNA.get_network_all_meas.html#skrf.vi.vna.PNA.get_network_all_meas" title="skrf.vi.vna.PNA.get_network_all_meas"><tt class="xref py py-obj docutils literal"><span class="pre">get_network_all_meas</span></tt></a></td>
+<td>Return list of Network Objects for all measurements.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.vi.vna.PNA.get_oneport.html#skrf.vi.vna.PNA.get_oneport" title="skrf.vi.vna.PNA.get_oneport"><tt class="xref py py-obj docutils literal"><span class="pre">get_oneport</span></tt></a></td>
+<td>Get a one-port Network object for given ports.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.vi.vna.PNA.get_power_level.html#skrf.vi.vna.PNA.get_power_level" title="skrf.vi.vna.PNA.get_power_level"><tt class="xref py py-obj docutils literal"><span class="pre">get_power_level</span></tt></a></td>
+<td>Get the RF power level</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.vi.vna.PNA.get_rdata.html#skrf.vi.vna.PNA.get_rdata" title="skrf.vi.vna.PNA.get_rdata"><tt class="xref py py-obj docutils literal"><span class="pre">get_rdata</span></tt></a></td>
+<td>Get data directly from the recievers.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.vi.vna.PNA.get_sdata.html#skrf.vi.vna.PNA.get_sdata" title="skrf.vi.vna.PNA.get_sdata"><tt class="xref py py-obj docutils literal"><span class="pre">get_sdata</span></tt></a></td>
+<td>Get complex data   ..</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.vi.vna.PNA.get_switch_terms.html#skrf.vi.vna.PNA.get_switch_terms" title="skrf.vi.vna.PNA.get_switch_terms"><tt class="xref py py-obj docutils literal"><span class="pre">get_switch_terms</span></tt></a></td>
+<td>Get switch terms and return them as a tuple of Network objects.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.vi.vna.PNA.get_twoport.html#skrf.vi.vna.PNA.get_twoport" title="skrf.vi.vna.PNA.get_twoport"><tt class="xref py py-obj docutils literal"><span class="pre">get_twoport</span></tt></a></td>
+<td>Get a two-port Network object for given ports.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.vi.vna.PNA.opc.html#skrf.vi.vna.PNA.opc" title="skrf.vi.vna.PNA.opc"><tt class="xref py py-obj docutils literal"><span class="pre">opc</span></tt></a></td>
+<td>Ask for indication that operations complete</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.vi.vna.PNA.rtl.html#skrf.vi.vna.PNA.rtl" title="skrf.vi.vna.PNA.rtl"><tt class="xref py py-obj docutils literal"><span class="pre">rtl</span></tt></a></td>
+<td>Return to local</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.vi.vna.PNA.select_meas.html#skrf.vi.vna.PNA.select_meas" title="skrf.vi.vna.PNA.select_meas"><tt class="xref py py-obj docutils literal"><span class="pre">select_meas</span></tt></a></td>
+<td>Make a specified measurement active</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.vi.vna.PNA.set_display_format.html#skrf.vi.vna.PNA.set_display_format" title="skrf.vi.vna.PNA.set_display_format"><tt class="xref py py-obj docutils literal"><span class="pre">set_display_format</span></tt></a></td>
+<td>Set the display format</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.vi.vna.PNA.set_display_format_all.html#skrf.vi.vna.PNA.set_display_format_all" title="skrf.vi.vna.PNA.set_display_format_all"><tt class="xref py py-obj docutils literal"><span class="pre">set_display_format_all</span></tt></a></td>
+<td>Set the display format for all measurements</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.vi.vna.PNA.set_power_level.html#skrf.vi.vna.PNA.set_power_level" title="skrf.vi.vna.PNA.set_power_level"><tt class="xref py py-obj docutils literal"><span class="pre">set_power_level</span></tt></a></td>
+<td>Set the RF power level</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.vi.vna.PNA.set_yscale_auto.html#skrf.vi.vna.PNA.set_yscale_auto" title="skrf.vi.vna.PNA.set_yscale_auto"><tt class="xref py py-obj docutils literal"><span class="pre">set_yscale_auto</span></tt></a></td>
+<td>Display a given measurment on specified trace number.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.vi.vna.PNA.set_yscale_couple.html#skrf.vi.vna.PNA.set_yscale_couple" title="skrf.vi.vna.PNA.set_yscale_couple"><tt class="xref py py-obj docutils literal"><span class="pre">set_yscale_couple</span></tt></a></td>
+<td>set y-scale coupling</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="skrf.vi.vna.PNA.sweep.html#skrf.vi.vna.PNA.sweep" title="skrf.vi.vna.PNA.sweep"><tt class="xref py py-obj docutils literal"><span class="pre">sweep</span></tt></a></td>
+<td>Initiates a sweep and waits for it to complete before returning</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="skrf.vi.vna.PNA.write.html#skrf.vi.vna.PNA.write" title="skrf.vi.vna.PNA.write"><tt class="xref py py-obj docutils literal"><span class="pre">write</span></tt></a></td>
+<td>dummy doc</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../../index.html">
+              <img class="logo" src="../../../_static/scikit-rf-logo-flat-docs.svg" alt="Logo"/>
+            </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="skrf.vi.stages.ESP300.write.html"
+                        title="previous chapter">skrf.vi.stages.ESP300.write</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="skrf.vi.vna.PNA.continuous.html"
+                        title="next chapter">skrf.vi.vna.PNA.continuous</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../../_sources/reference/vi/generated/skrf.vi.vna.PNA.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<ul class="this-page-menu">
+  <li><a href="/scipy/docs/reference/vi/skrf.vi.vna.PNA">Edit page</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="skrf.vi.vna.PNA.continuous.html" title="skrf.vi.vna.PNA.continuous"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="skrf.vi.stages.ESP300.write.html" title="skrf.vi.stages.ESP300.write"
+             >previous</a> |</li>
+        <li><a href="../../../index.html">scikit-rf dev documentation</a> &raquo;</li>
+          <li><a href="../index.html" >vi (<tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">skrf.vi</span></tt>)</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, scikit-rf development team.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

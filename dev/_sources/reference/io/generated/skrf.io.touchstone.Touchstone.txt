@@ -19,6 +19,7 @@ skrf.io.touchstone.Touchstone
   :nosignatures:
 
   ~Touchstone.__init__
+  ~Touchstone.get_comments
   ~Touchstone.get_format
   ~Touchstone.get_noise_data
   ~Touchstone.get_noise_names

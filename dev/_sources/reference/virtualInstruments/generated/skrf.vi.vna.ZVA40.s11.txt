@@ -1,6 +1,0 @@
-skrf.vi.vna.ZVA40.s11
-=====================
-
-.. currentmodule:: skrf.vi.vna
-
-.. autoattribute:: ZVA40.s11

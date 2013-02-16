@@ -38,6 +38,7 @@ skrf.vi.vna.HP8720
   :nosignatures:
 
   ~HP8720.__init__
+  ~HP8720.write
 
 
 

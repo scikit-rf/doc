@@ -1,6 +1,0 @@
-skrf.vi.vna.ZVA40.update_trace_list
-===================================
-
-.. currentmodule:: skrf.vi.vna
-
-.. automethod:: ZVA40.update_trace_list
